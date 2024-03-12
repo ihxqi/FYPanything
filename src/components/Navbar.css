@@ -1,15 +1,18 @@
 .active{
-    background-color: #1d4ed8;
+    background-color: #ffe2e6;
 }
 
 nav {
     display: flex;
+    z-index: 1000;
     justify-content: space-between;
     align-items: center;
-    background-color: #0f172a;
-    color: white;
-    position: sticky;
+    background-color: #ffe2e6;
+    color: black;
+    position: fixed; /* Change position to fixed */
     top: 0;
+    left: 0;
+    right: 0;
 }
 
 nav .title {
@@ -31,14 +34,14 @@ nav ul li {
 nav ul li a {
     display: block;
     text-decoration: none;
-    color: white;
+    color: black;
     padding: 0.5rem;
     margin: 0 0.5rem;
     border-radius: 0.5rem;
 }
-
+/*word^*/
 nav ul li a:not(.active):hover {
-    background-color:#172554 ;
+    background-color:#ffe2e6 ;
 }
 
 nav .menu {
@@ -55,7 +58,7 @@ nav .menu {
 nav .menu span {
     height: 0.4rem;
     width: 100%;
-    background-color: #fff;
+    background-color: #ffe2e6;
     border-radius: 0.2rem;
 }
 
