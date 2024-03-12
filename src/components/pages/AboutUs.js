@@ -59,7 +59,6 @@ export const AboutUs = () => {
     <Container>
       <Row className="mb-5 mt-3">
         <Col lg="15">
-          <hr className="t_border my-4 ml-0 text-left" />
         </Col>
       </Row>
       <Row className="sec_sp">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from '../components/image/CollaFilter Logo.jpg'
 
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
@@ -7,24 +8,31 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav>
+    <nav className= "navbar">
       <Link to="/" className="title">
-        Website
+      <img src={logo} alt="CollaFilter Logo" className='logo' />
       </Link>
       <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+        <span></span>
         <span></span>
         <span></span>
         <span></span>
       </div>
       <ul className={menuOpen ? "open" : ""}>
         <li>
-          <NavLink to="/about">About</NavLink>
+          <NavLink to="/about">About Us</NavLink>
         </li>
         <li>
           <NavLink to="/services">Services</NavLink>
         </li>
         <li>
           <NavLink to="/contact">Contact</NavLink>
+        </li>
+        <li>
+          <NavLink to="/login">Login</NavLink>
+        </li>
+        <li>
+          <NavLink to="/registerrole">Register</NavLink>
         </li>
       </ul>
     </nav>

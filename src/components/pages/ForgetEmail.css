@@ -1,0 +1,71 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: pink; /* Replace with the specific background color or image you need */
+  }
+  
+  /* The login container */
+  .login-container {
+    width: 350px;
+    margin: 0 auto;
+    padding-top: 100px; /* Adjust as needed */
+    text-align: center;
+  }
+  
+  /* The logo and header styles */
+  .login-header {
+    color: #000; /* Adjust color as needed */
+    margin-bottom: 20px;
+    font-size: 24px; /* Adjust size as needed */
+  }
+  
+  /* Styling for the form inputs */
+  .login-form input[type="text"],
+  .login-form input[type="password"]
+  .login-form input[type="cpassword"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Styling for the links */
+  .login-form a {
+    color: #000; /* Adjust color as needed */
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 0;
+  }
+  
+  .login-form a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styling for the submit button */
+  .login-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #000; /* Adjust button color as needed */
+    color: white;
+    cursor: pointer;
+  }
+  
+  .login-form input[type="submit"]:hover {
+    background-color: #555; /* Darker shade for hover effect */
+  }
+  
+  /* If you have additional text or elements, you can add more styles here */
+  .login-form p {
+    color: #000; /* Adjust as needed */
+  }
+  
+  /* Adjust media query breakpoints as needed for responsive adjustments */
+  @media (max-width: 768px) {
+    .login-container {
+      width: 90%;
+    }
+  }
