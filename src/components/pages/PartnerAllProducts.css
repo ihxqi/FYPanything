@@ -1,0 +1,100 @@
+body, html {
+    background-color: #ffe2e6; /* The light pink background as seen in the image */
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .products-container {
+    max-width: 80%; /* Adjust based on your preference */
+    margin: 0 auto; /* Center the container */
+    padding: 1rem;
+    color: black; /* Text color */
+  }
+  
+  .products-header {
+    text-align: center;
+    font-size: 2rem; /* Adjust based on your preference */
+    margin: 2rem 0; /* Space above and below the header */
+    color: #000; /* Adjust based on your preference */
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between search input and button */
+    margin-bottom: 50px; /* Space below the search area */
+  }
+  
+  .search-container input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .search-container button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: black; /* Button background */
+    color: white; /* Button text */
+    cursor: pointer;
+  }
+  
+  .search-container button:hover {
+    background-color: #555; /* Button hover effect */
+  }
+  
+  .products-table {
+    width: 100%; /* Table width */
+    border-collapse: collapse; /* Remove space between table borders */
+    margin-top: 1rem; /* Space above the table */
+  }
+  
+  .products-table th,
+  .products-table td {
+    text-align: left;
+    padding: 8px; /* Padding within table cells */
+    border-bottom: 1px solid #ddd; /* Border between rows */
+  }
+  
+  /* Header cells */
+  .products-table th {
+    background-color: #f3f3f3; /* Light grey background for header cells */
+    color: black;
+  }
+  
+
+  .products-table tr:nth-child(odd) {
+  background-color: #f9f9f9; 
+  }
+  
+  .products-table tr:hover {
+  background-color: #f1f1f1; /* Highlight color on hover */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+  .products-container {
+  max-width: 95%;
+  margin: 0 auto;
+  }
+  
+  .search-container {
+  flex-direction: column; /* Stack the search label, input, and button vertically */
+  gap: 5px;
+  }
+  
+  .search-container label,
+  .search-container input[type="text"],
+  .search-container button {
+  width: 100%; /* Full width for small screens */
+  }
+  
+  .products-table {
+  font-size: 0.9rem; /* Smaller font size for table text on small screens */
+  }
+  }
+  

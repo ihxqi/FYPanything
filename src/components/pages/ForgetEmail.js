@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Navbar from "../Navbar";
 import './ForgetEmail.css'; // Ensure you have this CSS file with the correct styles
 
 const ForgetEmail = () => {
@@ -15,6 +16,8 @@ const ForgetEmail = () => {
   };
 
   return (
+    <div>
+      <Navbar/>
     <Container>
       <Row className="justify-content-md-center">
         <Col md={6}>
@@ -59,6 +62,7 @@ const ForgetEmail = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 export default ForgetEmail;
