@@ -12,7 +12,7 @@ export const RegisterRole = () => {
     <div className="containerStyle">
       <img src={logo} alt="CollaFilter Logo" className='iconStyle' />
       <Link to="/RegisterUser">
-        <button className='buttonStyle'>Register as User!</button>
+        <button className='buttonStyle'>Register as User</button>
       </Link>
       <Link to="/RegisterPartner">
         <button className='buttonStyle'>Register as Partner</button>
