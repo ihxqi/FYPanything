@@ -1,25 +1,25 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import './Roles.css'; // Make sure to create this CSS file
+import { Link } from 'react-router-dom';
+import './RegisterRole.css'; // Ensure you have this CSS file with the correct styles
+import logo from '../image/CollaFilter Logo.jpg'
+import Navbar from "../Navbar";
 
-const Roles = () => {
-    return (
-        <Container fluid className="roles-container">
-            <Row className="justify-content-center">
-                <Col md={6} className="text-center">
-                    <h1 className="logo">COLLAFILTER</h1>
-                    <div className="roles-options">
-                        <Button variant="outline-primary" className="role-btn">
-                            👩‍💼 Register as Partner
-                        </Button>
-                        <Button variant="outline-secondary" className="role-btn">
-                            👤 Register as User
-                        </Button>
-                    </div>
-                </Col>
-            </Row>
-        </Container>
-    );
+
+export const RegisterRole = () => {
+  return (
+    <div>
+      <Navbar/>
+    <div className="containerStyle">
+      <img src={logo} alt="CollaFilter Logo" className='iconStyle' />
+      <Link to="/RegisterUser">
+        <button className='buttonStyle'>Register as User</button>
+      </Link>
+      <Link to="/RegisterPartner">
+        <button className='buttonStyle'>Register as Partner</button>
+      </Link>
+    </div>
+    </div>
+  );
 };
 
-export default Roles;
+

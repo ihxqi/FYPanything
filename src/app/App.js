@@ -2,27 +2,25 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Navbar from "../components/Navbar"; // Update the path if necessary
-//import ContactUs from "../contact/index";
-import { AboutUs, Home, Information, Login } from "../components/pages";
-import { Roles } from "../components/pages";
-import PartnerRegistrationForm from "../components/partners/PartnerRegistrationForm";
-import UserRegistrationForm from "../components/users/UserRegistrationForm";
-
+import { AboutUs, Home, JoinUs, Login, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword } from "../components/pages";
+import { UnregisteredBlogshopOwner } from "../components/pages";
 
 export default function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/information" element={<Information />} />
+          <Route path="/joinus" element={<JoinUs />} />
           <Route path="/login" element={<Login />} /> 
-          <Route path="/roles" element={<Roles />} />
-          <Route path="/register/partner" component={PartnerRegistrationForm} />
-          <Route path="/register/user" component={UserRegistrationForm} />
+          <Route path="/registerrole" element={<RegisterRole />} />
+          <Route path="/RegisterUser" element={<RegisterUser />} />
+          <Route path="/RegisterPartner" element={<RegisterPartner />} />
+          <Route path="/ForgetEmail" element={<ForgetEmail/>} />
+          <Route path="/UnregisteredBlogshopOwner" element={<UnregisteredBlogshopOwner/>} />
+          <Route path="/PartnerAllProducts" element={<PartnerAllProducts/>} />
+          <Route path="/ForgetPassword" element={<ForgetPassword/>} />
         </Routes>
       </div>
     </Router>

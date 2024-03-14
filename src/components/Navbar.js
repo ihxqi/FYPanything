@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from '../components/image/CollaFilter Logo.jpg'
 
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
@@ -7,9 +8,9 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav>
+    <nav className= "navbar">
       <Link to="/" className="title">
-        Website
+      <img src={logo} alt="CollaFilter Logo" className='logo' />
       </Link>
       <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
         <span></span>
@@ -18,20 +19,20 @@ export const Navbar = () => {
         <span></span>
       </div>
       <ul className={menuOpen ? "open" : ""}>
-        <li>
-          <NavLink to="/about">About Us</NavLink>
-        </li>
-        <li>
-          <NavLink to="/services">Services</NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact">Contact</NavLink>
-        </li>
-        <li>
+        <li>      
           <NavLink to="/login">Login</NavLink>
         </li>
         <li>
-          <NavLink to="/roles">Register</NavLink>
+        <NavLink to="/registerrole">Register</NavLink> 
+        </li>
+        <li>
+        <NavLink to="/joinus">Why Join Us?</NavLink>
+        </li>
+        <li>
+        <NavLink to="/about">About Us</NavLink>
+        </li>
+        <li>
+          <NavLink to="/partnerallproducts">products</NavLink>
         </li>
       </ul>
     </nav>

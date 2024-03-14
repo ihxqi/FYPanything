@@ -1,5 +1,6 @@
 import React, { useState } from "react"; 
 import { Container, Row, Col } from "react-bootstrap";
+import Navbar from "../Navbar";
 
 export const AboutUs = () => {
   const [formData, setFormData] = useState({
@@ -56,15 +57,21 @@ export const AboutUs = () => {
   };
 
   return (
+    <div>
+      < Navbar />
     <Container>
       <Row className="mb-5 mt-3">
         <Col lg="15">
-          <hr className="t_border my-4 ml-0 text-left" />
         </Col>
       </Row>
       <Row className="sec_sp">
         <Col lg="5" className="mb-5">
           <h1 className="display-7 mb-7">About Us Details</h1>
+          We are doing an innovation recommendation system 
+          based on collaborative filtering about E-commerce.
+          Say goodbye to generic product suggestion and hello
+          to personalized shopping experience tailored just 
+          for you and you blogshops.
         </Col>
         <Col lg="7" className="d-flex align-items-center">
           <form className="contact__form w-100" onSubmit={handleSubmit}>
@@ -133,5 +140,6 @@ export const AboutUs = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Navbar from "../Navbar";
 import './Login.css'; // Ensure you have this CSS file with the correct styles
-
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -15,6 +15,8 @@ const Login = () => {
   };
 
   return (
+    <div>
+      <Navbar/>
     <Container>
       <Row className="justify-content-md-center">
         <Col md={6}>
@@ -41,8 +43,8 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
 
-              <a href="#">Forgot Email? Click here</a><br />
-              <a href="#">Forgot Password? Click here</a>
+              <a href="/ForgetEmail">Forgot Email? Click here</a><br />
+              <a href="/ForgetPassword">Forgot Password? Click here</a>
 
               <input type="submit" value="LOG IN" />
             </form>
@@ -51,6 +53,7 @@ const Login = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   );
 };
 export default Login;
