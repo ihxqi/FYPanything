@@ -2,28 +2,31 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 /* Ensure full height and width for html and body */
 html, body {
   height: 100%;
   width: 100%;
+  margin: 0;
 }
 
 /* Ensure full height and width for .App */
 .App {
   background-color: #ffe2e6;
   height: 100vh; /* Ensure full viewport height */
-  width: 100%; /* Ensure full viewport width */
+  width: 100vw; /* Ensure full viewport width */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
-/* Ensure full height for .page and remove absolute positioning from its child div */
+/* Ensure full height for .page */
 .page {
-  position: relative; /* Add relative positioning */
-  height: 100%; /* Ensure full viewport height */
-  width: 100%; /* Ensure full viewport width */
+  height: 100%;
+  width: 100%;
 }
 
+/* Ensure full height for the child div of .page */
 .page > div {
-  background: var(--bg-color);
+  height: 100%;
 }

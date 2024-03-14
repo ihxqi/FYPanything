@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './RegisterUser.css';
+import Navbar from "../Navbar";
+
 
 const RegisterUser = () => {
   const [name, setName] = useState('');
@@ -26,7 +28,8 @@ const RegisterUser = () => {
   };
 
   return (
-    
+    <div>
+      <Navbar/>
     <div className='form-container'>
       <div className='label-input-container'>
         <span className='label'>Name:</span>
@@ -78,6 +81,7 @@ const RegisterUser = () => {
       </div>
 
       <button onClick={handleRegister}>Register</button>
+    </div>
     </div>
   );
 };

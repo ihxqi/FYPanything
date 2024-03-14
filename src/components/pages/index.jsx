@@ -1,9 +1,12 @@
-export * from "./AboutUs";
-export * from "./Home";
-export * from "./Information";
-export { default as Login } from "./Login";
-export * from "./RegisterRole";
+export * from "./AboutUs"
+export { default as Home } from "./Home"
+export { default as JoinUs } from "./JoinUs"
+export { default as Login } from "./Login"
+export * from "./RegisterRole"
 export { default as RegisterUser } from "./RegisterUser"
+export { default as RegisterPartner } from "./RegisterPartner"
 export { default as ForgetEmail } from "./ForgetEmail"
 export { default as UnregisteredBlogshopOwner } from "./UnregisteredBlogshopOwner"
+export { default as PartnerAllProducts } from "./PartnerAllProducts"
+export { default as ForgetPassword } from "./ForgetPassword"
 

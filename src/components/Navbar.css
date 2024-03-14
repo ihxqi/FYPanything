@@ -1,99 +1,84 @@
-/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe2e6;
+  color: black;
+  position: fixed;
+  top: 0; /* Adjust the top position as needed */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #ccc; /* Add a border to create the separator line */
+}
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffe2e6;
-    color: black;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+nav .title {
+  font-size: 100%; /* Adjust font size as needed */
+  margin: 0rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.logo {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0rem; /* Adjust the margin around the logo */
+}
+
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  font-size: 100%; /* Adjust font size to match the logo */
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Active link */
+nav ul li a.active {
+  background-color: #ffe2e6;
+}
+
+/* Hover effect */
+nav ul li a:not(.active):hover {
+  background-color: #ffe2e6;
+}
+
+/* Adjust menu for smaller screens */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffe2e6;
-    color: black;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    border-bottom: 2px solid #ccc; /* Add a border to create the separator line */
-  }
-    
-  nav .title {
-    font-size: 100%; /* Adjust font size as needed */
-    margin: 1rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-  }
-  
-  .logo {
-    width: 100px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-  }
-  
   nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  nav ul.open {
     display: flex;
-    margin: 0;
-    padding: 0;
   }
-  
+
   nav ul li {
-    list-style: none;
+    width: 100%;
+    text-align: center;
   }
-  
+
   nav ul li a {
-    font-size: 100%; /* Adjust font size to match the logo */
-    text-decoration: none;
-    color: black;
-    padding: 0.5rem;
-    margin: 0 0.5rem;
-    border-radius: 0.5rem;
+    margin: 0.2% 0.5%;
   }
-  
-  /* Active link */
-  nav ul li a.active {
-    background-color: #ffe2e6;
-  }
-  
-  /* Hover effect */
-  nav ul li a:not(.active):hover {
-    background-color: #ffe2e6;
-  }
-  
-  /* Adjust menu for smaller screens */
-  @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    nav ul {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      margin-bottom: 0.25rem;
-    }
-  
-    nav ul.open {
-      display: flex;
-    }
-  
-    nav ul li {
-      width: 100%;
-      text-align: center;
-    }
-  
-    nav ul li a {
-      margin: 0.2% 0.5%;
-    }
-  }
-  
+}

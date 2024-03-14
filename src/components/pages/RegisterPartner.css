@@ -1,0 +1,104 @@
+body, html {
+    background-color: #ffe2e6; /* Light pink background */
+    height: 100%; /* Full viewport height */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  
+  
+  /* Center the form container on the page */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    padding: 20px; /* Spacing inside the container */
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  }
+  
+  /* Style the input containers */
+  .label-input-container, .radio-container {
+    width: 100%; /* Full width */
+    margin-bottom: 10px; /* Space between inputs */
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+  }
+  
+  /* Style the labels */
+  .label {
+    margin-bottom: 5px; /* Space below the label */
+    font-weight: bold; /* Bold font for labels */
+  }
+  
+  /* Style the input fields */
+  .input-field {
+    padding: 10px;
+    margin-bottom: 10px; /* Space between inputs */
+    border: 1px solid #ddd; /* Light border for inputs */
+    border-radius: 5px; /* Slightly rounded corners for inputs */
+  }
+  
+  /* Style the radio buttons and their labels */
+  .radio-container label {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjust the space between the radio buttons */
+  
+  }
+  
+  /* Style the submit button */
+  button {
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 1 rem;  
+  color: black; 
+  background-color: #ffe2e6;
+  border: none; 
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease;
+  margin-top: 20px; 
+  }
+  .label-input-container.gender {
+    flex-direction: row; /* Elements side by side */
+    align-items: center; /* Align items vertically */
+    justify-content: flex-start; /* Align content to the start of the container */
+    
+  }
+  .radio-group label:nth-of-type(2) {
+    margin-left: 20px; /* This adds space before the "Female" label */
+  }
+  
+  /* Style for the gender label specifically */
+  .label.gender {
+    margin-right: 20px; /* Space after the "Gender:" label */
+  }
+  
+  
+  button:hover {
+  background-color: #CCCCFF;
+  }
+  
+  /* Adjust the radio buttons to display inline with proper spacing */
+  .radio-container {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Adjust the space after each label */
+  }
+  
+  /* Radio buttons and associated text are spaced nicely */
+  .radio-container input[type="radio"] {
+  margin-right: 5px;
+  }
+  
+  
