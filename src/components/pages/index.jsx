@@ -9,4 +9,8 @@ export { default as ForgetEmail } from "./ForgetEmail"
 export { default as UnregisteredBlogshopOwner } from "./UnregisteredBlogshopOwner"
 export { default as PartnerAllProducts } from "./PartnerAllProducts"
 export { default as ForgetPassword } from "./ForgetPassword"
+export { default as InterestSurvey} from "./InterestSurvey"
+export { default as PartnerProfile} from "./PartnerProfile"
+export { default as AdminCategories} from "./AdminCategories"
 
+export { default as Links} from "./Links"
