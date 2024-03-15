@@ -51,7 +51,15 @@ const Links = () => {
       <Link to="/AdminCategories">
         <button className='buttonStyle'>AdminCategories</button>
       </Link>
-
+      <Link to="/UnregisteredBlogshopOwner">
+        <button className='buttonStyle'>AdminUnregBlogshop</button>
+      </Link>
+      <Link to="/JoinUs">
+        <button className='buttonStyle'>JoinUs</button>
+      </Link>
+      <Link to="/AddProduct">
+        <button className='buttonStyle'>AddProduct</button>
+      </Link>
     </div>
     </div>
   );
