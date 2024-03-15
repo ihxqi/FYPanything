@@ -1,0 +1,49 @@
+.why-join-us-container {
+    background-color: #ffe2e6; /* Background color of the page */
+    text-align: center; /* Center the text */
+    padding: 50px 0; /* Padding at the top and bottom */
+  }
+  
+  .why-join-us-container h2 {
+    color: #333; /* Color for the subtitle */
+    margin-bottom: 10px; /* Space below the subtitle */
+  }
+  
+  .why-join-us-container h1 {
+    color: #000; /* Color for the main title */
+    font-size: 36px; /* Size of the main title */
+    margin-bottom: 30px; /* Space below the main title */
+  }
+  
+  .benefits {
+    display: flex; /* Align benefits side by side */
+    justify-content: center; /* Center the benefits */
+    flex-wrap: wrap; /* Wrap onto the next line if screen is small */
+    gap: 20px; /* Space between the benefits */
+  }
+  
+  .benefit-item {
+    background-color: #fff; /* Background color of benefit item */
+    border-radius: 15px; /* Rounded corners of benefit item */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for benefit item */
+    width: 300px; /* Width of benefit item */
+    padding: 20px; /* Padding inside benefit item */
+    margin: 10px; /* Margin around benefit item */
+  }
+  
+  .benefit-item .icon {
+    font-size: 24px; /* Size of the icon */
+    margin-bottom: 15px; /* Space below the icon */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .benefits {
+      flex-direction: column; /* Stack benefits on top of each other */
+    }
+  
+    .benefit-item {
+      width: 80%; /* Increase width for small screens */
+      margin: 10px auto; /* Center the benefit items */
+    }
+  }

@@ -1,0 +1,49 @@
+/* AddProduct.css */
+.add-product-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.single-upload-section,
+.batch-upload-section {
+    margin-top: 20px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form {
+    margin-top: 10px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Add more styles as needed */

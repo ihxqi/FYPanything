@@ -26,13 +26,10 @@ export const Navbar = () => {
         <NavLink to="/registerrole">Register</NavLink> 
         </li>
         <li>
-        <NavLink to="/joinus">Why Join Us?</NavLink>
+        <NavLink to="/joinus">Join Us?</NavLink>
         </li>
         <li>
         <NavLink to="/about">About Us</NavLink>
-        </li>
-        <li>
-          <NavLink to="/partnerallproducts">products</NavLink>
         </li>
       </ul>
     </nav>
