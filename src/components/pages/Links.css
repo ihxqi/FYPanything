@@ -1,0 +1,34 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: pink; /* Replace with the specific background color or image you need */
+  }
+  
+  .containerStyle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+  }
+  
+  .buttonStyle {
+    margin: 15px;
+    font-size: 25px;
+    padding: 15px 20px;
+    width: 275px;
+  }
+  .buttonStyle:hover{
+    background-color: #CCCCFF; 
+  }
+  
+  .iconStyle {
+    margin-right: 8px;
+    max-width: 325px; /* Set the maximum width as needed */
+    max-height: 250px; /* Set the maximum height as needed */
+    width: auto; /* This ensures the image scales proportionally based on the maximum width */
+    height: auto; /* This ensures the image scales proportionally based on the maximum height */
+  }
+  
+  

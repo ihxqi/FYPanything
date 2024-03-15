@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './PartnerProfile.css';
+import Navbar from "../Navbar";
 
-function PartnerProfile() {
+const PartnerProfile = () => {
   const [partner, setPartner] = useState({
     companyname: '',
     dateOfEst: '',
@@ -27,6 +28,7 @@ function PartnerProfile() {
 
   return (
     <div className="partner-profile-container">
+      <Navbar />
       <form className="partner-profile-form" onSubmit={handleSubmit}>
         <h1>Partner Profile</h1>
         <label>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Navbar from "../Navbar";
 import './InterestSurvey.css';
 
-function InterestSurvey() {
+const InterestSurvey = () => {
   const [budget, setBudget] = useState(50);
 
   const handleSubmit = (event) => {
@@ -12,6 +13,8 @@ function InterestSurvey() {
   };
 
   return (
+    <div>
+      <Navbar />
     <form className="survey-form" onSubmit={handleSubmit}>
       <h2>Interest Survey</h2>
 
@@ -56,6 +59,7 @@ function InterestSurvey() {
 
       <button type="submit">Submit Survey</button>
     </form>
+    </div>
   );
 }
 
