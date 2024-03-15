@@ -60,6 +60,9 @@ const Links = () => {
       <Link to="/AddProduct">
         <button className='buttonStyle'>AddProduct</button>
       </Link>
+      <Link to="/UserHomepage">
+      <button className='buttonStyle'>UserHomepage</button>
+      </Link>
     </div>
     </div>
   );
