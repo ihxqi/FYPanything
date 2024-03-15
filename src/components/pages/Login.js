@@ -2,36 +2,53 @@ import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Navbar from "../Navbar";
 import './Login.css'; // Ensure you have this CSS file with the correct styles
-import { Navigate } from 'react-router-dom'; // Import Navigate for redirection
+import { Navigate, useNavigate } from 'react-router-dom'; // Import Navigate for redirection
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [redirectToAdmin, setRedirectToAdmin] = useState(false);
   const [redirectToUser, setRedirectToUser] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Static login details for demonstration
-    const AUsername = 'Admin';
-    const APassword = 'Admin';
-    const UUsername = 'User';
-    const UPassword = 'User';
-
-    // Check if username and password match static login details
-    if (username === AUsername && password === APassword) {
-      // If successful, set redirectToRegisterRole to true
-      setRedirectToAdmin(true);
-    }
-    else if (username === UUsername && password === UPassword) {
-      // If successful, set redirectToRegisterRole to true
-      setRedirectToUser(true);
-    }
-     else {
-      // If login fails, you can display an error message or handle it as you wish
-      console.log('Login failed. Invalid credentials.');
+    console.log("Press");
+  
+    try {
+      const response = await fetch('/AuthLogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      if (response.ok) {
+        // If login is successful, redirect to appropriate page
+        console.log("Logging in");
+        const userRole = await response.text();
+        console.log('userRole:', userRole);
+        if (userRole === 'admin') {
+          console.log("User " + userRole)
+          navigate('/Links')
+        } else if (userRole === 'user') {
+          navigate('/Links')
+        }
+        else{
+          window.alert('Invalid username or password!');
+        }
+      } else {
+        // If login fails, set error state
+        window.alert('Invalid username or password');
+      }
+    } catch (error) {
+      console.error('Error logging in:', error);
+      setError('An error occurred while logging in. Please try again later.');
     }
   };
+  
 
   // If redirectToRegisterRole is true, redirect to /registerrole
   if (redirectToAdmin) {
@@ -75,7 +92,7 @@ const Login = () => {
 
                 <input type="submit" value="LOG IN" />
               </form>
-              <p>Don't Have An Account? <a href="#">Click Here!</a></p>
+              <p>Don't Have An Account? <a href="/RegisterRole">Click Here!</a></p>
             </div>
           </Col>
         </Row>
