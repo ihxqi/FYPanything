@@ -69,6 +69,9 @@ const Links = () => {
       <Link to="/UserProfile">
       <button className='buttonStyle'>UserProfile</button>
       </Link>
+      <Link to="/UserProfile">
+      <button className='buttonStyle'>UserProfile</button>
+      </Link>
     </div>
     </div>
   );

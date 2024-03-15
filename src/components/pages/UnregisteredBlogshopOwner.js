@@ -1,5 +1,6 @@
 import React from 'react';
 import './UnregisteredBlogshopOwner.css'; // Ensure you have this CSS file with the correct styles
+import UserNavbar from "../UserNavbar";
 
 function UnregisteredBlogshopOwner() {
   const logout = () => {
@@ -8,18 +9,10 @@ function UnregisteredBlogshopOwner() {
   };
 
   return (
+    <div>
+    < UserNavbar />
     <div className="white-box">
-      <section>
-        <div className="container1">
-       
-          <div className="topnav">
-            <a href="#" onClick={logout}>LOG OUT</a>
-          </div>
-        </div>
-      </section>
-      <hr />
-      <br />
-      <br />
+    
       
       <h2>Blogshop Owner Onboarding</h2>
       <table id="profileTable" className="CMtable" style={{ width: '100%' }}>
@@ -49,6 +42,7 @@ function UnregisteredBlogshopOwner() {
         </tbody>
       </table>
       <br />
+    </div>
     </div>
   );
 }
