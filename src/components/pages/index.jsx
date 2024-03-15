@@ -12,5 +12,6 @@ export { default as ForgetPassword } from "./ForgetPassword"
 export { default as InterestSurvey} from "./InterestSurvey"
 export { default as PartnerProfile} from "./PartnerProfile"
 export { default as AdminCategories} from "./AdminCategories"
+export { default as AddProduct} from "./AddProduct"
 
 export { default as Links} from "./Links"

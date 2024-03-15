@@ -35,22 +35,30 @@ const AllProducts = () => {
       </div>
       <table className="products-table">
         <thead>
-          <tr>
-            <th>Blogshop Name</th>
+          <tr>            
             <th>Name</th>
             <th>Category</th>
             <th>Sub-Category</th>
+            <th>Price</th>
+            <th>Image</th>
             <th>Product Link</th>
             <th>Product Information</th>
+            <th>Tags</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-            <td contentEditable="false">PlayDress</td>
-            <td contentEditable="false">Rectangular Dress</td>
-            <td contentEditable="false">Apparel</td>
-            <td contentEditable="false">Dress</td>
-            <td contentEditable="false">www.playdress.com</td>
-            <td contentEditable="false">Best for party</td>
+            <td contentEditable="true">Rectangular Dress</td>
+            <td contentEditable="true">Apparel</td>
+            <td contentEditable="true">Dress</td>
+            <td contentEditable="true">$10</td>
+            <td contentEditable="true">playdress.jpg</td>
+            <td contentEditable="true">www.playdress.com</td>
+            <td contentEditable="true">not Best for party</td>
+            <td contentEditable="true">#hi #bye</td>
+            <td>
+              <button className="remove-button">REMOVE</button>
+            </td>
         </tbody>
       </table>
     </div>

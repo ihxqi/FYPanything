@@ -47,8 +47,7 @@ const AdminCategories = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-      <div className="pagination">PAGE 1/10</div>
+      </table>    
       <button className="add-categories-button">Add Categories</button>
     </div>
   );
