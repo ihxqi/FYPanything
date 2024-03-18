@@ -13,15 +13,22 @@
     flex-direction: column;
     border: 1px solid #ccc;
     padding: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+    width: 600px;
+    
+    
   }
   
   .product-details {
-    margin-top: 50px;
+    margin-top: 10px;
+    align-items: left;
+    justify-content: left;
   }
   
   .product-details div {
     margin-bottom: 5px;
+    align-items: left;
+    justify-content: left;
   }
   
   .thumbs-container {
@@ -29,7 +36,8 @@
   }
   
   .thumbs-container button {
-    margin-right: 110px;
+    margin-right: 125px; /* Adjust the margin as needed */
+    margin-left: 125px;
     cursor: pointer;
     border: none;
     background: none;
@@ -44,6 +52,7 @@
     width: 300px;
     height: auto;
     margin-bottom: 10px;
+   
   }
   
   .product-container a {

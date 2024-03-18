@@ -19,28 +19,24 @@ function AddProduct() {
         <div>
             <UserNavbar />
             <div>
+                <div class ="header">
                 <h2>Add Product</h2>
+                </div>
                 <form onSubmit={handleSubmit}>
-                    <div>
-                        <input
-                            type="radio"
-                            id="singleUpload"
-                            name="uploadType"
-                            value="single"
-                            onChange={handleUploadTypeChange}
-                        />
-                        <label htmlFor="singleUpload">Single Upload</label>
+                    <div class="single-upload-section">
+                        <label>
+                            <input type="radio" name="uploadType" value="single" onChange={handleUploadTypeChange} />
+                            Single 
+                        </label>
+                     
                     </div>
-                    <div>
-                        <input
-                            type="radio"
-                            id="batchUpload"
-                            name="uploadType"
-                            value="batch"
-                            onChange={handleUploadTypeChange}
-                        />
-                        <label htmlFor="batchUpload">Batch Upload</label>
+                    <div class="batch-upload-section">
+                        <label>
+                            <input type="radio" name="uploadType" value="batch" onChange={handleUploadTypeChange} />
+                            Batch 
+                        </label>
                     </div>
+
 
                     {uploadType === "single" && (
                         <div>

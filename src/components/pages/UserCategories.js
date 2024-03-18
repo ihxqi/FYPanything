@@ -27,7 +27,6 @@ function UserCategories() {
         < UserNavbar />
     <div className="products-page">
       <div className="sidebar">
-        <button className="sidebar-toggle">☰</button>
         <div className="categories">
           {categories.map((category, index) => (
             <button key={index} className="category-button">{category}</button>

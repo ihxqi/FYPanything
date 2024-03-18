@@ -27,13 +27,13 @@
     border-radius: 15px; /* Rounded corners of benefit item */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for benefit item */
     width: 300px; /* Width of benefit item */
-    padding: 20px; /* Padding inside benefit item */
+    padding: 10px; /* Padding inside benefit item */
     margin: 10px; /* Margin around benefit item */
   }
   
   .benefit-item .icon {
-    font-size: 24px; /* Size of the icon */
-    margin-bottom: 15px; /* Space below the icon */
+    font-size: 25px; /* Size of the icon */
+    margin-bottom: 0px; /* Space below the icon */
   }
   
   /* Responsive design for smaller screens */
