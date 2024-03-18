@@ -21,10 +21,19 @@ body, html {
   
   .search-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px; /* Space between search input and button */
     margin-bottom: 50px; /* Space below the search area */
+  }
+
+  .search-container label,
+  .search-container input[type="text"],
+  .search-container button {
+    height: 40px; /* Ensuring all children have the same height */
+    padding: 0 10px; /* Providing padding within the children */
+    margin: 0; /* Removing any default margins */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
   }
   
   .search-container input[type="text"] {
@@ -32,6 +41,7 @@ body, html {
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 1rem;
+    flex-grow: 1;
   }
   
   .search-container button {

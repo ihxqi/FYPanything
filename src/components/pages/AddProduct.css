@@ -1,17 +1,35 @@
 /* AddProduct.css */
 .add-product-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 300px;
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 100px;
 }
 
-.single-upload-section,
+h3 {
+    margin-top: 50px;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center; /* This will vertically align items in the middle */
+    /* This will add space between the radio options and the button */
+    margin-bottom: 0px; /* This gives some space below the container */
+}
+
+.single-upload-section {
+    margin-bottom: 5px; /* Reduce this to decrease space after the first option */
+    margin-top: 30px;
+    margin-right:2370px;
+}
+
 .batch-upload-section {
-    margin-top: 20px;
+    margin-top: 5px; /* Reduce this to decrease space before the second option */
+    margin-right:2370px;
 }
 
-input[type="radio"] {
-    margin-right: 10px;
+.header{
+    margin-top: 50px;
+    margin-left: 10px;
 }
 
 label {
@@ -26,7 +44,7 @@ form {
 input,
 select,
 textarea {
-    width: 100%;
+    width: 45%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -37,6 +55,7 @@ button[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
+    margin-left: 10px; 
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
@@ -45,5 +64,3 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
-
-/* Add more styles as needed */

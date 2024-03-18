@@ -6,7 +6,11 @@ body, html {
   box-sizing: border-box;
 }
 
-
+.header{
+  color: #333; /* Color for the subtitle */
+  margin-bottom: 10px; /* Space below the subtitle */
+  text-align: center;
+}
 
 /* Center the form container on the page */
 .form-container {
@@ -28,8 +32,9 @@ body, html {
 
 /* Style the input containers */
 .label-input-container, .radio-container {
-  width: 100%; /* Full width */
+  width: 200%; /* Full width */
   margin-bottom: 10px; /* Space between inputs */
+  margin-left: 1050px;
   display: flex;
   flex-direction: column; /* Stack label and input vertically */
 }
@@ -69,35 +74,34 @@ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 transition: background-color 0.3s ease;
 margin-top: 20px; 
 }
-.label-input-container.gender {
-  flex-direction: row; /* Elements side by side */
-  align-items: center; /* Align items vertically */
-  justify-content: flex-start; /* Align content to the start of the container */
-  
-}
-.radio-group label:nth-of-type(2) {
-  margin-left: 20px; /* This adds space before the "Female" label */
-}
-
-/* Style for the gender label specifically */
-.label.gender {
-  margin-right: 20px; /* Space after the "Gender:" label */
-}
 
 
 button:hover {
 background-color: #CCCCFF;
 }
 
-/* Adjust the radio buttons to display inline with proper spacing */
-.radio-container {
-  display: flex;
-  align-items: center;
-  margin-right: 20px; /* Adjust the space after each label */
-}
-
-/* Radio buttons and associated text are spaced nicely */
+/* Radio input followed by its text */
 .radio-container input[type="radio"] {
-margin-right: 5px;
+  margin-right: 5px; /* Small gap between the radio button and its label */
 }
 
+.gender-selection {
+  display: flex; /* Use flexbox for positioning */
+}
+
+/* Style for the gender label */
+.gender-label {
+  margin-right: 30px; /* Space after the "Gender:" label */
+}
+
+/* Flex container for the gender radio buttons */
+.gender-radios {
+  display: flex; /* Display radio buttons inline */
+  margin-right: 590px;
+}
+
+/* Style for each gender radio button and label */
+.gender-radio {
+  margin-right: 40px; /* Space between the radio buttons */
+  white-space: nowrap; /* Prevent wrapping of label text */
+}

@@ -26,7 +26,7 @@ export const Navbar = () => {
         <NavLink to="/registerrole">Register</NavLink> 
         </li>
         <li>
-        <NavLink to="/joinus">Join Us?</NavLink>
+        <NavLink to="/joinus">Join Us!</NavLink>
         </li>
         <li>
         <NavLink to="/about">About Us</NavLink>

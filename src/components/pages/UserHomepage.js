@@ -1,36 +1,38 @@
 import React, { useState } from 'react';
 import './UserHomepage.css';
 import UserNavbar from "../UserNavbar";
-import logo from '../image/CollaFilter Logo.jpg'
+import dress2 from '../image/DayDress.jpg'
+import dress1 from '../image/NightDress.jpg'
+
+
 
 const products = [
   {
     id: 1,
-    image: logo,
-    category: 'Electronics',
-    subCategory: 'Smartphones',
+    image: dress1,
+    category: 'Apparel',
+    subCategory: 'Dress',
     price: '$499',
-    productLink: 'https://example.com/product1',
-    information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    tags: ['Tech', 'Mobile', 'Smartphone']
+    productLink: 'https://example.com/dress',
+    information: 'Stand out from the crowd with this stylish and elegant dress.',
+    tags: ['Black', 'Long', 'Night']
   },
   {
     id: 2,
-    image: logo,
-    category: 'Clothes',
-    subCategory: 'Smart',
+    image: dress2,
+    category: 'Apparel',
+    subCategory: 'Dress',
     price: '$699',
-    productLink: 'https://eddddple.com/product1',
-    information: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    tags: ['Button', 'Long']
+    productLink: 'https://eddddple.com/dress',
+    information: 'Fairy vibe',
+    tags: ['White', 'Long', 'Fairy', 'Day']
   },];
 
 const UserHomepage = () => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
 
   const handleThumbClick = (isThumbsUp) => {
-    // Logic to handle thumbs up or down action
-    // Increment or decrement the current product index based on thumbs up or down
+    // Both thumbs go to next productt
     if (isThumbsUp) {
       setCurrentProductIndex(currentProductIndex + 1);
     } else {

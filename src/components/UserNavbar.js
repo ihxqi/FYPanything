@@ -15,9 +15,14 @@ const UserNavbar = () => {
       <Link to="/" className="title">
       <img src={logo} alt="CollaFilter Logo" className='logo' />
       </Link>
-      <div className="logout-container">
-        <a href="/" onClick={logout}>LOG OUT</a>
+      <div className="menu">
+        <span></span>
       </div>
+      <ul>
+        <li>
+      <a href="/" onClick={logout}>LOG OUT</a>
+        </li> 
+      </ul>
     </nav>
   );
 };

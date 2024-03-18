@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { UserProfile, UserCategories, Links, UserHomepage, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey } from "../components/pages";
+import { UserProfile, UserCategories, Links, UserHomepage, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey, UserBookmarks, AdminManagePartner } from "../components/pages";
 import { UnregisteredBlogshopOwner } from "../components/pages";
 
 export default function App() {
@@ -28,6 +28,8 @@ export default function App() {
           <Route path="/UserHomepage" element={<UserHomepage/>} />
           <Route path="/UserCategories" element={<UserCategories/>} />
           <Route path="/UserProfile" element={<UserProfile/>} />
+          <Route path="/UserBookmarks" element={<UserBookmarks/>} />
+          <Route path="/AdminManagePartner" element={<AdminManagePartner/>} />
           
           <Route path="/Links" element={<Links/>} />
         </Routes>

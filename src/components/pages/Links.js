@@ -33,9 +33,6 @@ const Links = () => {
       <Link to="/ForgetEmail">
         <button className='buttonStyle'>ForgetEmail</button>
       </Link>
-      <Link to="/UnregisteredBlogshopOwner">
-        <button className='buttonStyle'>Register as Partner</button>
-      </Link>
       <Link to="/PartnerAllProducts">
         <button className='buttonStyle'>PartnerAllProducts</button>
       </Link>
@@ -68,6 +65,9 @@ const Links = () => {
       </Link>
       <Link to="/UserProfile">
       <button className='buttonStyle'>UserProfile</button>
+      </Link>
+      <Link to="/UserBookmarks">
+      <button className='buttonStyle'>UserBookmarks</button>
       </Link>
     </div>
     </div>

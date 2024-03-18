@@ -30,25 +30,28 @@ const RegisterUser = () => {
   return (
     <div>
       <Navbar/>
+      <div class ="header">
+    <h2>User Registration</h2>
+    </div>
     <div className='form-container'>
       <div className='label-input-container'>
         <span className='label'>Name:</span>
         <input className='input-field' type='text' value={name} onChange={(e) => setName(e.target.value)} />
       </div>
 
-      <div className='label-input-container gender'>
-  <span className='label gender'>Gender:</span>
-  <div className='radio-group'>
-    <label>
-      <input type='radio' value='male' checked={gender === 'male'} onChange={() => setGender('male')} />
-      Male
-    </label>
-    <label>
-      <input type='radio' value='female' checked={gender === 'female'} onChange={() => setGender('female')} />
-      Female
-    </label>
+      <div class="gender-selection">
+    <div class="gender-label">Gender:</div>
+    <div class="gender-radios">
+      <label class="gender-radio"> Male
+        <input type="radio" name="gender" value="Male" />
+        
+      </label>
+      <label class="gender-radio">Female
+        <input type="radio" name="gender" value="Female" />
+        
+      </label>
+    </div>
   </div>
-</div>
 
       <div className='label-input-container'>
         <span className='label'>Date of Birth:</span>
@@ -73,9 +76,8 @@ const RegisterUser = () => {
       <div className='label-input-container'>
         <span className='label'>Country:</span>
         <select className='input-field' value={country} onChange={(e) => setCountry(e.target.value)}>
-          <option value='usa'>USA</option>
-          <option value='canada'>Canada</option>
-          <option value='uk'>UK</option>
+          <option value='sg'>Singapore</option>
+          
           {/* Add more countries as needed */}
         </select>
       </div>

@@ -16,5 +16,7 @@ export { default as AddProduct} from "./AddProduct"
 export { default as UserHomepage} from "./UserHomepage"
 export { default as UserCategories} from "./UserCategories"
 export { default as UserProfile} from "./UserProfile"
+export { default as UserBookmarks} from "./UserBookmarks"
+export { default as AdminManagePartner} from "./AdminManagePartner"
 
 export { default as Links} from "./Links"

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './RegisterUser.css';
+import './RegisterPartner.css';
 import Navbar from '../Navbar';
 
 const RegisterUser = () => {
@@ -29,6 +29,10 @@ const RegisterUser = () => {
   return (
    <div>
     <Navbar />
+    <div class='header'>
+      <h2>Partner Registration</h2>
+    </div>
+  
     <div className='form-container'>
       <div className='label-input-container'>
         <span className='label'>Blogshop Name:</span>
@@ -67,16 +71,15 @@ const RegisterUser = () => {
       </div>
 
       <div className='label-input-container'>
-        <span className='label'>Blogshop Website</span>
+        <span className='label'>Social Links:</span>
         <input className='input-field' type='text' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
       </div>
 
       <div className='label-input-container'>
         <span className='label'>Country:</span>
         <select className='input-field' value={country} onChange={(e) => setCountry(e.target.value)}>
-          <option value='usa'>USA</option>
-          <option value='canada'>Canada</option>
-          <option value='uk'>UK</option>
+          <option value='sg'>Singapore</option>
+          
           {/* Add more countries as needed */}
         </select>
       </div>
