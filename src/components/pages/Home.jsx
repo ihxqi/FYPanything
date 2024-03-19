@@ -1,18 +1,16 @@
 import React from "react";
 import Navbar from "../Navbar";
-import thumbsUpGif from '../image/thumbs-up.gif'; // Import the thumbs up GIF
+import thumbsUpGif from '../image/thumbs4.gif'; // Import the thumbs up GIF
 import logo from '../image/CollaFilter Logo.jpg'
 
 const Home = () => {
   return (
     <div>
       <Navbar />
-      <h1>Home</h1>
-
       {/* Introduction Section */}
       <div className="introduction-section">
-        <h2>Welcome to [Your Platform Name]</h2>
-        <p>Discover personalized product recommendations and enhance your shopping experience with us. Our platform uses collaborative filtering to suggest products tailored to your interests and preferences.</p>
+        <h3>Welcome to CollaFilter</h3>
+        <p>Where Collaborative Filtering Meets Fashion</p>
         <img src={thumbsUpGif} alt="Thumbs Up GIF" />
       </div>
 
