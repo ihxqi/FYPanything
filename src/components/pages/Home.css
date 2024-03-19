@@ -1,0 +1,106 @@
+/* Home.css */
+
+/* Thumbs Up Section */
+.thumbs-up-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60px; /* Add space below the thumb-up image for the short write-up */
+}
+
+.thumbs-up-section h3 {
+    margin-bottom: 30px;
+    font-size: 24px; /* Increased font size */
+}
+
+.thumbs-up-section img {
+    width: 400px; /* Adjusted width for the thumb-up image */
+    margin-bottom: 20px; /* Add space below the thumb-up image */
+}
+
+/* Showcase Section */
+.showcase-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60px; /* Add space below the image for the short write-up */
+}
+
+.showcase-section h3 {
+    margin-bottom: 30px;
+    font-size: 24px; /* Increased font size */
+}
+
+.showcase-section .logo-slider {
+    display: flex;
+    justify-content: center;
+}
+
+.showcase-section .logo-slider img {
+    width: 450px; /* Increased width for the logos */
+    margin: 0 30px; /* Increased margin */
+}
+
+/* Bookmark Section */
+.bookmark-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Align items to the bottom */
+    padding-bottom: 60px; /* Add space below the image for the short write-up */
+}
+
+.bookmark-section h3 {
+    margin-bottom: 30px;
+    font-size: 24px; /* Increased font size */
+}
+
+.bookmark-section p {
+    margin-bottom: 30px;
+    font-size: 18px; /* Increased font size */
+}
+
+.bookmark-section img {
+    width: 700px; /* Increased width for the image */
+}
+
+/* Blogshop Logos */
+.blogshop {
+    width: 180px; /* Increased width for the logos */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 30px; /* Increased margin */
+}
+
+/* Keyframes for sliding animation */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /* Adjust the distance to slide */
+    }
+}
+
+/* Apply slide animation to logo container */
+.logo-container {
+    display: flex;
+    animation: slide 10s linear infinite; /* Adjust the duration as needed */
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 1000px) {
+    .thumbs-up-section img,
+    .bookmark-section img {
+        width: 300px; /* Adjusted width for mobile */
+    }
+
+    .showcase-section .logo-slider img {
+        width: 150px; /* Adjusted width for mobile */
+        margin: 0 15px; /* Adjusted margin for mobile */
+    }
+
+    .blogshop {
+        width: 100px; /* Adjusted width for mobile */
+        margin-right: 10px; /* Adjusted margin for mobile */
+    }
+}
