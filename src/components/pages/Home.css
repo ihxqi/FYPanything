@@ -1,5 +1,29 @@
-/* Home.css */
 
+/* Header */
+.header {
+    text-align: center;
+    padding: 30px 0; /* Add padding to top and bottom */
+  }
+  
+  .header h1 {
+    font-size: 55px; /* Adjust font size */
+    color: #333; /* Adjust font color */
+  }
+  
+  /* Thumbs Up Section */
+  .thumbs-up-section p {
+    text-align: center; /* Align text to center */
+    font-size: 18px; /* Adjust font size */
+    color: #666; /* Adjust font color */
+  }
+  
+  /* Bookmark Section */
+  .bookmark-section p {
+    text-align: center; /* Align text to center */
+    font-size: 18px; /* Adjust font size */
+    color: #666; /* Adjust font color */
+  }
+  
 /* Thumbs Up Section */
 .thumbs-up-section {
     display: flex;
@@ -16,7 +40,9 @@
 .thumbs-up-section img {
     width: 400px; /* Adjusted width for the thumb-up image */
     margin-bottom: 20px; /* Add space below the thumb-up image */
+    image-rendering: crisp-edges; /* Set image-rendering property to pixelated */
 }
+
 
 /* Showcase Section */
 .showcase-section {
@@ -84,7 +110,7 @@
 /* Apply slide animation to logo container */
 .logo-container {
     display: flex;
-    animation: slide 10s linear infinite; /* Adjust the duration as needed */
+    animation: slide 30s linear infinite; /* Adjust the duration as needed */
 }
 
 /* Media queries for responsiveness */

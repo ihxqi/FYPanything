@@ -1,0 +1,123 @@
+.white-box {
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1% 0; /* Remove horizontal margins */
+    margin-top: -25px;
+    padding: 0; /* Set padding to 0 */
+  }
+  
+  .user-management-container {
+      background-color: #ffe2e6;
+      min-height: 100vh;
+      padding: 0;
+      margin-top: 0px;
+    }
+    
+    .user-management-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 2%;
+    }
+    
+    .search-container {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1em;
+    }
+    
+    .search-container label {
+      margin-right: 0.5em;
+    }
+    
+    .search-bar input {
+      padding: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .search-bar button {
+      padding: 0.5em 1em;
+      background-color: #e7e7e7;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .search-bar button:hover {
+      background-color: #ddd;
+    }
+    
+    .logout-button {
+      align-self: flex-end;
+      padding: 0.5rem 1rem;
+      background-color: #f3f3f3;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .logout-button:hover {
+      background-color: #e2e2e2;
+    }
+  
+    .users-table {
+      width: 90%;
+      margin-top: 1rem;
+      margin-left: auto; /* Center the table horizontally */
+      margin-right: auto;
+      border-collapse: collapse;
+      background-color: #fff;
+    }
+    
+    .users-table th,
+    .users-table td {
+      padding: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .users-table th {
+      background-color: #f8f8f8;
+    }
+  
+    .approve-btn {
+      background-color: #4CAF50; /* Green color */
+      color: white; /* White text color */
+      margin-bottom: 30px;
+      /* Add other styling such as padding, border, etc. */
+    }
+    
+    .approve-btn:hover {
+      background-color: #367c39; /* Darker green color on hover */
+      /* Adjust hover effect as needed */
+    }
+    
+    .reject-btn {
+      background-color: #f44336; /* Red color */
+      color: white; /* White text color */
+      margin-bottom: 30px;
+      /* Add other styling such as padding, border, etc. */
+    }
+    
+    .reject-btn:hover {
+      background-color: #d32f2f; /* Darker red color on hover */
+      /* Adjust hover effect as needed */
+    }
+    
+    @media (max-width: 768px) {
+      .user-management-header,
+      .search-bar {
+        flex-direction: column;
+      }
+    
+      .search-bar input[type="text"],
+      .search-bar button,
+      .logout-button {
+        width: 100%;
+      }
+    }
+    
+    

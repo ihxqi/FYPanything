@@ -1,34 +1,33 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: pink; /* Replace with the specific background color or image you need */
-  }
-  
-  .containerStyle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-  }
-  
-  .buttonStyle {
-    margin: 15px;
-    font-size: 25px;
-    padding: 15px 20px;
-    width: 275px;
-  }
-  .buttonStyle:hover{
-    background-color: #CCCCFF; 
-  }
-  
-  .iconStyle {
-    margin-right: 8px;
-    max-width: 325px; /* Set the maximum width as needed */
-    max-height: 250px; /* Set the maximum height as needed */
-    width: auto; /* This ensures the image scales proportionally based on the maximum width */
-    height: auto; /* This ensures the image scales proportionally based on the maximum height */
-  }
-  
-  
+/* RegisterRole.css */
+
+.containerStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.iconStyle {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.buttonStyle {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* blue color, you can change it as needed */
+  color: #fff; /* white color for text */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonStyle:hover {
+  background-color: #0056b3; /* darker shade of blue on hover */
+}
+
+/* You can add more styles as needed */

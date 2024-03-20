@@ -18,11 +18,14 @@ const data = [
   { category: 'Accessories', subCategory: 'Earrings' },
 ];
 
+
 const AdminCategories = () => {
   return (
     <div className="categories-container">
-      <Navbar />
+      <div class="header">
       <h1>Categories</h1>
+      </div>
+      <Navbar />
       <div className="search-bar">
         <input type="text" placeholder="Search:" />
         <button>Search</button>

@@ -35,6 +35,10 @@ body, html {
     margin: 0; /* Removing any default margins */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
   }
+
+  .search-container label{
+    margin-top:15px;
+  }
   
   .search-container input[type="text"] {
     padding: 10px;

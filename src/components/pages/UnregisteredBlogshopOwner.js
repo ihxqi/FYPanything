@@ -1,27 +1,22 @@
 import React from 'react';
 import './UnregisteredBlogshopOwner.css'; // Ensure you have this CSS file with the correct styles
+import Navbar from "../Navbar";
 
 function UnregisteredBlogshopOwner() {
   const logout = () => {
     console.log("Logged out");
     window.location.href = 'index.html'; // This line might need to be adjusted for React Router
   };
-
+  
   return (
-    <div className="white-box">
-      <section>
-        <div className="container1">
-       
-          <div className="topnav">
-            <a href="#" onClick={logout}>LOG OUT</a>
-          </div>
-        </div>
-      </section>
-      <hr />
-      <br />
-      <br />
-      
-      <h2>Blogshop Owner Onboarding</h2>
+   
+   <div className="white-box">
+    <div>
+     <Navbar />
+     <div class="header">
+  <h2>Blogshop Owner Onboarding</h2>
+  </div>
+  
       <table id="profileTable" className="CMtable" style={{ width: '100%' }}>
         <thead>
           <tr>
@@ -49,6 +44,7 @@ function UnregisteredBlogshopOwner() {
         </tbody>
       </table>
       <br />
+    </div>
     </div>
   );
 }

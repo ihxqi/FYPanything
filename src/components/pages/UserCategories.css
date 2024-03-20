@@ -1,81 +1,142 @@
 .products-page {
-    display: flex;
-    background-color: #ffe2e6; /* Adjust the color to match the wireframe */
-    min-height: 100vh;
-  }
-  
-  .sidebar {
-    min-width: 250px;
-    padding: 20px;
-    background-color: #f8d7e6; /* Adjust the color to match the wireframe */
-  }
-  
-  .sidebar-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .logo {
-    display: block;
-    width: 100px; /* Adjust the size as needed */
-    margin: 10px 0;
-  }
-  
-  .category {
-    margin-bottom: 10px;
-  }
-  
-  .product-display {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  
-  .product-row {
-    margin-bottom: 20px;
-  }
-  
-  .product-row h3 {
-    margin-bottom: 10px;
-  }
-  
-  .product-list {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .product-item {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px; /* Adjust the size as needed */
-    background-color: #ccc; /* Placeholder color for product images */
-    margin-right: 10px;
-    margin-bottom: 10px;
-  }
+  display: flex;
+  background-color: #ffe2e6; /* Adjust the color to match the wireframe */
+  min-height: 100vh;
+}
+
+.sidebar {
+  min-width: 250px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8d7e6; /* Adjust the color to match the wireframe */
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.logo {
+  display: block;
+  width: 100px; /* Adjust the size as needed */
+  margin: 10px 0;
+}
+
+.category {
+  margin-bottom: 10px;
+}
+
+.product-display {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.product-row {
+  margin-bottom: 20px;
+}
+
+.product-row h3 {
+  margin-bottom: 10px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the size of the gap as needed */
+  justify-content: flex-start;
+}
 
 
 .categories {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .category-button {
-    padding: 10px 15px;
-    margin: 5px 0; /* Adjust the margin as needed */
-    border: none;
-    background-color: #f8d7e6; /* Adjust the background color to match your theme */
-    color: #333;
-    text-align: left;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .category-button:hover {
-    background-color: #e6c2d6; /* A slightly darker shade for hover effect */
-  }
-  
-  .product-item {
-    background-color: #ccc; /* Placeholder color for product images */
-  }
-  
+  display: flex;
+  flex-direction: column;
+}
+
+.category-button {
+  padding: 10px 15px;
+  margin: 5px 0; /* Adjust the margin as needed */
+  border: none;
+  background-color: #f8d7e6; /* Adjust the background color to match your theme */
+  color: #333;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.category-button:hover {
+  background-color: #e6c2d6; /* A slightly darker shade for hover effect */
+}
+
+.product-item {
+  width: 160px; /* Width of product cards */
+  height: 160px; /* Height of product cards, making it a square */
+  border: 1px solid #ccc; /* Optional border for the box */
+  margin-bottom: 20px; /* This adds space below each item, effectively creating row spacing */
+  flex-shrink: 0; /* Prevent flex items from shrinking smaller than their width */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  background-color: #ccc; /* Grey background color */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  position: relative; /* Establish containing block for absolute positioning */
+}
+
+/* Center the text within the .product-image-placeholder */
+.product-image-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the element */
+  text-align: center; /* Center the text */
+  color: white; /* Text color, can be changed as needed */
+}
+
+/* Responsive adjustments for mobile and smaller windows */
+@media screen and (max-width: 768px) {
+.products-page {
+    flex-direction: column; /* Stack sidebar and product display on top of each other */
+}
+
+.sidebar {
+    min-width: 100%; /* Sidebar takes full width */
+    margin-bottom: 20px; /* Space between sidebar and product display */
+}
+
+.product-display {
+    padding: 10px; /* Smaller padding */
+}
+
+.product-list {
+    justify-content: center; /* Center the products */
+}
+
+.product-item {
+    width: calc(50% - 20px); /* Adjust width for two items per row with the gap included */
+    height: auto; /* Height can be auto to maintain aspect ratio */
+    margin-bottom: 20px; /* Maintain spacing between rows */
+}
+
+.category-button {
+    padding: 8px 10px; /* Smaller padding */
+    font-size: 0.9rem; /* Smaller font size */
+}
+
+.product-row h3 {
+    font-size: 1rem; /* Smaller font size */
+}
+}
+
+/* Further adjustments for very small screens, like phones in portrait mode */
+@media screen and (max-width: 480px) {
+.product-item {
+    width: calc(100% - 20px); /* Full width for very small screens */
+}
+
+
+
+}
+
+

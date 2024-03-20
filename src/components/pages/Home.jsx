@@ -20,6 +20,7 @@ const Home = () => {
       <div className="thumbs-up-section">
         <h3>Thumbs Up Feature</h3>
         <img src={thumbsUpGif} alt="Thumbs Up GIF" />
+        <p></p>
       </div>
 
       {/* Bookmark Section */}
