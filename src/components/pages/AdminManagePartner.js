@@ -26,11 +26,6 @@ function AdminManagePartner() {
 
   return (
     <div className="white-box"> {/* This div acts as the parent element */}
-      <div className="container1">
-        <div className="topnav">
-        </div>
-      </div>
-      <hr />
       <h2>Blogshop Partners</h2>
       <div className="managepartner-container">
         <div className="search-container">

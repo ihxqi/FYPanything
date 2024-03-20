@@ -22,30 +22,43 @@ const products = [
 ];
 
 function UserCategories() {
+  // Function to handle click on product
+  const handleProductClick = (subCategory, index) => {
+    console.log(`Clicked on product ${index} in ${subCategory}`);
+    // Implement the logic to handle product click, such as navigating to product details
+  };
+
   return (
     <div>
-        < UserNavbar />
-    <div className="products-page">
-      <div className="sidebar">
-        <div className="categories">
-          {categories.map((category, index) => (
-            <button key={index} className="category-button">{category}</button>
-          ))}
-        </div>
-      </div>
-      <div className="product-display">
-        {products.map((subCategory, index) => (
-          <div key={index} className="product-row">
-            <h3>{subCategory.subCategory}</h3>
-            <div className="product-list">
-              {subCategory.items.map((_, i) => (
-                <div key={i} className="product-item"></div>
-              ))}
+        <UserNavbar />
+        <div className="products-page">
+            <div className="sidebar">
+                <div className="categories">
+                    {categories.map((category, index) => (
+                        <button key={index} className="category-button">{category}</button>
+                    ))}
+                </div>
             </div>
-          </div>
+            <div className="product-display">
+  {products.map((subCategory, index) => (
+    <div key={index} className="product-row">
+      <h3>{subCategory.subCategory}</h3>
+      <div className="product-list">
+        {subCategory.items.map((_, i) => (
+          <button key={i} className="product-item" onClick={() => handleProductClick(subCategory.subCategory, i)}>
+            {/* Use a div with a class that styles it as a grey box */}
+            <div className="product-image-placeholder">
+              {/* Optional: Text or an icon to indicate it's a placeholder */}
+              <span>Image coming soon</span>
+            </div>
+          </button>
         ))}
       </div>
     </div>
+  ))}
+</div>
+
+        </div>
     </div>
   );
 }

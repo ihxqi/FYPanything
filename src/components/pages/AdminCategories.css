@@ -11,6 +11,12 @@
     text-align: center;
   }
   
+  .header{
+    position: relative; /* or 'absolute' depending on your layout */
+    top: 10px; /* Adjust the value as needed */
+}
+  
+
   .search-bar {
     display: flex;
     align-items: baseline; /* Align items baselines in the flex container */

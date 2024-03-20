@@ -31,7 +31,7 @@ function UserProfile() {
     
     <div className="user-profile-container">
       <form className="user-profile-form" onSubmit={handleSubmit}>
-        <h1>User Profile</h1>
+        <h1>Edit User Profile</h1>
         <label>
           Name:
           <input type="text" name="name" value={user.name} onChange={handleChange} />

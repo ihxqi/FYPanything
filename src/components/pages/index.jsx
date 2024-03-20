@@ -18,5 +18,7 @@ export { default as UserCategories} from "./UserCategories"
 export { default as UserProfile} from "./UserProfile"
 export { default as UserBookmarks} from "./UserBookmarks"
 export { default as AdminManagePartner} from "./AdminManagePartner"
+export { default as AdminManageUser} from "./AdminManageUser"
+export { default as AdminAllProduct} from "./AdminAllProduct"
+export { default as AdminGenerateReport} from "./AdminGenerateReport"
 
-export { default as Links} from "./Links"

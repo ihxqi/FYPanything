@@ -1,39 +1,37 @@
 .white-box {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 2%;
-  }
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 2%;
+  margin-top:1000px; /* not working*/
+  
+}
   
   .container1 {
-    display: flex;
+    
     justify-content: space-between;
     align-items: center;
     padding: 1%;
+    
   }
-  
-  .topnav a {
-    color: #333333;
-    text-decoration: none;
-    padding: 1%;
+
+  .header{
+    margin-top:100px;
   }
-  
-  .topnav a:hover {
-    color: #555555;
-  }
-  
+
   .CMtable {
     width: 100%;
     border-collapse: collapse;
+   
   }
   
-  /* ProfileManagement.css */
   
   .CMtable th,
   .CMtable td {
     border: 1px solid #dddddd;
     padding: 8px;
     text-align: center; /* Align table header and content center */
+   
   }
   
   .CMtable th {
