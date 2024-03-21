@@ -33,6 +33,7 @@ const RegisterUser = () => {
       <div class ="header">
     <h2>User Registration</h2>
     </div>
+    <div className='form-main'>
     <div className='form-container'>
       <div className='label-input-container'>
         <span className='label'>Name:</span>
@@ -83,6 +84,7 @@ const RegisterUser = () => {
       </div>
 
       <button onClick={handleRegister}>Register</button>
+    </div>
     </div>
     </div>
   );

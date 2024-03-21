@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './AdminManagePartner.css';
+import UserNavbar from "../UserNavbar";
+
 
 function AdminManagePartner() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,7 +27,10 @@ function AdminManagePartner() {
   };
 
   return (
+   
     <div className="white-box"> {/* This div acts as the parent element */}
+     <div>
+    <UserNavbar/>
       <h2>Blogshop Partners</h2>
       <div className="managepartner-container">
         <div className="search-container">
@@ -74,6 +79,7 @@ function AdminManagePartner() {
     </tr>
   </tbody>
       </table>
+    </div>
     </div>
   );
 }

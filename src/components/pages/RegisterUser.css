@@ -8,19 +8,20 @@ body, html {
 
 .header{
   color: #333; /* Color for the subtitle */
-  margin-bottom: 10px; /* Space below the subtitle */
   text-align: center;
+  font-size: 1em;
+  margin-bottom: 1em;
+  margin-right: 1em;
 }
 
 /* Center the form container on the page */
 .form-container {
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
+  max-width: 70%;
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
   position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200%;
@@ -28,10 +29,24 @@ body, html {
   background-color: #fff; /* White background */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  top: 70%; /* Adjusted positioning */
 }
 
+.form-main {
+  margin-bottom: 50px;
+}
+
+
 /* Style the input containers */
-.label-input-container, .radio-container {
+.label-input-container { 
+  width: 200%; /* Full width */
+  margin-bottom: 10px; /* Space between inputs */
+  margin-left: 1050px;
+  display: flex;
+  flex-direction: column; /* Stack label and input vertically */
+}
+
+.radio-container {
   width: 200%; /* Full width */
   margin-bottom: 10px; /* Space between inputs */
   margin-left: 1050px;
@@ -87,6 +102,7 @@ background-color: #CCCCFF;
 
 .gender-selection {
   display: flex; /* Use flexbox for positioning */
+  margin-left: 290px;
 }
 
 /* Style for the gender label */
