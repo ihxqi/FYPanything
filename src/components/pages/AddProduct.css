@@ -1,50 +1,50 @@
 /* AddProduct.css */
 .add-product-container {
-    max-width: 300px;
-    margin: 0 auto; /* Center the container horizontally */
-    padding: 100px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-h3 {
-    margin-top: 50px;
+.AddProductHeader h2 {
+    margin-top: 80px;
 }
 
-.radio-container {
-    display: flex;
-    align-items: center; /* This will vertically align items in the middle */
-    /* This will add space between the radio options and the button */
-    margin-bottom: 0px; /* This gives some space below the container */
-}
-
-.single-upload-section {
-    margin-bottom: 5px; /* Reduce this to decrease space after the first option */
-    margin-top: 30px;
-    margin-right:2370px;
-}
-
+.single-upload-section,
 .batch-upload-section {
-    margin-top: 5px; /* Reduce this to decrease space before the second option */
-    margin-right:2370px;
+    margin-top: 20px;
 }
 
-.header{
-    margin-top: 50px;
-    margin-left: 10px;
+input[type="radio"] {
+    width: 10px;
 }
 
 label {
-    display: block;
+    display: inline-block;
     margin-bottom: 5px;
+    margin-left: 10px;
 }
 
 form {
     margin-top: 10px;
 }
 
+.single-upload-form input[type="text"],
+.single-upload-form input[type="number"],
+.single-upload-form input[type="url"],
+.single-upload-form select,
+.single-upload-form textarea {
+  width: 150%; /* This will make the inputs take the full width of their container */
+ /* This ensures that padding and border don't add up to the width */
+}
+
+.single-upload-form .react-select__control {
+  width: 200%; /* This targets the React-Select component if it's using the default className */
+}
+
 input,
 select,
 textarea {
-    width: 45%;
+    width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -55,7 +55,6 @@ button[type="submit"] {
     background-color: #007bff;
     color: #fff;
     border: none;
-    margin-left: 10px; 
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
@@ -64,3 +63,5 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+/* Add more styles as needed */

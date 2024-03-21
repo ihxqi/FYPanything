@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PartnerProfile.css';
-import Navbar from "../Navbar";
+import UserNavbar from "../UserNavbar";
 
 const PartnerProfile = () => {
   const [partner, setPartner] = useState({
@@ -28,7 +28,7 @@ const PartnerProfile = () => {
 
   return (
     <div className="partner-profile-container">
-      <Navbar />
+      <UserNavbar />
       <form className="partner-profile-form" onSubmit={handleSubmit}>
         <h1>Partner Profile</h1>
         <label>

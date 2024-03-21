@@ -1,46 +1,54 @@
-
 /* Header */
 .header {
     text-align: center;
-    padding: 30px 0; /* Add padding to top and bottom */
-  }
-  
-  .header h1 {
-    font-size: 55px; /* Adjust font size */
-    color: #333; /* Adjust font color */
-  }
-  
-  /* Thumbs Up Section */
-  .thumbs-up-section p {
-    text-align: center; /* Align text to center */
-    font-size: 18px; /* Adjust font size */
-    color: #666; /* Adjust font color */
-  }
-  
-  /* Bookmark Section */
-  .bookmark-section p {
-    text-align: center; /* Align text to center */
-    font-size: 18px; /* Adjust font size */
-    color: #666; /* Adjust font color */
-  }
-  
+    padding: 30px 0;
+    /* Add padding to top and bottom */
+}
+
+.header h1 {
+    font-size: 70px;
+    /* Adjust font size */
+    color: #333;
+    /* Adjust font color */
+    font-weight: bold;
+}
+
 /* Thumbs Up Section */
-.thumbs-up-section {
+.video-section p {
+    text-align: center;
+    /* Align text to center */
+    font-size: 20px;
+    /* Adjust font size */
+    color: #666;
+    /* Adjust font color */
+}
+
+/* Bookmark Section */
+.bookmark-section p {
+    text-align: center;
+/* Align text to center */
+font-size: 20px;
+/* Adjust font size */
+color: #666;
+/* Adjust font color */
+margin-top: 10px;
+}
+
+
+.video-section h3 {
+    margin-bottom: 30px;
+    font-size: 30px;
+    /* Increased font size */
+}
+
+.video-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 60px; /* Add space below the thumb-up image for the short write-up */
-}
-
-.thumbs-up-section h3 {
-    margin-bottom: 30px;
-    font-size: 24px; /* Increased font size */
-}
-
-.thumbs-up-section img {
-    width: 400px; /* Adjusted width for the thumb-up image */
-    margin-bottom: 20px; /* Add space below the thumb-up image */
-    image-rendering: crisp-edges; /* Set image-rendering property to pixelated */
+    justify-content: flex-end;
+    /* Align items to the bottom */
+    padding-bottom: 60px;
+    /* Add space below the image for the short write-up */
 }
 
 
@@ -49,12 +57,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 60px; /* Add space below the image for the short write-up */
+    padding-bottom: 60px;
+    /* Add space below the image for the short write-up */
 }
 
-.showcase-section h3 {
+.blogshop-partners-section h3 {
     margin-bottom: 30px;
-    font-size: 24px; /* Increased font size */
+    font-size: 30px;
+    /* Increased font size */
+    text-align: center;
 }
 
 .showcase-section .logo-slider {
@@ -63,8 +74,10 @@
 }
 
 .showcase-section .logo-slider img {
-    width: 450px; /* Increased width for the logos */
-    margin: 0 30px; /* Increased margin */
+    width: 450px;
+    /* Increased width for the logos */
+    margin: 0 30px;
+    /* Increased margin */
 }
 
 /* Bookmark Section */
@@ -72,29 +85,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end; /* Align items to the bottom */
-    padding-bottom: 60px; /* Add space below the image for the short write-up */
+    justify-content: flex-end;
+    /* Align items to the bottom */
+    padding-bottom: 60px;
+    /* Add space below the image for the short write-up */
 }
 
 .bookmark-section h3 {
     margin-bottom: 30px;
-    font-size: 24px; /* Increased font size */
-}
-
-.bookmark-section p {
-    margin-bottom: 30px;
-    font-size: 18px; /* Increased font size */
+    font-size: 24px;
+    /* Increased font size */
 }
 
 .bookmark-section img {
-    width: 700px; /* Increased width for the image */
+    width: 700px;
+    /* Increased width for the image */
 }
 
 /* Blogshop Logos */
 .blogshop {
-    width: 180px; /* Increased width for the logos */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 30px; /* Increased margin */
+    width: 180px;
+    /* Increased width for the logos */
+    height: auto;
+    /* Maintain aspect ratio */
+    margin-right: 30px;
+    /* Increased margin */
+    border-radius: 50%;
 }
 
 /* Keyframes for sliding animation */
@@ -102,31 +118,47 @@
     0% {
         transform: translateX(0);
     }
+
     100% {
-        transform: translateX(-100%); /* Adjust the distance to slide */
+        transform: translateX(-100%);
+        /* Adjust the distance to slide */
     }
 }
 
 /* Apply slide animation to logo container */
 .logo-container {
     display: flex;
-    animation: slide 30s linear infinite; /* Adjust the duration as needed */
+    animation: slide 30s linear infinite;
+    /* Adjust the duration as needed */
+}
+
+.blogshop-partners-section {
+    background-color: rgba(236, 170, 233, 0.432);
+    margin-bottom: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 1000px) {
+
     .thumbs-up-section img,
     .bookmark-section img {
-        width: 300px; /* Adjusted width for mobile */
+        width: 300px;
+        /* Adjusted width for mobile */
     }
 
-    .showcase-section .logo-slider img {
-        width: 150px; /* Adjusted width for mobile */
-        margin: 0 15px; /* Adjusted margin for mobile */
+    .blogshop-partners-section .logo-slider img {
+        width: 150px;
+        /* Adjusted width for mobile */
+        margin: 0 15px;
+        /* Adjusted margin for mobile */
     }
 
     .blogshop {
-        width: 100px; /* Adjusted width for mobile */
-        margin-right: 10px; /* Adjusted margin for mobile */
+        width: 100px;
+        /* Adjusted width for mobile */
+        margin-right: 10px;
+        /* Adjusted margin for mobile */
     }
 }

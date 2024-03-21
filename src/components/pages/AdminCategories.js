@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AdminCategories.css';
-import Navbar from "../Navbar";
+import UserNavbar from "../UserNavbar";
 //import logo from '../image/CollaFilter Logo.jpg'
 
 //<img src={logo} alt="CollaFilter Logo" className='iconStyle' />
@@ -25,7 +25,7 @@ const AdminCategories = () => {
       <div class="header">
       <h1>Categories</h1>
       </div>
-      <Navbar />
+      <UserNavbar />
       <div className="search-bar">
         <input type="text" placeholder="Search:" />
         <button>Search</button>
