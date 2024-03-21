@@ -1,38 +1,34 @@
 import React, { useState } from 'react';
-import './AdminManagePartner.css';
+import './AdminManagePartner.css'; // Ensure the CSS file is named correctly
 import UserNavbar from "../UserNavbar";
 
-
-function AdminManagePartner() {
+function AdminManagePartners() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const logout = () => {
     console.log("Logged out");
-    // Use React Router for navigation or your preferred method
+    // Add logout logic or redirect here
   };
-  
-  const handleStatusChange = (status, id) => {
-    console.log(`Status: ${status}, ID: ${id}`);
-    // Implement the status change logic
-  };
-  
+
   const handleSearch = () => {
     console.log(`Searching for: ${searchTerm}`);
-    // Implement the search logic
+    // Add search logic here
   };
 
   const handleFilter = () => {
     console.log("Filter clicked");
-    // Implement the filter logic
+    // Add filter logic here
   };
 
   return (
-   
-    <div className="white-box"> {/* This div acts as the parent element */}
-     <div>
+    <div>
     <UserNavbar/>
-      <h2>Blogshop Partners</h2>
-      <div className="managepartner-container">
+    <div className="white-box"> {/* This div acts as the parent element */}
+   
+      <hr />
+    <div className="user-management-container">
+      <div className="user-management-header">
+        <h1>Blogshop Partners</h1>
         <div className="search-container">
           <label htmlFor="search">Search:</label>
           <input
@@ -45,46 +41,34 @@ function AdminManagePartner() {
           <button onClick={handleSearch}>Search</button>
         </div>
       </div>
-      <table id="profileTable" className="CMtable" style={{ width: '100%' }}>
-      <thead>
-    <tr>
-      <th>Blogshop Owner</th>
-      <th>URL</th>
-      <th>Category</th>
-      <th>Activate</th>
-      <th>Suspend</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td contentEditable="false">Love clothes</td>
-      <td contentEditable="false">URL data</td>
-      <td contentEditable="false">Category data</td>
-      <td>
-        <button 
-          className="approve-btn"
-          onClick={() => handleStatusChange('approve', 1)} // Replace with actual handler
-        >
-          Activate
-        </button>
-      </td>
-      <td>
-        <button 
-          className="reject-btn"
-          onClick={() => handleStatusChange('reject', 1)} // Replace with actual handler
-        >
-          Suspend
-        </button>
-      </td>
-    </tr>
-  </tbody>
+      <table className="users-table">
+        <thead>
+          <tr>
+            <th>Blogshop Owner</th>
+            <th>URL</th>
+            <th>Category</th>
+            <th>Activate</th>
+            <th>Suspend</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td contentEditable="false">Example Partner</td>
+          <td contentEditable="false">example.com</td>
+          <td contentEditable="false">Fashion</td>
+          <td className="action-column">
+    <input type="radio" id="activate1" name="managepartner1" value="activate" defaultChecked />
+  </td>
+  <td className="action-column">
+    <input type="radio" id="suspend1" name="managepartner1" value="suspend" />
+  </td>
+        </tr>
+        </tbody>
       </table>
+    </div>
     </div>
     </div>
   );
 }
 
-export default AdminManagePartner;
-
-
-
+export default AdminManagePartners;

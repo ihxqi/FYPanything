@@ -25,10 +25,7 @@ function AdminManageUsers() {
     <div>
     <UserNavbar/>
     <div className="white-box"> {/* This div acts as the parent element */}
-      <div className="container1">
-        <div className="topnav">
-        </div>
-      </div>
+      
       <hr />
     <div className="user-management-container">
       <div className="user-management-header">
@@ -66,12 +63,12 @@ function AdminManageUsers() {
       <td contentEditable="false">Singapore</td>
       <td contentEditable="false">409 Jurong East Street 32 </td>
       <td contentEditable="false">12345678</td>
-      <td>
-        <input type="radio" id="activate1" name="manageuser1" value="activate"defaultChecked />      
-      </td>
-       <td>
-        <input type="radio" id="suspend1" name="manageuser1" value="suspend" />
-      </td>
+      <td className="action-column">
+    <input type="radio" id="activate1" name="managepartner1" value="activate" defaultChecked />
+  </td>
+  <td className="action-column">
+    <input type="radio" id="suspend1" name="managepartner1" value="suspend" />
+  </td>
     </tr>
         </tbody>
       </table>

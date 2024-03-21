@@ -1,31 +1,26 @@
-/* AdminManagePartner.css */
 .white-box {
-    background-color: #fff;
-    padding: 2%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 1%;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1% 0; /* Remove horizontal margins */
+  margin-top: -25px;
+  padding: 0; /* Set padding to 0 */
+}
+
+.partners-management-container {
+    background-color: #ffe2e6;
+    min-height: 100vh;
+    padding: 0;
+    margin-top: 0px;
   }
   
-  .topnav {
+  .partners-management-header {
     display: flex;
-    justify-content: flex-end;
-  }
-  
-  .topnav a {
-    text-decoration: none;
-    padding: 0.5em 1em;
-    color: #333;
-    font-size: 1em; /* scalable font-size */
-    border: none;
-    cursor: pointer;
-  }
-  
-  .container1 {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding-bottom: 1em;
+    gap: 1rem;
+    padding: 0 2%;
+    
   }
   
   .search-container {
@@ -37,6 +32,11 @@
   
   .search-container label {
     margin-right: 0.5em;
+  }
+
+  .users-table .action-column {
+    width: 5%; /* Adjust the width as needed */
+    text-align: center; /* Optional: Centers the content */
   }
   
   .search-bar input {
@@ -58,71 +58,35 @@
     background-color: #ddd;
   }
   
-  .CMtable {
-    width: 100%;
+  .partners-table {
+    width: 90%; /* Adjusted to match user management style */
+    margin-top: 1rem;
+    margin-left: auto; /* Center the table horizontally */
+    margin-right: auto;
     border-collapse: collapse;
-    margin-top: 2em;
+    background-color: #fff;
   }
   
-  .CMtable th,
-  .CMtable td {
-    text-align: left;
-    padding: 1em;
+  .partners-table th,
+  .partners-table td {
+    padding: 0.5rem;
     border-bottom: 1px solid #ddd;
+    text-align: center;
   }
   
-  .CMtable th {
+  
+  .partners-table th {
     background-color: #f8f8f8;
-    color: #333;
   }
-  
-  .approve-btn,
-  .reject-btn {
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .approve-btn {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .reject-btn {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .approve-btn:hover,
-  .reject-btn:hover {
-    opacity: 0.9;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .search-container, .topnav {
+
+  @media (max-width: 768px) {
+    .partners-management-header,
+    .search-bar {
       flex-direction: column;
-      gap: 0.5em;
     }
-    
-    .search-container input,
-    .search-container button,
-    .topnav a {
+  
+    .search-bar input[type="text"],
+    .search-bar button {
       width: 100%;
-      margin-top: 0.5em;
-    }
-  
-    .CMtable th, .CMtable td {
-      padding: 0.5em; /* Smaller padding on mobile */
     }
   }
-  
-  /* For larger screens, you could define more styles inside another media query */
-  @media screen and (min-width: 1200px) {
-    .white-box {
-      padding: 1em; /* More padding for larger screens */
-    }
-  
-    /* Additional styling for larger screens can go here */
-  }
-  
