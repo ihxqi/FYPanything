@@ -76,7 +76,7 @@ export const AboutUs = () => {
         <Col lg="7" className="d-flex align-items-center">
           <form className="contact__form w-100" onSubmit={handleSubmit}>
             <Row>
-              <p>Having Trouble? <br/> Contact Us Below!</p>
+             <h4> <p>Having Trouble? <br/> Contact Us Below!</p></h4>
               <Col lg="6" className="form-group">
                 <input
                   className="form-control"

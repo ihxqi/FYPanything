@@ -9,8 +9,8 @@
 }
 
 .iconStyle {
-  width: 150px;
-  height: 150px;
+  width: 300px;
+  height: auto;
   margin-bottom: 20px;
 }
 
@@ -20,14 +20,14 @@
   font-size: 18px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff; /* blue color, you can change it as needed */
-  color: #fff; /* white color for text */
+  background-color: #ffe2e6; /* blue color, you can change it as needed */
+  color: black; /* white color for text */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .buttonStyle:hover {
-  background-color: #0056b3; /* darker shade of blue on hover */
+  background-color: #CCCCFF; /* darker shade of blue on hover */
 }
 
 /* You can add more styles as needed */
