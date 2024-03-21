@@ -1,6 +1,6 @@
 import React from 'react';
 import './UnregisteredBlogshopOwner.css'; // Ensure you have this CSS file with the correct styles
-import Navbar from "../Navbar";
+import UserNavbar from "../UserNavbar";
 
 function UnregisteredBlogshopOwner() {
   const logout = () => {
@@ -12,7 +12,7 @@ function UnregisteredBlogshopOwner() {
    
    <div className="white-box">
     <div>
-     <Navbar />
+     <UserNavbar />
      <div class="header">
   <h2>Blogshop Owner Onboarding</h2>
   </div>
@@ -30,14 +30,28 @@ function UnregisteredBlogshopOwner() {
         <tbody>
           <tr>
             <td contentEditable="false">Love clothes</td>
-            <td contentEditable="false">URL data</td>
-            <td contentEditable="false">Category data</td>
+            <td contentEditable="false">loveclothes.co</td>
+            <td contentEditable="false">Apparel</td>
             <td>
-              <input type="radio" id="approve1" name="manage" value="approve" defaultChecked />
+              <input type="radio" id="approve1" name="manage" value="approve" />
               
             </td>
             <td>
               <input type="radio" id="reject1" name="manage" value="reject" />
+              
+            </td>
+          </tr>
+
+          <tr>
+            <td contentEditable="false">NTUC</td>
+            <td contentEditable="false">www.NTUC.com</td>
+            <td contentEditable="false">Food</td>
+            <td>
+              <input type="radio" id="approve1" name="manage1" value="approve" />
+              
+            </td>
+            <td>
+              <input type="radio" id="reject1" name="manage1" value="reject" />
               
             </td>
           </tr>

@@ -1,70 +1,81 @@
+/* Define variables for colors */
+:root {
+  --background-color: #ffe2e6;
+  --form-background-color: #fff;
+  --border-color: #ddd;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --button-background-hover: #ffd6dc;
+}
+
 body, html {
-  background-color: #ffe2e6; /* Light pink background */
-  height: 100%; /* Full viewport height */
+  background-color: var(--background-color); /* Light pink background */
+  height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 h2 {
-  font-size: 100px;
-  margin-bottom: 50px;
-  margin-right: 50px;
+  font-size: 4em;
+  margin-bottom: 1em;
+  margin-right: 1em;
 }
 
 /* Center the form container on the page */
 .form-container {
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
+  max-width: 70%; /* Reduced width */
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 60%;
+  top: 70%; /* Adjusted positioning */
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200%;
-  padding: 20px; /* Spacing inside the container */
-  background-color: #fff; /* White background */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  width: 100%;
+  padding: 1em;
+  background-color: var(--form-background-color);
+  border-radius: 0.5em;
+  box-shadow: 0 0.2em 0.5em var(--shadow-color);
 }
 
 /* Style the input containers */
 .label-input-container {
-  width: 200%; /* Full width */
-  margin-bottom: 10px; /* Space between inputs */
-  margin-left: 1050px;
+  width: 100%;
+  margin-bottom: em;
   display: flex;
-  flex-direction: column; /* Stack label and input vertically */
+  flex-direction: column;
+  margin-right: 350px;
 }
 
 /* Style the labels */
 .label {
-  margin-bottom: 5px; /* Space below the label */
-  font-weight: bold; /* Bold font for labels */
+  margin-bottom: 0.5em;
+  font-weight: bold;
 }
 
 /* Style the input fields */
 .input-field {
-  padding: 10px;
-  margin-bottom: 10px; /* Space between inputs */
-  border: 1px solid #ddd; /* Light border for inputs */
-  border-radius: 5px; /* Slightly rounded corners for inputs */
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  border: 0.1em solid var(--border-color);
+  border-radius: 0.3em;
 }
 
 /* Style the submit button */
 button {
   cursor: pointer;
-  padding: 10px 15px;
-  font-size: 1 rem;  
-color: black; 
-background-color: #ffe2e6;
-border: none; 
-border-radius: 5px;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-transition: background-color 0.3s ease;
-margin-top: 20px; 
+  padding: 0.5em 1em;
+  font-size: 1em;
+  color: black; 
+  background-color: var(--button-background);
+  border: none; 
+  border-radius: 0.3em;
+  box-shadow: 0 0.2em 0.5em var(--shadow-color);
+  transition: background-color 0.3s ease;
+  margin-top: 1em;
 }
 
-
+button:hover {
+  background-color: var(--button-background-hover);
+}

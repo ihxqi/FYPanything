@@ -11,11 +11,6 @@ function AdminManageUsers() {
     // Add logout logic or redirect here
   };
 
-  const handleStatusChange = (status, id) => {
-    console.log(`Status: ${status}, ID: ${id}`);
-    // Add logic to handle status change
-  };
-
   const handleSearch = () => {
     console.log(`Searching for: ${searchTerm}`);
     // Add search logic here
@@ -72,20 +67,10 @@ function AdminManageUsers() {
       <td contentEditable="false">409 Jurong East Street 32 </td>
       <td contentEditable="false">12345678</td>
       <td>
-        <button 
-          className="approve-btn"
-          onClick={() => handleStatusChange('approve', 1)} // Replace with actual handler
-        >
-          Activate
-        </button>
+        <input type="radio" id="activate1" name="manageuser1" value="activate"defaultChecked />      
       </td>
-      <td>
-        <button 
-          className="reject-btn"
-          onClick={() => handleStatusChange('reject', 1)} // Replace with actual handler
-        >
-          Suspend
-        </button>
+       <td>
+        <input type="radio" id="suspend1" name="manageuser1" value="suspend" />
       </td>
     </tr>
         </tbody>

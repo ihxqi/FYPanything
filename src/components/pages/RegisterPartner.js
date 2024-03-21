@@ -65,8 +65,8 @@ const RegisterUser = () => {
         <select className='input-field' value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value='' disabled>Select Category</option>
           <option value='Apparel'>Apparel</option>
-          <option value='Shoes'>Shoes</option>
-          <option value='Accessories'>Accessories</option>
+          <option value='Food'>Food</option>
+          <option value='Electronics'>Accessories</option>
         </select>
       </div>
 

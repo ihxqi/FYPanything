@@ -38,7 +38,7 @@
     background-color: #f2f2f2;
   }
   
-  .CMtable tr:nth-child(even) {
+  .CMtable tr:nth-child() {
     background-color: #f9f9f9;
   }
   
