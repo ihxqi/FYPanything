@@ -13,7 +13,7 @@
     flex-direction: column;
     border: 1px solid #ccc;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     width: 600px; 
   }
   
@@ -33,17 +33,17 @@
     margin-top: 10px;
   }
   
-  .thumbs-container button {
+  .thumbs-container button{
     margin-right: 125px; /* Adjust the margin as needed */
     margin-left: 125px;
     cursor: pointer;
     border: none;
     background: none;
-    font-size: 100px;
+    font-size: 40px;
   }
   
   .thumbs-container button:hover {
-    color: blue;
+    background-color: #CCCCFF;
   }
   
   .product-container img {

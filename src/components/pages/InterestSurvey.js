@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import Navbar from "../Navbar";
+import UserNavbar from "../UserNavbar";
 import './InterestSurvey.css';
+import Select from 'react-select'; // Import React-Select
+
+const tagOptions = [
+  { value: 'rings', label: '#rings' },
+  { value: 'necklace', label: '#necklace' },
+  { value: 'bracelet', label: '#bracelet' }
+];
 
 const InterestSurvey = () => {
   const [budget, setBudget] = useState(50);
@@ -13,19 +20,26 @@ const InterestSurvey = () => {
 
   return (
     <div>
-      <Navbar />
+       <UserNavbar />
     <form className="survey-form" onSubmit={handleSubmit}>
       <h2>Interest Survey</h2>
 
-      <label>
-        How would you describe your clothing style? *
-        <input type="text" name="clothing_style" required />
-      </label>
+ 
 
-      <label>
-        What type of clothing are you most interested in? *
-        <input type="text" name="clothing_interest" required />
-      </label>
+      <label for="clothing_style">How would you describe your clothing style? *</label>
+    <select id="clothing_style" name="clothing_style">
+      <option value="formal">formal</option>
+      <option value="classy">classy</option>
+      <option value="cute">cute</option>
+    </select>
+
+
+    <label for="clothing_interest">What type of clothing are you most interested in? *</label>
+    <select id="clothing_interest" name="clothing_interest">
+      <option value="dress">dress</option>
+      <option value="shorts">shorts</option>
+      <option value="pants">pants</option>
+    </select>
 
       <label>
         What is your budget for clothing items? *
@@ -33,28 +47,23 @@ const InterestSurvey = () => {
         <span>${budget}</span>
       </label>
 
-      <label>
-        Which of the following fashion style best represents your taste? *
-        <div>
-          <input type="radio" name="style" value="Formal" required /> Formal
-          <input type="radio" name="style" value="Casual" /> Casual
-        </div>
-      </label>
+     {/* Replace the dropdown for adding tags with React-Select */}
+      <label for="itag">Add in your favorite tags:</label>
+      <Select id="itag" name="itag" options={tagOptions} isMulti /><br/>
 
-      <label>
-        Do you have favorite accessories that you often pair with your outfits?
-        <input type="text" name="accessories" />
-      </label>
+    <label for="materials">Do you have any preferences for specific fabrics or materials?</label>
+    <select id="materials" name="materials">
+      <option value="cotton">cotton</option>
+      <option value="wool">wool</option>
+      <option value="denim">denim</option>
+    </select> 
 
-      <label>
-        Do you have any preferences for specific fabrics or materials?
-        <input type="text" name="materials" />
-      </label>
-
-      <label>
-        Please type blogshop(s) you are interested in
-        <textarea name="blogshops" />
-      </label>
+    <label for="blogshops">Please select the blogshop(s) you are interested in</label>
+    <select id="blogshops" name="blogshops">
+      <option value="lyla">dearlyla</option>
+      <option value="bf">bf blogshop</option>
+      <option value="diem">carpe diem</option>
+    </select> 
 
       <button type="submit">Submit Survey</button>
     </form>
