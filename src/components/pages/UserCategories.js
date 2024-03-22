@@ -2,6 +2,7 @@ import React from 'react';
 import './UserCategories.css';
 import logo from '../image/CollaFilter Logo.jpg'; // Make sure the path is correct
 import UserSidebarNavbar from "../UserSidebarNavbar";
+import UserFooter from "../UserFooter";
 
 const categories = ['Men Clothes', 'Women Clothes', 'Kids Clothes', 'Accessories', 'Shoes' ]; // Simplified categories array
 const products = [
@@ -59,6 +60,7 @@ function UserCategories() {
 </div>
 
         </div>
+        <UserFooter/>
     </div>
   );
 }

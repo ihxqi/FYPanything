@@ -1,6 +1,7 @@
 import React from 'react';
 import './UnregisteredBlogshopOwner.css'; // Ensure you have this CSS file with the correct styles
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
+import AdminFooter from "../AdminFooter";
 
 function UnregisteredBlogshopOwner() {
   const logout = () => {
@@ -59,6 +60,7 @@ function UnregisteredBlogshopOwner() {
       </table>
       <br />
     </div>
+    <AdminFooter/>
     </div>
   );
 }

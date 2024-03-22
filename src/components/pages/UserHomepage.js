@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './UserHomepage.css';
-import UserNavbar from "../UserNavbar";
+import UserSidebarNavbar from "../UserSidebarNavbar";
 import dress2 from '../image/DayDress.jpg'
 import dress1 from '../image/NightDress.jpg'
-
+import UserFooter from "../UserFooter";
 
 
 const products = [
@@ -42,7 +42,7 @@ const UserHomepage = () => {
 
   return (
     <div>
-      <UserNavbar />
+      <UserSidebarNavbar />
       <div className="user-page">
         {products.length > 0 && (
           <div className="product-container">
@@ -63,6 +63,7 @@ const UserHomepage = () => {
           <button onClick={() => handleThumbClick(false)}>👎</button>
         </div>
       </div>
+      <UserFooter/>
     </div>
   );
 };

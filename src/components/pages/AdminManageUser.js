@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AdminManageUser.css'; // Ensure the CSS file is named correctly
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
+import AdminFooter from "../AdminFooter";
 
 
 function AdminManageUsers() {
@@ -74,6 +75,7 @@ function AdminManageUsers() {
       </table>
     </div>
     </div>
+   
     </div>
   );
 }

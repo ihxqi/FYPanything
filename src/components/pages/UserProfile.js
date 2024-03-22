@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './UserProfile.css';
 import UserSidebarNavbar from "../UserSidebarNavbar";
+import UserFooter from "../UserFooter";
 
 function UserProfile() {
   const [user, setUser] = useState({
@@ -67,6 +68,7 @@ function UserProfile() {
         <button type="submit">Done</button>
       </form>
     </div>
+    <UserFooter/>
     </div>
   );
 }

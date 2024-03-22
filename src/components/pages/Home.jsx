@@ -6,6 +6,7 @@ import bf from '../image/bf.jpg'
 import lyla from '../image/lyla.jpg'
 import diem from '../image/diem.jpg'
 import './Home.css'; 
+import GeneralFooter from "../GeneralFooter";
 
 const Home = () => {
   return (
@@ -54,6 +55,7 @@ const Home = () => {
         <img src={bookmark} alt="Bookmarks" />
         <p>Unlock Your Next Favorite With Us!</p>
       </div>
+      <GeneralFooter/>
       </div>
 
   );

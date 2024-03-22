@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './PartnerAllProducts.css';
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
+import PartnerFooter from "../PartnerFooter";
+
 
 
 const AllProducts = () => {
@@ -62,6 +64,7 @@ const AllProducts = () => {
         </tbody>
       </table>
     </div>
+    <PartnerFooter/>
     </div>
   );
 };

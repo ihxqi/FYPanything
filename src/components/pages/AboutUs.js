@@ -1,6 +1,7 @@
 import React, { useState } from "react"; 
 import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../Navbar";
+import GeneralFooter from "../GeneralFooter";
 
 export const AboutUs = () => {
   const [formData, setFormData] = useState({
@@ -140,6 +141,7 @@ export const AboutUs = () => {
         </Col>
       </Row>
     </Container>
+    <GeneralFooter/>
     </div>
   );
 };

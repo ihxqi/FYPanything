@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import UserSidebarNavbar from "../UserSidebarNavbar";
 import './InterestSurvey.css';
 import Select from 'react-select'; // Import React-Select
+import UserFooter from "../UserFooter";
 
 
 const tagOptions = [
@@ -75,6 +76,7 @@ const InterestSurvey = () => {
 
       <button type="submit">Submit Survey</button>
     </form>
+    <UserFooter/>
     </div>
   );
 }

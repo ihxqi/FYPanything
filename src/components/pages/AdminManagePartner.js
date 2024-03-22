@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AdminManagePartner.css'; // Ensure the CSS file is named correctly
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
+import AdminFooter from "../AdminFooter";
 
 function AdminManagePartners() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -40,6 +41,7 @@ function AdminManagePartners() {
           <button onClick={handleFilter}>Filter</button>
           <button onClick={handleSearch}>Search</button>
         </div>
+    
       </div>
       <table className="users-table">
         <thead>
@@ -66,8 +68,11 @@ function AdminManagePartners() {
         </tbody>
       </table>
     </div>
+   
     </div>
+    
     </div>
+   
   );
 }
 
