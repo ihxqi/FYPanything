@@ -17,6 +17,7 @@ const UserSidebarNavbar = () => {
     { to: "/UserCategories", text: "User Categories" }, 
     { to: "/UserBookmarks", text: "My Bookmarks" },
     { to: "/UserProfile", text: "Profile" },
+    { to: "/interestSurvey", text: "Interest Survey" },
   
   ];
 

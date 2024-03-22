@@ -16,7 +16,7 @@ const PartnerSidebarNavbar = () => {
   const sidebarLinks = [
     { to: "/PartnerAllProducts", text: "View All Product" }, 
     { to: "/AddProduct", text: "Add Products" },
-    { to: "/#", text: "Generate Report" },
+    { to: "/PartnerGenerateReport", text: "Generate Report" },
     { to: "/PartnerProfile", text: "Edit Profile" },
   
   ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import './UnregisteredBlogshopOwner.css'; // Ensure you have this CSS file with the correct styles
-import UserNavbar from "../UserNavbar";
+import AdminSidebarNavbar from "../AdminSidebarNavbar";
 
 function UnregisteredBlogshopOwner() {
   const logout = () => {
@@ -12,7 +12,7 @@ function UnregisteredBlogshopOwner() {
    
    <div className="white-box">
     <div>
-     <UserNavbar />
+     <AdminSidebarNavbar />
      <div class="header">
   <h2>Blogshop Owner Onboarding</h2>
   </div>

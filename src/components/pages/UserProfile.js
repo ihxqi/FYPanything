@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './UserProfile.css';
-import UserNavbar from "../UserNavbar";
+import UserSidebarNavbar from "../UserSidebarNavbar";
 
 function UserProfile() {
   const [user, setUser] = useState({
@@ -27,7 +27,7 @@ function UserProfile() {
 
   return (
     <div>
-        <UserNavbar />
+        <UserSidebarNavbar />
     
     <div className="user-profile-container">
       <form className="user-profile-form" onSubmit={handleSubmit}>

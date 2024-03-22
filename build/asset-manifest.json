@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4659305f.css",
-    "main.js": "/static/js/main.3dc94a1a.js",
+    "main.css": "/static/css/main.d5f81c9a.css",
+    "main.js": "/static/js/main.340756d9.js",
     "static/media/banner.mp4": "/static/media/banner.2f4f13c91f5a5eb18bba.mp4",
     "static/media/Bookmark.jpg": "/static/media/Bookmark.c7784eb9025b4b14fcdb.jpg",
     "static/media/CollaFilter Logo.jpg": "/static/media/CollaFilter Logo.70b2c1506192d4f96b2d.jpg",
@@ -15,11 +15,11 @@
     "static/media/2.jpg": "/static/media/2.8c1270cf54b783f0204b.jpg",
     "static/media/4.JPG": "/static/media/4.d2812f9917492144ffee.JPG",
     "index.html": "/index.html",
-    "main.4659305f.css.map": "/static/css/main.4659305f.css.map",
-    "main.3dc94a1a.js.map": "/static/js/main.3dc94a1a.js.map"
+    "main.d5f81c9a.css.map": "/static/css/main.d5f81c9a.css.map",
+    "main.340756d9.js.map": "/static/js/main.340756d9.js.map"
   },
   "entrypoints": [
-    "static/css/main.4659305f.css",
-    "static/js/main.3dc94a1a.js"
+    "static/css/main.d5f81c9a.css",
+    "static/js/main.340756d9.js"
   ]
 }
