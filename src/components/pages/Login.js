@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Navbar from "../Navbar";
 import './Login.css'; // Ensure you have this CSS file with the correct styles
 import { Navigate, useNavigate } from 'react-router-dom'; // Import Navigate for redirection
+import GeneralFooter from "../GeneralFooter";
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -97,6 +98,7 @@ const Login = () => {
           </Col>
         </Row>
       </Container>
+      <GeneralFooter/>
     </div>
   );
 };

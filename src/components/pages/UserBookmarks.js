@@ -1,6 +1,7 @@
 import React from 'react';
 import './UserBookmarks.css';
 import UserSidebarNavbar from "../UserSidebarNavbar";
+import UserFooter from "../UserFooter";
 
 import dress1 from '../image/1.JPG';
 import dress2 from '../image/2.jpg';
@@ -50,6 +51,7 @@ function UserBookmarks() {
           ))}
         </main>
       </div>
+      <UserFooter/>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './JoinUs.css';
 import Navbar from "../Navbar";
+import GeneralFooter from "../GeneralFooter";
 
 const JoinUs = () => {
   return (
@@ -37,6 +38,7 @@ const JoinUs = () => {
       </div>
       </div>
     </div>
+    <GeneralFooter/>
     </div>
   );
 };

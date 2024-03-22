@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './PartnerProfile.css';
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
+import PartnerFooter from "../PartnerFooter";
 
 const PartnerProfile = () => {
   const [partner, setPartner] = useState({
@@ -65,8 +66,11 @@ const PartnerProfile = () => {
 
         <button type="submit">Done</button>
       </form>
+     
     </div>
+    
   );
+  
 }
 
 export default PartnerProfile;

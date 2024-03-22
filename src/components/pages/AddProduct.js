@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AddProduct.css';
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import Select from 'react-select'; // Import React-Select
-
+import PartnerFooter from "../PartnerFooter";
 
 function AddProduct() {
     const [uploadType, setUploadType] = useState(null);
@@ -130,6 +130,7 @@ function AddProduct() {
                     <button type="submit">Upload</button>
                 </form>
             </div>
+            <PartnerFooter/>
         </div>
     );
 }

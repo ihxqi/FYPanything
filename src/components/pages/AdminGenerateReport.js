@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './AdminGenerateReport.css'; // Ensure you have a CSS file with this name in the same directory
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
+import AdminFooter from "../AdminFooter";
 
 // A functional component for the report generator
 function ReportGenerator() {
@@ -67,6 +68,7 @@ function ReportGenerator() {
         Download
       </button>
     </div>
+    <AdminFooter/>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './AdminCategories.css';
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 //import logo from '../image/CollaFilter Logo.jpg'
+import AdminFooter from "../AdminFooter";
 
 //<img src={logo} alt="CollaFilter Logo" className='iconStyle' />
 
@@ -52,6 +53,7 @@ const AdminCategories = () => {
         </tbody>
       </table>    
       <button className="add-categories-button">Add Categories</button>
+      <AdminFooter/>
     </div>
   );
 }

@@ -14,6 +14,7 @@ const UserSidebarNavbar = () => {
 
   // Sidebar links
   const sidebarLinks = [
+    { to: "/UserHomepage", text: "User Homepage" }, 
     { to: "/UserCategories", text: "User Categories" }, 
     { to: "/UserBookmarks", text: "My Bookmarks" },
     { to: "/UserProfile", text: "Profile" },

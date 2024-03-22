@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AdminAllProduct.css';
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
+import AdminFooter from "../AdminFooter";
 
 
 const AllProducts = () => {
@@ -62,6 +63,7 @@ const AllProducts = () => {
         </tbody>
       </table>
     </div>
+    <AdminFooter/>
     </div>
   );
 };
