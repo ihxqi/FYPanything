@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import UserNavbar from "../UserNavbar";
+import UserSidebarNavbar from "../UserSidebarNavbar";
 import './InterestSurvey.css';
 import Select from 'react-select'; // Import React-Select
+
 
 const tagOptions = [
   { value: 'rings', label: '#rings' },
   { value: 'necklace', label: '#necklace' },
   { value: 'bracelet', label: '#bracelet' }
+];
+
+const blogshopOptions = [
+  { value: 'bf', label: 'bf blogshop' },
+  { value: 'lyla', label: 'dear lyla' },
+  { value: 'diem', label: 'carpe diem' }
 ];
 
 const InterestSurvey = () => {
@@ -20,7 +27,7 @@ const InterestSurvey = () => {
 
   return (
     <div>
-       <UserNavbar />
+       <UserSidebarNavbar />
     <form className="survey-form" onSubmit={handleSubmit}>
       <h2>Interest Survey</h2>
 
@@ -58,12 +65,13 @@ const InterestSurvey = () => {
       <option value="denim">denim</option>
     </select> 
 
-    <label for="blogshops">Please select the blogshop(s) you are interested in</label>
-    <select id="blogshops" name="blogshops">
-      <option value="lyla">dearlyla</option>
-      <option value="bf">bf blogshop</option>
-      <option value="diem">carpe diem</option>
-    </select> 
+   
+
+    {/* Replace the dropdown for adding tags with React-Select */}
+      <label for="itag">Select the blogshop(s) you are interested in:</label>
+      <Select id="itag" name="itag" options={blogshopOptions} isMulti /><br/>
+
+
 
       <button type="submit">Submit Survey</button>
     </form>

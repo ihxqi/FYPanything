@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { AdminGenerateReport, AdminAllProduct, AdminManageUser, UserProfile, UserCategories, UserHomepage, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey, UserBookmarks, AdminManagePartner } from "../components/pages";
+import { PartnerGenerateReport, AdminGenerateReport, AdminAllProduct, AdminManageUser, UserProfile, UserCategories, UserHomepage, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey, UserBookmarks, AdminManagePartner } from "../components/pages";
 import { UnregisteredBlogshopOwner } from "../components/pages";
 
 export default function App() {
@@ -33,6 +33,7 @@ export default function App() {
           <Route path="/AdminManageUser" element={<AdminManageUser/>} />
           <Route path="/AdminAllProduct" element={<AdminAllProduct/>} />
           <Route path="/AdminGenerateReport" element={<AdminGenerateReport/>} />
+          <Route path="/PartnerGenerateReport" element={<PartnerGenerateReport/>} />
         </Routes>
       </div>
     </Router>
