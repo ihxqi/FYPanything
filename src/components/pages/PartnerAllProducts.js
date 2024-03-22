@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PartnerAllProducts.css';
-import UserNavbar from "../UserNavbar";
+import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 
 
 const AllProducts = () => {
@@ -19,7 +19,7 @@ const AllProducts = () => {
 
   return (
     <div>
-      <UserNavbar/>
+      <PartnerSidebarNavbar/>
     <div className="products-container">
       <h1 className="products-header">All Products</h1>
       <div className="search-container">

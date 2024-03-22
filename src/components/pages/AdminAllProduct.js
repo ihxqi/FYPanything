@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AdminAllProduct.css';
-import UserNavbar from "../UserNavbar";
+import AdminSidebarNavbar from "../AdminSidebarNavbar";
 
 
 const AllProducts = () => {
@@ -19,7 +19,7 @@ const AllProducts = () => {
 
   return (
     <div>
-      <UserNavbar/>
+      <AdminSidebarNavbar/>
     <div className="products-container">
       <h1 className="products-header">All Products</h1>
       <div className="search-container">
