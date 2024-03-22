@@ -8,7 +8,8 @@
   min-width: 250px;
   margin-top: 20px;
   padding: 20px;
-  background-color: #f8d7e6; /* Adjust the color to match the wireframe */
+  background-color: #ffe2e6; /* Adjust the color to match the wireframe */
+  margin-left: 50px;
 }
 
 .sidebar-toggle {
@@ -31,6 +32,8 @@
 .product-display {
   flex-grow: 1;
   padding: 20px;
+  margin-top: 30px;
+  margin-left: -10px;
 }
 
 .product-row {
@@ -52,6 +55,8 @@
 .categories {
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
+  margin-left: -60px;
 }
 
 .category-button {
