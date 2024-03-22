@@ -36,3 +36,4 @@ export const Navbar = () => {
   );
 };
 export default Navbar; // Export Navbar as the default export
+

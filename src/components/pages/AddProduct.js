@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AddProduct.css';
-import UserNavbar from "../UserNavbar";
+import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import Select from 'react-select'; // Import React-Select
 
 
@@ -38,7 +38,7 @@ function AddProduct() {
 
     return (
         <div>
-            <UserNavbar />
+            <PartnerSidebarNavbar />
             <div>
                 <div class="AddProductHeader">
                     <h2>Add Product</h2>

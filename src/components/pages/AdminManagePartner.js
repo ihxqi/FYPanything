@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AdminManagePartner.css'; // Ensure the CSS file is named correctly
-import UserNavbar from "../UserNavbar";
+import AdminSidebarNavbar from "../AdminSidebarNavbar";
 
 function AdminManagePartners() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,7 +22,7 @@ function AdminManagePartners() {
 
   return (
     <div>
-    <UserNavbar/>
+    <AdminSidebarNavbar/>
     <div className="white-box"> {/* This div acts as the parent element */}
    
       <hr />

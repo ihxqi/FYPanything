@@ -1,7 +1,7 @@
 // Import React and useState for handling state
 import React, { useState } from 'react';
 import './AdminGenerateReport.css'; // Ensure you have a CSS file with this name in the same directory
-import UserNavbar from "../UserNavbar";
+import AdminSidebarNavbar from "../AdminSidebarNavbar";
 
 // A functional component for the report generator
 function ReportGenerator() {
@@ -29,7 +29,7 @@ function ReportGenerator() {
   // Render the component
   return (
     <div>
-    <UserNavbar/>
+    <AdminSidebarNavbar/>
     <div className="report-generator-container">
       <div className="navbar-placeholder"></div> {/* Blank space for the navbar */}
       <h1>Generate Report</h1>

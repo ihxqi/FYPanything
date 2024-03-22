@@ -1,6 +1,7 @@
 import React from 'react';
 import './UserBookmarks.css';
-import UserNavbar from "../UserNavbar";
+import UserSidebarNavbar from "../UserSidebarNavbar";
+
 import dress1 from '../image/1.JPG';
 import dress2 from '../image/2.jpg';
 import dress3 from '../image/3.JPG';
@@ -31,7 +32,7 @@ function UserBookmarks() {
 
   return (
     <div>
-      <UserNavbar />
+      <UserSidebarNavbar />
       <div className="header"><h1>My Bookmarks</h1></div>
       <div className="bookmarks-page">
         <main className="bookmarks-grid">

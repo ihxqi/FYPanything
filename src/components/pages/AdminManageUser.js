@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AdminManageUser.css'; // Ensure the CSS file is named correctly
-import UserNavbar from "../UserNavbar";
+import AdminSidebarNavbar from "../AdminSidebarNavbar";
 
 
 function AdminManageUsers() {
@@ -23,7 +23,7 @@ function AdminManageUsers() {
 
   return (
     <div>
-    <UserNavbar/>
+    <AdminSidebarNavbar/>
     <div className="white-box"> {/* This div acts as the parent element */}
       
       <hr />
