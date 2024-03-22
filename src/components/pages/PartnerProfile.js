@@ -28,6 +28,7 @@ const PartnerProfile = () => {
   };
 
   return (
+    <div>
     <div className="partner-profile-container">
       <PartnerSidebarNavbar />
       <form className="partner-profile-form" onSubmit={handleSubmit}>
@@ -66,9 +67,10 @@ const PartnerProfile = () => {
 
         <button type="submit">Done</button>
       </form>
-     
     </div>
-    
+    <PartnerFooter />
+    </div>
+  
   );
   
 }

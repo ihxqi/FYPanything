@@ -74,6 +74,7 @@ function AdminManageUsers() {
         </tbody>
       </table>
     </div>
+    <AdminFooter />
     </div>
    
     </div>

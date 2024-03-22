@@ -67,8 +67,9 @@ function AdminManagePartners() {
         </tr>
         </tbody>
       </table>
+      
     </div>
-   
+    <AdminFooter />
     </div>
     
     </div>

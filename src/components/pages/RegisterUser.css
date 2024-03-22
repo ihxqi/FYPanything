@@ -36,22 +36,18 @@ body, html {
   margin-bottom: 50px;
 }
 
-
 /* Style the input containers */
-.label-input-container { 
-  width: 200%; /* Full width */
+.label-input-container
+ { 
+  width: 100%; /* Full width */
   margin-bottom: 10px; /* Space between inputs */
-  margin-left: 1050px;
   display: flex;
   flex-direction: column; /* Stack label and input vertically */
+  margin-left: 350px;
 }
 
-.radio-container {
-  width: 200%; /* Full width */
-  margin-bottom: 10px; /* Space between inputs */
-  margin-left: 1050px;
-  display: flex;
-  flex-direction: column; /* Stack label and input vertically */
+.gender-selection{
+  margin-right: 1150px;
 }
 
 /* Style the labels */
@@ -66,14 +62,30 @@ body, html {
   margin-bottom: 10px; /* Space between inputs */
   border: 1px solid #ddd; /* Light border for inputs */
   border-radius: 5px; /* Slightly rounded corners for inputs */
+  width: 100%; /* Full width */
 }
+
 
 /* Style the radio buttons and their labels */
 .radio-container label {
   display: flex;
   align-items: center;
-  gap: 20px; /* Adjust the space between the radio buttons */
+  margin-right: 10px; /* Adjust the space between the radio button and its label */
+}
 
+/* Style the radio buttons */
+.radio-container input[type="radio"] {
+  margin-right: 5px; /* Adjust the space between the radio button and its label */
+}
+
+/* Style the radio buttons */
+.radio-container input[type="radio"] {
+  margin-right: 5px; /* Adjust the space between the radio button and its label */
+}
+
+/* Bold the Gender label */
+.gender-label {
+  font-weight: bold; /* Bold font for the label */
 }
 
 /* Style the submit button */
@@ -81,43 +93,15 @@ button {
   cursor: pointer;
   padding: 10px 15px;
   font-size: 1 rem;  
-color: black; 
-background-color: #ffe2e6;
-border: none; 
-border-radius: 5px;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-transition: background-color 0.3s ease;
-margin-top: 20px; 
+  color: black; 
+  background-color: #ffe2e6;
+  border: none; 
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease;
+  margin-top: 20px; 
 }
-
 
 button:hover {
-background-color: #CCCCFF;
-}
-
-/* Radio input followed by its text */
-.radio-container input[type="radio"] {
-  margin-right: 5px; /* Small gap between the radio button and its label */
-}
-
-.gender-selection {
-  display: flex; /* Use flexbox for positioning */
-  margin-left: 290px;
-}
-
-/* Style for the gender label */
-.gender-label {
-  margin-right: 30px; /* Space after the "Gender:" label */
-}
-
-/* Flex container for the gender radio buttons */
-.gender-radios {
-  display: flex; /* Display radio buttons inline */
-  margin-right: 590px;
-}
-
-/* Style for each gender radio button and label */
-.gender-radio {
-  margin-right: 40px; /* Space between the radio buttons */
-  white-space: nowrap; /* Prevent wrapping of label text */
+  background-color: #CCCCFF;
 }

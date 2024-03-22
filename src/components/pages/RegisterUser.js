@@ -41,18 +41,12 @@ const RegisterUser = () => {
       </div>
 
       <div class="gender-selection">
-    <div class="gender-label">Gender:</div>
-    <div class="gender-radios">
-      <label class="gender-radio"> Male
-        <input type="radio" name="gender" value="Male" />
-        
-      </label>
-      <label class="gender-radio">Female
-        <input type="radio" name="gender" value="Female" />
-        
-      </label>
-    </div>
-  </div>
+  <div class="gender-label">Gender:</div>
+  <select name="gender" class="gender-dropdown">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+</div>
 
       <div className='label-input-container'>
         <span className='label'>Date of Birth:</span>

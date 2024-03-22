@@ -12,8 +12,6 @@ function Footer() {
           <div className="footer-column">
           <Link to="/AboutUs" className="footer-link">About Us</Link>
             <Link to="/JoinUs" className="footer-link">Join Us</Link>
-            <Link to="/RegisterRole" className="footer-link">Register Role</Link>
-            <Link to="/RegisterPartner" className="footer-link">Register Partner</Link>
           </div>
           <div className="footer-column">
             <Link to="/Login" className="footer-link">Login</Link>
