@@ -21,7 +21,7 @@ const ForgetEmail = () => {
     <Container>
       <Row className="justify-content-md-center">
         <Col md={6}>
-          <div className="login-container">
+          <div className="forgetEmail-container">
             <h1 className="login-header">COLLAFILTER</h1>
             <form className="login-form" onSubmit={handleSubmit}>
               <label htmlFor="username">USERNAME:</label>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import logo from '../components/image/CollaFilter Logo.jpg';
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const UserSidebarNavbar = () => {
@@ -19,22 +18,11 @@ const UserSidebarNavbar = () => {
     { to: "/UserBookmarks", text: "My Bookmarks" },
     { to: "/UserProfile", text: "Profile" },
     { to: "/interestSurvey", text: "Interest Survey" },
-  
-  ];
-
-  // Navbar links
-  const navbarLinks = [
-    { to: "#", text: "Logout" },
-   
+    { to: "/Login", text: "Logout" }, // Include logout link in sidebar
   ];
 
   return (
     <nav className="navbar">
-      {/* Logo */}
-      <Link to="/" className="title">
-        <img src={logo} alt="CollaFilter Logo" className='logo' />
-      </Link>
-
       {/* Hamburger icon for toggling sidebar */}
       <div className={`menu ${menuOpen ? 'open' : ''}`} onClick={toggleSidebar}>
         <div className="hamburger-icon">
@@ -45,27 +33,17 @@ const UserSidebarNavbar = () => {
       </div>
 
       {/* Sidebar */}
-<div className={`sidenav ${collapsed ? 'collapsed' : ''}`}>
-  {!collapsed && (
-    <div className={menuOpen ? "open" : ""}>
-      {sidebarLinks.map((link, index) => (
-        <div key={index}>
-          <NavLink to={link.to}>{link.text}</NavLink>
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-
-
-      {/* Navbar links */}
-      <ul className={menuOpen ? "open" : ""}>
-        {navbarLinks.map((link, index) => (
-          <li key={index}>
-            <NavLink to={link.to}>{link.text}</NavLink>
-          </li>
-        ))}
-      </ul>
+      <div className={`sidenav ${collapsed ? 'collapsed' : ''}`}>
+        {!collapsed && (
+          <div className={menuOpen ? "open" : ""}>
+            {sidebarLinks.map((link, index) => (
+              <div key={index}>
+                <NavLink to={link.to}>{link.text}</NavLink>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </nav>
   );
 };

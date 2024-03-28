@@ -10,13 +10,13 @@ export const RegisterRole = () => {
   return (
     <div>
       <Navbar/>
-    <div className="containerStyle">
+    <div className="RolecontainerStyle">
       <img src={logo} alt="CollaFilter Logo" className='iconStyle' />
       <Link to="/RegisterUser">
-        <button className='buttonStyle'>Register as User</button>
+        <button className='RolebuttonStyle'>Register as User</button>
       </Link>
       <Link to="/RegisterPartner">
-        <button className='buttonStyle'>Register as Partner</button>
+        <button className='RolebuttonStyle'>Register as Partner</button>
       </Link>
     </div>
     <GeneralFooter/>

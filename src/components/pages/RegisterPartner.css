@@ -22,40 +22,41 @@ h2 {
 }
 
 /* Center the form container on the page */
-.form-container {
+.Partnerform-container {
   display: flex;
   flex-direction: column;
-  max-width: 70%; /* Reduced width */
+  max-width: 100%; /* Adjust if necessary to your design */
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: absolute;
-  top: 70%; /* Adjusted positioning */
+  top: 65%; /* Center vertically */
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  padding: 1em;
+  width: 50%; /* Let it define by the content size (Whitebox size) */
+  padding: 20px; 
   background-color: var(--form-background-color);
   border-radius: 0.5em;
   box-shadow: 0 0.2em 0.5em var(--shadow-color);
 }
 
-/* Style the input containers */
-.label-input-container {
-  width: 100%;
-  margin-bottom: em;
+.Partnerlabel-input-container {
+  width: 100%; /* Adjust width to account for padding */
+  margin-bottom: 1em; /* Define a specific margin-bottom */
   display: flex;
   flex-direction: column;
-  margin-right: 350px;
+  margin-right: 0; /* Remove the right margin */
+  align-items: flex-start;
 }
 
 /* Style the labels */
-.label {
+.Partnerlabel {
   margin-bottom: 0.5em;
   font-weight: bold;
 }
 
 /* Style the input fields */
-.input-field {
+.Partnerinput-field {
+  width: 100%; /* Input field size*/
   padding: 0.5em;
   margin-bottom: 0.5em;
   border: 0.1em solid var(--border-color);
@@ -63,19 +64,39 @@ h2 {
 }
 
 /* Style the submit button */
-button {
+.Partnerbutton {
   cursor: pointer;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  color: black; 
-  background-color: var(--button-background);
-  border: none; 
-  border-radius: 0.3em;
-  box-shadow: 0 0.2em 0.5em var(--shadow-color);
+  padding: 10px 20px; /* Add more padding if you want the button taller or wider */
+  font-size: 1em; /* This is typically suitable for most buttons, but adjust as needed */
+  color: #333; /* This is a dark gray color, as black may be too strong */
+  background-color: #ffe2e6; /* A light pink background color, matching your form */
+  border: none !important; /* Removes the border */
+  outline: none !important; /* Removes the outline */
+  border-radius: 5px; /* Gives rounded corners to the button */
+  box-shadow: none; /* Ensures there is no shadow */
   transition: background-color 0.3s ease;
-  margin-top: 1em;
+  display: block; /* Sets the button as a block element */
+  margin: 0 auto; /* Centers the button in its container */
+  text-align: center; /* Ensures text is centered within the button */
 }
 
-button:hover {
-  background-color: var(--button-background-hover);
+.Partnerbutton:hover {
+  background-color: var(--button-background-hover); /* Ensure this variable is defined */
 }
+
+.Partnerregistration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the children */
+  width: 100%; /* This ensures that the container takes the full width */
+}
+
+.Partnerheader {
+  text-align: center; /* Centers the text */
+  width: 100%; /* Makes the header full width */
+  max-width: 500px; /* Same max-width as your form container for alignment */
+  margin: 120px auto 0; /* Centers the header */
+  /* Add additional styling as needed */
+}
+
+

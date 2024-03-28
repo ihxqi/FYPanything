@@ -26,13 +26,14 @@ const products = [
     productLink: 'https://eddddple.com/dress',
     information: 'Fairy vibe',
     tags: ['White', 'Long', 'Fairy', 'Day']
-  },];
+  },
+];
 
 const UserHomepage = () => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
 
   const handleThumbClick = (isThumbsUp) => {
-    // Both thumbs go to next productt
+    // Both thumbs go to next product
     if (isThumbsUp) {
       setCurrentProductIndex(currentProductIndex + 1);
     } else {
@@ -41,30 +42,31 @@ const UserHomepage = () => {
   };
 
   return (
-    <div>
-      <UserSidebarNavbar />
-      <div className="user-page">
-        {products.length > 0 && (
-          <div className="product-container">
-            <img src={products[currentProductIndex].image} alt="Product" />
-            <div className="product-details">
-              <div>Category: {products[currentProductIndex].category}</div>
-              <div>Sub-Category: {products[currentProductIndex].subCategory}</div>
-              <div>Price: {products[currentProductIndex].price}</div>
-              <div>Product Link: <a href={products[currentProductIndex].productLink} target="_blank" rel="noopener noreferrer">Link</a></div>
-              <div>Product Information: {products[currentProductIndex].information}</div>
-              <div>Tags: {products[currentProductIndex].tags.join(', ')}</div>
+      <div>
+        {/* Render UserSidebarNavbar component */}
+        <UserSidebarNavbar />
+        <div className="user-page">
+          {products.length > 0 && (
+            <div className="product-container">
+              <img src={products[currentProductIndex].image} alt="Product" />
+              <div className="product-details">
+                <div>Category: {products[currentProductIndex].category}</div>
+                <div>Sub-Category: {products[currentProductIndex].subCategory}</div>
+                <div>Price: {products[currentProductIndex].price}</div>
+                <div>Product Link: <a href={products[currentProductIndex].productLink} target="_blank" rel="noopener noreferrer">Link</a></div>
+                <div>Product Information: {products[currentProductIndex].information}</div>
+                <div>Tags: {products[currentProductIndex].tags.join(', ')}</div>
+              </div>
             </div>
+          )}
+          {products.length === 0 && <div>No products available.</div>}
+          <div className="thumbs-container">
+            <button onClick={() => handleThumbClick(true)}>👍</button>
+            <button onClick={() => handleThumbClick(false)}>👎</button>
           </div>
-        )}
-        {products.length === 0 && <div>No products available.</div>}
-        <div className="thumbs-container">
-          <button onClick={() => handleThumbClick(true)}>👍</button>
-          <button onClick={() => handleThumbClick(false)}>👎</button>
         </div>
+        <UserFooter />
       </div>
-      <UserFooter/>
-    </div>
   );
 };
 

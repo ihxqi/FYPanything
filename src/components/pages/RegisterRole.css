@@ -1,6 +1,6 @@
 /* RegisterRole.css */
 
-.containerStyle {
+.RolecontainerStyle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,13 +8,13 @@
   margin-top: 50px;
 }
 
-.iconStyle {
-  width: 300px;
+.RoleiconStyle {
+  width: 150px;
   height: auto;
   margin-bottom: 20px;
 }
 
-.buttonStyle {
+.RolebuttonStyle {
   padding: 10px 20px;
   margin: 10px;
   font-size: 18px;
@@ -26,7 +26,7 @@
   transition: background-color 0.3s ease;
 }
 
-.buttonStyle:hover {
+.RolebuttonStyle:hover {
   background-color: #CCCCFF; /* darker shade of blue on hover */
 }
 
