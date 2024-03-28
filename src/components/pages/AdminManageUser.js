@@ -7,11 +7,6 @@ import AdminFooter from "../AdminFooter";
 function AdminManageUsers() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const logout = () => {
-    console.log("Logged out");
-    // Add logout logic or redirect here
-  };
-
   const handleSearch = () => {
     console.log(`Searching for: ${searchTerm}`);
     // Add search logic here

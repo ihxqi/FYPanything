@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RegisterUser.css';
 import Navbar from "../Navbar";
 
@@ -9,75 +10,106 @@ const RegisterUser = () => {
   const [dob, setDob] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phone, setPhoneNumber] = useState('');
   const [country, setCountry] = useState('');
 
+  const navigate = useNavigate();
 
+  const handleRegister = async () => {
+    try {
+      console.log(name);
+      console.log(gender);
+      console.log(dob);
+      console.log(email);
+      console.log(password);
+      console.log(phone);
+      console.log(country);
+      const response = await fetch('/registeruser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          gender,
+          dob,
+          email,
+          password,
+          phone,
+          country,
+        }),
+      });
 
-  const handleRegister = () => {
-    // Implement your registration logic here
-    console.log('Registration data:', {
-      name,
-      gender,
-      dob,
-      email,
-      password,
-      phoneNumber,
-      country,
-    });
+      if (response.ok) {
+        console.log('Registration successful');
+        navigate('/login');
+        // Optionally, you can redirect the user to a different page upon successful registration
+        // window.location.href = '/successPage'; // Redirect to success page
+      } else {
+        console.error('Registration failed');
+        // Handle registration failure
+      }
+    } catch (error) {
+      console.error('Error registering user:', error);
+      // Handle error
+    }
   };
 
   return (
     <div>
       <Navbar/>
-      <div class ="header">
+      <div className="Userregistration-container">
+  <div className="Userheader">
     <h2>User Registration</h2>
     </div>
-    <div className='form-main'>
-    <div className='form-container'>
-      <div className='label-input-container'>
-        <span className='label'>Name:</span>
-        <input className='input-field' type='text' value={name} onChange={(e) => setName(e.target.value)} />
+    </div>
+    <div className='Userform-main'>
+    <div className='Userform-container'>
+      
+      <div className='Userlabel-input-container'>
+        <span className='Userlabel'>Name:</span>
+        <input className='Userinput-field' type='text' value={name} onChange={(e) => setName(e.target.value)} required/>
       </div>
 
-      <div class="gender-selection">
-  <div class="gender-label">Gender:</div>
-  <select name="gender" class="gender-dropdown">
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
+      <div className='Usergender-selection'>
+  <div className='Usergender-label'>Gender:</div>
+  <select name='gender' className='gender-dropdown' value={gender} onChange={(e) => setGender(e.target.value)}>
+  <option value=''>Select Gender</option>
+    <option value='Male'>Male</option>
+    <option value='Female'>Female</option>
   </select>
 </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Date of Birth:</span>
-        <input className='input-field' type='date' value={dob} onChange={(e) => setDob(e.target.value)} />
+      <div className='Userlabel-input-container'>
+        <span className='Userlabel'>Date of Birth:</span>
+        <input className='Userinput-field' type='date' value={dob} onChange={(e) => setDob(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Email:</span>
-        <input className='input-field' type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
+      <div className='Userlabel-input-container'>
+        <span className='Userlabel'>Email:</span>
+        <input className='Userinput-field' type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Password:</span>
-        <input className='input-field' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+      <div className='Userlabel-input-container'>
+        <span className='Userlabel'>Password:</span>
+        <input className='Userinput-field' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Phone Number:</span>
-        <input className='input-field' type='text' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+      <div className='Userlabel-input-container'>
+        <span className='Userlabel'>Phone Number:</span>
+        <input className='Userinput-field' type='text' value={phone} onChange={(e) => setPhoneNumber(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Country:</span>
-        <select className='input-field' value={country} onChange={(e) => setCountry(e.target.value)}>
+      <div className='Userlabel-input-container'>
+        <span className='Userlabel'>Country:</span>
+        <select className='Userinput-field' value={country} onChange={(e) => setCountry(e.target.value)}>
+        <option value=''>Select Country</option>
           <option value='sg'>Singapore</option>
           
           {/* Add more countries as needed */}
         </select>
       </div>
-
-      <button onClick={handleRegister}>Register</button>
+      <button className="Userbutton" onClick={handleRegister}>Register</button>
     </div>
     </div>
     </div>

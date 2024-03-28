@@ -29,40 +29,42 @@ const RegisterUser = () => {
   return (
    <div>
     <Navbar />
-    <div class='header'>
-      <h2>Partner Registration</h2>
+    <div className="Partnerregistration-container">
+  <div className="Partnerheader">
+    <h2>Partner Registration</h2>
+    </div>
     </div>
   
-    <div className='form-container'>
-      <div className='label-input-container'>
-        <span className='label'>Blogshop Name:</span>
-        <input className='input-field' type='text' value={name} onChange={(e) => setName(e.target.value)} />
+    <div className='Partnerform-container'>
+      <div className='Partnerlabel-input-container'>
+        <span className='Partnerlabel'>Blogshop Name:</span>
+        <input className='Partnerinput-field' type='text' value={name} onChange={(e) => setName(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Date of establishment:</span>
-        <input className='input-field' type='date' value={dob} onChange={(e) => setDob(e.target.value)} />
+      <div className='Partnerlabel-input-container'>
+        <span className='Partnerlabel'>Date of establishment:</span>
+        <input className='Partnerinput-field' type='date' value={dob} onChange={(e) => setDob(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Blogshop Email:</span>
-        <input className='input-field' type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
+      <div className='Partnerlabel-input-container'>
+        <span className='Partnerlabel'>Blogshop Email:</span>
+        <input className='Partnerinput-field' type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
 
 
-      <div className='label-input-container'>
-        <span className='label'>Password:</span>
-        <input className='input-field' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+      <div className='Partnerlabel-input-container'>
+        <span className='Partnerlabel'>Password:</span>
+        <input className='Partnerinput-field' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Phone Number:</span>
-        <input className='input-field' type='text' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+      <div className='Partnerlabel-input-container'>
+        <span className='Partnerlabel'>Phone Number:</span>
+        <input className='Partnerinput-field' type='text' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Category:</span>
-        <select className='input-field' value={category} onChange={(e) => setCategory(e.target.value)}>
+      <div className='lPartnerabel-input-container'>
+        <span className='Partnerlabel'>Category:</span>
+        <select className='Partnerinput-field' value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value='' disabled>Select Category</option>
           <option value='Apparel'>Apparel</option>
           <option value='Food'>Food</option>
@@ -70,21 +72,20 @@ const RegisterUser = () => {
         </select>
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Social Links:</span>
-        <input className='input-field' type='text' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+      <div className='Partnerlabel-input-container'>
+        <span className='Partnerlabel'>Social Links:</span>
+        <input className='Partnerinput-field' type='text' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
       </div>
 
-      <div className='label-input-container'>
-        <span className='label'>Country:</span>
-        <select className='input-field' value={country} onChange={(e) => setCountry(e.target.value)}>
+      <div className='Partnerlabel-input-container'>
+        <span className='Partnerlabel'>Country:</span>
+        <select className='Partnerinput-field' value={country} onChange={(e) => setCountry(e.target.value)}>
           <option value='sg'>Singapore</option>
           
           {/* Add more countries as needed */}
         </select>
       </div>
-
-      <button onClick={handleRegister}>Register</button>
+      <button className="Partnerbutton" onClick={handleRegister}>Register</button>
     </div>
     </div>
   );

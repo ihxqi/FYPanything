@@ -18,13 +18,6 @@ const PartnerSidebarNavbar = () => {
     { to: "/AddProduct", text: "Add Products" },
     { to: "/PartnerGenerateReport", text: "Generate Report" },
     { to: "/PartnerProfile", text: "Edit Profile" },
-  
-  ];
-
-  // Navbar links
-  const navbarLinks = [
-    { to: "#", text: "Log out" },
-   
   ];
 
   return (
@@ -44,22 +37,21 @@ const PartnerSidebarNavbar = () => {
       </div>
 
       {/* Sidebar */}
-<div className={`sidenav ${collapsed ? 'collapsed' : ''}`}>
-  {!collapsed && (
-    <div className={menuOpen ? "open" : ""}>
-      {sidebarLinks.map((link, index) => (
-        <div key={index}>
-          <NavLink to={link.to}>{link.text}</NavLink>
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-
+      <div className={`sidenav ${collapsed ? 'collapsed' : ''}`}>
+        {!collapsed && (
+          <div className={menuOpen ? "open" : ""}>
+            {sidebarLinks.map((link, index) => (
+              <div key={index}>
+                <NavLink to={link.to}>{link.text}</NavLink>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Navbar links */}
       <ul className={menuOpen ? "open" : ""}>
-        {navbarLinks.map((link, index) => (
+        {sidebarLinks.map((link, index) => (
           <li key={index}>
             <NavLink to={link.to}>{link.text}</NavLink>
           </li>

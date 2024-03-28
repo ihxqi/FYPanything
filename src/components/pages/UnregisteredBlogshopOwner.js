@@ -4,10 +4,6 @@ import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
 function UnregisteredBlogshopOwner() {
-  const logout = () => {
-    console.log("Logged out");
-    window.location.href = 'index.html'; // This line might need to be adjusted for React Router
-  };
   
   return (
    

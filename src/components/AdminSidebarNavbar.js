@@ -21,13 +21,6 @@ const AdminSidebarNavbar = () => {
     { to: "/AdminGenerateReport", text: "Generate Report" },
     { to: "/UnregisteredBlogshopOwner", text: "View Unregistered Blogshops" },
     { to: "/#", text: "Edit Homepage" },
-  
-  ];
-
-  // Navbar links
-  const navbarLinks = [
-    { to: "#", text: "Log out" },
-   
   ];
 
   return (
@@ -47,22 +40,21 @@ const AdminSidebarNavbar = () => {
       </div>
 
       {/* Sidebar */}
-<div className={`sidenav ${collapsed ? 'collapsed' : ''}`}>
-  {!collapsed && (
-    <div className={menuOpen ? "open" : ""}>
-      {sidebarLinks.map((link, index) => (
-        <div key={index}>
-          <NavLink to={link.to}>{link.text}</NavLink>
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-
+      <div className={`sidenav ${collapsed ? 'collapsed' : ''}`}>
+        {!collapsed && (
+          <div className={menuOpen ? "open" : ""}>
+            {sidebarLinks.map((link, index) => (
+              <div key={index}>
+                <NavLink to={link.to}>{link.text}</NavLink>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Navbar links */}
       <ul className={menuOpen ? "open" : ""}>
-        {navbarLinks.map((link, index) => (
+        {sidebarLinks.map((link, index) => (
           <li key={index}>
             <NavLink to={link.to}>{link.text}</NavLink>
           </li>

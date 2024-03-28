@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from 'react-router-dom'; // Import Navigate for
 import GeneralFooter from "../GeneralFooter";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [redirectToAdmin, setRedirectToAdmin] = useState(false);
   const [redirectToUser, setRedirectToUser] = useState(false);
@@ -16,39 +16,45 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Press");
+    console.log(password) //check
   
     try {
-      const response = await fetch('/AuthLogin', {
+      console.log("Press1");
+      const response = await fetch('/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
   
       if (response.ok) {
         // If login is successful, redirect to appropriate page
         console.log("Logging in");
-        const userRole = await response.text();
-        console.log('userRole:', userRole);
-        if (userRole === 'admin') {
-          console.log("User " + userRole)
-          navigate('/Links')
-        } else if (userRole === 'user') {
-          navigate('/Links')
-        }
-        else{
-          window.alert('Invalid username or password!');
-        }
-      } else {
-        // If login fails, set error state
-        window.alert('Invalid username or password');
+      const userRole = await response.text();
+      console.log('userRole:', userRole);
+      if (userRole === 'admin') {
+        console.log("User " + userRole)
+        navigate('/adminmanagepartner')
+      } else if (userRole === 'user') {
+        navigate('/UserHomepage')
       }
-    } catch (error) {
-      console.error('Error logging in:', error);
-      setError('An error occurred while logging in. Please try again later.');
+      else if (userRole === 'partner') {
+        navigate('/partnerallproducts')
+      }
+      else{
+        window.alert('Invalid username or password!');
+      }
+    } else {
+      // If login fails, set error state
+      console.log("Press2");
+      window.alert('Invalid username or password');
     }
-  };
+  } catch (error) {
+    console.error('Error logging in:', error);
+    setError('An error occurred while logging in. Please try again later.');
+  }
+};
   
 
   // If redirectToRegisterRole is true, redirect to /registerrole
@@ -68,17 +74,17 @@ const Login = () => {
             <div className="login-container">
               <h1 className="login-header">COLLAFILTER</h1>
               <form className="login-form" onSubmit={handleSubmit}>
-                <label htmlFor="username">USERNAME:</label>
+                <label htmlFor="email">Email:</label>
                 <input
                   type="text"
-                  id="username"
-                  name="username"
+                  id="email"
+                  name="email"
                   required
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
 
-                <label htmlFor="password">PASSWORD:</label>
+                <label htmlFor="password">Password:</label>
                 <input
                   type="password"
                   id="password"
