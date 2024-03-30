@@ -5,29 +5,31 @@ body, html {
   background-color: #ffe2e6; /* Replace with the specific background color or image you need */
 }
 
-.survey-form {
+.Interestsurvey-form {
   max-width: 600px;
   margin: 0 auto;
-  padding: 70px;
+  padding: 5%; /* Adjust padding for smaller screens */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 100px;
+  margin-top: 5%; /* Adjust margin-top for smaller screens */
+  background-color: #f8d7e6;
+  border-radius: 20px;
 }
 
-.survey-form h2 {
+.Interestsurvey-form h2 {
   text-align: center;
 }
 
-.survey-form label {
+.Interestsurvey-form label {
   display: block;
   margin-bottom: 15px;
 }
 
-.survey-form label div {
+.Interestsurvey-form label div {
   margin-top: 5px;
 }
 
-.survey-form input[type="text"],
-.survey-form textarea {
+.Interestsurvey-form input[type="text"],
+.Interestsurvey-form textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -35,38 +37,44 @@ body, html {
   border-radius: 4px;
 }
 
-.survey-form input[type="range"] {
+.Interestsurvey-form input[type="range"] {
   width: 100%;
   margin: 10px 0;
 }
 
-.survey-form input[type="radio"] {
-  margin-left: 10px;
-}
+.Interestsurvey-header {
+  text-align: center;
+  margin-top: 10%; /* Adjust as needed */
+} 
 
-  
-@media screen and (max-width: 768px) {
-  .survey-form , .topnav  {
-    flex-direction: column;
-    gap: 0.5em;
-  }
-}
-
-.survey-form button {
+.InterestButton {
   display: block;
-  max-width: 200; /* Set width to auto to fit the content */
-  padding: 0.5rem 1rem; /* Adjust padding as needed */
-  background-color: #007bff;
-  color: white;
+  width: 100%; /* Set width to 100% for responsiveness */
+  padding: 0.5rem 1rem;
+  background-color: #333 !important;
+  color: white !important;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin: 1rem auto; /* Center the button horizontally and provide margin */
-
+  margin-top: 1rem; /* Add margin-top for separation */
 }
 
-
-
-.survey-form button:hover {
-  background-color: #0056b3;
+.Select-menu-outer {
+  max-height: 300px !important; /* Adjust the value as needed */
 }
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .Interestsurvey-form {
+    padding: 10%;
+    margin-top: 10%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Interestsurvey-form {
+    padding: 15%;
+    margin-top: 15%;
+  }
+}
+

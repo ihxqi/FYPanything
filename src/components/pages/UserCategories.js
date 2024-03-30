@@ -32,23 +32,23 @@ function UserCategories() {
   return (
     <div>
         <UserSidebarNavbar />
-        <div className="products-page">
-            <div className="sidebar">
-                <div className="categories">
+        <div className="UserCatproducts-page">
+            <div className="UserCatsidebar">
+                <div className="UserCatcategories">
                     {categories.map((category, index) => (
-                        <button key={index} className="category-button">{category}</button>
+                        <button key={index} className="UserCatcategory-button">{category}</button>
                     ))}
                 </div>
             </div>
-            <div className="product-display">
+            <div className="UserCatproduct-display">
   {products.map((subCategory, index) => (
-    <div key={index} className="product-row">
+    <div key={index} className="UserCatproduct-row">
       <h3>{subCategory.subCategory}</h3>
-      <div className="product-list">
+      <div className="UserCatproduct-list">
         {subCategory.items.map((_, i) => (
-          <button key={i} className="product-item" onClick={() => handleProductClick(subCategory.subCategory, i)}>
+          <button key={i} className="UserCatproduct-item" onClick={() => handleProductClick(subCategory.subCategory, i)}>
             {/* Use a div with a class that styles it as a grey box */}
-            <div className="product-image-placeholder">
+            <div className="UserCatproduct-image-placeholder">
               {/* Optional: Text or an icon to indicate it's a placeholder */}
               <span>Image coming soon</span>
             </div>

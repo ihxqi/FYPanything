@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './RegisterPartner.css';
 import Navbar from '../Navbar';
 
-const RegisterUser = () => {
+const RegisterPartner = () => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [dob, setDob] = useState('');
@@ -10,6 +10,7 @@ const RegisterUser = () => {
   const [password, setPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [country, setCountry] = useState('');
+  const [UENNumber, setUENNumber] = useState('');
 
 
 
@@ -23,6 +24,7 @@ const RegisterUser = () => {
       password,
       phoneNumber,
       country,
+      UENNumber,
     });
   };
 
@@ -62,6 +64,11 @@ const RegisterUser = () => {
         <input className='Partnerinput-field' type='text' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
       </div>
 
+      <div className='Partnerlabel-input-container'>
+        <span className='Partnerlabel'>UEN Number:</span>
+        <input className='Partnerinput-field' type='text' value={UENNumber} onChange={(e) => setUENNumber(e.target.value)} />
+      </div>
+
       <div className='lPartnerabel-input-container'>
         <span className='Partnerlabel'>Category:</span>
         <select className='Partnerinput-field' value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -70,7 +77,7 @@ const RegisterUser = () => {
           <option value='Food'>Food</option>
           <option value='Electronics'>Accessories</option>
         </select>
-      </div>
+      </div><br />
 
       <div className='Partnerlabel-input-container'>
         <span className='Partnerlabel'>Social Links:</span>
@@ -91,4 +98,4 @@ const RegisterUser = () => {
   );
 };
 
-export default RegisterUser;
+export default RegisterPartner;

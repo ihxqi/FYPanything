@@ -7,6 +7,11 @@ import AdminFooter from "../AdminFooter";
 function AdminManageUsers() {
   const [searchTerm, setSearchTerm] = useState('');
 
+  const logout = () => {
+    console.log("Logged out");
+    // Add logout logic or redirect here
+  };
+
   const handleSearch = () => {
     console.log(`Searching for: ${searchTerm}`);
     // Add search logic here
@@ -20,7 +25,7 @@ function AdminManageUsers() {
   return (
     <div>
     <AdminSidebarNavbar/>
-    <div className="white-box"> {/* This div acts as the parent element */}
+    <div className="user-white-box"> {/* This div acts as the parent element */}
       
       <hr />
     <div className="user-management-container">
@@ -38,7 +43,7 @@ function AdminManageUsers() {
           <button onClick={handleSearch}>Search</button>
         </div>
       </div>
-      <table className="users-table">
+      <table className="user-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -59,10 +64,10 @@ function AdminManageUsers() {
       <td contentEditable="false">Singapore</td>
       <td contentEditable="false">409 Jurong East Street 32 </td>
       <td contentEditable="false">12345678</td>
-      <td className="action-column">
+      <td className="user-action-column">
     <input type="radio" id="activate1" name="managepartner1" value="activate" defaultChecked />
   </td>
-  <td className="action-column">
+  <td className="user-action-column">
     <input type="radio" id="suspend1" name="managepartner1" value="suspend" />
   </td>
     </tr>

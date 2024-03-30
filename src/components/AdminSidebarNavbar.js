@@ -20,7 +20,8 @@ const AdminSidebarNavbar = () => {
     { to: "/AdminAllProduct", text: "View All Products" },
     { to: "/AdminGenerateReport", text: "Generate Report" },
     { to: "/UnregisteredBlogshopOwner", text: "View Unregistered Blogshops" },
-    { to: "/#", text: "Edit Homepage" },
+    { to: "/EditHomepage", text: "Edit Homepage" },
+    { to: "/Login", text: "Logout" }, // Include logout link in sidebar
   ];
 
   return (
@@ -52,14 +53,7 @@ const AdminSidebarNavbar = () => {
         )}
       </div>
 
-      {/* Navbar links */}
-      <ul className={menuOpen ? "open" : ""}>
-        {sidebarLinks.map((link, index) => (
-          <li key={index}>
-            <NavLink to={link.to}>{link.text}</NavLink>
-          </li>
-        ))}
-      </ul>
+      
     </nav>
   );
 };

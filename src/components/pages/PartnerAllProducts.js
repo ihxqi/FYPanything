@@ -22,8 +22,8 @@ const AllProducts = () => {
   return (
     <div>
       <PartnerSidebarNavbar/>
-    <div className="products-container">
-      <h1 className="products-header">All Products</h1>
+    <div className="partner-products-container">
+      <h1 className="partner-products-header">All Products</h1>
       <div className="search-container">
         <label htmlFor="search">Search:</label>
         <input
@@ -35,7 +35,7 @@ const AllProducts = () => {
         <button onClick={handleFilter}>Filter</button> {/* Filter button */}
         <button onClick={handleSearch}>Search</button>
       </div>
-      <table className="products-table">
+      <table className="partner-products-table">
         <thead>
           <tr>            
             <th>Name</th>

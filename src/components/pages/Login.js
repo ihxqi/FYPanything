@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import Navbar from "../Navbar";
+import UnregSidebarNavbar from "../UnregSidebarNavbar";
 import './Login.css'; // Ensure you have this CSS file with the correct styles
 import { Navigate, useNavigate } from 'react-router-dom'; // Import Navigate for redirection
 import GeneralFooter from "../GeneralFooter";
@@ -30,7 +30,7 @@ const Login = () => {
   
       if (response.ok) {
         // If login is successful, redirect to appropriate page
-        console.log("Logging in");
+      console.log("Logging in");
       const userRole = await response.text();
       console.log('userRole:', userRole);
       if (userRole === 'admin') {
@@ -48,7 +48,8 @@ const Login = () => {
     } else {
       // If login fails, set error state
       console.log("Press2");
-      window.alert('Invalid username or password');
+      const errorMessage = await response.text();
+      window.alert(errorMessage);
     }
   } catch (error) {
     console.error('Error logging in:', error);
@@ -67,7 +68,7 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar />
+      <UnregSidebarNavbar />
       <Container>
         <Row className="justify-content-md-center">
           <Col md={6}>

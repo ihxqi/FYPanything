@@ -1,6 +1,6 @@
 import React, { useState } from "react"; 
 import { Container, Row, Col } from "react-bootstrap";
-import Navbar from "../Navbar";
+import UnregSidebarNavbar from "../UnregSidebarNavbar";
 import GeneralFooter from "../GeneralFooter";
 
 export const AboutUs = () => {
@@ -59,7 +59,7 @@ export const AboutUs = () => {
 
   return (
     <div>
-      < Navbar />
+      < UnregSidebarNavbar />
     <Container>
       <Row className="mb-5 mt-3">
         <Col lg="15">
@@ -67,12 +67,12 @@ export const AboutUs = () => {
       </Row>
       <Row className="sec_sp">
         <Col lg="5" className="mb-5">
-          <h1 className="display-7 mb-7">About Us Details</h1>
-          We are doing an innovation recommendation system 
+          <h1 className="display-7 mb-7">About Us Details</h1><br />
+          <h5>We are doing an innovation recommendation system 
           based on collaborative filtering about E-commerce.
           Say goodbye to generic product suggestion and hello
           to personalized shopping experience tailored just 
-          for you and you blogshops.
+          for you and you blogshops.</h5>
         </Col>
         <Col lg="7" className="d-flex align-items-center">
           <form className="contact__form w-100" onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-.white-box {
+.partner-white-box {
   background-color: transparent;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -7,19 +7,20 @@
   padding: 0; /* Set padding to 0 */
 }
 
-.partners-management-container {
+.partner-management-container {
     background-color: #ffe2e6;
     min-height: 100vh;
     padding: 0;
     margin-top: 0px;
   }
   
-  .partners-management-header {
+  .partner-management-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     padding: 0 2%;
+    margin-top: 100px;
     
   }
   
@@ -34,7 +35,7 @@
     margin-right: 0.5em;
   }
 
-  .users-table .action-column {
+  .partner-table .action-column {
     width: 5%; /* Adjust the width as needed */
     text-align: center; /* Optional: Centers the content */
   }
@@ -58,7 +59,7 @@
     background-color: #ddd;
   }
   
-  .partners-table {
+  .partner-table {
     width: 90%; /* Adjusted to match user management style */
     margin-top: 1rem;
     margin-left: auto; /* Center the table horizontally */
@@ -67,8 +68,8 @@
     background-color: #fff;
   }
   
-  .partners-table th,
-  .partners-table td {
+  .partner-table th,
+  .partner-table td {
     padding: 0.5rem;
     border-bottom: 1px solid #ddd;
     text-align: center;
@@ -80,7 +81,7 @@
   }
 
   @media (max-width: 768px) {
-    .partners-management-header,
+    .partner-management-header,
     .search-bar {
       flex-direction: column;
     }

@@ -1,12 +1,11 @@
 .partner-profile-container {
-    background-color: #ffe2e6;
-    padding: 20px;
-    max-width: 500px;
-    margin: 0 auto;
-    margin-top: 150px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+  background-color: #ffe2e6;
+  padding: 2rem; /* Responsive padding */
+  max-width: 80%; /* Maximum width as a percentage of the parent */
+  margin: 3rem auto; /* Top margin and auto to center horizontally */
+  border-radius: 0.5rem; /* Responsive border-radius */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
   
   .partner-profile-form {
     display: flex;
@@ -51,4 +50,6 @@
   .partner-profile-form button:hover {
     background-color: #555;
   }
+
+
   

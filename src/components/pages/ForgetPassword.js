@@ -16,13 +16,13 @@ const ForgetPassword = () => {
 
   return (
     <div>
-        <Navbar />
+      <Navbar />
     <Container>
       <Row className="justify-content-md-center">
         <Col md={6}>
-          <div className="login-container">
-            <h1 className="login-header">COLLAFILTER</h1>
-            <form className="login-form" onSubmit={handleSubmit}>
+          <div className="password-container">
+            <h1 className="password-header">COLLAFILTER</h1>
+            <form className="password-form" onSubmit={handleSubmit}>
               <label htmlFor="username">USERNAME:</label>
               <input
                 type="text"

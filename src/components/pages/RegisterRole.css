@@ -1,33 +1,30 @@
-/* RegisterRole.css */
-
 .RolecontainerStyle {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 5vh; /* Use viewport height for responsive top margin */
 }
 
 .RoleiconStyle {
-  width: 150px;
-  height: auto;
-  margin-bottom: 20px;
+  width: 30%; /* Use percentage for responsive width */
+  max-width: 150px; /* Optional max width to ensure it doesn't get too large */
+  height: auto; /* Keep height auto to maintain aspect ratio */
+  margin-bottom: 2vh; /* Use viewport height for responsive bottom margin */
 }
 
 .RolebuttonStyle {
-  padding: 10px 20px;
-  margin: 10px;
-  font-size: 18px;
+  padding: 1vw 2vw; /* Use viewport width for responsive padding */
+  margin: 1vh; /* Use viewport height for responsive margin */
+  font-size: 1vw; /* Use viewport width for responsive font size */
   border: none;
   border-radius: 5px;
-  background-color: #ffe2e6; /* blue color, you can change it as needed */
-  color: black; /* white color for text */
+  background-color: #ffe2e6;
+  color: black;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .RolebuttonStyle:hover {
-  background-color: #CCCCFF; /* darker shade of blue on hover */
+  background-color: #CCCCFF;
 }
-
-/* You can add more styles as needed */

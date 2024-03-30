@@ -31,7 +31,7 @@ const AdminCategories = () => {
         <input type="text" placeholder="Search:" />
         <button>Search</button>
       </div>
-      <table>
+      <table className="categories-table">
         <thead>
           <tr>
             <th>Categories</th>

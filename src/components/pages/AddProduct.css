@@ -1,67 +1,76 @@
-/* AddProduct.css */
+/* AddProduct.css - Responsive Design */
 .add-product-container {
-    max-width: 600px;
+    max-width: 100%; /* Allow the container to expand up to 100% of the viewport width */
     margin: 0 auto;
     padding: 20px;
 }
 
 .AddProductHeader h2 {
-    margin-top: 80px;
+    margin-top: 5%; /* Use relative units */
+
 }
 
 .single-upload-section,
 .batch-upload-section {
-    margin-top: 20px;
+    margin-top: 5%; /* Use relative units for spacing */
 }
 
-input[type="radio"] {
-    width: 10px;
+.addproductradio-group {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center; /* This ensures vertical alignment */
+  gap: 8px; /* Adjust as needed to bring label and radio button closer */
 }
 
-label {
-    display: inline-block;
-    margin-bottom: 5px;
-    margin-left: 10px;
+.addproductradio-button {
+  margin: 0; /* Removes any default margin */
+  /* Remove the 'order' property if it's not aligning correctly */
 }
 
-form {
-    margin-top: 10px;
+.addproductradio-label {
+  margin: 0; /* Removes any default margin */
+  /* No need to set font-size here unless you want to change it */
 }
 
+/* Ensure that the flex container is not wider than necessary */
+.addproductradio-group {
+  width: fit-content;
+}
+  
+
+/* Adjust the width and margin of form elements responsively */
+input[type="radio"],
 .single-upload-form input[type="text"],
 .single-upload-form input[type="number"],
-.single-upload-form input[type="url"],
+.single-upload-form input[type="imageurl"],
+.single-upload-form input[type="linkurl"],
 .single-upload-form select,
-.single-upload-form textarea {
-  width: 150%; /* This will make the inputs take the full width of their container */
- /* This ensures that padding and border don't add up to the width */
-}
-
+.single-upload-form textarea,
 .single-upload-form .react-select__control {
-  width: 200%; /* This targets the React-Select component if it's using the default className */
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
+    width: calc(100% - 40px);
+    margin-bottom: 2%; /* Use relative units for spacing */
+    padding: 1%; /* Use relative units for padding */
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+label {
+    display: block; /* Make labels take their own line for clarity */
+    margin-bottom: 1%; /* Use relative units for spacing */
+}
+
 button[type="submit"] {
+    display: block; /* Make the button take its own line */
+    width: auto; /* Allow the button width to adjust based on its content */
+    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    margin: 2% auto; /* Center the button and add spacing from the above elements */
 }
 
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
-
-/* Add more styles as needed */
