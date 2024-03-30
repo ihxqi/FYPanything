@@ -72,13 +72,13 @@ const RegisterUser = () => {
       </div>
 
       <div className='Usergender-selection'>
-  <div className='Usergender-label'>Gender:</div>
+  <div className='Userlabel'>Gender:</div>
   <select name='gender' className='gender-dropdown' value={gender} onChange={(e) => setGender(e.target.value)}>
   <option value=''>Select Gender</option>
     <option value='Male'>Male</option>
     <option value='Female'>Female</option>
   </select>
-</div>
+</div><br />
 
       <div className='Userlabel-input-container'>
         <span className='Userlabel'>Date of Birth:</span>

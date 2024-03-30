@@ -4,19 +4,19 @@ import './UserFooter.css';
 
 function Footer() {
     return (
-      <footer className="footer-main-container"> {/* Encapsulate everything in a footer element */}
-      <hr className="footer-horizontal-line" /> {/* Horizontal line */}
-      <div className="footer-container">
-        <h4 className="footer-title">Our Links</h4>
-        <div className="footer-links">
-          <div className="footer-column">
-          <Link to="/UserProfile" className="footer-link">User Profile</Link>
-        <Link to="/InterestSurvey" className="footer-link">Interest Survey</Link>
-        <Link to="/UserHomepage" className="footer-link">User Homepage</Link>
+      <footer className="userfooter-main-container"> {/* Encapsulate everything in a footer element */}
+      <hr className="userfooter-horizontal-line" /> {/* Horizontal line */}
+      <div className="userfooter-container">
+        <h4 className="userfooter-title">Our Links</h4>
+        <div className="userfooter-links">
+          <div className="userfooter-column">
+          <Link to="/UserProfile" className="userfooter-link">User Profile</Link>
+        <Link to="/InterestSurvey" className="userfooter-link">Interest Survey</Link>
+        <Link to="/UserHomepage" className="userfooter-link">User Homepage</Link>
           </div>
-          <div className="footer-column">
-          <Link to="/UserCategories" className="footer-link">User Categories</Link>
-          <Link to="/UserBookmarks" className="footer-link">User Bookmarks</Link>
+          <div className="userfooter-column">
+          <Link to="/UserCategories" className="userfooter-link">User Categories</Link>
+          <Link to="/UserBookmarks" className="userfooter-link">User Bookmarks</Link>
           </div>
         </div>
       </div>

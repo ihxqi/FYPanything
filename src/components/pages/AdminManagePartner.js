@@ -6,6 +6,11 @@ import AdminFooter from "../AdminFooter";
 function AdminManagePartners() {
   const [searchTerm, setSearchTerm] = useState('');
 
+  const logout = () => {
+    console.log("Logged out");
+    // Add logout logic or redirect here
+  };
+
   const handleSearch = () => {
     console.log(`Searching for: ${searchTerm}`);
     // Add search logic here
@@ -19,11 +24,11 @@ function AdminManagePartners() {
   return (
     <div>
     <AdminSidebarNavbar/>
-    <div className="white-box"> {/* This div acts as the parent element */}
+    <div className="partner-white-box"> {/* This div acts as the parent element */}
    
       <hr />
-    <div className="user-management-container">
-      <div className="user-management-header">
+    <div className="partner-management-container">
+      <div className="partner-management-header">
         <h1>Blogshop Partners</h1>
         <div className="search-container">
           <label htmlFor="search">Search:</label>
@@ -38,7 +43,7 @@ function AdminManagePartners() {
         </div>
     
       </div>
-      <table className="users-table">
+      <table className="partner-table">
         <thead>
           <tr>
             <th>Blogshop Owner</th>

@@ -1,44 +1,51 @@
-.white-box {
-  background-color: #ffffff;
-  border-radius: 8px;
+.CM-white-box {
+  background-color:  #ffe2e6;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 2%;
-  margin-top:1000px; /* not working*/
-  
+  padding: 1%;
+  margin-top: 0; /* Adjust the margin-top value as needed */
 }
-  
-  .container1 {
-    
-    justify-content: space-between;
-    align-items: center;
-    padding: 1%;
-    
-  }
 
-  .header{
-    margin-top:100px;
-  }
+.CMcontainer {
+  justify-content: space-between;
+  align-items: center;
+  padding: 1%;
+}
 
-  .CMtable {
-    width: 100%;
-    border-collapse: collapse;
-   
+.CMheader {
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; /* Align table header and content center */
+}
+
+.CMtable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.CMtable th,
+.CMtable td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center; /* Align table header and content center */
+}
+
+.CMtable th {
+  background-color: #f2f2f2;
+}
+
+.CMtable tr:nth-child() {
+  background-color: #f9f9f9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .CMheader {
+    margin-top: 50px; /* Adjust the margin-top value for smaller screens */
   }
   
-  
-  .CMtable th,
-  .CMtable td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-    text-align: center; /* Align table header and content center */
-   
+  .CM-white-box {
+    margin-top: 30px; /* Adjust the margin-top value for smaller screens */
   }
-  
-  .CMtable th {
-    background-color: #f2f2f2;
-  }
-  
-  .CMtable tr:nth-child() {
-    background-color: #f9f9f9;
-  }
-  
+}

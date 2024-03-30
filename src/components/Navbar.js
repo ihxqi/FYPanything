@@ -18,20 +18,7 @@ export const Navbar = () => {
         <span></span>
         <span></span>
       </div>
-      <ul className={menuOpen ? "open" : ""}>
-        <li>      
-          <NavLink to="/login">Login</NavLink>
-        </li>
-        <li>
-        <NavLink to="/registerrole">Register</NavLink> 
-        </li>
-        <li>
-        <NavLink to="/joinus">Join Us</NavLink>
-        </li>
-        <li>
-        <NavLink to="/about">About Us</NavLink>
-        </li>
-      </ul>
+
     </nav>
   );
 };

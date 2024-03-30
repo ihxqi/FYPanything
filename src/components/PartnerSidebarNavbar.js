@@ -18,6 +18,7 @@ const PartnerSidebarNavbar = () => {
     { to: "/AddProduct", text: "Add Products" },
     { to: "/PartnerGenerateReport", text: "Generate Report" },
     { to: "/PartnerProfile", text: "Edit Profile" },
+    { to: "/Login", text: "Logout" }, // Include logout link in sidebar
   ];
 
   return (
@@ -49,14 +50,7 @@ const PartnerSidebarNavbar = () => {
         )}
       </div>
 
-      {/* Navbar links */}
-      <ul className={menuOpen ? "open" : ""}>
-        {sidebarLinks.map((link, index) => (
-          <li key={index}>
-            <NavLink to={link.to}>{link.text}</NavLink>
-          </li>
-        ))}
-      </ul>
+      
     </nav>
   );
 };

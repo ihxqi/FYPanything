@@ -1,19 +1,23 @@
 .why-join-us-container {
-    background-color: #ffe2e6; /* Background color of the page */
-    text-align: center; /* Center the text */
-    padding: 50px 0; /* Padding at the top and bottom */
-  }
-  
-  .why-join-us-container h2 {
-    color: #333; /* Color for the subtitle */
-    margin-bottom: 10px; /* Space below the subtitle */
-  }
-  
-  .why-join-us-container h1 {
-    color: #000; /* Color for the main title */
-    font-size: 36px; /* Size of the main title */
-    margin-bottom: 30px; /* Space below the main title */
-  }
+  background-color: #ffe2e6; /* Background color of the page */
+  text-align: center; /* Center the text */
+  padding: 5vh 0; /* Padding relative to the height of the viewport */
+}
+
+.why-join-us-container h2 {
+  color: #333; /* Color for the subtitle */
+  margin-bottom: 1rem; /* Space below the subtitle, responsive */
+  text-align: center; /* Center the text */
+  width: 100%; /* Ensure full width to center content */
+  display: block; /* Display block to enable text alignment */
+}
+
+.why-join-us-container h1 {
+  color: #000; /* Color for the main title */
+  font-size: 2.25rem; /* Size of the main title, responsive */
+  margin-bottom: 2rem; /* Space below the main title, responsive */
+  text-align: center; /* Center the text */
+}
   
   .benefits {
     display: flex; /* Align benefits side by side */

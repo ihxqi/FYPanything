@@ -45,11 +45,11 @@ const UserHomepage = () => {
       <div>
         {/* Render UserSidebarNavbar component */}
         <UserSidebarNavbar />
-        <div className="user-page">
+        <div className="UserHomeuser-page">
           {products.length > 0 && (
-            <div className="product-container">
+            <div className="UserHomeproduct-container">
               <img src={products[currentProductIndex].image} alt="Product" />
-              <div className="product-details">
+              <div className="UserHomeproduct-details">
                 <div>Category: {products[currentProductIndex].category}</div>
                 <div>Sub-Category: {products[currentProductIndex].subCategory}</div>
                 <div>Price: {products[currentProductIndex].price}</div>
@@ -60,7 +60,7 @@ const UserHomepage = () => {
             </div>
           )}
           {products.length === 0 && <div>No products available.</div>}
-          <div className="thumbs-container">
+          <div className="UserHomethumbs-container">
             <button onClick={() => handleThumbClick(true)}>👍</button>
             <button onClick={() => handleThumbClick(false)}>👎</button>
           </div>

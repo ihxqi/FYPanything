@@ -1,22 +1,24 @@
 .user-profile-container {
   background-color: #f8d7e6;
-  padding: 2vw; /* Responsive padding */
-  max-width: 90%; /* Maximum width of 90% */
-  margin-top: 8vw; /* Responsive margin top */
-  margin-left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Center horizontally */
-  border-radius: 2vw; /* Responsive border radius */
-  box-shadow: 0 0.5vw 1.25vw rgba(0, 0, 0, 0.1); /* Responsive box shadow */
+  padding: 1vw 1vw; /* Smaller padding */
+  max-width: 30%; /* Narrower maximum width */
+  margin-top: 8vw;
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  border-radius: 2vw;
+  box-shadow: 0 0.5vw 1.25vw rgba(0, 0, 0, 0.1);
 }
+
 
 .user-profile-form {
   display: flex;
   flex-direction: column;
+  
 }
 
 .user-profile-form h1 {
   text-align: center;
-  margin-bottom: 2vw; /* Responsive margin bottom */
+  margin-bottom: 1vw; /* Responsive margin bottom */
 }
 
 .user-profile-form label {
@@ -30,15 +32,14 @@
 .user-profile-form input[type="date"],
 .user-profile-form select {
   width: 100%;
-  padding: 1vw; /* Responsive padding */
+  padding: 0.6vw; /* Responsive padding */
   margin-top: 0.5vw; /* Responsive margin top */
   border: 0.1vw solid #ccc; /* Responsive border */
   border-radius: 0.5vw; /* Responsive border radius */
+  
+  
 }
 
-.user-profile-form input[type="radio"] {
-  margin-right: 0.5vw; /* Responsive margin right */
-}
 
 .user-profile-form button {
   padding: 1vw 2vw; /* Responsive padding */
@@ -47,7 +48,7 @@
   border: none;
   border-radius: 0.5vw; /* Responsive border radius */
   cursor: pointer;
-  margin-top: 2vw; /* Responsive margin top */
+  margin-top: 1vw; /* Responsive margin top */
   align-self: center;
 }
 

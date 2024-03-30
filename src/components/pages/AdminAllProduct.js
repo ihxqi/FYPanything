@@ -21,8 +21,8 @@ const AllProducts = () => {
   return (
     <div>
       <AdminSidebarNavbar/>
-    <div className="products-container">
-      <h1 className="products-header">All Products</h1>
+    <div className="admin-products-container">
+      <h1 className="admin-products-header">All Products</h1>
       <div className="search-container">
         <label htmlFor="search">Search:</label>
         <input
@@ -34,7 +34,7 @@ const AllProducts = () => {
         <button onClick={handleFilter}>Filter</button> {/* Filter button */}
         <button onClick={handleSearch}>Search</button>
       </div>
-      <table className="products-table">
+      <table className="admin-products-table">
         <thead>
           <tr>            
             <th>Name</th>
@@ -49,7 +49,7 @@ const AllProducts = () => {
           </tr>
         </thead>
         <tbody>
-            <td contentEditable="true">Rectangular Dress</td>
+            <td contentEditable="true">Night Dress</td>
             <td contentEditable="true">Apparel</td>
             <td contentEditable="true">Dress</td>
             <td contentEditable="true">$10</td>

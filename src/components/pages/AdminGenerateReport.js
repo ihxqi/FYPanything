@@ -6,13 +6,14 @@ import AdminFooter from "../AdminFooter";
 
 // A functional component for the report generator
 function ReportGenerator() {
-  // State to keep track of the selected month
+  // State to keep track of the selected month and year
   const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedYear, setSelectedYear] = useState('');
 
   // Placeholder data for the table
   const reportData = [
-    { name: 'Name1', type: 'User', amount: '$10' },
-    { name: 'Name2', type: 'User', amount: '$10' },
+    { name: 'Coco Beth', type: 'User', status: 'Suspended' },
+    { name: 'LoveClothes.co', type: 'Partner', status: 'Active' },
     // Add more placeholder data as needed...
   ];
 
@@ -22,9 +23,15 @@ function ReportGenerator() {
     // Implement logic to fetch the report based on selected month
   };
 
-  // Function to download the report
-  const handleDownloadReport = () => {
-    // Implement logic to download the report
+  // Function to handle year change
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+    // Implement logic to fetch the report based on selected year
+  };
+
+  // Function to generate the report
+  const handleGenerateReport = () => {
+    // Implement logic to generate the report
   };
 
   // Render the component
@@ -33,25 +40,31 @@ function ReportGenerator() {
     <AdminSidebarNavbar/>
     <div className="report-generator-container">
       <div className="navbar-placeholder"></div> {/* Blank space for the navbar */}
-      <h1>Generate Report</h1>
+      <h1>Admin's Report</h1>
       <div className="filter-bar">
-        {/*<label htmlFor="month">Month:</label>*/}
+        {/* Month select */}
         <select name="month" id="month" onChange={handleMonthChange}>
-          {/* Map through all months and render options */}
           {Array.from({ length: 12 }, (v, i) => (
             <option key={i} value={i + 1}>
               {new Date(0, i).toLocaleString('default', { month: 'long' })}
             </option>
           ))}
         </select>
-        <button onClick={() => {}}>Search</button>
+        {/* Year select */}
+        <select name="year" id="year" onChange={handleYearChange}>
+          {Array.from({ length: 10 }, (v, i) => (
+            <option key={i} value={new Date().getFullYear() - i}>
+              {new Date().getFullYear() - i}
+            </option>
+          ))}
+        </select>
       </div>
       <table className="report-table">
         <thead>
           <tr>
             <th>Name</th>
             <th>Profile Type</th>
-            <th>Amount</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -59,13 +72,13 @@ function ReportGenerator() {
             <tr key={index}>
               <td>{item.name}</td>
               <td>{item.type}</td>
-              <td>{item.amount}</td>
+              <td>{item.status}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button className="download-button" onClick={handleDownloadReport}>
-        Download
+      <button className="generate-button" onClick={handleGenerateReport}>
+        Generate
       </button>
     </div>
     <AdminFooter/>

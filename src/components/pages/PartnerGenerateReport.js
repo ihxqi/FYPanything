@@ -8,11 +8,12 @@ import PartnerFooter from "../PartnerFooter";
 function ReportGenerator() {
   // State to keep track of the selected month
   const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedYear, setSelectedYear] = useState('');
 
   // Placeholder data for the table
   const reportData = [
-    { name: 'Blogshop1', noOfLikes: '2', noOfDislikes: '3', linkclick: '4'},
-    { name: 'Blogshop2', noOfLikes: '5', noOfDislikes: '1', linkclick: '2'},
+    { product: 'Product1', noOfLikes: '2', noOfDislikes: '3', linkclick: '4'},
+    { product: 'Product2', noOfLikes: '5', noOfDislikes: '1', linkclick: '2'},
     // Add more placeholder data as needed...
   ];
 
@@ -22,8 +23,13 @@ function ReportGenerator() {
     // Implement logic to fetch the report based on selected month
   };
 
-  // Function to download the report
-  const handleDownloadReport = () => {
+  // Function to handle year change
+const handleYearChange = (event) => {
+  setSelectedYear(event.target.value);
+  // Implement logic to fetch the report based on selected year
+};
+
+  const handleGenerateReport = () => {
     // Implement logic to download the report
   };
 
@@ -31,10 +37,10 @@ function ReportGenerator() {
   return (
     <div>
     <PartnerSidebarNavbar/>
-    <div className="report-generator-container">
-      <div className="navbar-placeholder"></div> {/* Blank space for the navbar */}
-      <h1>Generate Report</h1>
-      <div className="filter-bar">
+    <div className="partnerreport-generator-container">
+      <div className="partnerreportnavbar-placeholder"></div> {/* Blank space for the navbar */}
+      <h1 className="partnerreporth1">Partner's Report</h1>
+      <div className="partnerreportfilter-bar">
         {/*<label htmlFor="month">Month:</label>*/}
         <select name="month" id="month" onChange={handleMonthChange}>
           {/* Map through all months and render options */}
@@ -44,12 +50,19 @@ function ReportGenerator() {
             </option>
           ))}
         </select>
-        <button onClick={() => {}}>Search</button>
+        {/* Year select */}
+<select name="year" id="year" onChange={handleYearChange}>
+  {Array.from({ length: 10 }, (v, i) => (
+    <option key={i} value={new Date().getFullYear() - i}>
+      {new Date().getFullYear() - i}
+    </option>
+  ))}
+</select>
       </div>
-      <table className="report-table">
+      <table className="partnerreport-table">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Product</th>
             <th>Number of Likes</th>
             <th>Number of Dislikes</th>
             <th>Product Link Clicked</th>
@@ -58,7 +71,7 @@ function ReportGenerator() {
         <tbody>
           {reportData.map((item, index) => (
             <tr key={index}>
-              <td>{item.name}</td>
+              <td>{item.product}</td>
               <td>{item.noOfLikes}</td>
               <td>{item.noOfDislikes}</td>
               <td>{item.linkclick}</td>
@@ -66,8 +79,8 @@ function ReportGenerator() {
           ))}
         </tbody>
       </table>
-      <button className="download-button" onClick={handleDownloadReport}>
-        Download
+      <button className="partnergenerate-button" onClick={handleGenerateReport}>
+        Generate
       </button>
     </div>
     <PartnerFooter/>

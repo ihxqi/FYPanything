@@ -4,18 +4,18 @@ import './PartnerFooter.css';
 
 function Footer() {
     return (
-      <footer className="footer-main-container"> {/* Encapsulate everything in a footer element */}
-      <hr className="footer-horizontal-line" /> {/* Horizontal line */}
-      <div className="footer-container">
-        <h4 className="footer-title">Our Links</h4>
-        <div className="footer-links">
-          <div className="footer-column">
-          <Link to="/PartnerProfile" className="footer-link">Partner Profile</Link>
-          <Link to="/PartnerGenerateReport" className="footer-link">PartnerGenerateReport</Link>
+      <footer className="partnerfooter-main-container"> {/* Encapsulate everything in a footer element */}
+      <hr className="partnerfooter-horizontal-line" /> {/* Horizontal line */}
+      <div className="partnerfooter-container">
+        <h4 className="partnerfooter-title">Our Links</h4>
+        <div className="partnerfooter-links">
+          <div className="partnerfooter-column">
+          <Link to="/PartnerProfile" className="partnerfooter-link">Partner Profile</Link>
+          <Link to="/PartnerGenerateReport" className="partnerfooter-link">PartnerGenerateReport</Link>
           </div>
-          <div className="footer-column">
-          <Link to="/AddProduct" className="footer-link">Add Product</Link>
-          <Link to="/PartnerAllProducts" className="footer-link">Partner View All Products</Link>
+          <div className="partnerfooter-column">
+          <Link to="/AddProduct" className="partnerfooter-link">Add Product</Link>
+          <Link to="/PartnerAllProducts" className="partnerfooter-link">Partner View All Products</Link>
           </div>
         </div>
       </div>

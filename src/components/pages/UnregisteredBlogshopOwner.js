@@ -4,13 +4,17 @@ import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
 function UnregisteredBlogshopOwner() {
+  const logout = () => {
+    console.log("Logged out");
+    window.location.href = 'index.html'; // This line might need to be adjusted for React Router
+  };
   
   return (
    
-   <div className="white-box">
+   <div className="CM-white-box">
     <div>
      <AdminSidebarNavbar />
-     <div class="header">
+     <div class="CMheader">
   <h2>Blogshop Owner Onboarding</h2>
   </div>
   
