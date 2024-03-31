@@ -13,7 +13,7 @@ function ReportGenerator() {
   // Placeholder data for the table
   const reportData = [
     { name: 'Coco Beth', type: 'User', status: 'Suspended' },
-    { name: 'LoveClothes.co', type: 'Partner', status: 'Active' },
+    { name: 'LoveClothes.co', type: 'admin', status: 'Active' },
     // Add more placeholder data as needed...
   ];
 
@@ -38,10 +38,10 @@ function ReportGenerator() {
   return (
     <div>
     <AdminSidebarNavbar/>
-    <div className="report-generator-container">
-      <div className="navbar-placeholder"></div> {/* Blank space for the navbar */}
-      <h1>Admin's Report</h1>
-      <div className="filter-bar">
+    <div className="adminreport-generator-container">
+      <div className="adminreportnavbar-placeholder"></div> {/* Blank space for the navbar */}
+      <h1 className="adminreporth1">Admin's Report</h1>
+      <div className="adminreportfilter-bar">
         {/* Month select */}
         <select name="month" id="month" onChange={handleMonthChange}>
           {Array.from({ length: 12 }, (v, i) => (
@@ -59,7 +59,7 @@ function ReportGenerator() {
           ))}
         </select>
       </div>
-      <table className="report-table">
+      <table className="adminreport-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -77,7 +77,7 @@ function ReportGenerator() {
           ))}
         </tbody>
       </table>
-      <button className="generate-button" onClick={handleGenerateReport}>
+      <button className="admingenerate-button" onClick={handleGenerateReport}>
         Generate
       </button>
     </div>

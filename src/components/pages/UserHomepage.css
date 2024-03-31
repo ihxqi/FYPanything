@@ -63,3 +63,44 @@
 .UserHomeproduct-container a:hover {
   color: darkblue;
 }
+
+.related-products h2 {
+  font-size: 2rem;
+  margin-top: 100px; /* Adjust as needed */
+  margin-right: 120px;
+  text-align: center; /* Center aligns the text content within the h2 */
+}
+
+.related-products{
+  margin-left: 150px;
+}
+
+
+.related-products .product-list {
+  display: flex;
+  justify-content: center; /* Center products horizontally */
+  align-items: center;
+  flex-wrap: wrap; /* Ensure products wrap to the next line if they exceed container width */
+}
+
+.related-products .product {
+  margin-right: 150px; /* Adjust the margin to increase the gap */
+  margin-bottom: 100px; /* Add margin at the bottom to create vertical spacing */
+  justify-content: center;
+}
+.related-product-placeholder {
+  width: 160px; /* Width of the placeholder */
+  height: 160px; /* Height of the placeholder */
+  background-color: #ccc; /* Grey background color */
+  margin-bottom: 20px; /* Add margin at the bottom to create vertical spacing */
+  display: flex; /* Ensure the placeholder is displayed as a flex container */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  /* Optionally, add border-radius to make it visually appealing */
+  border-radius: 8px;
+}
+
+
+
+
+

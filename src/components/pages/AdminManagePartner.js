@@ -6,11 +6,6 @@ import AdminFooter from "../AdminFooter";
 function AdminManagePartners() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const logout = () => {
-    console.log("Logged out");
-    // Add logout logic or redirect here
-  };
-
   const handleSearch = () => {
     console.log(`Searching for: ${searchTerm}`);
     // Add search logic here
@@ -24,13 +19,13 @@ function AdminManagePartners() {
   return (
     <div>
     <AdminSidebarNavbar/>
-    <div className="partner-white-box"> {/* This div acts as the parent element */}
+    <div className="partner-management-white-box"> {/* This div acts as the parent element */}
    
       <hr />
     <div className="partner-management-container">
       <div className="partner-management-header">
         <h1>Blogshop Partners</h1>
-        <div className="search-container">
+        <div className="partner-management-search-container">
           <label htmlFor="search">Search:</label>
           <input
             id="search"
@@ -38,12 +33,12 @@ function AdminManagePartners() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button onClick={handleFilter}>Filter</button>
-          <button onClick={handleSearch}>Search</button>
+          <button className="partner-management-filter-button" onClick={handleFilter}>Filter</button>
+          <button className="partner-management-search-bar-button" onClick={handleSearch}>Search</button>
         </div>
     
       </div>
-      <table className="partner-table">
+      <table className="partner-management-table">
         <thead>
           <tr>
             <th>Blogshop Owner</th>
@@ -58,10 +53,10 @@ function AdminManagePartners() {
           <td contentEditable="false">Example Partner</td>
           <td contentEditable="false">example.com</td>
           <td contentEditable="false">Fashion</td>
-          <td className="action-column">
+          <td className="partner-management-action-column">
     <input type="radio" id="activate1" name="managepartner1" value="activate" defaultChecked />
   </td>
-  <td className="action-column">
+  <td className="partner-management-action-column">
     <input type="radio" id="suspend1" name="managepartner1" value="suspend" />
   </td>
         </tr>
