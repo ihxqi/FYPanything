@@ -11,3 +11,6 @@ User:
 Partner
 <!-- email: partner@email.com -->
 <!-- password: Partner -->
+
+admin
+<!-- email: admin -->
