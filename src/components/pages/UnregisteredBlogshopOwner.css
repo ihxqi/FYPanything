@@ -17,11 +17,13 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center; /* Align table header and content center */
+  font-size: 10px;
 }
 
 .CMtable {
   width: 100%;
   border-collapse: collapse;
+  background-color: #fff;
 }
 
 .CMtable th,

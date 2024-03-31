@@ -99,15 +99,15 @@ function AddProduct() {
                                 </label><br />
 
                                 <label><br />
-     Category:
-     {/* Assuming `Select` is imported from 'react-select' and `catOptions` is defined */}
-     <Select id="category" name="category" options={catOptions} isMulti />
- </label><br />
- <label>
-     Sub-Category:
-     {/* Populate options dynamically based on selected category */}
-     <Select id="subcategory" name="subcategory" options={subcatOptions} isMulti />
-     </label><br />
+                                Category:
+                                {/* Assuming `Select` is imported from 'react-select' and `catOptions` is defined */}
+                                <Select id="category" name="category" options={catOptions} isMulti />
+                            </label><br />
+                            <label>
+                                Sub-Category:
+                                {/* Populate options dynamically based on selected category */}
+                                <Select id="subcategory" name="subcategory" options={subcatOptions} isMulti />
+                                </label><br />
                                 <label>
                                     Tags:
                                     {/* Populate options dynamically based on selected category */}
@@ -140,3 +140,4 @@ function AddProduct() {
 }
 
 export default AddProduct;
+

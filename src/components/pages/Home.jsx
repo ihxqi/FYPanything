@@ -40,7 +40,7 @@ const Home = () => {
   </div>
 </div>
 
-
+<div className="interactive-sections">
       {/* Video Section */}
 
       <div className="video-section">
@@ -54,6 +54,7 @@ const Home = () => {
         <em><h3><b>Bookmark Your Favorites</b></h3></em>
         <img src={bookmark} alt="Bookmarks" />
         <p>Unlock Your Next Favorite With Us!</p>
+      </div>
       </div>
       <GeneralFooter/>
       </div>

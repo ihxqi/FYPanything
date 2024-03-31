@@ -36,6 +36,10 @@
 .addproductradio-group {
   width: fit-content;
 }
+
+.single-upload-form {
+  padding: 0 1rem; /* This padding will prevent children from touching the edges of the form */
+}
   
 
 /* Adjust the width and margin of form elements responsively */
@@ -47,11 +51,11 @@ input[type="radio"],
 .single-upload-form select,
 .single-upload-form textarea,
 .single-upload-form .react-select__control {
-    width: calc(100% - 40px);
-    margin-bottom: 2%; /* Use relative units for spacing */
-    padding: 1%; /* Use relative units for padding */
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: calc(100% - 2rem); /* This will calculate the width as the full width of the form minus some space for padding */
+  margin-bottom: 1rem; /* Adjust the space between elements */
+  padding: 0.5rem; /* Padding inside the elements */
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 label {
@@ -73,4 +77,10 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .AddProductHeader h2 {
+    margin-top: 120px; /* Adjust this value based on your navbar's height */
+  }
 }

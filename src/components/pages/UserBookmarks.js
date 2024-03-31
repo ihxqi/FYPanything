@@ -24,11 +24,18 @@ const bookmarks = [
 ];
 
 function UserBookmarks() {
+
   const handleClick = (bookmarkId, url) => {
     console.log(`Clicked on bookmark with ID: ${bookmarkId}`);
     if (url) {
       window.open(url, '_blank'); // Open URL in a new tab
     }
+  };
+
+   const handleRemoveBookmark = (bookmarkId, event) => {
+    event.stopPropagation(); // This stops the click from bubbling up to the parent elements
+    console.log(`Remove bookmark with ID: ${bookmarkId}`);
+    // Add your logic to remove the bookmark here
   };
 
   return (
@@ -43,6 +50,12 @@ function UserBookmarks() {
               className="bookmark-item"
               onClick={() => handleClick(bookmark.id, bookmark.url)}
             >
+            <button 
+                className="remove-bookmark-button" 
+                onClick={(event) => handleRemoveBookmark(bookmark.id, event)}
+              >
+                &times;
+              </button>
               <a href={bookmark.url} target="_blank" rel="noopener noreferrer">
                 <img src={bookmark.image} alt={bookmark.name} /> {/* Using the image */}
               </a>

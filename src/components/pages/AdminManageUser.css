@@ -1,4 +1,4 @@
-.user-white-box {
+.user-management-white-box {
   background-color: transparent;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -23,42 +23,58 @@
     margin-top: 100px;
   }
   
-  .search-container {
+  .user-management-search-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 1em;
+    gap: 10px; /* Space between search input and button */
+    margin-bottom: 50px; /* Space below the search area */
   }
   
-  .search-container label {
-    margin-right: 0.5em;
+  .user-management-search-container label,
+  .user-management-search-container input[type="text"],
+  .user-management-search-container button {
+    height: 40px; /* Ensuring all children have the same height */
+    padding: 0 10px; /* Providing padding within the children */
+    margin: 0; /* Removing any default margins */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
   }
   
-  .search-bar input {
-    padding: 0.5em;
+  .user-management-search-container label{
+    margin-top:15px;
+  }
+  
+  .user-management-search-container input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .user-table .user-action-column {
-    width: 5%; /* Adjust the width as needed */
-    text-align: center; /* Optional: Centers the content */
+    font-size: 1rem;
+    flex-grow: 1;
   }
   
-  .search-bar button {
-    padding: 0.5em 1em;
-    background-color: #e7e7e7;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  .user-management-search-container button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: black; /* Button background */
+    color: white; /* Button text */
     cursor: pointer;
   }
   
-  .search-bar button:hover {
-    background-color: #ddd;
+  .user-management-filter-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px; /* Space between search input and button */
+    margin-bottom: 50px; /* Space below the search area */
   }
   
-  .user-table {
+  .user-management-search-container button:hover {
+    background-color: #555; /* Button hover effect */
+  }
+
+  
+  .user-management-table {
     width: 90%;
     margin-top: 1rem;
     margin-left: auto; /* Center the table horizontally */
@@ -67,27 +83,30 @@
     background-color: #fff;
   }
   
-  .user-table th,
-  .user-table td {
+  .user-management-table th,
+  .user-management-table td {
     padding: 0.5rem;
     border-bottom: 1px solid #ddd;
   }
   
-  .user-table th {
+  .user-management-table th {
     background-color: #f8f8f8;
   }
 
-
+  .user-management-table .user-management-action-column {
+    width: 5%; /* Adjust the width as needed */
+    text-align: center; /* Optional: Centers the content */
+  }
 
   
   @media (max-width: 768px) {
     .user-management-header,
-    .search-bar {
+    .user-management-search-bar {
       flex-direction: column;
     }
   
-    .search-bar input[type="text"],
-    .search-bar button
+    .user-management-search-bar-input[type="text"],
+    .user-management-search-bar-button
      {
       width: 100%;
     }

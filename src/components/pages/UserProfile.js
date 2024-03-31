@@ -7,22 +7,20 @@ import Navbar from "../Navbar";
 function UserProfile() {
   const [user, setUser] = useState({
     name: '',
-    dateOfBirth: '',
+    dob: '',
     email: '',
-    phoneNumber: '',
+    phone: '',
     country: ''
   });
 
-  const userId = 'user_id'; // Replace 'user_id' with the actual user ID
-
   useEffect(() => {
-    // Fetch user data from backend when the component mounts
+    // Fetch user data when the component mounts
     fetchUserData();
   }, []); // Empty dependency array to run only once
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`/user/${userId}`);
+      const response = await fetch('/user');
       if (response.ok) {
         const userData = await response.json();
         setUser(userData);
@@ -45,7 +43,7 @@ function UserProfile() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`/user/${userId}`, {
+      const response = await fetch('/user/' + user._id, { // Use user._id to specify the userId
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -54,6 +52,10 @@ function UserProfile() {
       });
       if (response.ok) {
         console.log('User data updated successfully');
+        window.alert("Updated successfully!");
+        // Optionally, you can fetch updated user data after the update operation
+        // This ensures that the user interface reflects the latest changes
+        await fetchUserData();
       } else {
         console.error('Error updating user data:', response.statusText);
       }
@@ -77,17 +79,17 @@ function UserProfile() {
 
           <label>
             Date of Birth:
-            <input type="date" name="dateOfBirth" value={user.dateOfBirth || ""} onChange={handleChange} disabled placeholder="" />
+            <input type="date" name="dob" value={user.dob || ""} onChange={handleChange} disabled placeholder="" />
           </label>
 
           <label>
             Email:
-            <input type="email" name="email" value={user.email} onChange={handleChange} placeholder="" />
+            <input type="email" name="email" value={user.email} onChange={handleChange} placeholder="" disabled />
           </label>
 
           <label>
             Phone Number:
-            <input type="tel" name="phoneNumber" value={user.phoneNumber} onChange={handleChange} placeholder="" />
+            <input type="tel" name="phone" value={user.phone} onChange={handleChange} placeholder="" />
           </label>
 
           <label>
@@ -95,7 +97,7 @@ function UserProfile() {
             <select name="country" value={user.country} onChange={handleChange} placeholder="">
               {/* Options would be populated dynamically in a real-world app */}
               <option value="">Select Country</option>
-              <option value="Singapore">Singapore</option>
+              <option value="sg">Singapore</option>
               <option value="Malaysia">Malaysia</option>
               <option value="Indonesia">Indonesia</option>
             </select>
