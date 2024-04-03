@@ -1,119 +1,309 @@
 
-
-.categories-container {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: #ffe2e6; /* Light pink background */
-  }
-  
-  .categories-container h1 {
-    color: #333;
-    text-align: center;
-  }
-  
-  .header{
-    position: relative; /* or 'absolute' depending on your layout */
-    top: 10px; /* Adjust the value as needed */
+.admin-categories-container {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: #ffe2e6; /* Light pink background */
 }
-  
 
-  .search-bar {
+.admin-categories-container h1 {
+  color: #333;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: lighter;
+  margin-top: 100px;
+ 
+}
+
+.admin-categories-header{
+  position: relative; /* or 'absolute' depending on your layout */
+  top: 8px; /* Adjust the value as needed */
+
+}
+
+
+.admin-categories-search-bar {
+  display: flex;
+  align-items: baseline;
+  padding: 10px;
+  max-width: 300px;
+  margin: 0 auto; /* Center the search bar horizontally */
+  margin-right: 40px; /* Remove the left margin to move the search bar to the left */
+}
+
+.admin-categories-search-bar label,
+.admin-categories-search-bar input[type="text"],
+.admin-categories-search-bar button {
+height: 40px; /* Ensuring all children have the same height */
+padding: 0 10px; /* Providing padding within the children */
+margin: 0; /* Removing any default margins */
+box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.admin-categories-search-bar input {
+  margin-right: 1rem; /* Increase the gap between the search input and the button */
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.admin-categories-search-bar button {
+  padding: 0.5rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 1rem; /* Increase the gap between the button and the search input */
+}
+
+.admin-categories-search-bar button:hover {
+  background-color: #555; /* Darker background color on hover */
+}
+
+
+.admin-categories-table {
+  width: 100%; /* Table width */
+  border-collapse: collapse;
+  margin-top: 1rem; /* Space above the table */
+  background-color: #fff;
+}
+
+.admin-categories-table th, 
+.admin-categories-table td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 8px; /* Padding within table cells */
+}
+
+/* Header cells */
+.admin-categories-table th {
+  background-color: #f3f3f3;
+}
+
+.admin-categories-tables td {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.admin-categories-edit-button, .admin-categories-remove-button {
+  margin: 0 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-categories-edit-button {
+  background-color: #4CAF50; /* Green for edit */
+  color: white;
+}
+
+.admin-categories-remove-button {
+  background-color: #f44336; /* Red for remove */
+  color: white;
+}
+
+.admin-categories-add-categories-button {
+  display: block;
+  max-width: 200; /* Set width to auto to fit the content */
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 1rem auto; /* Center the button horizontally and provide margin */
+}
+
+
+.admin-categories-add-categories-button:hover {
+  background-color: #555;
+}
+
+.admin-categories-pagination {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-categories-edit-popup,
+.admin-categories-new-popup {
+  position: fixed;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the popup */
+  background-color: white; /* White background */
+  padding: 10px; /* Reduced padding */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
+.admin-categories-edit-popup h2,
+.admin-categories-new-popup h2 {
+font-size: 40px;
+margin-left: 50px;
+margin-top: 30px;
+}
+
+.admin-categories-edit-popup input,
+.admin-categories-new-popup input {
+  width: 80%; /* Adjust the width to make the input fields longer */
+  margin-top: 20px; /* Add margin to separate the input fields */
+  padding: 10px;
+  height: 80%;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.editPopup-save-category-button,
+.newPopup-save-category-button {
+  padding: 10px 20px;
+  margin-right: 20px; /* Add margin between buttons */
+  background-color: #333; /* Dark background color */
+  color: #f3f3f3; /* White text color */
+  margin-top: 20px; /* Add margin to separate buttons */
+}
+
+.editPopup-cancel-category-button,
+.newPopup-cancel-category-button {
+  padding: 10px 20px;
+  margin-right: 20px; /* Add margin between buttons */
+  background-color: #333; /* Dark background color */
+  color: #f3f3f3; /* White text color */
+  margin-top: 10px; /* Add margin to separate buttons */
+}
+
+.admin-categories-edit-form,
+.admin-categories-new-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-categories-edit-form div,
+.admin-categories-new-form div {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin-bottom: 10px;
+}
+
+.admin-categories-edit-form label,
+.admin-categories-new-form label {
+  margin-right: 10px;
+  margin-top: 10px;
+  min-width: 100px; /* Adjust the width of the label */
+}
+
+
+/* Responsive adjustments for categories page */
+@media (max-width: 768px) {
+  .admin-categories-container {
+    max-width: 95%; /* Limits the maximum width of categories container */
+    margin: 0 auto; /* Centers the categories container horizontally */
+  }
+  
+  .admin-categories-search-bar {
+    flex-direction: column; /* Stacks the search label, input, and button vertically */
+    gap: 5px; /* Adds a small gap between stacked elements */
+  }
+  
+  .admin-categories-search-bar label,
+  .admin-categories-search-bar input[type="text"],
+  .admin-categories-search-bar button {
+    width: 100%; /* Makes the search label, input, and button full width for small screens */
+  }
+  
+  .admin-categories-table {
+    font-size: 0.9rem; /* Reduces the font size of table text on small screens */
+  }
+
+  .admin-categories-edit-popup,
+  .admin-categories-new-popup {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the popup */
+    background-color: white; /* White background */
+    padding: 10px; /* Reduced padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
     display: flex;
-    align-items: baseline; /* Align items baselines in the flex container */
-    padding: 1rem;
-    max-width: 300px; /* Adjust the maximum width as needed */
-    margin-left: auto; /* Push the search bar to the right side */
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+  }
+  
+  .admin-categories-edit-popup h2,
+  .admin-categories-new-popup h2 {
+    font-size: 40px;
+    margin-left: 0; /* Center the heading */
+    margin-top: 30px;
+  }
+  
+  .admin-categories-edit-popup input,
+  .admin-categories-new-popup input {
+    width: 80%; /* Adjust the width to make the input fields longer */
+    margin-top: 20px; /* Add margin to separate the input fields */
+    padding: 10px;
+    height: 80%;
+    margin-bottom: 10px;
+  }
+  
+  .editPopup-save-category-button,
+  .editPopup-cancel-category-button,
+  .newPopup-save-category-button,
+  .newPopup-cancel-category-button {
+    padding: 10px 20px;
+    margin-right: 20px; /* Add margin between buttons */
+    background-color: #333; /* Dark background color */
+    color: #f3f3f3; /* White text color */
+    margin-top: 20px; /* Add margin to separate buttons */
+  }
+  
+  .admin-categories-edit-form,
+  .admin-categories-new-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-categories-edit-form div,
+  .admin-categories-new-form div {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    margin-bottom: 10px;
+  }
+  
+  .admin-categories-edit-form label,
+  .admin-categories-new-form label {
+    margin-right: 10px;
+    margin-top: 10px;
+    min-width: 100px; /* Adjust the width of the label */
+  }
+
+  .admin-categories-edit-popup, 
+  .admin-categories-new-popup{
+    width: 80%; /* Adjust the width of the popup for smaller screens */
+  }
+    
+  .admin-categories-edit-popup h2,
+  .admin-categories-new-popup h2 {
+    font-size: 24px; /* Reduce the font size of the heading for smaller screens */
+  }
+    
+  .admin-categories-edit-popup input,
+  .admin-categories-new-popup input {
+    width: 90%; /* Adjust the width of the input fields for smaller screens */
+  }
+    
+  .editPopup-save-category-button,
+  .editPopup-cancel-category-button,
+  .newPopup-save-category-button,
+  .newPopup-cancel-category-button {
+    width: 40%; /* Adjust the width of the buttons for smaller screens */
+  }
 }
 
-.search-bar label,
-.search-bar input[type="text"],
-.search-bar button {
-  height: 40px; /* Ensuring all children have the same height */
-  padding: 0 10px; /* Providing padding within the children */
-  margin: 0; /* Removing any default margins */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
 
-.search-bar input {
-    margin-right: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.search-bar button {
-    padding: 0.5rem; /* Adjusted padding */
-    background-color: #333; /* Dark color for buttons */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
-  
-  .search-bar button:hover {
-    background-color: #555;
-  }
-  
-  table {
-    width: 100%;
-    margin-top: 1rem;
-    border-collapse: collapse;
-  }
-  
-  table, th, td {
-    border: 1px solid #ccc;
-  }
-  
-  th {
-    background-color: #eee; /* Lighter gray for table header */
-    color: #333;
-  }
-  
-  td {
-    text-align: center;
-    padding: 0.5rem;
-  }
-  
-  .edit-button, .remove-button {
-    margin: 0 0.25rem;
-    padding: 0.25rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .edit-button {
-    background-color: #4CAF50; /* Green for edit */
-    color: white;
-  }
-  
-  .remove-button {
-    background-color: #f44336; /* Red for remove */
-    color: white;
-  }
-  
-  .add-categories-button {
-    display: block;
-    max-width: 200; /* Set width to auto to fit the content */
-    padding: 0.5rem 1rem; /* Adjust padding as needed */
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 1rem auto; /* Center the button horizontally and provide margin */
-}
-
-  
-  .add-categories-button:hover {
-    background-color: #555;
-  }
-  
-  .pagination {
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  

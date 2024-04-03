@@ -1,74 +1,136 @@
 import React, { useState } from 'react';
 import './AdminManagePartner.css'; // Ensure the CSS file is named correctly
+import Select from 'react-select'; // Import React-Select
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
 function AdminManagePartners() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [categoryFilter, setCategoryFilter] = useState(null);
+  const [actionStatus, setActionStatus] = useState({}); // State to hold individual statuses
+  const [partnerData] = useState([
+    { name: 'Example Partner', url: 'example.com', uen: 'xxx', category: 'Fashion' },
+    { name: 'Ali Partner', url: 'ali.com', uen: 'xxx', category: 'Fashion' },
+    { name: 'dear lyla', url: 'dearlyla.com', uen: 'xxx', category: 'Clothes' }
+  ]);
+  const [filteredPartnerData, setFilteredPartnerData] = useState(partnerData);
+
+  // Define your options for the dropdown
+  const blogshopOptions = [
+    { value: 'bf blogshop', label: 'bf blogshop' },
+    { value: 'dear lyla', label: 'dear lyla' },
+    { value: 'carpe diem', label: 'carpe diem' }
+  ];
+  const categoryOptions = [
+    { value: 'Clothes', label: 'Clothes' },
+    { value: 'Shoes', label: 'Shoes' },
+    { value: 'Accessories', label: 'Accessories' }
+  ];
 
   const handleSearch = () => {
-    console.log(`Searching for: ${searchTerm}`);
-    // Add search logic here
+    if (selectedOption) {
+      const selectedBlogshop = selectedOption.label;
+      const filteredPartners = partnerData.filter(partner => partner.name === selectedBlogshop);
+      setFilteredPartnerData(filteredPartners);
+      console.log('Filtered partners:', filteredPartners);
+    } else {
+      setFilteredPartnerData(partnerData);
+      console.log('No option selected');
+    }
   };
 
   const handleFilter = () => {
-    console.log("Filter clicked");
-    // Add filter logic here
+    if (categoryFilter) {
+      const selectedCategory = categoryFilter.value;
+      const filteredPartners = partnerData.filter(partner => partner.category === selectedCategory);
+      setFilteredPartnerData(filteredPartners);
+      console.log('Filtered partners by category:', filteredPartners);
+    } else {
+      setFilteredPartnerData(partnerData);
+      console.log('No category selected');
+    }
+  };
+
+  const handleActivate = (partnerName) => {
+    console.log("Activate clicked for:", partnerName);
+    // Add activate logic here
+    setActionStatus(prevStatus => ({
+      ...prevStatus,
+      [partnerName]: "Activated" // Update status for the clicked partner
+    }));
+  };
+
+  const handleSuspend = (partnerName) => {
+    console.log("Suspend clicked for:", partnerName);
+    // Add suspend logic here
+    setActionStatus(prevStatus => ({
+      ...prevStatus,
+      [partnerName]: "Suspended" // Update status for the clicked partner
+    }));
   };
 
   return (
     <div>
-    <AdminSidebarNavbar/>
-    <div className="white-box"> {/* This div acts as the parent element */}
-   
-      <hr />
-    <div className="user-management-container">
-      <div className="user-management-header">
-        <h1>Blogshop Partners</h1>
-        <div className="search-container">
-          <label htmlFor="search">Search:</label>
-          <input
-            id="search"
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button onClick={handleFilter}>Filter</button>
-          <button onClick={handleSearch}>Search</button>
+      <AdminSidebarNavbar />
+      <div className="partner-management-white-box">
+        <hr />
+        <div className="partner-management-container">
+          <div className="partner-management-header">
+            <h1>Blogshop Partners</h1>
+            <div className="partner-management-search-container">
+              <label htmlFor="blogshop-options">Search Blogshop:</label>
+              <Select
+                id="blogshop-options"
+                options={blogshopOptions}
+                value={selectedOption}
+                onChange={setSelectedOption}
+                placeholder="Select a blogshop..."
+                isSearchable={true}
+              />
+              <label htmlFor="category-filter">Filter by Category:</label>
+              <Select
+                id="category-filter"
+                options={categoryOptions}
+                value={categoryFilter}
+                onChange={setCategoryFilter}
+                placeholder="Select a category..."
+                isSearchable={false}
+              />
+              <button className="partner-management-search-bar-button" onClick={handleSearch}>Search</button>
+              <button className="partner-management-filter-bar-button" onClick={handleFilter}>Filter</button>
+            </div>
+          </div>
+          <table className="partner-management-table">
+            <thead>
+              <tr>
+                <th>Blogshop Owner</th>
+                <th>URL</th>
+                <th>UEN Number</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredPartnerData.map((partner, index) => (
+                <tr key={index}>
+                  <td>{partner.name}</td>
+                  <td>{partner.url}</td>
+                  <td>{partner.uen}</td>
+                  <td>{partner.category}</td>
+                  <td>{actionStatus[partner.name]}</td>
+                  <td className="partner-management-action-column">
+                    <button className="admin-activate-partner-button" onClick={() => handleActivate(partner.name)}>Activate</button>
+                    <button className="admin-suspend-partner-button" onClick={() => handleSuspend(partner.name)}>Suspend</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    
+        <AdminFooter />
       </div>
-      <table className="users-table">
-        <thead>
-          <tr>
-            <th>Blogshop Owner</th>
-            <th>URL</th>
-            <th>Category</th>
-            <th>Activate</th>
-            <th>Suspend</th>
-          </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td contentEditable="false">Example Partner</td>
-          <td contentEditable="false">example.com</td>
-          <td contentEditable="false">Fashion</td>
-          <td className="action-column">
-    <input type="radio" id="activate1" name="managepartner1" value="activate" defaultChecked />
-  </td>
-  <td className="action-column">
-    <input type="radio" id="suspend1" name="managepartner1" value="suspend" />
-  </td>
-        </tr>
-        </tbody>
-      </table>
-      
     </div>
-    <AdminFooter />
-    </div>
-    
-    </div>
-   
   );
 }
 

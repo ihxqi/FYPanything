@@ -1,96 +1,57 @@
-.white-box {
-    background-color: transparent;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 1% 0; /* Remove horizontal margins */
-    margin-top: -25px;
-    padding: 0; /* Set padding to 0 */
+.user-management-white-box {
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1% 0; /* Remove horizontal margins */
+  margin-top: -25px;
+  padding: 0; /* Set padding to 0 */
+}
+
+.user-management-container {
+  background-color: #ffe2e6; /* Pink background as seen in the wireframe */
+  padding: 2rem; /* Responsive padding */
+  max-width: 90%; /* Percentage width for responsiveness */
+  margin: 20px auto; /* Auto centers the container, top and bottom margin for space */
+  margin-top: 6.5rem; /* Responsive top margin */
+  margin-bottom: 40rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
+}
+
+.user-management-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2%;
+  margin-top: 2rem;
+}
+
+.user-management-table {
+  width: 90%;
+  margin-top: 3rem;
+  margin-left: auto; /* Center the table horizontally */
+  margin-right: auto;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.user-management-table th,
+.user-management-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-management-table th {
+  background-color: #f8f8f8;
+}
+
+.user-management-action-column {
+  width: 5%; /* Adjust the width as needed */
+  text-align: center; /* Optional: Centers the content */
+}
+
+@media (max-width: 768px) {
+  .user-management-header {
+    flex-direction: column;
   }
-  
-  .user-management-container {
-      background-color: #ffe2e6;
-      min-height: 100vh;
-      padding: 0;
-      margin-top: 0px;
-    }
-    
-    .user-management-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      padding: 0 2%;
-      margin-top: 100px;
-    }
-    
-    .search-container {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 1em;
-    }
-    
-    .search-container label {
-      margin-right: 0.5em;
-    }
-    
-    .search-bar input {
-      padding: 0.5em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .users-table .action-column {
-      width: 5%; /* Adjust the width as needed */
-      text-align: center; /* Optional: Centers the content */
-    }
-    
-    .search-bar button {
-      padding: 0.5em 1em;
-      background-color: #e7e7e7;
-      color: #333;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    
-    .search-bar button:hover {
-      background-color: #ddd;
-    }
-    
-    .users-table {
-      width: 90%;
-      margin-top: 1rem;
-      margin-left: auto; /* Center the table horizontally */
-      margin-right: auto;
-      border-collapse: collapse;
-      background-color: #fff;
-    }
-    
-    .users-table th,
-    .users-table td {
-      padding: 0.5rem;
-      border-bottom: 1px solid #ddd;
-    }
-    
-    .users-table th {
-      background-color: #f8f8f8;
-    }
-  
-
-
-    
-    @media (max-width: 768px) {
-      .user-management-header,
-      .search-bar {
-        flex-direction: column;
-      }
-    
-      .search-bar input[type="text"],
-      .search-bar button
-       {
-        width: 100%;
-      }
-    }
-    
-    
+}
