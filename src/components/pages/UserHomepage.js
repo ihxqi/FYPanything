@@ -40,16 +40,23 @@ const UserHomepage = () => {
       setCurrentProductIndex(currentProductIndex + 1);
     }
   };
+   // Simulated related products data
+   const relatedProducts = [
+    { id: 1, name: 'Product 1', image: 'product1.jpg', price: '$19.99' },
+    { id: 2, name: 'Product 2', image: 'product2.jpg', price: '$24.99' },
+    { id: 3, name: 'Product 3', image: 'product3.jpg', price: '$29.99' },
+    // Add more simulated products as needed
+  ];
 
   return (
       <div>
         {/* Render UserSidebarNavbar component */}
         <UserSidebarNavbar />
-        <div className="user-page">
+        <div className="UserHomeuser-page">
           {products.length > 0 && (
-            <div className="product-container">
+            <div className="UserHomeproduct-container">
               <img src={products[currentProductIndex].image} alt="Product" />
-              <div className="product-details">
+              <div className="UserHomeproduct-details">
                 <div>Category: {products[currentProductIndex].category}</div>
                 <div>Sub-Category: {products[currentProductIndex].subCategory}</div>
                 <div>Price: {products[currentProductIndex].price}</div>
@@ -60,13 +67,31 @@ const UserHomepage = () => {
             </div>
           )}
           {products.length === 0 && <div>No products available.</div>}
-          <div className="thumbs-container">
+          <div className="UserHomethumbs-container">
             <button onClick={() => handleThumbClick(true)}>👍</button>
             <button onClick={() => handleThumbClick(false)}>👎</button>
           </div>
+        {/* Related Products */}
+<div className="related-products">
+  <h2>You May Also Like</h2>
+  <div className="product-list">
+    {relatedProducts.map(product => (
+      <div key={product.id} className="product">
+        <div className="related-product-placeholder">
+          {/* Optionally, you can add text or an icon indicating that the image is loading */}
+          Loading...
         </div>
-        <UserFooter />
+        <h3>{product.name}</h3>
+        <p>{product.price}</p>
+        {/* Add more product details as needed */}
+                </div>
+              ))}
+
+          </div>
+        </div>
       </div>
+      <UserFooter/>
+    </div>
   );
 };
 

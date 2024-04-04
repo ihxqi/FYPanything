@@ -63,11 +63,11 @@
 
 .admin-products-table {
   width: 90%; /* Adjusted to match user management style */
-    margin-top: 1rem;
-    margin-left: auto; /* Center the table horizontally */
-    margin-right: auto;
-    border-collapse: collapse;
-    background-color: #fff;
+  margin-top: 1rem;
+  margin-left: auto; /* Center the table horizontally */
+  margin-right: auto;
+  border-collapse: collapse;
+  background-color: #fff;
 }
 
 .admin-products-table th,

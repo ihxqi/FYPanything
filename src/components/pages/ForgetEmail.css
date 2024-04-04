@@ -7,24 +7,23 @@ body, html {
   
   /* The login container */
   .forgetEmail-container {
-    width: 350px;
+    width: 450px;
     margin: 0 auto;
-    padding-top: 100px; /* Adjust as needed */
+    padding-top: 80px; /* Adjust as needed */
     text-align: center;
   }
   
   /* The logo and header styles */
-  .login-header {
+  .email-header {
     color: #000; /* Adjust color as needed */
     margin-bottom: 20px;
     font-size: 24px; /* Adjust size as needed */
   }
   
   /* Styling for the form inputs */
-  .login-form input[type="text"],
-  .login-form input[type="password"]
-  .login-form input[type="cpassword"] {
-    width: 100%;
+  .email-form input[type="text"],
+  .email-form input[type="password"] {
+    width: 80%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -32,20 +31,20 @@ body, html {
   }
   
   /* Styling for the links */
-  .login-form a {
+  .email-form a {
     color: #000; /* Adjust color as needed */
     text-decoration: none;
     display: inline-block;
     margin: 10px 0;
   }
   
-  .login-form a:hover {
+  .email-form a:hover {
     text-decoration: underline;
   }
   
   /* Styling for the submit button */
-  .login-form input[type="submit"] {
-    width: 100%;
+  .email-form input[type="submit"] {
+    width: 40%;
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -54,18 +53,18 @@ body, html {
     cursor: pointer;
   }
   
-  .login-form input[type="submit"]:hover {
+  .email-form input[type="submit"]:hover {
     background-color: #555; /* Darker shade for hover effect */
   }
   
   /* If you have additional text or elements, you can add more styles here */
-  .login-form p {
+  .email-form p {
     color: #000; /* Adjust as needed */
   }
   
   /* Adjust media query breakpoints as needed for responsive adjustments */
   @media (max-width: 768px) {
-    .login-container {
+    .email-container {
       width: 90%;
     }
   }

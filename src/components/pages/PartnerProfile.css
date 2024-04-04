@@ -1,12 +1,11 @@
 .partner-profile-container {
-    background-color: #ffe2e6;
-    padding: 20px;
-    max-width: 500px;
-    margin: 0 auto;
-    margin-top: 150px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+  background-color: #ffe2e6;
+  padding: 5%; /* Use percentage for responsive padding */
+  max-width: 90%; /* Max width is a percentage of the viewport width */
+  margin: 5% auto; /* Top margin is responsive, auto centers horizontally */
+  border-radius: 4%; /* Responsive border-radius */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
   
   .partner-profile-form {
     display: flex;
@@ -15,40 +14,38 @@
   
   .partner-profile-form h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5%; /* Keeps the bottom margin responsive */
+    margin-top: 20px; /* Uses viewport height unit to ensure it doesn't get covered */
   }
   
   .partner-profile-form label {
-    margin-bottom: 10px;
+    margin-bottom: 1rem; /* Use rem for consistent scaling */
     color: #333;
   }
   
   .partner-profile-form input[type="text"],
   .partner-profile-form input[type="date"],
   .partner-profile-form select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+    width: calc(100% - 16px); /* Account for padding */
+    padding: 1rem; /* Use rem for consistent padding */
+    margin-top: 0.5rem; /* Use rem for consistent spacing */
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
+  /* Adjust the size of radio buttons on smaller screens if necessary */
   .partner-profile-form input[type="radio"] {
-    margin-right: 5px;
+    margin-right: 0.5rem; /* Use rem for consistent spacing */
   }
   
   .partner-profile-form button {
-    padding: 10px 20px;
+    padding: 1rem 2rem; /* Use rem for padding */
     background-color: #333;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
-    align-self: center;
-  }
-  
-  .partner-profile-form button:hover {
-    background-color: #555;
+    margin-top: 2rem; /* Use rem for consistent spacing above the button */
+    align-self: center; /* Keep the button centered */
   }
   

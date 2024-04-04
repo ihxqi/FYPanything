@@ -1,50 +1,65 @@
-.products-page {
+.UserCatproducts-page {
   display: flex;
-  background-color: #ffe2e6; /* Adjust the color to match the wireframe */
+  background-color: #ffe2e6;
   min-height: 100vh;
+  align-items: flex-start; /* Align to the top */
 }
 
-.sidebar {
-  min-width: 250px;
+.UserCatsidebar {
+  width: 100%; /* Full width on small screens */
   margin-top: 20px;
+  max-width: 250px;
   padding: 20px;
   background-color: #ffe2e6; /* Adjust the color to match the wireframe */
   margin-left: 50px;
 }
 
-.sidebar-toggle {
+.UserCatsidebar-toggle {
   background: none;
   border: none;
   font-size: 24px;
   cursor: pointer;
 }
 
-.logo {
+.UserCatlogo {
   display: block;
   width: 100px; /* Adjust the size as needed */
   margin: 10px 0;
 }
 
-.category {
+.UserCatcategory {
   margin-bottom: 10px;
 }
 
-.product-display {
+.UserCatproduct-display {
   flex-grow: 1;
   padding: 20px;
+  width: calc(100% - 250px);
   margin-top: 30px;
   margin-left: -10px;
 }
 
-.product-row {
+.UserCatproduct-row {
   margin-bottom: 20px;
 }
 
-.product-row h3 {
+.UserCatproduct-row h3 {
   margin-bottom: 10px;
 }
 
-.product-list {
+.UserCatselected-category-header {
+  text-align: center;
+  font-size: 2rem; /* Start with a base font size */
+  padding: 20px;
+  background-color: #ffe2e6; /* Adjust the background color to match your design */
+  color: #333; /* Adjust the text color as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow for depth */
+  margin-top: 20px; /* Provide space from the top content */
+  border-radius: 10px; /* Rounded corners */
+  overflow: hidden; /* Ensures content doesn't spill outside the border-radius */
+}
+
+.UserCatproduct-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px; /* Adjust the size of the gap as needed */
@@ -52,14 +67,15 @@
 }
 
 
-.categories {
+.UserCatcategories {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
   margin-left: -60px;
 }
 
-.category-button {
+.UserCatcategory-button {
+  width: 100%;
   padding: 10px 15px;
   margin: 5px 0; /* Adjust the margin as needed */
   border: none;
@@ -71,11 +87,11 @@
   font-size: 1rem;
 }
 
-.category-button:hover {
+.UserCatcategory-button:hover {
   background-color: #e6c2d6; /* A slightly darker shade for hover effect */
 }
 
-.product-item {
+.UserCatproduct-item {
   width: 160px; /* Width of product cards */
   height: 160px; /* Height of product cards, making it a square */
   border: 1px solid #ccc; /* Optional border for the box */
@@ -89,8 +105,12 @@
   position: relative; /* Establish containing block for absolute positioning */
 }
 
+.UserCatproduct-item:hover {
+  transform: var(--item-hover-transform);
+}
+
 /* Center the text within the .product-image-placeholder */
-.product-image-placeholder {
+.UserCatproduct-image-placeholder {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -99,49 +119,22 @@
   color: white; /* Text color, can be changed as needed */
 }
 
-/* Responsive adjustments for mobile and smaller windows */
-@media screen and (max-width: 768px) {
-.products-page {
-    flex-direction: column; /* Stack sidebar and product display on top of each other */
+@media (max-width: 768px) {
+  .UserCatselected-category-header {
+    font-size: 1.5rem; /* Smaller font size for tablets */
+    padding: 15px; /* Smaller padding */
+  }
 }
 
-.sidebar {
-    min-width: 100%; /* Sidebar takes full width */
-    margin-bottom: 20px; /* Space between sidebar and product display */
-}
-
-.product-display {
-    padding: 10px; /* Smaller padding */
-}
-
-.product-list {
-    justify-content: center; /* Center the products */
-}
-
-.product-item {
-    width: calc(50% - 20px); /* Adjust width for two items per row with the gap included */
-    height: auto; /* Height can be auto to maintain aspect ratio */
-    margin-bottom: 20px; /* Maintain spacing between rows */
-}
-
-.category-button {
-    padding: 8px 10px; /* Smaller padding */
-    font-size: 0.9rem; /* Smaller font size */
-}
-
-.product-row h3 {
-    font-size: 1rem; /* Smaller font size */
-}
-}
-
-/* Further adjustments for very small screens, like phones in portrait mode */
-@media screen and (max-width: 480px) {
-.product-item {
-    width: calc(100% - 20px); /* Full width for very small screens */
+@media (max-width: 480px) {
+  .UserCatselected-category-header {
+    font-size: 1.25rem; /* Even smaller font size for mobile phones */
+    padding: 10px; /* Even smaller padding */
+  }
 }
 
 
 
-}
+
 
 

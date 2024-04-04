@@ -1,10 +1,10 @@
-.footer-main-container {
+.adminfooter-main-container {
     width: 100%;
     background-color: #ffe2e6;
     margin-top: 0;
   }
   
-  .footer-horizontal-line {
+  .adminfooter-horizontal-line {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, #ffe2e6, #333, #ffe2e6); /* Gradient line */
@@ -12,7 +12,7 @@
     margin-top: 100px;
   }
 
-.footer-container {
+.adminfooter-container {
     background-color: #ffe2e6;
     padding: 2rem; /* Padding at the top and bottom */
     color: #333; /* Text color */
@@ -22,25 +22,25 @@
     margin-top: 50px;
 }
 
-.footer-title {
+.adminfooter-title {
     margin-bottom: 1rem; /* Space between the title and the links */
     text-align: center; /* Center the text of the title */
 }
 
-.footer-links {
+.adminfooter-links {
     display: flex; /* Using flexbox for layout */
     justify-content: center; /* Center the link columns */
     flex-wrap: wrap; /* Wrap columns if needed */
     gap: 2rem; /* Space between columns */
 }
 
-.footer-column {
+.adminfooter-column {
     display: flex;
     flex-direction: column; /* Stack links vertically */
     align-items: center; /* Align links to the center */
 }
 
-.footer-link {
+.adminfooter-link {
     display: block; /* Make links block to occupy their own line */
     color: #333; /* Text color */
     text-decoration: none; /* Remove underline from links */
@@ -48,17 +48,17 @@
     transition: color 0.3s ease; /* Transition for hover effect */
 }
 
-.footer-link:hover {
+.adminfooter-link:hover {
     color: #ff758c; /* Hover color */
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .footer-links {
+    .adminfooter-links {
         flex-direction: column; /* Stack sections vertically on small screens */
     }
 
-    .footer-column {
+    .adminfooter-column {
         margin-bottom: 1rem; /* Space between stacked columns */
     }
 }

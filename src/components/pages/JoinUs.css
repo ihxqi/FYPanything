@@ -1,19 +1,25 @@
 .why-join-us-container {
-    background-color: #ffe2e6; /* Background color of the page */
-    text-align: center; /* Center the text */
-    padding: 50px 0; /* Padding at the top and bottom */
-  }
-  
-  .why-join-us-container h2 {
-    color: #333; /* Color for the subtitle */
-    margin-bottom: 10px; /* Space below the subtitle */
-  }
-  
-  .why-join-us-container h1 {
-    color: #000; /* Color for the main title */
-    font-size: 36px; /* Size of the main title */
-    margin-bottom: 30px; /* Space below the main title */
-  }
+  background-color: #ffe2e6; /* Background color of the page */
+  text-align: center; /* Center the text */
+  padding: 5vh 0; /* Padding relative to the height of the viewport */
+}
+
+.why-join-us-container h2 {
+  color: #333;
+  margin-bottom: 0.5rem; /* Decreased space below the subtitle */
+  margin-top: 5rem;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.why-join-us-container h1 {
+  color: #000;
+  font-size: 2.25rem;
+  margin-top: 0.5rem; /* Adjust top margin to bring h1 closer to h2 if needed */
+  margin-bottom: 2rem;
+  text-align: center;
+}
   
   .benefits {
     display: flex; /* Align benefits side by side */
@@ -23,17 +29,19 @@
   }
   
   .benefit-item {
-    background-color: #fff; /* Background color of benefit item */
-    border-radius: 15px; /* Rounded corners of benefit item */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for benefit item */
-    width: 300px; /* Width of benefit item */
-    padding: 10px; /* Padding inside benefit item */
-    margin: 10px; /* Margin around benefit item */
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Use a percentage to allow it to scale with the container */
+    max-width: 300px; /* Set a max-width to prevent it from getting too large on bigger screens */
+    padding: 1em; /* Use em units for padding to scale with text size */
+    margin: 1em; /* Use em units for margin to scale with text size */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
   }
   
   .benefit-item .icon {
-    font-size: 25px; /* Size of the icon */
-    margin-bottom: 0px; /* Space below the icon */
+    font-size: 1.5em; /* Use em units for the icon to scale with text size */
+    margin-bottom: 0.5em; /* Adjust margin to em for scalability */
   }
   
   /* Responsive design for smaller screens */

@@ -24,7 +24,6 @@ const AdminCategories = () => {
   const [showAddForm, setShowAddForm] = useState(false); // State to manage the visibility of the add category form
   const [searchQuery, setSearchQuery] = useState('');
 
-
   const handleEdit = (id) => {
     const categoryToEdit = categories.find(category => category.id === id);
     console.log('Editing category:', categoryToEdit);
@@ -43,7 +42,6 @@ const AdminCategories = () => {
     console.log(`Editing category ${editCategory.id}: Setting ${name} to ${value}`);
     setEditCategory({ ...editCategory, [name]: value });
   };
-  
   
   const handleSearchInputChange = (e) => {
     const { value } = e.target;
@@ -91,7 +89,6 @@ const AdminCategories = () => {
     }
   };
   
-
   return (
     <div className="admin-categories-container">
       <div className="admin-categories-header">
@@ -124,7 +121,6 @@ const AdminCategories = () => {
         </tbody>
       </table>
       <button className="admin-categories-add-categories-button" onClick={() => setShowAddForm(true)}>Add Category</button>
-
 
       {/* Popup for editing */}
       {showEditPopup && (

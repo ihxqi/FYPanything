@@ -22,9 +22,9 @@ const AllProducts = () => {
   return (
     <div>
       <PartnerSidebarNavbar/>
-    <div className="products-container">
-      <h1 className="products-header">All Products</h1>
-      <div className="search-container">
+    <div className="partner-products-container">
+      <h1 className="partner-products-header">All Products</h1>
+      <div className="partner-products-search-container">
         <label htmlFor="search">Search:</label>
         <input
           id="search"
@@ -32,10 +32,10 @@ const AllProducts = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button onClick={handleFilter}>Filter</button> {/* Filter button */}
-        <button onClick={handleSearch}>Search</button>
+          <button className="partner-products-filter-button" onClick={handleFilter}>Filter</button>
+          <button className="partner-products-search-button" onClick={handleSearch}>Search</button>
       </div>
-      <table className="products-table">
+      <table className="partner-products-table">
         <thead>
           <tr>            
             <th>Name</th>
@@ -59,7 +59,7 @@ const AllProducts = () => {
             <td contentEditable="true">not Best for party</td>
             <td contentEditable="true">#hi #bye</td>
             <td>
-              <button className="remove-button">REMOVE</button>
+              <button className="partner-products-remove-button">REMOVE</button>
             </td>
         </tbody>
       </table>

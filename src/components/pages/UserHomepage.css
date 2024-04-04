@@ -1,64 +1,106 @@
-.user-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 140px;
-  }
-  
-  .product-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 5px;
-    width: 600px; 
-  }
-  
-  .product-details {
-    margin-top: 10px;
-    align-items: left;
-    justify-content: left;
-  }
-  
-  .product-details div {
-    margin-bottom: 5px;
-    align-items: left;
-    justify-content: left;
-  }
-  
-  .thumbs-container {
-    margin-top: 10px;
-  }
-  
-  .thumbs-container button{
-    margin-right: 125px; /* Adjust the margin as needed */
-    margin-left: 125px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-size: 40px;
-  }
-  
-  .thumbs-container button:hover {
-    background-color: #CCCCFF;
-  }
-  
-  .product-container img {
-    width: 300px;
-    height: auto;
-    margin-bottom: 10px;
-   
-  }
-  
-  .product-container a {
-    color: blue;
-    text-decoration: underline;
-  }
-  
-  .product-container a:hover {
-    color: darkblue;
-  }
-  
+.UserHomeuser-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5%; /* Adjusted from px to % */
+}
+
+.UserHomeproduct-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 2%; /* Adjusted for relative spacing */
+  margin-bottom: 1%; /* Adjusted for relative spacing */
+  width: 30%; /* Adjusted from a fixed px to a % of the parent */
+}
+
+.UserHomeproduct-details {
+  margin-top: 2%; /* Adjusted for consistency */
+  align-items: left;
+  justify-content: left;
+}
+
+.UserHomeproduct-details div {
+  margin-bottom: 1%; /* Adjusted for relative spacing */
+  align-items: left;
+  justify-content: left;
+}
+
+.UserHomethumbs-container {
+  display: flex; /* Aligns children (buttons) inline */
+  justify-content: center; /* Centers buttons horizontally */
+  align-items: center; /* Aligns buttons vertically */
+  gap: 200px; /* Adds space between the buttons */
+}
+
+.UserHomethumbs-container button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 6vw; /* Adjust the size as needed */
+  padding: 0;
+  margin: 0;
+}
+
+.UserHomethumbs-container button:hover {
+  background-color: #CCCCFF; /* Color on hover */
+}
+
+.UserHomeproduct-container img {
+  width: 80%; /* Relative to its parent container */
+  height: auto;
+  margin-bottom: 2%; /* Adjusted for relative spacing */
+}
+
+.UserHomeproduct-container a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.UserHomeproduct-container a:hover {
+  color: darkblue;
+}
+
+.related-products h2 {
+  font-size: 2rem;
+  margin-top: 100px; /* Adjust as needed */
+  margin-right: 120px;
+  text-align: center; /* Center aligns the text content within the h2 */
+}
+
+.related-products{
+  margin-left: 150px;
+}
+
+
+.related-products .product-list {
+  display: flex;
+  justify-content: center; /* Center products horizontally */
+  align-items: center;
+  flex-wrap: wrap; /* Ensure products wrap to the next line if they exceed container width */
+}
+
+.related-products .product {
+  margin-right: 150px; /* Adjust the margin to increase the gap */
+  margin-bottom: 100px; /* Add margin at the bottom to create vertical spacing */
+  justify-content: center;
+}
+.related-product-placeholder {
+  width: 160px; /* Width of the placeholder */
+  height: 160px; /* Height of the placeholder */
+  background-color: #ccc; /* Grey background color */
+  margin-bottom: 20px; /* Add margin at the bottom to create vertical spacing */
+  display: flex; /* Ensure the placeholder is displayed as a flex container */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  /* Optionally, add border-radius to make it visually appealing */
+  border-radius: 8px;
+}
+
+
+
+
+

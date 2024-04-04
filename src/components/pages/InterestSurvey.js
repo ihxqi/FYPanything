@@ -17,6 +17,9 @@ const blogshopOptions = [
   { value: 'diem', label: 'carpe diem' }
 ];
 
+
+
+
 const InterestSurvey = () => {
   const [budget, setBudget] = useState(50);
 
@@ -28,55 +31,65 @@ const InterestSurvey = () => {
 
   return (
     <div>
-       <UserSidebarNavbar />
-    <form className="survey-form" onSubmit={handleSubmit}>
-      <h2>Interest Survey</h2>
+      <UserSidebarNavbar />
+      <div className="Interestsurvey-header">
+        <h2>Interest Survey</h2>
+      </div>
 
- 
-
-      <label for="clothing_style">How would you describe your clothing style? *</label>
-    <select id="clothing_style" name="clothing_style">
-      <option value="formal">formal</option>
-      <option value="classy">classy</option>
-      <option value="cute">cute</option>
-    </select>
+      <div className="Interestsurvey-form-container">
+        <form className="Interestsurvey-form" onSubmit={handleSubmit}>
 
 
-    <label for="clothing_interest">What type of clothing are you most interested in? *</label>
-    <select id="clothing_interest" name="clothing_interest">
-      <option value="dress">dress</option>
-      <option value="shorts">shorts</option>
-      <option value="pants">pants</option>
-    </select>
+          <label for="clothing_style">How would you describe your clothing style? *</label>
+          <select id="clothing_style" name="clothing_style">
+            <option value="formal">formal</option>
+            <option value="classy">classy</option>
+            <option value="cute">cute</option>
+          </select>
 
-      <label>
-        What is your budget for clothing items? *
-        <input type="range" name="budget" min="0" max="100" value={budget} onChange={(e) => setBudget(e.target.value)} />
-        <span>${budget}</span>
-      </label>
+          <br /><br />
 
-     {/* Replace the dropdown for adding tags with React-Select */}
-      <label for="itag">Add in your favorite tags:</label>
-      <Select id="itag" name="itag" options={tagOptions} isMulti /><br/>
+          <label for="clothing_interest">What type of clothing are you most interested in? *</label>
+          <select id="clothing_interest" name="clothing_interest">
+            <option value="dress">dress</option>
+            <option value="shorts">shorts</option>
+            <option value="pants">pants</option>
+          </select>
 
-    <label for="materials">Do you have any preferences for specific fabrics or materials?</label>
-    <select id="materials" name="materials">
-      <option value="cotton">cotton</option>
-      <option value="wool">wool</option>
-      <option value="denim">denim</option>
-    </select> 
+          <br /><br />
 
-   
+          <label>
+            What is your budget for clothing items? *
+            <input type="range" name="budget" min="0" max="100" value={budget} onChange={(e) => setBudget(e.target.value)} />
+            <span>${budget}</span>
+          </label>
 
-    {/* Replace the dropdown for adding tags with React-Select */}
-      <label for="itag">Select the blogshop(s) you are interested in:</label>
-      <Select id="itag" name="itag" options={blogshopOptions} isMulti /><br/>
+
+          {/* Replace the dropdown for adding tags with React-Select */}
+          <label for="itag">Add in your favorite tags:</label>
+          <Select id="itag" name="itag" options={tagOptions} isMulti /><br />
 
 
 
-      <button type="submit">Submit Survey</button>
-    </form>
-    <UserFooter/>
+          <label for="materials">Do you have any preferences for specific fabrics or materials?</label>
+          <select id="materials" name="materials">
+            <option value="cotton">cotton</option>
+            <option value="wool">wool</option>
+            <option value="denim">denim</option>
+          </select>
+
+          <br /><br />
+
+          {/* Replace the dropdown for adding tags with React-Select */}
+          <label for="itag">Select the blogshop(s) you are interested in:</label>
+          <Select id="itag" name="itag" options={blogshopOptions} isMulti /><br />
+
+          <br /><br />
+
+          <button type="submit" className="InterestButton">Submit Survey</button>
+        </form>
+        <UserFooter />
+      </div>
     </div>
   );
 }

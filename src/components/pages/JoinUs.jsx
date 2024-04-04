@@ -1,12 +1,12 @@
 import React from 'react';
 import './JoinUs.css';
-import Navbar from "../Navbar";
+import UnregSidebarNavbar from "../UnregSidebarNavbar";
 import GeneralFooter from "../GeneralFooter";
 
 const JoinUs = () => {
   return (
     <div>
-      <Navbar />
+      <UnregSidebarNavbar />
     <div className="why-join-us-container">
       <h2>Why Join Us</h2>
       <h1>COLLAFILTER</h1>

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { PartnerGenerateReport, AdminGenerateReport, AdminAllProduct, AdminManageUser, UserProfile, UserCategories, UserHomepage, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey, UserBookmarks, AdminManagePartner } from "../components/pages";
+import { EditHomepage, PartnerGenerateReport, AdminGenerateReport, AdminAllProduct, AdminManageUser, UserProfile, UserCategories, UserHomepage, UserRecentlyViewed, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey, UserBookmarks, AdminManagePartner } from "../components/pages";
 import { UnregisteredBlogshopOwner } from "../components/pages";
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/joinus" element={<JoinUs />} />
           <Route path="/login" element={<Login />} /> 
           <Route path="/registerrole" element={<RegisterRole />} />
@@ -34,6 +34,8 @@ export default function App() {
           <Route path="/AdminAllProduct" element={<AdminAllProduct/>} />
           <Route path="/AdminGenerateReport" element={<AdminGenerateReport/>} />
           <Route path="/PartnerGenerateReport" element={<PartnerGenerateReport/>} />
+          <Route path="/EditHomepage" element={<EditHomepage/>} />
+          <Route path="/UserRecentlyViewed" element={<UserRecentlyViewed/>} />
         </Routes>
       </div>
     </Router>

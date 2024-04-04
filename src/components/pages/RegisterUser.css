@@ -28,12 +28,11 @@ h2 {
   max-width: 100%; /* Adjust if necessary to your design */
   justify-content: center;
   align-items: flex-start;
-  position: absolute;
-  top: 65%; /* Center vertically */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%; /* Let it define by the content size (Whitebox size) */
-  padding: 20px; 
+  /* Removed the absolute positioning and transformation */
+  width: 50%; /* Adjust the width as needed */
+  padding: 20px;
+  margin: auto; /* Auto margins for horizontal centering */
+  margin-top: 10px; /* Adjust the top margin to ensure it doesn't overlap the header */
   background-color: var(--form-background-color);
   border-radius: 0.5em;
   box-shadow: 0 0.2em 0.5em var(--shadow-color);

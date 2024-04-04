@@ -1,0 +1,124 @@
+
+/* Header */
+.edithome-header {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 100px;
+}
+
+.edithome-header input {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+/* Blogshop Partner Logo Slider */
+.blogshop-partners-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.blogshop-partners-section h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.logo-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-slider img {
+    width: 100px;
+    height: auto;
+    margin: 0 10px;
+}
+
+/* Video Section */
+.video-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.video-section input {
+    font-size: 24px;
+    color: #333;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.video-section video {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Bookmark Section */
+.bookmark-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.bookmark-section img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.bookmark-section input {
+    font-size: 24px;
+    color: #333;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 80%; /* Adjust the width as needed */
+    max-width: 500px; /* Optionally set a maximum width */
+}
+
+/* Save button */
+.save-button-container {
+    text-align: center;
+}
+
+.save-button-container button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-button-container button:hover {
+    background-color: #333;
+}
+/* Media queries for responsiveness */
+@media screen and (max-width: 1000px) {
+
+    .thumbs-up-section img,
+    .bookmark-section img {
+        width: 300px;
+        /* Adjusted width for mobile */
+    }
+
+    .blogshop-partners-section .logo-slider img {
+        width: 150px;
+        /* Adjusted width for mobile */
+        margin: 0 15px;
+        /* Adjusted margin for mobile */
+    }
+
+    .blogshop {
+        width: 100px;
+        /* Adjusted width for mobile */
+        margin-right: 10px;
+        /* Adjusted margin for mobile */
+    }
+}

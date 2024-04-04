@@ -11,13 +11,11 @@
   font-size: 3rem;
   font-weight: lighter;
   margin-top: 100px;
- 
 }
 
 .admin-categories-header{
   position: relative; /* or 'absolute' depending on your layout */
   top: 8px; /* Adjust the value as needed */
-
 }
 
 
@@ -59,7 +57,6 @@ box-sizing: border-box; /* Include padding and border in the element's total wid
 .admin-categories-search-bar button:hover {
   background-color: #555; /* Darker background color on hover */
 }
-
 
 .admin-categories-table {
   width: 100%; /* Table width */

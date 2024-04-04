@@ -17,74 +17,73 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
 }
   
-  .partner-management-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 0 2%;
-    margin-top: 2rem;
-    
-  }
+.partner-management-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2%;
+  margin-top: 2rem;
   
-  .partner-management-search-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px; /* Space between search input and button */
-    margin-bottom: 50px; /* Space below the search area */
-  }
+}
   
-  .partner-management-search-container label {
-    height: 40px; /* Ensuring all children have the same height */
-    padding: 0 10px; /* Providing padding within the children */
-    margin: 0; /* Removing any default margins */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    margin-top:15px;
-  }
+.partner-management-search-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px; /* Space between search input and button */
+  margin-bottom: 50px; /* Space below the search area */
+}
 
-  
-  .partner-management-search-bar-button,
-  .partner-management-filter-bar-button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: black; /* Button background */
-    color: white; /* Button text */
-    cursor: pointer;
-  }
-  
-  .partner-management-search-bar-button:hover,
-  .partner-management-filter-bar-button:hover {
-    background-color: #555; /* Button hover effect */
-  }
+.partner-management-search-container label {
+  height: 40px; /* Ensuring all children have the same height */
+  padding: 0 10px; /* Providing padding within the children */
+  margin: 0; /* Removing any default margins */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin-top:15px;
+}
 
-  .partner-management-table {
-    width: 90%; /* Adjusted to match user management style */
-    margin-top: 1rem;
-    margin-left: auto; /* Center the table horizontally */
-    margin-right: auto;
-    border-collapse: collapse;
-    background-color: #fff;
-  }
-  
-  .partner-management-table th,
-  .partner-management-table td {
-    padding: 0.5rem;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-  }
-  
-  
-  .partner-management-table th {
-    background-color: #f8f8f8;
-  }
 
-  .partner-management-table .partner-management-action-column {
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center the buttons horizontally */
-    align-items: center; /* Align items vertically */
-    gap: 10px; /* Add gap between buttons */
+.partner-management-search-bar-button,
+.partner-management-filter-bar-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: black; /* Button background */
+  color: white; /* Button text */
+  cursor: pointer;
+}
+
+.partner-management-search-bar-button:hover,
+.partner-management-filter-bar-button:hover {
+  background-color: #555; /* Button hover effect */
+}
+
+.partner-management-table {
+  width: 90%; /* Adjusted to match user management style */
+  margin-top: 1rem;
+  margin-left: auto; /* Center the table horizontally */
+  margin-right: auto;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.partner-management-table th,
+.partner-management-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.partner-management-table th {
+  background-color: #f8f8f8;
+}
+
+.partner-management-table .partner-management-action-column {
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: center; /* Align items vertically */
+  gap: 10px; /* Add gap between buttons */
 }
 
 .admin-activate-partner-button,
@@ -96,34 +95,34 @@
     padding: 0.5rem 1rem; /* Adjust padding for buttons */
 }
 
-  .admin-activate-partner-button {
-    background-color: #4CAF50; /* Green for activate */
-    color: white;
-  }
-  
-  .admin-suspend-partner-button {
-    background-color: #f44336; /* Red for suspend */
-    color: white;
+.admin-activate-partner-button {
+  background-color: #4CAF50; /* Green for activate */
+  color: white;
+}
+
+.admin-suspend-partner-button {
+  background-color: #f44336; /* Red for suspend */
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .partner-management-header,
+  .partner-management-search-bar {
+    flex-direction: column;
   }
 
-  @media (max-width: 768px) {
-    .partner-management-header,
-    .partner-management-search-bar {
-      flex-direction: column;
-    }
-  
-    .partner-management-search-bar button {
-      width: 100%;
-      margin-top: 10px; /* Add margin between buttons */
-    }
-  
-    .partner-management-table .partner-management-action-column {
-      flex-direction: column; /* Display buttons vertically */
-      gap: 10px; /* Add gap between buttons */
-    }
-  
-    .admin-activate-partner-button,
-    .admin-suspend-partner-button {
-      width: 100%; /* Make buttons full width */
-    }
+  .partner-management-search-bar button {
+    width: 100%;
+    margin-top: 10px; /* Add margin between buttons */
   }
+
+  .partner-management-table .partner-management-action-column {
+    flex-direction: column; /* Display buttons vertically */
+    gap: 10px; /* Add gap between buttons */
+  }
+
+  .admin-activate-partner-button,
+  .admin-suspend-partner-button {
+    width: 100%; /* Make buttons full width */
+  }
+}

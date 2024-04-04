@@ -5,13 +5,6 @@ import AdminFooter from "../AdminFooter";
 
 function AdminManageUsers() {
 
-  const handleAction = (action) => {
-    console.log(`Performing action: ${action}`);
-    // Add logic here to perform the selected action
-  };
-
-
-
   return (
     <div>
       <AdminSidebarNavbar />

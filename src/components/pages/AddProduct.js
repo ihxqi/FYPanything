@@ -44,26 +44,30 @@ function AddProduct() {
                     <h2>Add Product</h2>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <div>
-                        <input
-                            type="radio"
-                            id="singleUpload"
-                            name="uploadType"
-                            value="single"
-                            onChange={handleUploadTypeChange}
-                        />
-                        <label htmlFor="singleUpload">Single Upload</label>
-                    </div>
-                    <div>
-                        <input
-                            type="radio"
-                            id="batchUpload"
-                            name="uploadType"
-                            value="batch"
-                            onChange={handleUploadTypeChange}
-                        />
-                        <label htmlFor="batchUpload">Batch Upload</label>
-                    </div>
+                <div className="addproductradio-group">
+                <input
+                type="radio"
+                id="singleUpload"
+                className="radio-button"
+                name="uploadType"
+                value="single"
+                onChange={handleUploadTypeChange}
+                />
+                <label htmlFor="singleUpload" className="radio-label">Single Upload</label>
+            </div>
+            <br />
+            <div className="addproductradio-group">
+                <input
+                type="radio"
+                id="batchUpload"
+                className="radio-button"
+                name="uploadType"
+                value="batch"
+                onChange={handleUploadTypeChange}
+                />
+                <label htmlFor="batchUpload" className="radio-label">Batch Upload</label>
+            </div>
+            <br />
 
                     {uploadType === "single" && (
                         <div>
@@ -81,12 +85,12 @@ function AddProduct() {
 
                                 <label>
                                     Image:
-                                    <input type="url" id="imageFile" placeholder="Image URL" />
+                                    <input type="imageurl" id="imageFile" placeholder="Image URL" />
                                 </label><br />
 
                                 <label>
-                                    Link:
-                                    <input type="url" id="productLink" />
+                                    Link: <br />
+                                    <input type="linkurl" id="productLink" />
                                 </label><br />
 
                                 <label>
@@ -95,15 +99,15 @@ function AddProduct() {
                                 </label><br />
 
                                 <label><br />
-     Category:
-     {/* Assuming `Select` is imported from 'react-select' and `catOptions` is defined */}
-     <Select id="category" name="category" options={catOptions} isMulti />
- </label><br />
- <label>
-     Sub-Category:
-     {/* Populate options dynamically based on selected category */}
-     <Select id="subcategory" name="subcategory" options={subcatOptions} isMulti />
-     </label><br />
+                                Category:
+                                {/* Assuming `Select` is imported from 'react-select' and `catOptions` is defined */}
+                                <Select id="category" name="category" options={catOptions} isMulti />
+                            </label><br />
+                            <label>
+                                Sub-Category:
+                                {/* Populate options dynamically based on selected category */}
+                                <Select id="subcategory" name="subcategory" options={subcatOptions} isMulti />
+                                </label><br />
                                 <label>
                                     Tags:
                                     {/* Populate options dynamically based on selected category */}
@@ -136,3 +140,4 @@ function AddProduct() {
 }
 
 export default AddProduct;
+

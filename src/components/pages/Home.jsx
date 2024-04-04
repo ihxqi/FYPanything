@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../Navbar";
+import UnregSidebarNavbar from "../UnregSidebarNavbar";
 import banner from '../image/banner.mp4'; // Import the thumbs up GIF
 import bookmark from '../image/Bookmark.jpg'
 import bf from '../image/bf.jpg'
@@ -11,7 +11,7 @@ import GeneralFooter from "../GeneralFooter";
 const Home = () => {
   return (
     <div>
-      <Navbar />
+      <UnregSidebarNavbar />
       {/* Header */}
       <div className="header">
         <h1>Welcome to CollaFilter!</h1>
@@ -40,7 +40,7 @@ const Home = () => {
   </div>
 </div>
 
-
+<div className="interactive-sections">
       {/* Video Section */}
 
       <div className="video-section">
@@ -54,6 +54,7 @@ const Home = () => {
         <em><h3><b>Bookmark Your Favorites</b></h3></em>
         <img src={bookmark} alt="Bookmarks" />
         <p>Unlock Your Next Favorite With Us!</p>
+      </div>
       </div>
       <GeneralFooter/>
       </div>

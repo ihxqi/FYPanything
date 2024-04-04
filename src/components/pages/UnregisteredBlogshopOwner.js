@@ -34,7 +34,6 @@ function UnregisteredBlogshopOwner() {
   };
   
   return (
-   
   
     <div>
      <AdminSidebarNavbar />
@@ -44,7 +43,6 @@ function UnregisteredBlogshopOwner() {
      <div class="CMheader">
   <h2>Blogshop Owner Onboarding</h2>
   </div>
-  
       <table id="profileTable" className="CMtable" style={{ width: '100%' }}>
         <thead>
           <tr>
@@ -66,9 +64,8 @@ function UnregisteredBlogshopOwner() {
             <td className="CMtable-action-column">
                   <button className="admin-approve-partner-button" onClick={() => handleApprove('Love clothes')}>Approve</button>
                   <button className="admin-reject-partner-button" onClick={() => handleReject('Love clothes')}>Reject</button>
-                </td>
+            </td>
           </tr>
-
           <tr>
             <td contentEditable="false">NTUC</td>
             <td contentEditable="false">www.NTUC.com</td>
@@ -78,13 +75,11 @@ function UnregisteredBlogshopOwner() {
             <td className="CMtable-action-column">
                   <button className="admin-approve-partner-button" onClick={() => handleApprove('NTUC')}>Approve</button>
                   <button className="admin-reject-partner-button" onClick={() => handleReject('NTUC')}>Reject</button>
-                </td>
+            </td>
           </tr>
         </tbody>
       </table>
-
         <button className="unreg-submit-button" onClick={handleSubmit}>Submit</button>
-     
         </div>
     </div>
     <AdminFooter/>
