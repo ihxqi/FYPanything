@@ -23,15 +23,6 @@ const ForgetPassword = () => {
           <div className="password-container">
             <h1 className="password-header">COLLAFILTER</h1>
             <form className="password-form" onSubmit={handleSubmit}>
-              <label htmlFor="username">USERNAME:</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
 
               <label htmlFor="email">EMAIL:</label>
               <input
