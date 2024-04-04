@@ -20,29 +20,75 @@ const AdminCategories = () => {
   const [categories, setCategories] = useState(data);
   const [editCategory, setEditCategory] = useState({ id: null, category: '', subCategory: '' });
   const [showEditPopup, setShowEditPopup] = useState(false);
+  const [newCategory, setNewCategory] = useState({ category: '', subCategory: '' });
+  const [showAddForm, setShowAddForm] = useState(false); // State to manage the visibility of the add category form
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleEdit = (id) => {
     const categoryToEdit = categories.find(category => category.id === id);
+    console.log('Editing category:', categoryToEdit);
     setEditCategory(categoryToEdit);
     setShowEditPopup(true);
   };
-
+  
+  const handleRemove = (id) => {
+    const updatedCategories = categories.filter(category => category.id !== id);
+    console.log('Removing category with ID:', id);
+    setCategories(updatedCategories);
+  };
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(`Editing category ${editCategory.id}: Setting ${name} to ${value}`);
     setEditCategory({ ...editCategory, [name]: value });
   };
-
+  
+  const handleSearchInputChange = (e) => {
+    const { value } = e.target;
+    setSearchQuery(value);
+  };
+  
+  const handleSearch = () => {
+    // Filter categories based on search query
+    const filteredCategories = data.filter(item =>
+      item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.subCategory.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    console.log('Filtered categories:', filteredCategories);
+    setCategories(filteredCategories);
+  };
+  
+  
+  const handleNewCategoryChange = (e) => {
+    const { name, value } = e.target;
+    console.log(`Setting new category ${name} to ${value}`);
+    setNewCategory({ ...newCategory, [name]: value });
+  };
+  
   const handleSubmit = () => {
     const updatedCategories = categories.map(category => {
       if (category.id === editCategory.id) {
+        console.log('Updating category:', editCategory);
         return editCategory;
       }
       return category;
     });
+    console.log('Updated categories:', updatedCategories);
     setCategories(updatedCategories);
     setShowEditPopup(false);
   };
-
+  
+  const handleAddCategory = () => {
+    if (newCategory.category.trim() !== '' && newCategory.subCategory.trim() !== '') {
+      const newCategoryId = categories.length + 1; // Generate a unique ID for the new category
+      console.log('Adding new category:', { ...newCategory, id: newCategoryId });
+      const updatedCategories = [...categories, { ...newCategory, id: newCategoryId }];
+      setCategories(updatedCategories);
+      setNewCategory({ category: '', subCategory: '' }); // Clear form inputs after adding category
+      setShowAddForm(false); // Hide the add category form after adding a category
+    }
+  };
+  
   return (
     <div className="admin-categories-container">
       <div className="admin-categories-header">
@@ -50,8 +96,8 @@ const AdminCategories = () => {
       </div>
       <AdminSidebarNavbar />
       <div className="admin-categories-search-bar">
-        <input type="text" placeholder="Search:" />
-        <button>Search</button>
+      <input type="text" placeholder="Search:" value={searchQuery} onChange={handleSearchInputChange} />
+        <button onClick={handleSearch}>Search</button>
       </div>
       <table className="admin-categories-table">
         <thead>
@@ -68,23 +114,52 @@ const AdminCategories = () => {
               <td>{item.subCategory}</td>
               <td>
                 <button className="admin-categories-edit-button" onClick={() => handleEdit(item.id)}>EDIT</button>
-                <button className="admin-categories-remove-button">REMOVE</button>
+                <button className="admin-categories-remove-button" onClick={() => handleRemove(item.id)}>REMOVE</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button className="admin-categories-add-categories-button">Add Categories</button>
+      <button className="admin-categories-add-categories-button" onClick={() => setShowAddForm(true)}>Add Category</button>
 
       {/* Popup for editing */}
       {showEditPopup && (
-        <div className="admin-categories-edit-popup">
-          <h2>Edit Category</h2>
-          <input type="text" name="category" value={editCategory.category} onChange={handleChange} />
-          <input type="text" name="subCategory" value={editCategory.subCategory} onChange={handleChange} />
-          <div>
-            <button className="editPopup-save-content-button" onClick={handleSubmit}>Save Changes</button>
-            <button className="editPopup-cancel-content-button" onClick={() => setShowEditPopup(false)}>Cancel</button>
+  <div className="admin-categories-edit-popup">
+    <h2>Edit Category</h2>
+    <div className="admin-categories-edit-form">
+      <div>
+        <label htmlFor="category">Category:</label>
+        <input type="text" id="category" name="category" value={editCategory.category} onChange={handleChange} />
+      </div>
+      <div>
+        <label htmlFor="subCategory">Sub Category:</label>
+        <input type="text" id="subCategory" name="subCategory" value={editCategory.subCategory} onChange={handleChange} />
+      </div>
+    </div>
+    <div className="admin-categories-edit-buttons">
+      <button className="editPopup-save-category-button" onClick={handleSubmit}>Save Changes</button>
+      <button className="editPopup-cancel-category-button" onClick={() => setShowEditPopup(false)}>Cancel</button>
+          </div>
+        </div>
+      )}
+
+       {/* Form for adding new category */}
+       {showAddForm && (
+        <div className="admin-categories-new-popup">
+          <h2>Add Category</h2>
+          <div className="admin-categories-new-form">
+            <div>
+              <label htmlFor="newCategory">Category:</label>
+              <input type="text" id="newCategory" name="category" value={newCategory.category} onChange={handleNewCategoryChange} />
+            </div>
+            <div>
+              <label htmlFor="newSubCategory">Sub Category:</label>
+              <input type="text" id="newSubCategory" name="subCategory" value={newCategory.subCategory} onChange={handleNewCategoryChange} />
+            </div>
+          </div>
+          <div className="admin-categories-add-categories-buttons">
+            <button className="newPopup-save-category-button" onClick={handleAddCategory}>Add Category</button>
+            <button className="newPopup-cancel-category-button" onClick={() => setShowAddForm(false)}>Cancel</button>
           </div>
         </div>
       )}

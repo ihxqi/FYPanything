@@ -12,8 +12,8 @@ function ReportGenerator() {
 
   // Placeholder data for the table
   const reportData = [
-    { name: 'Coco Beth', type: 'User', status: 'Suspended' },
-    { name: 'LoveClothes.co', type: 'admin', status: 'Active' },
+    { name: 'Coco Beth', date: '12/12/1999', gender: 'Female', age: '22'},
+    { name: 'LoveClothes.co', date: '11/11/1999', gender: 'Male', age: '26'},
     // Add more placeholder data as needed...
   ];
 
@@ -41,6 +41,7 @@ function ReportGenerator() {
     <div className="adminreport-generator-container">
       <div className="adminreportnavbar-placeholder"></div> {/* Blank space for the navbar */}
       <h1 className="adminreporth1">Admin's Report</h1>
+      <h2 className="adminreporth2">Users</h2>
       <div className="adminreportfilter-bar">
         {/* Month select */}
         <select name="month" id="month" onChange={handleMonthChange}>
@@ -63,16 +64,18 @@ function ReportGenerator() {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Profile Type</th>
-            <th>Status</th>
+            <th>Joined Date</th>
+            <th>Gender</th>
+            <th>Age</th>
           </tr>
         </thead>
         <tbody>
           {reportData.map((item, index) => (
             <tr key={index}>
               <td>{item.name}</td>
-              <td>{item.type}</td>
-              <td>{item.status}</td>
+              <td>{item.date}</td>
+              <td>{item.gender}</td>
+              <td>{item.age}</td>
             </tr>
           ))}
         </tbody>

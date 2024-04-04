@@ -11,13 +11,11 @@
   font-size: 3rem;
   font-weight: lighter;
   margin-top: 100px;
- 
 }
 
 .admin-categories-header{
   position: relative; /* or 'absolute' depending on your layout */
   top: 8px; /* Adjust the value as needed */
-
 }
 
 
@@ -60,24 +58,23 @@ box-sizing: border-box; /* Include padding and border in the element's total wid
   background-color: #555; /* Darker background color on hover */
 }
 
-
 .admin-categories-table {
   width: 100%; /* Table width */
-  border-collapse: collapse; /* Remove space between table borders */
+  border-collapse: collapse;
   margin-top: 1rem; /* Space above the table */
+  background-color: #fff;
 }
 
 .admin-categories-table th, 
 .admin-categories-table td {
+  border: 1px solid #ddd;
   text-align: center;
   padding: 8px; /* Padding within table cells */
-  border-bottom: 1px solid #ddd; /* Border between rows */
 }
 
 /* Header cells */
 .admin-categories-table th {
-  background-color: #f3f3f3; /* Light grey background for header cells */
-  color: black;
+  background-color: #f3f3f3;
 }
 
 .admin-categories-tables td {
@@ -126,7 +123,8 @@ box-sizing: border-box; /* Include padding and border in the element's total wid
   margin-bottom: 1rem;
 }
 
-.admin-categories-edit-popup {
+.admin-categories-edit-popup,
+.admin-categories-new-popup {
   position: fixed;
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
@@ -141,20 +139,25 @@ box-sizing: border-box; /* Include padding and border in the element's total wid
   width: 400px;
 }
 
-.admin-categories-edit-popup h2 {
+.admin-categories-edit-popup h2,
+.admin-categories-new-popup h2 {
 font-size: 40px;
 margin-left: 50px;
 margin-top: 30px;
 }
 
-.admin-categories-edit-popup input {
+.admin-categories-edit-popup input,
+.admin-categories-new-popup input {
   width: 80%; /* Adjust the width to make the input fields longer */
   margin-top: 20px; /* Add margin to separate the input fields */
   padding: 10px;
   height: 80%;
+  margin-bottom: 10px;
+  align-items: center;
 }
 
-.editPopup-save-content-button {
+.editPopup-save-category-button,
+.newPopup-save-category-button {
   padding: 10px 20px;
   margin-right: 20px; /* Add margin between buttons */
   background-color: #333; /* Dark background color */
@@ -162,12 +165,33 @@ margin-top: 30px;
   margin-top: 20px; /* Add margin to separate buttons */
 }
 
-.editPopup-cancel-content-button {
+.editPopup-cancel-category-button,
+.newPopup-cancel-category-button {
   padding: 10px 20px;
   margin-right: 20px; /* Add margin between buttons */
   background-color: #333; /* Dark background color */
   color: #f3f3f3; /* White text color */
   margin-top: 10px; /* Add margin to separate buttons */
+}
+
+.admin-categories-edit-form,
+.admin-categories-new-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-categories-edit-form div,
+.admin-categories-new-form div {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin-bottom: 10px;
+}
+
+.admin-categories-edit-form label,
+.admin-categories-new-form label {
+  margin-right: 10px;
+  margin-top: 10px;
+  min-width: 100px; /* Adjust the width of the label */
 }
 
 
@@ -192,4 +216,91 @@ margin-top: 30px;
   .admin-categories-table {
     font-size: 0.9rem; /* Reduces the font size of table text on small screens */
   }
+
+  .admin-categories-edit-popup,
+  .admin-categories-new-popup {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the popup */
+    background-color: white; /* White background */
+    padding: 10px; /* Reduced padding */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+  }
+  
+  .admin-categories-edit-popup h2,
+  .admin-categories-new-popup h2 {
+    font-size: 40px;
+    margin-left: 0; /* Center the heading */
+    margin-top: 30px;
+  }
+  
+  .admin-categories-edit-popup input,
+  .admin-categories-new-popup input {
+    width: 80%; /* Adjust the width to make the input fields longer */
+    margin-top: 20px; /* Add margin to separate the input fields */
+    padding: 10px;
+    height: 80%;
+    margin-bottom: 10px;
+  }
+  
+  .editPopup-save-category-button,
+  .editPopup-cancel-category-button,
+  .newPopup-save-category-button,
+  .newPopup-cancel-category-button {
+    padding: 10px 20px;
+    margin-right: 20px; /* Add margin between buttons */
+    background-color: #333; /* Dark background color */
+    color: #f3f3f3; /* White text color */
+    margin-top: 20px; /* Add margin to separate buttons */
+  }
+  
+  .admin-categories-edit-form,
+  .admin-categories-new-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-categories-edit-form div,
+  .admin-categories-new-form div {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    margin-bottom: 10px;
+  }
+  
+  .admin-categories-edit-form label,
+  .admin-categories-new-form label {
+    margin-right: 10px;
+    margin-top: 10px;
+    min-width: 100px; /* Adjust the width of the label */
+  }
+
+  .admin-categories-edit-popup, 
+  .admin-categories-new-popup{
+    width: 80%; /* Adjust the width of the popup for smaller screens */
+  }
+    
+  .admin-categories-edit-popup h2,
+  .admin-categories-new-popup h2 {
+    font-size: 24px; /* Reduce the font size of the heading for smaller screens */
+  }
+    
+  .admin-categories-edit-popup input,
+  .admin-categories-new-popup input {
+    width: 90%; /* Adjust the width of the input fields for smaller screens */
+  }
+    
+  .editPopup-save-category-button,
+  .editPopup-cancel-category-button,
+  .newPopup-save-category-button,
+  .newPopup-cancel-category-button {
+    width: 40%; /* Adjust the width of the buttons for smaller screens */
+  }
 }
+
+
