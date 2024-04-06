@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo from '../components/image/CollaFilter Logo.jpg';
 import "./Navbar.css";
 
 const UserSidebarNavbar = () => {
@@ -23,6 +24,10 @@ const UserSidebarNavbar = () => {
 
   return (
     <nav className="navbar">
+      {/* Logo */}
+      <Link to="/" className="title">
+        <img src={logo} alt="CollaFilter Logo" className='logo' />
+      </Link>
       {/* Hamburger icon for toggling sidebar */}
       <div className={`menu ${menuOpen ? 'open' : ''}`} onClick={toggleSidebar}>
         <div className="hamburger-icon">

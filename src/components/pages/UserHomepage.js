@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './UserHomepage.css';
 import UserSidebarNavbar from "../UserSidebarNavbar";
-import dress2 from '../image/DayDress.jpg'
-import dress1 from '../image/NightDress.jpg'
+import dress2 from '../image/DayDress.jpg';
+import dress1 from '../image/NightDress.jpg';
 import UserFooter from "../UserFooter";
-
 
 const products = [
   {
@@ -15,7 +14,8 @@ const products = [
     price: '$499',
     productLink: 'https://example.com/dress',
     information: 'Stand out from the crowd with this stylish and elegant dress.',
-    tags: ['Black', 'Long', 'Night']
+    tags: ['Black', 'Long', 'Night'],
+    rating: 0 // Initial rating
   },
   {
     id: 2,
@@ -25,72 +25,85 @@ const products = [
     price: '$699',
     productLink: 'https://eddddple.com/dress',
     information: 'Fairy vibe',
-    tags: ['White', 'Long', 'Fairy', 'Day']
+    tags: ['White', 'Long', 'Fairy', 'Day'],
+    rating: 0 // Initial rating
   },
 ];
 
-const UserHomepage = () => {
+const UserHomepage = ({ handleBookmark }) => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
+  const [rating, setRating] = useState(0);
+  const [isLiked, setIsLiked] = useState(false); // State to track if the product is liked
 
-  const handleThumbClick = (isThumbsUp) => {
-    // Both thumbs go to next product
-    if (isThumbsUp) {
-      setCurrentProductIndex(currentProductIndex + 1);
-    } else {
-      setCurrentProductIndex(currentProductIndex + 1);
-    }
+  const handleRatingClick = (newRating) => {
+    // Update the rating
+    setRating(newRating);
+
+    // Proceed to the next product
+    setCurrentProductIndex(currentProductIndex + 1);
+    // Reset rating for the next product
+    setRating(0);
+    // Reset heart icon to initial state (not liked)
+    setIsLiked(false);
   };
-   // Simulated related products data
-   const relatedProducts = [
-    { id: 1, name: 'Product 1', image: 'product1.jpg', price: '$19.99' },
-    { id: 2, name: 'Product 2', image: 'product2.jpg', price: '$24.99' },
-    { id: 3, name: 'Product 3', image: 'product3.jpg', price: '$29.99' },
-    // Add more simulated products as needed
-  ];
+
+  const handleHeartClick = () => {
+    // Toggle between liked and not liked state
+    setIsLiked(!isLiked);
+  };
+
+  const renderRatingStars = () => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <span
+          key={i}
+          className={i < rating ? 'star filled' : 'star'}
+          onClick={() => handleRatingClick(i + 1)}
+        >
+          &#9733;
+        </span>
+      );
+    }
+    return stars;
+  };
 
   return (
-      <div>
-        {/* Render UserSidebarNavbar component */}
-        <UserSidebarNavbar />
-        <div className="UserHomeuser-page">
-          {products.length > 0 && (
-            <div className="UserHomeproduct-container">
-              <img src={products[currentProductIndex].image} alt="Product" />
-              <div className="UserHomeproduct-details">
-                <div>Category: {products[currentProductIndex].category}</div>
-                <div>Sub-Category: {products[currentProductIndex].subCategory}</div>
-                <div>Price: {products[currentProductIndex].price}</div>
-                <div>Product Link: <a href={products[currentProductIndex].productLink} target="_blank" rel="noopener noreferrer">Link</a></div>
-                <div>Product Information: {products[currentProductIndex].information}</div>
-                <div>Tags: {products[currentProductIndex].tags.join(', ')}</div>
+    <div>
+      {/* Render UserSidebarNavbar component */}
+      <UserSidebarNavbar />
+      <div className="UserHomeuser-page">
+        {products.length > 0 && (
+          <div className="UserHomeproduct-container">
+            <img src={products[currentProductIndex].image} alt="Product" />
+            <div className="UserHomeproduct-details">
+              <div>Category: {products[currentProductIndex].category}</div>
+              <div>Sub-Category: {products[currentProductIndex].subCategory}</div>
+              <div>Price: {products[currentProductIndex].price}</div>
+              <div>Product Link: <a href={products[currentProductIndex].productLink} target="_blank" rel="noopener noreferrer">Link</a></div>
+              <div>Product Information: {products[currentProductIndex].information}</div>
+              <div>Tags: {products[currentProductIndex].tags.join(', ')}</div>
+              <div className="rating-container">
+                <span className="rating-label">Rating:</span>
+                {renderRatingStars()}
               </div>
             </div>
-          )}
-          {products.length === 0 && <div>No products available.</div>}
-          <div className="UserHomethumbs-container">
-            <button onClick={() => handleThumbClick(true)}>👍</button>
-            <button onClick={() => handleThumbClick(false)}>👎</button>
           </div>
-        {/* Related Products */}
-<div className="related-products">
-  <h2>You May Also Like</h2>
-  <div className="product-list">
-    {relatedProducts.map(product => (
-      <div key={product.id} className="product">
-        <div className="related-product-placeholder">
-          {/* Optionally, you can add text or an icon indicating that the image is loading */}
-          Loading...
+        )}
+        {products.length === 0 && <div>No products available.</div>}
+        {/* Toggle between heart and tick icon based on isLiked state */}
+        <div className="UserHomethumbs-container">
+          <button onClick={handleHeartClick}>{isLiked ? '✔️' : '❤️'}</button>
         </div>
-        <h3>{product.name}</h3>
-        <p>{product.price}</p>
-        {/* Add more product details as needed */}
-                </div>
-              ))}
-
+        {/* Related Products */}
+        <div className="related-products">
+          <h2>You May Also Like</h2>
+          <div className="product-list">
+            {/* Render related products */}
           </div>
         </div>
       </div>
-      <UserFooter/>
+      <UserFooter />
     </div>
   );
 };

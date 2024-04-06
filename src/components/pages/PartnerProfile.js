@@ -1,37 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './PartnerProfile.css';
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import PartnerFooter from "../PartnerFooter";
-import Navbar from "../Navbar";
 
-function PartnerProfile() {
+const PartnerProfile = () => {
   const [partner, setPartner] = useState({
-    name: '',
-    doe: '',
+    companyname: '',
+    dateOfEst: '',
     email: '',
-    phone: '',
-    link: '',
+    phoneNumber: '',
+    website: '',
     productType: '',
   });
-
-  useEffect(() => {
-    // Fetch partner data when the component mounts
-    fetchPartnerData();
-  }, []); // Empty dependency array to run only once
-
-  const fetchPartnerData = async () => {
-    try {
-      const response = await fetch('/user');
-      if (response.ok) {
-        const partnerData = await response.json();
-        setPartner(partnerData);
-      } else {
-        console.error('Error fetching partner data:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error fetching partner data:', error);
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,26 +21,10 @@ function PartnerProfile() {
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    try {
-      const response = await fetch('/user/' + partner._id, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(partner),
-      });
-      if (response.ok) {
-        console.log('Partner data updated successfully');
-        window.alert("Updated successfully!");
-        await fetchPartnerData();
-      } else {
-        console.error('Error updating partner data:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error updating partner data:', error);
-    }
+    // Handle the submission logic here, for example, send data to a server
+    console.log(partner);
   };
 
   return (
@@ -70,33 +34,49 @@ function PartnerProfile() {
       <form className="partner-profile-form" onSubmit={handleSubmit}>
         <h1>Partner Profile</h1>
         <label>
-  Company Name:
-  <input type="text" name="name" value={partner.name || ""} onChange={handleChange} placeholder="" />
+  Blogshop Name:
+  <input type="text" name="name" value={partner.companyName || ""} onChange={handleChange} disabled placeholder="" />
 </label>
 
 <label>
   Date of Establishment:
-  <input type="date" name="dateOfEst" value={partner.doe || ""} onChange={handleChange} placeholder="" />
+  <input type="date" name="dateOfEst" value={partner.dateOfEst || ""} onChange={handleChange} disabled placeholder="" />
 </label>
 
 <label>
-  Email:
+  Blogshop Email:
   <input type="text" name="email" value={partner.email || ""} onChange={handleChange} disabled placeholder="" />
 </label>
 
 <label>
   Phone Number:
-  <input type="text" name="phoneNumber" value={partner.phone || ""} onChange={handleChange} placeholder="" />
+  <input type="text" name="phoneNumber" value={partner.phoneNumber || ""} onChange={handleChange} placeholder="" />
+</label>
+
+<label>
+  UEN Number:
+  <input type="text" name="uenNumber" value={partner.uenNumber || ""} onChange={handleChange} disabled placeholder="" />
 </label>
 
 <label>
   Social Links:
-  <input type="text" name="website" value={partner.link || ""} onChange={handleChange} placeholder="" />
+  <input type="text" name="website" value={partner.website || ""} onChange={handleChange} disabled placeholder="" />
 </label>
 
 <label>
   Product Type:
-  <input type="text" name="productType" value={partner.productType || ""} onChange={handleChange} placeholder="" />
+  <input type="text" name="productType" value={partner.productType || ""} onChange={handleChange} disabled placeholder="" />
+</label>
+
+<label>
+            Country:
+            <select name="partnercountry" value={partner.country} onChange={handleChange} disabled placeholder="">
+              {/* Options would be populated dynamically in a real-world app */}
+              <option value="">Select Country</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Malaysia">Malaysia</option>
+              <option value="Indonesia">Indonesia</option>
+            </select>
 </label>
 
 

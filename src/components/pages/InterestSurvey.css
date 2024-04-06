@@ -15,26 +15,42 @@ body, html {
   border-radius: 20px;
 }
 
-.Interestsurvey-form h2 {
-  text-align: center;
-}
 
 .Interestsurvey-form label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .Interestsurvey-form label div {
-  margin-top: 5px;
+  margin-top: 0.5rem;
 }
 
 .Interestsurvey-form input[type="text"],
 .Interestsurvey-form textarea {
   width: 100%;
   padding: 8px;
-  margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.Interestsurvey-form select {
+  width: 100%;
+  padding: 0.5rem; /* Add more padding for a better appearance */
+  border: 1px solid #ccc; /* Optional border color, can be adjusted */
+  border-radius: 0.5rem; /* Rounded corners for the select element */
+  background-color: white; /* Background color for the select element */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%; /* Adjust the position as needed */
+  background-size: 0.65em auto; /* Adjust the size as needed */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Optional: adds subtle shadow */
+  cursor: pointer; /* Changes cursor to pointer to indicate it's a dropdown */
+  -webkit-appearance: none; /* Removes default styling particularly in WebKit browsers */
+  -moz-appearance: none; /* Removes default styling for Firefox */
+  appearance: none;
 }
 
 .Interestsurvey-form input[type="range"] {
@@ -44,7 +60,10 @@ body, html {
 
 .Interestsurvey-header {
   text-align: center;
-  margin-top: 10%; /* Adjust as needed */
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;; /* Adjust as needed */
+  width: 100%;
 } 
 
 .InterestButton {
@@ -67,14 +86,18 @@ body, html {
 @media screen and (max-width: 768px) {
   .Interestsurvey-form {
     padding: 10%;
-    margin-top: 10%;
+    margin-top: 20vh;
   }
-}
-
-@media screen and (max-width: 576px) {
-  .Interestsurvey-form {
-    padding: 15%;
-    margin-top: 15%;
+  
+  /* Additional styles for the header to make sure it stacks below the hamburger menu */
+  .Interestsurvey-header {
+    order: 2; /* Use Flexbox ordering if your header is within a flex container */
+    margin-top: 25vh !important; /* Adjust this value to add some space above the title */
+  }
+  
+  /* You might need to add styles for the navbar button if it's part of the layout */
+  .navbar-button {
+    order: 1; /* Ensure the button stays at the top */
   }
 }
 
