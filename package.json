@@ -1,7 +1,7 @@
 {
   "name": "react-portfolio-master",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000/",
+  "proxy": "http://localhost:8000/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
     "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
     "openai": "^4.28.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",

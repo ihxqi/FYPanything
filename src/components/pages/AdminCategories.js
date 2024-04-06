@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AdminCategories.css';
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
-const data = [
+/* const data = [
   { id: 1, category: 'Clothes', subCategory: 'Blazer' },
   { id: 2, category: 'Clothes', subCategory: 'Jeans' },
   { id: 3, category: 'Clothes', subCategory: 'Shirts' },
@@ -14,15 +14,33 @@ const data = [
   { id: 8, category: 'Shoes', subCategory: 'Sneakers' },
   { id: 9, category: 'Clothes', subCategory: 'Shorts' },
   { id: 10, category: 'Accessories', subCategory: 'Earrings' },
-];
+];*/
 
 const AdminCategories = () => {
-  const [categories, setCategories] = useState(data);
+  const [categories, setCategories] = useState([]);
   const [editCategory, setEditCategory] = useState({ id: null, category: '', subCategory: '' });
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [newCategory, setNewCategory] = useState({ category: '', subCategory: '' });
   const [showAddForm, setShowAddForm] = useState(false); // State to manage the visibility of the add category form
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/categories');
+      if (!response.ok) {
+        throw new Error('Failed to fetch categories');
+      }
+      const data = await response.json();
+      setCategories(data);
+    } catch (error) {
+      console.error('Error fetching categories:', error.message);
+    }
+  };
+
 
   const handleEdit = (id) => {
     const categoryToEdit = categories.find(category => category.id === id);
@@ -50,14 +68,13 @@ const AdminCategories = () => {
   
   const handleSearch = () => {
     // Filter categories based on search query
-    const filteredCategories = data.filter(item =>
+    const filteredCategories = categories.filter(item =>
       item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.subCategory.toLowerCase().includes(searchQuery.toLowerCase())
     );
     console.log('Filtered categories:', filteredCategories);
     setCategories(filteredCategories);
   };
-  
   
   const handleNewCategoryChange = (e) => {
     const { name, value } = e.target;

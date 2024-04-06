@@ -1,36 +1,37 @@
 .partner-profile-container {
-  background-color: #ffe2e6;
-  padding: 5%; /* Use percentage for responsive padding */
-  max-width: 90%; /* Max width is a percentage of the viewport width */
-  margin: 5% auto; /* Top margin is responsive, auto centers horizontally */
-  border-radius: 4%; /* Responsive border-radius */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f8d7e6;
+  padding: 1vw 1vw; /* Smaller padding */
+  max-width: 30%; /* Narrower maximum width */
+  margin-top: 8vw;
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+  border-radius: 2vw;
+  box-shadow: 0 0.5vw 1.25vw rgba(0, 0, 0, 0.1);
 }
   
   .partner-profile-form {
     display: flex;
-    flex-direction: column;
+  flex-direction: column;
   }
   
   .partner-profile-form h1 {
     text-align: center;
-    margin-bottom: 5%; /* Keeps the bottom margin responsive */
-    margin-top: 20px; /* Uses viewport height unit to ensure it doesn't get covered */
+  margin-bottom: 1vw; /* Responsive margin bottom */
   }
   
   .partner-profile-form label {
-    margin-bottom: 1rem; /* Use rem for consistent scaling */
+    margin-bottom: 1vw; /* Responsive margin bottom */
     color: #333;
   }
   
   .partner-profile-form input[type="text"],
   .partner-profile-form input[type="date"],
   .partner-profile-form select {
-    width: calc(100% - 16px); /* Account for padding */
-    padding: 1rem; /* Use rem for consistent padding */
-    margin-top: 0.5rem; /* Use rem for consistent spacing */
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100%;
+    padding: 0.6vw; /* Responsive padding */
+    margin-top: 0.5vw; /* Responsive margin top */
+    border: 0.1vw solid #ccc; /* Responsive border */
+    border-radius: 0.5vw; /* Responsive border radius */
   }
   
   /* Adjust the size of radio buttons on smaller screens if necessary */
@@ -39,13 +40,16 @@
   }
   
   .partner-profile-form button {
-    padding: 1rem 2rem; /* Use rem for padding */
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 2rem; /* Use rem for consistent spacing above the button */
-    align-self: center; /* Keep the button centered */
+    padding: 1vw 2vw; /* Responsive padding */
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 0.5vw; /* Responsive border radius */
+  cursor: pointer;
+  margin-top: 1vw; /* Responsive margin top */
+  align-self: center;
   }
-  
+
+  .partner-profile-form button:hover {
+    background-color: #555;
+  }

@@ -100,6 +100,44 @@
   border-radius: 8px;
 }
 
+.star {
+  cursor: pointer; /* Change cursor to pointer on hover */
+  font-size: 4rem; /* Adjust the size of the star */
+  color: #ccc; /* Default color of the star */
+  transition: color 0.3s; /* Smooth transition when color changes */
+  margin-left: 5px;
+}
+
+.UserHomeproduct-details .rating-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin-top: 10px; /* Adjust as needed to move the rating higher */
+}
+
+.UserHomeproduct-details .rating-label {
+  margin-right: 10px; /* Adjust as needed to create space between the label and stars */
+}
+
+.star:hover,
+.star.filled {
+  color: #ffc107; /* Color of the star on hover or when filled */
+}
+
+/* UserHomepage.css */
+
+.UserHomethumbs-container button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 6vw; /* Adjust the size as needed */
+  padding: 0;
+  margin: 0;
+  transition: transform 0.3s ease; /* Add transition effect to transform property */
+}
+
+.UserHomethumbs-container button:hover {
+  transform: scale(1.2); /* Increase size on hover */
+}
 
 
 

@@ -15,11 +15,9 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Press");
-    console.log(password) //check
+
   
     try {
-      console.log("Press1");
       const response = await fetch('/login', {
         method: 'POST',
         headers: {
@@ -27,14 +25,13 @@ const Login = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-  
+
       if (response.ok) {
         // If login is successful, redirect to appropriate page
-      console.log("Logging in");
-      const userRole = await response.text();
-      console.log('userRole:', userRole);
+      const userSession = await response.json(); // Parse JSON response
+      const userRole = userSession.role; // Access the role field
+      console.log('userRole:', userRole); // Delete
       if (userRole === 'admin') {
-        console.log("User " + userRole)
         navigate('/adminmanagepartner')
       } else if (userRole === 'user') {
         navigate('/UserHomepage')
@@ -47,7 +44,6 @@ const Login = () => {
       }
     } else {
       // If login fails, set error state
-      console.log("Press2");
       const errorMessage = await response.text();
       window.alert(errorMessage);
     }
@@ -94,11 +90,9 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-
-                <a href="/ForgetEmail">Forgot Email? Click here</a><br />
                 <a href="/ForgetPassword">Forgot Password? Click here</a>
 
-                <input type="submit" value="LOG IN" />
+                <input type="submit" value="LOG IN" /> <br /><br />
               </form>
               <p>Don't Have An Account? <a href="/RegisterRole">Click Here!</a></p>
             </div>

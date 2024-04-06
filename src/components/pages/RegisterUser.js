@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterUser.css';
 import Navbar from "../Navbar";
+import GeneralFooter from "../GeneralFooter";
 
 
 const RegisterUser = () => {
@@ -17,13 +18,6 @@ const RegisterUser = () => {
 
   const handleRegister = async () => {
     try {
-      console.log(name);
-      console.log(gender);
-      console.log(dob);
-      console.log(email);
-      console.log(password);
-      console.log(phone);
-      console.log(country);
       const response = await fetch('/registeruser', {
         method: 'POST',
         headers: {
@@ -42,18 +36,21 @@ const RegisterUser = () => {
 
       if (response.ok) {
         console.log('Registration successful');
+        const successMessage = await response.text();
+        window.alert(successMessage);
         navigate('/login');
         // Optionally, you can redirect the user to a different page upon successful registration
         // window.location.href = '/successPage'; // Redirect to success page
       } else {
-        console.error('Registration failed');
-        // Handle registration failure
+        const errorMessage = await response.text();
+        window.alert(errorMessage);
       }
     } catch (error) {
       console.error('Error registering user:', error);
       // Handle error
     }
   };
+
 
   return (
     <div>
@@ -73,7 +70,7 @@ const RegisterUser = () => {
 
       <div className='Usergender-selection'>
   <div className='Userlabel'>Gender:</div>
-  <select name='gender' className='gender-dropdown' value={gender} onChange={(e) => setGender(e.target.value)}>
+  <select name='gender' className='gender-dropdown' value={gender} onChange={(e) => setGender(e.target.value)} required>
   <option value=''>Select Gender</option>
     <option value='Male'>Male</option>
     <option value='Female'>Female</option>
@@ -82,7 +79,7 @@ const RegisterUser = () => {
 
       <div className='Userlabel-input-container'>
         <span className='Userlabel'>Date of Birth:</span>
-        <input className='Userinput-field' type='date' value={dob} onChange={(e) => setDob(e.target.value)} />
+        <input className='Userinput-field' type='date' value={dob} onChange={(e) => setDob(e.target.value)} required/>
       </div>
 
       <div className='Userlabel-input-container'>
@@ -92,27 +89,32 @@ const RegisterUser = () => {
 
       <div className='Userlabel-input-container'>
         <span className='Userlabel'>Password:</span>
-        <input className='Userinput-field' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input className='Userinput-field' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
       </div>
 
       <div className='Userlabel-input-container'>
         <span className='Userlabel'>Phone Number:</span>
-        <input className='Userinput-field' type='text' value={phone} onChange={(e) => setPhoneNumber(e.target.value)} />
+        <input className='Userinput-field' type='text' pattern="\d{8}" value={phone} onChange={(e) => setPhoneNumber(e.target.value)} required/>
       </div>
 
       <div className='Userlabel-input-container'>
         <span className='Userlabel'>Country:</span>
-        <select className='Userinput-field' value={country} onChange={(e) => setCountry(e.target.value)}>
+        <select className='Userinput-field' value={country} onChange={(e) => setCountry(e.target.value)} required>
         <option value=''>Select Country</option>
           <option value='sg'>Singapore</option>
+          <option value='my'>Malaysia</option>
           
           {/* Add more countries as needed */}
         </select>
       </div>
       <button className="Userbutton" onClick={handleRegister}>Register</button>
     </div>
+    
     </div>
+    
+    <GeneralFooter />
     </div>
+    
   );
 };
 
