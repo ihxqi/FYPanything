@@ -12,14 +12,6 @@
   width: 100%;
   display: block;
 }
-
-.why-join-us-container h1 {
-  color: #000;
-  font-size: 2.25rem;
-  margin-top: 0.5rem; /* Adjust top margin to bring h1 closer to h2 if needed */
-  margin-bottom: 2rem;
-  text-align: center;
-}
   
   .benefits {
     display: flex; /* Align benefits side by side */

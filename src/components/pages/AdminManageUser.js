@@ -1,15 +1,33 @@
-import React from 'react';
-import './AdminManageUser.css'; // Ensure the CSS file is named correctly
+import React, { useState, useEffect } from 'react';
+import './AdminManageUser.css';
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
 function AdminManageUsers() {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    // Fetch user accounts from backend API when the component mounts
+    fetchUserAccounts();
+  }, []);
+
+  const fetchUserAccounts = async () => {
+    try {
+      const response = await fetch('/get_useraccounts');
+      if (!response.ok) {
+        throw new Error('Failed to fetch user accounts');
+      }
+      const data = await response.json();
+      setUser(data.accounts);
+    } catch (error) {
+      console.error('Error fetching user accounts:', error);
+    }
+  };
 
   return (
     <div>
       <AdminSidebarNavbar />
-      <div className="user-management-white-box"> {/* This div acts as the parent element */}
-      
+      <div className="user-management-white-box">
         <div className="user-management-container">
           <div className="user-management-header">
             <h1>User Accounts</h1>
@@ -26,30 +44,16 @@ function AdminManageUsers() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td contentEditable="false">Howard Wolowitz</td>
-                <td contentEditable="false">howard@gmail.com</td>
-                <td contentEditable="false">12/12/1999</td>
-                <td contentEditable="false">Singapore</td>
-                <td contentEditable="false">409 Jurong East Street 32 </td>
-                <td contentEditable="false">12345678</td>
-              </tr>
-              <tr>
-                <td contentEditable="false">John Wolowitz</td>
-                <td contentEditable="false">John@gmail.com</td>
-                <td contentEditable="false">11/11/1999</td>
-                <td contentEditable="false">Singapore</td>
-                <td contentEditable="false">123 Jurong East Street 32 </td>
-                <td contentEditable="false">12345670</td>
-              </tr>
-              <tr>
-                <td contentEditable="false">Howard Tan</td>
-                <td contentEditable="false">Tan@gmail.com</td>
-                <td contentEditable="false">10/10/1999</td>
-                <td contentEditable="false">Singapore</td>
-                <td contentEditable="false">409 Jurong West Street 32 </td>
-                <td contentEditable="false">12395678</td>
-              </tr>
+              {user.map((user, index) => (
+                <tr key={index}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.dob}</td>
+                  <td>{user.country}</td>
+                  <td>{user.address}</td>
+                  <td>{user.phone}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

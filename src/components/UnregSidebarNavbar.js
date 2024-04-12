@@ -14,11 +14,10 @@ const UnregSidebarNavbar = () => {
 
   // Sidebar links
   const sidebarLinks = [
+    { to: "/Login", text: "Login" },
+    { to: "/RegisterRole", text: "Register" },
     { to: "/JoinUs", text: "Why Join Us" }, 
     { to: "/AboutUs", text: "About Us" },
-    { to: "/RegisterRole", text: "Register" },
-    { to: "/Login", text: "Login" },
-  
   ];
 
   // Navbar links

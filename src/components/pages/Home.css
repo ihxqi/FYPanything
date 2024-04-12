@@ -1,173 +1,153 @@
-/* Header */
-.header {
-    text-align: center;
-    padding: 30px 0;
-    /* Add padding to top and bottom */
-}
-
-.header h1 {
-    font-size: 70px;
-    /* Adjust font size */
-    color: #333;
-    /* Adjust font color */
-    font-weight: bold;
-}
-
 .interactive-sections {
-    display: flex;
-    justify-content: space-around; /* Spreads out children evenly */
-    align-items: center; /* Vertically centers the children */
-    padding: 50px 0; /* Adds padding above and below */
-  }
+  display: flex;
+  justify-content: space-around; /* Spreads out children evenly */
+  align-items: center; /* Vertically centers the children */
+  padding: 50px 0; /* Adds padding above and below */
+}
 
-/* Thumbs Up Section */
 .video-section p {
-    text-align: center;
-    /* Align text to center */
-    font-size: 20px;
-    /* Adjust font size */
-    color: #666;
-    /* Adjust font color */
+  text-align: center;
+  /* Align text to center */
+  font-size: 20px;
+  /* Adjust font size */
+  color: #666;
+  /* Adjust font color */
 }
 
 /* Bookmark Section */
-.bookmark-section p {
-    text-align: center;
-/* Align text to center */
-font-size: 20px;
-/* Adjust font size */
-color: #666;
-/* Adjust font color */
-margin-top: 10px;
+.HPbookmark-section p {
+  text-align: center;
+  font-size: 20px;
+  color: #666;
 }
 
-
-.video-section h3 {
-    margin-bottom: 30px;
-    font-size: 30px;
-    /* Increased font size */
+.large-emojis {
+  font-size: 48px; /* Adjust the size as needed */
+  margin-bottom: 80px;
 }
 
-.bookmark-section h3 {
-    margin-bottom: 30px;
-    font-size: 30px;
-    /* Increased font size */
+video {
+  max-width: 60%; /* Make the video responsive */
+  border-radius: 8px; /* Optional: Add rounded corners to the video */
+  margin-top: -42px;
+}
+
+.HPbookmark-section video {
+  margin-top: 30px;
 }
 
 .video-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    /* Align items to the bottom */
-    padding-bottom: 60px;
-    /* Add space below the image for the short write-up */
-    flex-basis: 50%;
-}
-
-
-/* Showcase Section */
-.showcase-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 60px;
-    /* Add space below the image for the short write-up */
-}
-
-.blogshop-partners-section h3 {
-    margin-bottom: 30px;
-    font-size: 30px;
-    /* Increased font size */
-    text-align: center;
-}
-
-.showcase-section .logo-slider {
-    display: flex;
-    justify-content: center;
-}
-
-.showcase-section .logo-slider img {
-    width: 450px;
-    /* Increased width for the logos */
-    margin: 0 30px;
-    /* Increased margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  /* Add space below the image for the short write-up */
+  flex-basis: 50%;
+  height: 10%;
+  width: 10%;
+  margin-bottom: 100px;
 }
 
 /* Bookmark Section */
-.bookmark-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    /* Align items to the bottom */
-    padding-bottom: 60px;
-    /* Add space below the image for the short write-up */
-    flex-basis: 50%;
+.HPbookmark-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex-basis: 50%;
+  width: 10%;
+  height: 10%;
+  margin-bottom: 100px;
 }
 
-.bookmark-section img {
-    width: 700px;
-    /* Increased width for the image */
+.interactive-sections {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch; /* This will make all children of the container stretch to the same height */
+  padding: 50px 0;
 }
 
-/* Blogshop Logos */
-.blogshop {
-    width: 180px;
-    /* Increased width for the logos */
-    height: auto;
-    /* Maintain aspect ratio */
-    margin-right: 30px;
-    /* Increased margin */
-    border-radius: 50%;
+.video-section,
+.HPbookmark-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Adjusts space distribution inside the container */
+  background-color: #ffe2e6;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Adjust blur and color as needed */
+  /* Add a fixed height or min-height if needed, or remove if you want it to be auto */
+  flex: 1; /* This ensures that both containers take up equal space in the flex container */
+  max-width: 30%; /* Adjust this value as needed */
+  margin: 0 10px; /* Adds some space between the containers */
 }
 
-/* Keyframes for sliding animation */
-@keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-100%);
-        /* Adjust the distance to slide */
-    }
+/* Remove any specific height settings from individual sections if they exist */
+.video-section {
+  /* Remove height if set */
+  padding-top: 73px;
+  margin-bottom: 100px;
+ 
 }
 
-/* Apply slide animation to logo container */
-.logo-container {
-    display: flex;
-    animation: slide 30s linear infinite;
-    /* Adjust the duration as needed */
-}
-
-.blogshop-partners-section {
-    background-color: rgba(236, 170, 233, 0.432);
-    margin-bottom: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+.HPbookmark-section {
+  /* Remove height if set */
+  margin-bottom: 100px;
+  padding-bottom: 30px;
 }
 
 /* Media queries for responsiveness */
-@media screen and (max-width: 1000px) {
-
-    .thumbs-up-section img,
-    .bookmark-section img {
-        width: 300px;
-        /* Adjusted width for mobile */
-    }
-
-    .blogshop-partners-section .logo-slider img {
-        width: 150px;
-        /* Adjusted width for mobile */
-        margin: 0 15px;
-        /* Adjusted margin for mobile */
-    }
-
-    .blogshop {
-        width: 100px;
-        /* Adjusted width for mobile */
-        margin-right: 10px;
-        /* Adjusted margin for mobile */
-    }
+@media screen and (max-width: 400px) {
+  .homebanner {
+    display: flex; /* Use flexbox to center the image horizontally and vertically */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    height: 400px; /* Set a fixed height, or you can make it responsive based on your needs */
+    margin: 20px 0; /* Add some margin to the top and bottom */
+    border-radius: 8px; /* Optional: Rounds the corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    overflow: hidden;
+  }
 }
+
+.tracking-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 50px 0;
+}
+
+.tracking-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  margin-right: 50px;
+}
+
+.tracking-box {
+  text-align: center;
+  width: 450px; /* Set a fixed width for the boxes */
+  height: auto;
+  background-color: #ff3131; /* Red */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.tracking-box:nth-child(2) {
+  background-color: #0eff0e; /* Green */
+}
+
+.tracking-box:nth-child(3) {
+  background-color: #fff700; /* Yellow */
+}
+
+.tracking-box h2 {
+  font-size: 40px;
+  color: black;
+}
+
+.tracking-box p {
+  font-size: 50px;
+  color: black;
+}
+

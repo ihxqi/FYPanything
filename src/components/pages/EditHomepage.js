@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import banner from '../image/banner.mp4'; // Import the thumbs up GIF
-import bookmark from '../image/Bookmark.jpg'
-import bf from '../image/bf.jpg'
-import lyla from '../image/lyla.jpg'
-import diem from '../image/diem.jpg'
+import bookmark from '../image/Bookmark.gif'
 import './EditHomepage.css'; 
 import GeneralFooter from "../GeneralFooter";
 
@@ -67,29 +64,7 @@ const EditHomepage = ({ onSave }) => {
             onChange={handleHeaderChange}
           />
         </div>
-  
-        {/* Blogshop Partner Logo Slider */}
-        <div className="blogshop-partners-section">
-          <h3>Our Blogshop Partners</h3>
-          <div className="logo-slider logo-container"> {/* Add logo-container class */}
-            <img src={bf} alt="bf" className='blogshop' />
-            <img src={lyla} alt="lyla" className='blogshop' />
-            <img src={diem} alt="diem" className='blogshop' />
-            <img src={bf} alt="bf" className='blogshop' />
-            <img src={lyla} alt="lyla" className='blogshop' />
-            <img src={diem} alt="diem" className='blogshop' />
-            <img src={bf} alt="bf" className='blogshop' />
-            <img src={lyla} alt="lyla" className='blogshop' />
-            <img src={diem} alt="diem" className='blogshop' />
-            <img src={bf} alt="bf" className='blogshop' />
-            <img src={lyla} alt="lyla" className='blogshop' />
-            <img src={diem} alt="diem" className='blogshop' />
-            <img src={bf} alt="bf" className='blogshop' />
-            <img src={lyla} alt="lyla" className='blogshop' />
-            <img src={diem} alt="diem" className='blogshop' />
-            {/* Add more logo images as needed */}
-          </div>
-        </div>  
+
   
         <div className="video-section">
         

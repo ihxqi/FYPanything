@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import './ResetPassword.css'; // Make sure to create and import your CSS file
+import { useParams } from 'react-router-dom'; // Import useParams to extract parameters from the URL
+import './ResetPassword.css';
 import GeneralFooter from "../GeneralFooter";
 import UnregSidebarNavbar from "../UnregSidebarNavbar";
 
 const ResetPassword = () => {
-  const [email, setEmail] = useState('');
+  const { token } = useParams(); // Extract the token from the URL parameters
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,8 +20,8 @@ const ResetPassword = () => {
     setError('');
 
     // Handle the reset password logic here
-    console.log(email, password);
-    // Send the email and new password to your server for further processing
+    console.log(token, password);
+    // Send the token, email, and new password to your server for further processing
   };
 
   return (
@@ -30,6 +31,8 @@ const ResetPassword = () => {
       <h1 className="reset-password-header">Reset Your Password</h1>
       {error && <p className="error-message">{error}</p>}
       <form className="reset-password-form" onSubmit={handleSubmit}>
+        {/* Add a hidden input field to store the token */}
+        <input type="hidden" name="token" value={token} />
         <label htmlFor="password">NEW PASSWORD:</label>
         <input
           type="password"
@@ -57,4 +60,3 @@ const ResetPassword = () => {
 };
 
 export default ResetPassword;
-

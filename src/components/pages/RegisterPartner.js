@@ -108,7 +108,7 @@ const RegisterPartner = () => {
 
 
 <div className='Partnerlabel-input-container'>
-  <span className='Partnerlabel'>Product Type:</span>
+  <span className='Partnerlabel'>Category:</span>
   <select className='Partnerinput-field' value={category} onChange={(e) => setCategory(e.target.value)} required>
     <option value='' disabled>Select Product Type</option>
     <option value='Apparel'>Apparel</option>

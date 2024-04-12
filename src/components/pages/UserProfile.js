@@ -12,23 +12,23 @@ function UserProfile() {
     phone: '',
     country: ''
   });
+ 
 
   useEffect(() => {
-    // Fetch user data when the component mounts
-    fetchUserData();
-  }, []); // Empty dependency array to run only once
+    fetchUserAccounts();
+  }, []);
 
-  const fetchUserData = async () => {
+
+  const fetchUserAccounts = async () => {
     try {
-      const response = await fetch('/user');
-      if (response.ok) {
-        const userData = await response.json();
-        setUser(userData);
-      } else {
-        console.error('Error fetching user data:', response.statusText);
+      const response = await fetch('/get_useraccounts');
+      if (!response.ok) {
+        throw new Error('Failed to fetch user accounts');
       }
+      const data = await response.json();
+      setUser(data.accounts);
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error('Error fetching user accounts:', error);
     }
   };
 
@@ -39,23 +39,25 @@ function UserProfile() {
       [name]: value
     }));
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/user/' + user._id, { // Use user._id to specify the userId
+      const response = await fetch('/update_user_data/' + user._id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(user),
       });
+      
       if (response.ok) {
         console.log('User data updated successfully');
-        window.alert("Updated successfully!");
-        // Optionally, you can fetch updated user data after the update operation
+        window.alert('Updated successfully!');
+        
+        // Optionally, fetch updated user data after the update operation
         // This ensures that the user interface reflects the latest changes
-        await fetchUserData();
+        await fetchUserAccounts();
       } else {
         console.error('Error updating user data:', response.statusText);
       }
@@ -63,6 +65,7 @@ function UserProfile() {
       console.error('Error updating user data:', error);
     }
   };
+  
 
   return (
     <div>

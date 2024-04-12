@@ -24,18 +24,25 @@ const AdminCategories = () => {
   const [showAddForm, setShowAddForm] = useState(false); // State to manage the visibility of the add category form
   const [searchQuery, setSearchQuery] = useState('');
 
+  const userSession = JSON.parse(localStorage.getItem('user_session')); //Can delete
+  console.log(userSession)
+
   useEffect(() => {
     fetchCategories();
   }, []);
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('/api/categories');
+      const response = await fetch('/get_categories');
       if (!response.ok) {
         throw new Error('Failed to fetch categories');
       }
       const data = await response.json();
-      setCategories(data);
+      const categoriesArray = Object.entries(data.categories).map(([category, subCategories]) => ({
+        category,
+        subCategory: subCategories
+      }));
+      setCategories(categoriesArray);
     } catch (error) {
       console.error('Error fetching categories:', error.message);
     }
@@ -125,17 +132,22 @@ const AdminCategories = () => {
           </tr>
         </thead>
         <tbody>
-          {categories.map(item => (
-            <tr key={item.id}>
-              <td>{item.category}</td>
-              <td>{item.subCategory}</td>
-              <td>
-                <button className="admin-categories-edit-button" onClick={() => handleEdit(item.id)}>EDIT</button>
-                <button className="admin-categories-remove-button" onClick={() => handleRemove(item.id)}>REMOVE</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {categories.map((category, categoryIndex) => (
+    <React.Fragment key={categoryIndex}>
+      {category.subCategory.map((subCategory, subCategoryIndex) => (
+        <tr key={`${category.category}-${subCategoryIndex}`}>
+          <td>{category.category}</td>
+          <td>{subCategory}</td>
+          <td>
+            <button className="admin-categories-edit-button" onClick={() => handleEdit(category.id)}>EDIT</button>
+            <button className="admin-categories-remove-button" onClick={() => handleRemove(category.id)}>REMOVE</button>
+          </td>
+        </tr>
+      ))}
+    </React.Fragment>
+  ))}
+</tbody>
+
       </table>
       <button className="admin-categories-add-categories-button" onClick={() => setShowAddForm(true)}>Add Category</button>
 
