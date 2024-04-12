@@ -29,8 +29,9 @@ const Login = () => {
       if (response.ok) {
         // If login is successful, redirect to appropriate page
       const userSession = await response.json(); // Parse JSON response
+      localStorage.setItem('user_session', JSON.stringify(userSession)); // saves the user current session for further use
+      console.log(userSession)
       const userRole = userSession.role; // Access the role field
-      console.log('userRole:', userRole); // Delete
       if (userRole === 'admin') {
         navigate('/adminmanagepartner')
       } else if (userRole === 'user') {

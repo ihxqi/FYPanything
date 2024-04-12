@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AdminManagePartner.css'; // Ensure the CSS file is named correctly
 import Select from 'react-select'; // Import React-Select
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
@@ -6,26 +6,65 @@ import AdminFooter from "../AdminFooter";
 
 function AdminManagePartners() {
   const [selectedOption, setSelectedOption] = useState(null);
-  const [categoryFilter, setCategoryFilter] = useState(null);
+  const [categories, setCategories] = useState([]);
   const [actionStatus, setActionStatus] = useState({}); // State to hold individual statuses
-  const [partnerData] = useState([
-    { name: 'Example Partner', url: 'example.com', uen: 'xxx', category: 'Fashion' },
-    { name: 'Ali Partner', url: 'ali.com', uen: 'xxx', category: 'Fashion' },
-    { name: 'dear lyla', url: 'dearlyla.com', uen: 'xxx', category: 'Clothes' }
-  ]);
+  const [partnerData, setPartner] = useState([]);
   const [filteredPartnerData, setFilteredPartnerData] = useState(partnerData);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+
+  useEffect(() => {
+    fetchPartnerAccounts();
+  }, []);
+
+  useEffect(() => {
+    fetchCategories(); 
+  }, []);
+
+  const fetchPartnerAccounts = async () => {
+    try {
+      const response = await fetch('/get_partneraccounts');
+      if (!response.ok) {
+        throw new Error('Failed to fetch partner accounts');
+      }
+      const data = await response.json();
+      const filteredData = data.accounts.filter(partner => partner.authentication === '1');
+      setPartner(filteredData);
+    } catch (error) {
+      console.error('Error fetching partner accounts:', error);
+    }
+    
+  };
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/get_categories');
+      if (!response.ok) {
+        throw new Error('Failed to fetch categories');
+      }
+      const data = await response.json();
+      // Extract only the category names from the response
+      const categoriesArray = Object.keys(data.categories);
+      setCategories(categoriesArray);
+    } catch (error) {
+      console.error('Error fetching categories:', error.message);
+    }
+  };
+  
+  
 
   // Define your options for the dropdown
-  const blogshopOptions = [
-    { value: 'bf blogshop', label: 'bf blogshop' },
-    { value: 'dear lyla', label: 'dear lyla' },
-    { value: 'carpe diem', label: 'carpe diem' }
-  ];
-  const categoryOptions = [
-    { value: 'Clothes', label: 'Clothes' },
-    { value: 'Shoes', label: 'Shoes' },
-    { value: 'Accessories', label: 'Accessories' }
-  ];
+  const blogshopOptions = partnerData.map(partner => ({
+    value: partner.name,
+    label: partner.name
+  }));
+
+ // const categoriesOptions = categories.map(category => ({
+   // value: category, 
+  //  label: category 
+ // }));
+  
+ // console.log("Categories Options:", categoriesOptions);
+  
 
   const handleSearch = () => {
     if (selectedOption) {
@@ -40,9 +79,9 @@ function AdminManagePartners() {
   };
 
   const handleFilter = () => {
-    if (categoryFilter) {
-      const selectedCategory = categoryFilter.value;
-      const filteredPartners = partnerData.filter(partner => partner.category === selectedCategory);
+    if (selectedCategory) {
+      const selectedCategoryValue = selectedCategory.value;
+      const filteredPartners = partnerData.filter(partner => partner.category === selectedCategoryValue);
       setFilteredPartnerData(filteredPartners);
       console.log('Filtered partners by category:', filteredPartners);
     } else {
@@ -50,6 +89,7 @@ function AdminManagePartners() {
       console.log('No category selected');
     }
   };
+  
 
   const handleActivate = (partnerName) => {
     console.log("Activate clicked for:", partnerName);
@@ -87,15 +127,16 @@ function AdminManagePartners() {
                 placeholder="Select a blogshop..."
                 isSearchable={true}
               />
-              <label htmlFor="category-filter">Filter by Category:</label>
-              <Select
-                id="category-filter"
-                options={categoryOptions}
-                value={categoryFilter}
-                onChange={setCategoryFilter}
+                  <Select
+                id="categories-filter"
+                options={blogshopOptions}
+                value={selectedCategory}
+                onChange={(selectedOption) => setSelectedCategory(selectedOption ? selectedOption.value : null)}
                 placeholder="Select a category..."
                 isSearchable={false}
               />
+
+
               <button className="partner-management-search-bar-button" onClick={handleSearch}>Search</button>
               <button className="partner-management-filter-bar-button" onClick={handleFilter}>Filter</button>
             </div>
@@ -104,28 +145,47 @@ function AdminManagePartners() {
             <thead>
               <tr>
                 <th>Blogshop Owner</th>
-                <th>URL</th>
                 <th>UEN Number</th>
                 <th>Category</th>
+                <th>Social Links</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {filteredPartnerData.map((partner, index) => (
+            {selectedOption || selectedCategory ? (
+              // If any filter is applied, render filteredPartnerData
+              filteredPartnerData.map((partner, index) => (
                 <tr key={index}>
                   <td>{partner.name}</td>
-                  <td>{partner.url}</td>
-                  <td>{partner.uen}</td>
+                  <td>{partner.UEN}</td>
                   <td>{partner.category}</td>
+                  <td>{partner.link}</td>
+                  <td>{actionStatus[partner.name]}</td>
+                  <td className="partner-management-action-column">
+                  <button className="admin-activate-partner-button" onClick={() => handleActivate(partner.name)}>Activate</button>
+                  <button className="admin-suspend-partner-button" onClick={() => handleSuspend(partner.name)}>Suspend</button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              // If no filter is applied, render partnerData
+              partnerData.map((partner, index) => (
+                <tr key={index}>
+                  <td>{partner.name}</td>
+                  <td>{partner.UEN}</td>
+                  <td>{partner.category}</td>
+                  <td>{partner.link}</td>
                   <td>{actionStatus[partner.name]}</td>
                   <td className="partner-management-action-column">
                     <button className="admin-activate-partner-button" onClick={() => handleActivate(partner.name)}>Activate</button>
                     <button className="admin-suspend-partner-button" onClick={() => handleSuspend(partner.name)}>Suspend</button>
                   </td>
                 </tr>
-              ))}
-            </tbody>
+              ))
+            )}
+          </tbody>
+
           </table>
         </div>
         <AdminFooter />

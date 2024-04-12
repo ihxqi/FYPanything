@@ -1,64 +1,79 @@
 import React from "react";
 import UnregSidebarNavbar from "../UnregSidebarNavbar";
-import banner from '../image/banner.mp4'; // Import the thumbs up GIF
-import bookmark from '../image/Bookmark.jpg'
-import bf from '../image/bf.jpg'
-import lyla from '../image/lyla.jpg'
-import diem from '../image/diem.jpg'
-import './Home.css'; 
+import t from "../image/t.gif"; // Import the thumbs up GIF
+import bookmark from "../image/Bookmark.gif";
+import hbanner from "../image/hbanner.jpg";
+import "./Home.css";
 import GeneralFooter from "../GeneralFooter";
 
 const Home = () => {
   return (
     <div>
+      <div className="homebanner">
+        <img
+          src={hbanner}
+          alt="hbanner"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
       <UnregSidebarNavbar />
-      {/* Header */}
-      <div className="header">
-        <h1>Welcome to CollaFilter!</h1>
-      </div>
+      <br /> <br />{" "}
+      <h4>
+        <p style={{ textAlign: "center" }}>
+          💕Where Style Meets Personalization and Opportunity💕
+        </p>
+      </h4>
+      <div className="interactive-sections">
+        <div className="video-section">
+          <video src={t} autoPlay loop muted />
+          <p class="section-title">
+            <br/>
+            Revolutionize Your Style: Thumb Through Fashion Picks!
+          </p>
+        </div>
 
-{/* Blogshop Partner Logo Slider */}
-<div className="blogshop-partners-section">
-  <h3>Our Blogshop Partners</h3>
-  <div className="logo-slider logo-container"> {/* Add logo-container class */}
-    <img src={bf} alt="bf" className='blogshop' />
-    <img src={lyla} alt="lyla" className='blogshop' />
-    <img src={diem} alt="diem" className='blogshop' />
-    <img src={bf} alt="bf" className='blogshop' />
-    <img src={lyla} alt="lyla" className='blogshop' />
-    <img src={diem} alt="diem" className='blogshop' />
-    <img src={bf} alt="bf" className='blogshop' />
-    <img src={lyla} alt="lyla" className='blogshop' />
-    <img src={diem} alt="diem" className='blogshop' />
-    <img src={bf} alt="bf" className='blogshop' />
-    <img src={lyla} alt="lyla" className='blogshop' />
-    <img src={diem} alt="diem" className='blogshop' />
-    <img src={bf} alt="bf" className='blogshop' />
-    <img src={lyla} alt="lyla" className='blogshop' />
-    <img src={diem} alt="diem" className='blogshop' />
-    {/* Add more logo images as needed */}
-  </div>
-</div>
+        <div className="large-emojis">
+          👑
+          <br />
+          🎀
+          <br />
+          🧦
+          <br />
+          👖
+          <br />
+          🥾
+          <br />
+          👗
+          <br />
+          🧥
+          <br />
+          👜
+          <br />
+          👒
+        </div>
 
-<div className="interactive-sections">
-      {/* Video Section */}
-
-      <div className="video-section">
-      <em><h3><b>Thumbs-up</b></h3></em>
-      <video src={banner} autoPlay loop muted />
-        <p>Revolutionize Your Style: Thumb Through Fashion Picks!</p>
+        <div className="HPbookmark-section">
+          <video src={bookmark} autoPlay loop muted />
+          <br />
+          <p class="section-title">Unlock Your Next Favorite With Us!</p>
+        </div>
       </div>
-
-      {/* Bookmark Section */}
-      <div className="bookmark-section">
-        <em><h3><b>Bookmark Your Favorites</b></h3></em>
-        <img src={bookmark} alt="Bookmarks" />
-        <p>Unlock Your Next Favorite With Us!</p>
+      <div className="tracking-section">
+        <div className="tracking-box">
+          <h2>Total Users:</h2>
+          <p>100</p>
+        </div>
+        <div className="tracking-box">
+          <h2>Total Blogshops:</h2>
+          <p>50</p>
+        </div>
+        <div className="tracking-box">
+          <h2>Total Products:</h2>
+          <p>200</p>
+        </div>
       </div>
-      </div>
-      <GeneralFooter/>
-      </div>
-
+      <GeneralFooter />
+    </div>
   );
 };
 

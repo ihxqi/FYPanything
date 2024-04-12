@@ -1,15 +1,42 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, navigate, useNavigate } from "react-router-dom";
 import logo from '../components/image/CollaFilter Logo.jpg';
 import "./Navbar.css";
 
 const UserSidebarNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(true);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
     setMenuOpen(!menuOpen); // Ensure consistency between collapsed and menuOpen states
+  };
+
+  const handleLogout = async() => {
+    console.log('Logout button clicked');
+    try {
+      const response = await fetch('/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include cookies in the request
+      });
+
+      if (response.ok) {
+        // Successfully logged out, redirect to login page
+        localStorage.removeItem('user_session');
+        console.log(localStorage)
+        console.log("returned")
+        navigate('/login')
+      } else {
+        // Handle logout failure
+        console.error('Failed to log out');
+      }
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   // Sidebar links
@@ -19,7 +46,7 @@ const UserSidebarNavbar = () => {
     { to: "/UserBookmarks", text: "My Bookmarks" },
     { to: "/UserProfile", text: "Profile" },
     { to: "/interestSurvey", text: "Interest Survey" },
-    { to: "/Login", text: "Logout" }, // Include logout link in sidebar
+    { text: "Logout", onClick: handleLogout }, // Include logout link in sidebar
   ];
 
   return (

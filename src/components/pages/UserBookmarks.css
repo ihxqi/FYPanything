@@ -25,6 +25,7 @@
 
 h1 {
   color: var(--font-color);
+  text-align: center;
 }
 
 .bookmarks-grid {
