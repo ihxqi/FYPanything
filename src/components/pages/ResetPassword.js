@@ -1,28 +1,69 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom'; // Import useParams to extract parameters from the URL
+import React, { useState,useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useParams to extract parameters from the URL
 import './ResetPassword.css';
 import GeneralFooter from "../GeneralFooter";
 import UnregSidebarNavbar from "../UnregSidebarNavbar";
 
 const ResetPassword = () => {
   const { token } = useParams(); // Extract the token from the URL parameters
-  const [password, setPassword] = useState('');
+  const [newpassword, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+
+  useEffect(() => {
+    const verifyToken = async () => {
+      try {
+        const response = await fetch(`/verifytoken/${token}`);
+        const data = await response.json();
+        if (!data.valid) {
+          navigate('/login'); // Redirect to login page if token is invalid
+        }
+      } catch (error) {
+        console.error('Error verifying token:', error);
+        navigate('/login'); // Redirect to login page if error occurs
+      }
+    };
+
+    verifyToken();
+  }, [token, navigate]);
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password !== confirmPassword) {
+    if (newpassword !== confirmPassword) {
       setError("Passwords don't match!");
       return;
     }
-    // Clear error if any
+  
     setError('');
-
-    // Handle the reset password logic here
-    console.log(token, password);
-    // Send the token, email, and new password to your server for further processing
+    console.log(token)
+    console.log(newpassword)
+    try {
+      const response = await fetch('/resetpassword', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token, newpassword }), // Send token and password in the request body
+      });
+  
+      if (!response.ok) {
+        // Handle error response from the server
+        throw new Error('Failed to reset password');
+      }
+  
+      // Reset password successfully
+      console.log('Password reset successfully');
+      window.alert("Password reset!")
+      navigate('/login');
+    } catch (error) {
+      // Handle any errors that occur during the API call
+      console.error('Error resetting password:', error.message);
+    }
   };
+  
 
   return (
     <div>
@@ -36,10 +77,10 @@ const ResetPassword = () => {
         <label htmlFor="password">NEW PASSWORD:</label>
         <input
           type="password"
-          id="password"
-          name="password"
+          id="newpassword"
+          name="newpassword"
           required
-          value={password}
+          value={newpassword}
           onChange={(e) => setPassword(e.target.value)}
         /><br /><br />
         <label htmlFor="confirmPassword">CONFIRM NEW PASSWORD:</label>

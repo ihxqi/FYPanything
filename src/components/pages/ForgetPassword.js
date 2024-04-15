@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import './ForgetPassword.css'; // Ensure you have this CSS file with the correct styles
 import Navbar from '../Navbar';
 
+
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
 
@@ -26,6 +27,7 @@ const ForgetPassword = () => {
       setEmail('');
 
       console.log('Reset password request sent successfully');
+      window.alert("Reset password email sent!")
     } catch (error) {
       console.error('Error sending reset password request:', error);
       // Handle error (e.g., display error message to the user)
