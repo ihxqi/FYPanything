@@ -34,10 +34,10 @@ const Login = () => {
       const userRole = userSession.role; // Access the role field
       if (userRole === 'admin') {
         navigate('/adminmanagepartner')
-      } else if (userRole === 'user') {
+      } else if (userRole === 'User') {
         navigate('/UserHomepage')
       }
-      else if (userRole === 'partner') {
+      else if (userRole === 'Partner') {
         navigate('/partnerallproducts')
       }
       else{

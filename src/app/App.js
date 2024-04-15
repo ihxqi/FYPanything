@@ -36,7 +36,7 @@ export default function App() {
           <Route path="/PartnerGenerateReport" element={<PartnerGenerateReport/>} />
           <Route path="/EditHomepage" element={<EditHomepage/>} />
           <Route path="/UserRecentlyViewed" element={<UserRecentlyViewed/>} />
-          <Route path="/ResetPassword" element={<ResetPassword/>} />
+          <Route path="/ResetPassword/:token" element={<ResetPassword/>} />
         </Routes>
       </div>
     </Router>

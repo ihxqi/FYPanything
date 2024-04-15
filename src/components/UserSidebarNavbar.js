@@ -46,7 +46,7 @@ const UserSidebarNavbar = () => {
     { to: "/UserBookmarks", text: "My Bookmarks" },
     { to: "/UserProfile", text: "Profile" },
     { to: "/interestSurvey", text: "Interest Survey" },
-    { text: "Logout", onClick: handleLogout }, // Include logout link in sidebar
+    { to: "/login", text: "Logout", onClick: handleLogout }, // Include logout link in sidebar
   ];
 
   return (
