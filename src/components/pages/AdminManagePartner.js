@@ -1,112 +1,147 @@
-import React, { useState, useEffect } from 'react';
-import './AdminManagePartner.css'; // Ensure the CSS file is named correctly
-import Select from 'react-select'; // Import React-Select
+import React, { useState, useEffect } from "react";
+import "./AdminManagePartner.css"; // Ensure the CSS file is named correctly
+import Select from "react-select"; // Import React-Select
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
 function AdminManagePartners() {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [categoryOptions, setCategoryOptions] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState(null);
+  const [actionStatus, setActionStatus, partnerName] = useState({});
+  const [partnerData, setPartnerData] = useState([]);
+  const [filteredPartnerData, setFilteredPartnerData] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [actionStatus, setActionStatus] = useState({}); // State to hold individual statuses
-  const [partnerData, setPartner] = useState([]);
-  const [filteredPartnerData, setFilteredPartnerData] = useState(partnerData);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-
+  
 
   useEffect(() => {
+    // Fetch user accounts from backend API when the component mounts
     fetchPartnerAccounts();
-  }, []);
-
-  useEffect(() => {
-    fetchCategories(); 
-  }, []);
+  }, [actionStatus]);
 
   const fetchPartnerAccounts = async () => {
     try {
-      const response = await fetch('/get_partneraccounts');
+      const response = await fetch("/get_partneraccounts");
       if (!response.ok) {
-        throw new Error('Failed to fetch partner accounts');
+        throw new Error("Failed to fetch partner accounts");
       }
       const data = await response.json();
-      const filteredData = data.accounts.filter(partner => partner.authentication === '1');
-      setPartner(filteredData);
+      setPartnerData(data.accounts);
+      setFilteredPartnerData(data.accounts); // Set filtered data initially same as partner data
+
+      // Extract unique categories from partnerData and set as categoryOptions
+      const uniqueCategories = [
+        ...new Set(data.accounts.map((partner) => partner.category)),
+      ];
+      setCategoryOptions(
+        uniqueCategories.map((category) => ({
+          value: category,
+          label: category,
+        }))
+      );
     } catch (error) {
-      console.error('Error fetching partner accounts:', error);
-    }
-    
-  };
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch('/get_categories');
-      if (!response.ok) {
-        throw new Error('Failed to fetch categories');
-      }
-      const data = await response.json();
-      // Extract only the category names from the response
-      const categoriesArray = Object.keys(data.categories);
-      setCategories(categoriesArray);
-    } catch (error) {
-      console.error('Error fetching categories:', error.message);
+      console.error("Error fetching partner accounts:", error);
     }
   };
-  
-  
 
   // Define your options for the dropdown
-  const blogshopOptions = partnerData.map(partner => ({
+  const blogshopOptions = partnerData.map((partner) => ({
     value: partner.name,
-    label: partner.name
+    label: partner.name,
   }));
 
- // const categoriesOptions = categories.map(category => ({
-   // value: category, 
-  //  label: category 
- // }));
-  
- // console.log("Categories Options:", categoriesOptions);
-  
 
   const handleSearch = () => {
     if (selectedOption) {
       const selectedBlogshop = selectedOption.label;
-      const filteredPartners = partnerData.filter(partner => partner.name === selectedBlogshop);
+      const filteredPartners = partnerData.filter(
+        (partner) => partner.name === selectedBlogshop
+      );
       setFilteredPartnerData(filteredPartners);
-      console.log('Filtered partners:', filteredPartners);
+      console.log("Filtered partners:", filteredPartners);
     } else {
       setFilteredPartnerData(partnerData);
-      console.log('No option selected');
+      console.log("No option selected");
     }
   };
 
   const handleFilter = () => {
-    if (selectedCategory) {
-      const selectedCategoryValue = selectedCategory.value;
-      const filteredPartners = partnerData.filter(partner => partner.category === selectedCategoryValue);
+    if (categoryFilter) {
+      const selectedCategoryValue = categoryFilter.value;
+      const filteredPartners = partnerData.filter(
+        (partner) => partner.category === selectedCategoryValue
+      );
       setFilteredPartnerData(filteredPartners);
-      console.log('Filtered partners by category:', filteredPartners);
+      console.log("Filtered partners by category:", filteredPartners);
     } else {
-      setFilteredPartnerData(partnerData);
-      console.log('No category selected');
+      setFilteredPartnerData([...partnerData]); // Create a copy of partnerData
+      console.log("No category selected");
     }
   };
-  
 
-  const handleActivate = (partnerName) => {
-    console.log("Activate clicked for:", partnerName);
+  const handleActivate = async (partner) => {
+    console.log("Activate clicked for:", partner.email);
     // Add activate logic here
-    setActionStatus(prevStatus => ({
+    try {
+      const emailString = String(partner.email);
+      console.log(emailString)
+      // Make a PUT request to update the partner's status
+      const response = await fetch(`/activate_partner`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({email: emailString}),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to suspend partner");
+      }
+
+      // Update the action status in the frontend
+      setActionStatus((prevStatus) => ({
+        ...prevStatus,
+        [partner.email]: "Suspended",
+      }));
+
+      console.log("Partner suspended successfully");
+    } catch (error) {
+      console.error("Error suspending partner:", error.message);
+    }
+    setActionStatus((prevStatus) => ({
       ...prevStatus,
-      [partnerName]: "Activated" // Update status for the clicked partner
+      [partnerName]: "Activated", // Update status for the clicked partner
     }));
   };
 
-  const handleSuspend = (partnerName) => {
-    console.log("Suspend clicked for:", partnerName);
-    // Add suspend logic here
-    setActionStatus(prevStatus => ({
-      ...prevStatus,
-      [partnerName]: "Suspended" // Update status for the clicked partner
-    }));
+  const handleSuspend = async (partner) => {
+    console.log("Suspend clicked for:", partner.email);
+    try {
+      const emailString = String(partner.email);
+      console.log(emailString)
+      // Make a PUT request to update the partner's status
+      const response = await fetch(`/suspend_partner`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({email: emailString}),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to suspend partner");
+      }
+
+      // Update the action status in the frontend
+      setActionStatus((prevStatus) => ({
+        ...prevStatus,
+        [partner.email]: "Suspended",
+      }));
+
+      console.log("Partner suspended successfully");
+    } catch (error) {
+      console.error("Error suspending partner:", error.message);
+    }
   };
 
   return (
@@ -127,65 +162,107 @@ function AdminManagePartners() {
                 placeholder="Select a blogshop..."
                 isSearchable={true}
               />
-                  <Select
-                id="categories-filter"
-                options={blogshopOptions}
-                value={selectedCategory}
-                onChange={(selectedOption) => setSelectedCategory(selectedOption ? selectedOption.value : null)}
+              <label htmlFor="category-filter">Filter by Category:</label>
+              <Select
+                id="category-filter"
+                options={categoryOptions}
+                value={categoryFilter}
+                onChange={setCategoryFilter}
                 placeholder="Select a category..."
                 isSearchable={false}
               />
 
-
-              <button className="partner-management-search-bar-button" onClick={handleSearch}>Search</button>
-              <button className="partner-management-filter-bar-button" onClick={handleFilter}>Filter</button>
+              <button
+                className="partner-management-search-bar-button"
+                onClick={handleSearch}
+              >
+                Search
+              </button>
+              <button
+                className="partner-management-filter-bar-button"
+                onClick={handleFilter}
+              >
+                Filter
+              </button>
             </div>
           </div>
           <table className="partner-management-table">
             <thead>
               <tr>
+                <th>E-mail</th>
                 <th>Blogshop Owner</th>
                 <th>UEN Number</th>
                 <th>Category</th>
-                <th>Social Links</th>
+                <th>Link</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-            {selectedOption || selectedCategory ? (
-              // If any filter is applied, render filteredPartnerData
-              filteredPartnerData.map((partner, index) => (
-                <tr key={index}>
-                  <td>{partner.name}</td>
-                  <td>{partner.UEN}</td>
-                  <td>{partner.category}</td>
-                  <td>{partner.link}</td>
-                  <td>{actionStatus[partner.name]}</td>
-                  <td className="partner-management-action-column">
-                  <button className="admin-activate-partner-button" onClick={() => handleActivate(partner.name)}>Activate</button>
-                  <button className="admin-suspend-partner-button" onClick={() => handleSuspend(partner.name)}>Suspend</button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              // If no filter is applied, render partnerData
-              partnerData.map((partner, index) => (
-                <tr key={index}>
-                  <td>{partner.name}</td>
-                  <td>{partner.UEN}</td>
-                  <td>{partner.category}</td>
-                  <td>{partner.link}</td>
-                  <td>{actionStatus[partner.name]}</td>
-                  <td className="partner-management-action-column">
-                    <button className="admin-activate-partner-button" onClick={() => handleActivate(partner.name)}>Activate</button>
-                    <button className="admin-suspend-partner-button" onClick={() => handleSuspend(partner.name)}>Suspend</button>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-
+              {selectedOption || categoryFilter
+                ? // If any filter is applied, render filteredPartnerData
+                  filteredPartnerData.map((partner, index) => (
+                    <tr key={index}>
+                      <td>{partner.email}</td>
+                      <td>{partner.name}</td>
+                      <td>{partner.UEN}</td>
+                      <td>{partner.category}</td>
+                      <td>{partner.link}</td>
+                      <td>
+                        {partner.suspended == "0" ? "Active" : "Suspended"}
+                      </td>
+                      <td className="partner-management-action-column">
+                        {partner.suspended == "1" && (
+                          <button
+                            className="admin-activate-partner-button"
+                            onClick={() => handleActivate(partner)}
+                          >
+                            Activate
+                          </button>
+                        )}
+                        {partner.suspended == "0" && (
+                          <button
+                            className="admin-suspend-partner-button"
+                            onClick={() => handleSuspend(partner)}
+                          >
+                            Suspend
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                : // If no filter is applied, render partnerData
+                  partnerData.map((partner, index) => (
+                    <tr key={index}>
+                      <td>{partner.email}</td>
+                      <td>{partner.name}</td>
+                      <td>{partner.UEN}</td>
+                      <td>{partner.category}</td>
+                      <td>{partner.link}</td>
+                      <td>
+                        {partner.suspended == "0" ? "Active" : "Suspended"}
+                      </td>
+                      <td className="partner-management-action-column">
+                        {partner.suspended == "1" && (
+                          <button
+                            className="admin-activate-partner-button"
+                            onClick={() => handleActivate(partner)}
+                          >
+                            Activate
+                          </button>
+                        )}
+                        {partner.suspended == "0" && (
+                          <button
+                            className="admin-suspend-partner-button"
+                            onClick={() => handleSuspend(partner)}
+                          >
+                            Suspend
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+            </tbody>
           </table>
         </div>
         <AdminFooter />

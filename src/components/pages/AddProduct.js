@@ -10,6 +10,8 @@ function AddProduct() {
   const imageFileRef = useRef(null);
   const [catOptions, setCatOptions] = useState([]);
   const [subcatOptions, setSubcatOptions] = useState([]);
+  const [imageFile, setImageFile] = useState(null);
+  const [excelFile, setExcelFile] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -19,14 +21,14 @@ function AddProduct() {
     subCategory: "",
     tags: [],
     imageFile: null,
-    email:""
+    email: "",
   });
 
   useEffect(() => {
     fetchCategories();
     // Extract data from localStorage
-    const userSession = JSON.parse(localStorage.getItem('user_session'));
-    console.log(userSession.email)
+    const userSession = JSON.parse(localStorage.getItem("user_session"));
+    console.log(userSession.email);
     if (userSession) {
       // Update formData state with user session data
       setFormData({
@@ -119,36 +121,54 @@ function AddProduct() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const imageFile = imageFileRef.current.files[0];
-      const base64Image = await convertImageToBase64(imageFile);
-      console.log("FormData:", formData);
-      console.log(selectedTags)
-      // Send the POST request with FormData
-      const response = await fetch("/add_product", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          price: formData.price,
-          link: formData.link,
-          description: formData.description,
-          category: formData.category,
-          subCategory: formData.subCategory,
-          imageFile: base64Image,
-          tags: selectedTags.map((x)=>(x.value)),
-          email: formData.email
-        }),
-      });
+      if (uploadType === "single") {
+        const imageFile = imageFileRef.current.files[0];
+        const base64Image = await convertImageToBase64(imageFile);
+        console.log("FormData:", formData);
+        console.log(selectedTags);
+        // Send the POST request with FormData
+        const response = await fetch("/add_product", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            price: formData.price,
+            link: formData.link,
+            description: formData.description,
+            category: formData.category,
+            subCategory: formData.subCategory,
+            imageFile: base64Image,
+            tags: selectedTags.map((x) => x.value),
+            email: formData.email,
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error("Failed to upload product");
+        if (!response.ok) {
+          throw new Error("Failed to upload product");
+        }
+        console.log("Product uploaded successfully");
+        window.alert("Product uploaded");
       }
-      console.log("Product uploaded successfully");
-      window.alert("Product uploaded");
+      if (uploadType === "batch" && imageFile && excelFile) {
+        const imageData = new FormData();
+        imageData.append("imageFile", imageFile);
+        // Send imageData to server using fetch or any other method
+
+        const excelData = new FormData();
+        excelData.append("excelFile", excelFile);
+        // Send excelData to server using fetch or any other method
+
+        // Optionally, display a success message to the user
+        console.log("Files uploaded successfully");
+      }
+
+      // Reset form after submission
+      setImageFile(null);
+      setExcelFile(null);
     } catch (error) {
-      console.error("Error uploading product:", error);
+      console.error("Error uploading files:", error);
       // Handle error (e.g., display error message to the user)
     }
   };

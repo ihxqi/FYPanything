@@ -50,6 +50,29 @@
   text-align: center; /* Optional: Centers the content */
 }
 
+.user-activate-partner-button,
+  .user-suspend-partner-button {
+    width: 100%; /* Make buttons full width */
+  }
+
+  .user-activate-partner-button {
+    background-color: #4CAF50; /* Green for activate */
+    color: white;
+  }
+  
+  .user-suspend-partner-button {
+    background-color: #f44336; /* Red for suspend */
+    color: white;
+  }
+
+  .user-activate-partner-button,
+.user-suspend-partner-button {
+    /* Remove margin and padding */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.5rem 1rem; /* Adjust padding for buttons */
+}
 @media (max-width: 768px) {
   .user-management-header {
     flex-direction: column;
