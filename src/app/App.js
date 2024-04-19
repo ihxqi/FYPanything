@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { ResetPassword, EditHomepage, PartnerGenerateReport, AdminGenerateReport, AdminAllProduct, AdminManageUser, UserProfile, UserCategories, UserHomepage, UserRecentlyViewed, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey, UserBookmarks, AdminManagePartner } from "../components/pages";
+import { ResetPassword,  PartnerGenerateReport, AdminGenerateReport, AdminAllProduct, AdminManageUser, UserProfile, UserCategories, UserHomepage, UserRecentlyViewed, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey, UserBookmarks, AdminManagePartner } from "../components/pages";
 import { UnregisteredBlogshopOwner } from "../components/pages";
 
 export default function App() {
@@ -34,7 +34,7 @@ export default function App() {
           <Route path="/AdminAllProduct" element={<AdminAllProduct/>} />
           <Route path="/AdminGenerateReport" element={<AdminGenerateReport/>} />
           <Route path="/PartnerGenerateReport" element={<PartnerGenerateReport/>} />
-          <Route path="/EditHomepage" element={<EditHomepage/>} />
+         
           <Route path="/UserRecentlyViewed" element={<UserRecentlyViewed/>} />
           <Route path="/ResetPassword/:token" element={<ResetPassword/>} />
         </Routes>

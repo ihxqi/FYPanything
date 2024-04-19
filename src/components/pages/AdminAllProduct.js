@@ -61,7 +61,7 @@ const AdminAllProducts = () => {
     <div>
       <AdminSidebarNavbar />
       <div className="admin-products-container">
-        <h1 className="admin-products-header">All Products</h1>
+        <h1><div className="admin-products-header">All Products</div></h1>
         <div className="admin-products-search-container">
           <label htmlFor="blogshop-options">Search Blogshop:</label>
           <Select

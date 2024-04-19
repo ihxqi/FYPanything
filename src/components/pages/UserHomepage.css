@@ -15,6 +15,7 @@
   padding: 2%; /* Adjusted for relative spacing */
   margin-bottom: 1%; /* Adjusted for relative spacing */
   width: 30%; /* Adjusted from a fixed px to a % of the parent */
+  box-shadow: 0 0.5vw 1.25vw rgba(0, 0, 0, 0.1);
 }
 
 .UserHomeproduct-details {

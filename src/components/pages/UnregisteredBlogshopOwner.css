@@ -1,11 +1,4 @@
-.CM-white-box {
-  background-color: transparent;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 1% 0; /* Remove horizontal margins */
-  margin-top: -25px;
-  padding: 0; /* Set padding to 0 */
-}
+
 
 .CMcontainer {
   background-color: #ffe2e6; /* Pink background as seen in the wireframe */
@@ -18,7 +11,7 @@
 }
 
 .CMheader {
-  margin-top: 100px;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   text-align: center; /* Align table header and content center */

@@ -1,18 +1,9 @@
-.admin-products-page {
-  background-color: transparent;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 1% 0; /* Remove horizontal margins */
-  margin-top: -25px;
-  padding: 0; /* Set padding to 0 */
-}
-
 .admin-products-container {
   background-color: #ffe2e6; /* Pink background as seen in the wireframe */
   padding: 2rem; /* Responsive padding */
   max-width: 90%; /* Percentage width for responsiveness */
   margin: 20px auto; /* Auto centers the container, top and bottom margin for space */
-  margin-top: 4rem; /* Responsive top margin */
+  margin-top: 5rem; /* Responsive top margin */
   margin-bottom: 40rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
 }
@@ -22,18 +13,18 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 0 2%;
-  margin-top: 1rem;
+  padding: 1% 2%;
+  margin-top: -10%;
 }
 
 .admin-products-search-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 10px; /* Space between search input and button */
-  margin-bottom: 50px; /* Space below the search area */
-  margin-left: 200px;
-  margin-top: 1rem;
+  margin-bottom: 40px; /* Space below the search area */
+  margin-top: 40px;
+  
 }
 
 .admin-products-search-container label {
@@ -43,7 +34,6 @@
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
   margin-top:15px;
 }
-
 
 .admin-products-search-bar-button,
 .admin-products-filter-bar-button {
@@ -68,6 +58,7 @@
   margin-right: auto;
   border-collapse: collapse;
   background-color: #fff;
+  font-size: 0.9rem; 
 }
 
 .admin-products-table th,
@@ -98,7 +89,7 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
 .admin-products-container {
-max-width: 95%;
+max-width: 90%;
 margin: 0 auto;
 }
 
@@ -122,10 +113,6 @@ width: 100%; /* Full width for small screens */
   background-color: red;
   color: white;
   cursor: pointer;
-}
-
-.admin-products-table {
-font-size: 0.9rem; /* Smaller font size for table text on small screens */
 }
 }
 

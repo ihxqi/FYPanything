@@ -32,7 +32,7 @@ const PartnerProfile = () => {
     <div className="partner-profile-container">
       <PartnerSidebarNavbar />
       <form className="partner-profile-form" onSubmit={handleSubmit}>
-        <h1>Partner Profile</h1>
+        <h1>Partner's Profile</h1>
         <label>
   Blogshop Name:
   <input type="text" name="name" value={partner.companyName || ""} onChange={handleChange} disabled placeholder="" />

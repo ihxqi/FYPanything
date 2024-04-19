@@ -8,15 +8,13 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
 }
 
-
 .partner-products-header{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 0 2%;
-  margin-top: 1rem;
-
+  padding: 1% 2%;
+  margin-top: -10%;
 }
 
 .partner-products-search-container {
@@ -24,7 +22,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px; /* Space between search input and button */
-  margin-bottom: 50px; /* Space below the search area */
+  margin-bottom: 5px; /* Space below the search area */
   margin-left: 1rem;
   margin-top: 1rem;
 }
@@ -109,6 +107,7 @@
   width: 500px;
   max-height: 80%; /* Limit the height of the popup */
   overflow-y: auto; /* Make the popup scrollable */
+  background-color: #babaf8;
 }
 
 .partner-products-edit-popup h2 {
