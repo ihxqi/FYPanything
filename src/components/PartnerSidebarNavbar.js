@@ -1,24 +1,51 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from '../components/image/CollaFilter Logo.jpg';
 import "./Navbar.css";
 
 const PartnerSidebarNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(true);
+  const navigate = useNavigate(); // Import and use useNavigate for navigation
 
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
     setMenuOpen(!menuOpen); // Ensure consistency between collapsed and menuOpen states
   };
 
+  const handleLogout = async () => {
+    console.log('Logout button clicked');
+    try {
+      // You need to implement the logout endpoint on your server
+      const response = await fetch('/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include cookies in the request
+      });
+
+      if (response.ok) {
+        // Successfully logged out, redirect to login page
+        localStorage.removeItem('user_session');
+        console.log('Session storage cleared, navigating to login...');
+        navigate('/login');
+      } else {
+        // Handle logout failure
+        console.error('Failed to log out', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   // Sidebar links
   const sidebarLinks = [
-    { to: "/PartnerAllProducts", text: "View All Product" }, 
+    { to: "/PartnerAllProducts", text: "View All Product" },
     { to: "/AddProduct", text: "Add Products" },
     { to: "/PartnerGenerateReport", text: "Generate Report" },
     { to: "/PartnerProfile", text: "Edit Profile" },
-    { to: "/Login", text: "Logout" }, // Include logout link in sidebar
+    { to: "/Login", text: "Logout", onClick: handleLogout }, // Include logout link in sidebar
   ];
 
   return (
@@ -43,14 +70,18 @@ const PartnerSidebarNavbar = () => {
           <div className={menuOpen ? "open" : ""}>
             {sidebarLinks.map((link, index) => (
               <div key={index}>
-                <NavLink to={link.to}>{link.text}</NavLink>
+                {link.text === "Logout" ? (
+                  <div onClick={handleLogout} style={{ cursor: 'pointer' }}>
+                    {link.text}
+                  </div>
+                ) : (
+                  <NavLink to={link.to}>{link.text}</NavLink>
+                )}
               </div>
             ))}
           </div>
         )}
       </div>
-
-      
     </nav>
   );
 };

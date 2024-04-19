@@ -22,9 +22,8 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 0 2%;
-  margin-top: 2rem;
-  
+  padding: 1% 2%;
+  margin-top: -10%;
 }
   
 .partner-management-search-container {
@@ -32,7 +31,9 @@
   justify-content: flex-start;
   align-items: center;
   gap: 10px; /* Space between search input and button */
-  margin-bottom: 50px; /* Space below the search area */
+  margin-bottom: 40px; /* Space below the search area */
+  margin-top: 40px;
+ 
 }
 
 .partner-management-search-container label {
@@ -61,7 +62,7 @@
 
 .partner-management-table {
   width: 90%; /* Adjusted to match user management style */
-  margin-top: 1rem;
+  margin-top: -2rem;
   margin-left: auto; /* Center the table horizontally */
   margin-right: auto;
   border-collapse: collapse;

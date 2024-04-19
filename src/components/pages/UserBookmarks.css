@@ -18,14 +18,14 @@
 
 .bookmarks-page {
   background-color: var(--background-color);
-  min-height: 100vh;
   font-family: var(--font-family);
   padding-top: 50px; /* Adjusted padding-top value to move the container closer to the header */
 }
 
-h1 {
+.bookmarkheader {
   color: var(--font-color);
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .bookmarks-grid {

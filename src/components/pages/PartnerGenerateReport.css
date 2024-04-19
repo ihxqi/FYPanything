@@ -13,7 +13,7 @@
   
   .partnerreporth1 {
     text-align: center;
-    margin-top: 0; /* No margin above h1 to bring it closer to the navbar */
+    margin-top: -3%; /* No margin above h1 to bring it closer to the navbar */
   }
   
   /* Ensure that label, select, and button align properly */

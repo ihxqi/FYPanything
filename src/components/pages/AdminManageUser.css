@@ -1,20 +1,9 @@
-.user-management-white-box {
-  background-color: transparent;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 1% 0; /* Remove horizontal margins */
-  margin-top: -25px;
-  padding: 0; /* Set padding to 0 */
-}
-
 .user-management-container {
-  background-color: #ffe2e6; /* Pink background as seen in the wireframe */
-  padding: 2rem; /* Responsive padding */
-  max-width: 90%; /* Percentage width for responsiveness */
-  margin: 20px auto; /* Auto centers the container, top and bottom margin for space */
-  margin-top: 6.5rem; /* Responsive top margin */
-  margin-bottom: 40rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
+  background-color: #ffe2e6;
+  padding: 2rem;
+  max-width: 90%;
+  margin: 80px auto 10%; /* Adjust margin-top and remove negative margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .user-management-header {
@@ -22,14 +11,21 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 0 2%;
-  margin-top: 2rem;
+  padding: 1% 2%; /* Adjust top and bottom padding */
+  margin-top: -10%;
+}
+
+.user-suspend-partner-button,
+.user-activate-partner-button {
+  width: 100px; /* Set a fixed width for the buttons */
+  height: 40px; /* Set a fixed height for the buttons */
+  /* Other button styles */
 }
 
 .user-management-table {
   width: 90%;
-  margin-top: 3rem;
-  margin-left: auto; /* Center the table horizontally */
+  margin-top: 2rem ; /* Adjust margin-top as needed */
+  margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
   background-color: #fff;
@@ -50,8 +46,42 @@
   text-align: center; /* Optional: Centers the content */
 }
 
+.user-suspend-partner-button {
+  background-color: #ff0000; /* Red background for suspend button */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.user-activate-partner-button {
+  background-color: #00ff00; /* Green background for activate button */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 0.5rem 1rem; /* Adjust padding as needed */
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect */
+.user-suspend-partner-button:hover,
+.user-activate-partner-button:hover {
+  filter: brightness(0.8); /* Darken the button on hover */
+}
+
 @media (max-width: 768px) {
   .user-management-header {
     flex-direction: column;
   }
+
+  .user-management-container {
+    background-color: #ffe2e6;
+    padding: 2rem;
+    max-width: 90%;
+    margin: 80px auto 10%; /* Adjust margin-top and remove negative margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }  
 }

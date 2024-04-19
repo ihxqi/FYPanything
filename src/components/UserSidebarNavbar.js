@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink, navigate, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from '../components/image/CollaFilter Logo.jpg';
 import "./Navbar.css";
 
@@ -13,7 +13,7 @@ const UserSidebarNavbar = () => {
     setMenuOpen(!menuOpen); // Ensure consistency between collapsed and menuOpen states
   };
 
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     console.log('Logout button clicked');
     try {
       const response = await fetch('/logout', {
@@ -27,9 +27,8 @@ const UserSidebarNavbar = () => {
       if (response.ok) {
         // Successfully logged out, redirect to login page
         localStorage.removeItem('user_session');
-        console.log(localStorage)
-        console.log("returned")
-        navigate('/login')
+        console.log('Session storage cleared, navigating to login...');
+        navigate('/login');
       } else {
         // Handle logout failure
         console.error('Failed to log out');
@@ -41,12 +40,12 @@ const UserSidebarNavbar = () => {
 
   // Sidebar links
   const sidebarLinks = [
-    { to: "/UserHomepage", text: "User Homepage" }, 
-    { to: "/UserCategories", text: "User Categories" }, 
+    { to: "/UserHomepage", text: "User Homepage" },
+    { to: "/UserCategories", text: "User Categories" },
     { to: "/UserBookmarks", text: "My Bookmarks" },
     { to: "/UserProfile", text: "Profile" },
     { to: "/interestSurvey", text: "Interest Survey" },
-    { to: "/login", text: "Logout", onClick: handleLogout }, // Include logout link in sidebar
+    { to: "/login", text: "Logout", onClick: handleLogout },
   ];
 
   return (
@@ -70,7 +69,13 @@ const UserSidebarNavbar = () => {
           <div className={menuOpen ? "open" : ""}>
             {sidebarLinks.map((link, index) => (
               <div key={index}>
-                <NavLink to={link.to}>{link.text}</NavLink>
+                {link.text === "Logout" ? (
+                  <div onClick={handleLogout} style={{ cursor: 'pointer' }}>
+                    {link.text}
+                  </div>
+                ) : (
+                  <NavLink to={link.to}>{link.text}</NavLink>
+                )}
               </div>
             ))}
           </div>

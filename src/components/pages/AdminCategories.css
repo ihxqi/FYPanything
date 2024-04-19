@@ -59,8 +59,12 @@ box-sizing: border-box; /* Include padding and border in the element's total wid
 }
 
 .admin-categories-table {
-  width: 100%; /* Table width */
+  width: 80%; /* Table width */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   border-collapse: collapse;
+  margin-left: 8%;
   margin-top: 1rem; /* Space above the table */
   background-color: #fff;
 }
@@ -115,12 +119,6 @@ box-sizing: border-box; /* Include padding and border in the element's total wid
 
 .admin-categories-add-categories-button:hover {
   background-color: #555;
-}
-
-.admin-categories-pagination {
-  text-align: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .admin-categories-edit-popup,

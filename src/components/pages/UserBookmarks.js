@@ -41,7 +41,7 @@ function UserBookmarks() {
   return (
     <div>
       <UserSidebarNavbar />
-      <div className="header"><h1>My Bookmarks</h1></div>
+      <div className="bookmarkheader"><h1>My Bookmarks</h1></div>
       <div className="bookmarks-page">
         <main className="bookmarks-grid">
           {bookmarks.map((bookmark) => (

@@ -32,7 +32,7 @@ const Login = () => {
       localStorage.setItem('user_session', JSON.stringify(userSession)); // saves the user current session for further use
       console.log(userSession)
       const userRole = userSession.role; // Access the role field
-      if (userRole === 'admin') {
+      if (userRole === 'Admin') {
         navigate('/adminmanagepartner')
       } else if (userRole === 'User') {
         navigate('/UserHomepage')
