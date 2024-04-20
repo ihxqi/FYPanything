@@ -7,8 +7,8 @@
 }
 
 .RoleiconStyle {
-  width: 30%; /* Use percentage for responsive width */
-  max-width: 150px; /* Optional max width to ensure it doesn't get too large */
+  width: 20%; /* Use percentage for responsive width */
+  max-width: 55%; /* Optional max width to ensure it doesn't get too large */
   height: auto; /* Keep height auto to maintain aspect ratio */
   margin-bottom: 2vh; /* Use viewport height for responsive bottom margin */
 }
@@ -16,10 +16,10 @@
 .RolebuttonStyle {
   padding: 1vw 2vw; /* Use viewport width for responsive padding */
   margin: 1vh; /* Use viewport height for responsive margin */
-  font-size: 1vw; /* Use viewport width for responsive font size */
+  font-size: 1.5vw; /* Use viewport width for responsive font size */
   border: none;
   border-radius: 5px;
-  background-color: #ffe2e6;
+  background-color: #f86d7f;
   color: black;
   cursor: pointer;
   transition: background-color 0.3s ease;

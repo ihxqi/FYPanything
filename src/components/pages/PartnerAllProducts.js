@@ -20,7 +20,7 @@ const PartnerAllProducts = () => {
     id: null,
     productName: "",
     category: "",
-    subCategory: "",
+    //subCategory: "",
     price: "",
     image: "",
     productLink: "",

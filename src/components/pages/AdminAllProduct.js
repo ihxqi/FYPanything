@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AdminAllProduct.css'; // Import the CSS file
 import Select from 'react-select'; // Import React-Select
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
@@ -7,14 +7,13 @@ import AdminFooter from "../AdminFooter";
 const AdminAllProducts = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState(null);
-  const [products, setProducts] = useState([
-    { blogshop: 'Example BS', name: 'Night Dress', category: 'Apparel', subCategory: 'Dress', price: '$10', image: 'playdress.jpg', link: 'www.playdress.com', information: 'not Best for party', tags: '#hi #bye' },
-    { blogshop: 'bf blogshop', name: 'Day Dress', category: 'Apparel', subCategory: 'Dress', price: '$10', image: 'playdress.jpg', link: 'www.playdress.com', information: 'not Best for party', tags: '#hi #bye' },
-    { blogshop: 'dear lyla', name: 'Shirt', category: 'Apparel', subCategory: 'Top', price: '$15', image: 'shirt.jpg', link: 'www.lyla.com', information: 'Comfortable cotton shirt', tags: '#cotton #comfortable' },
-    { blogshop: 'carpe diem', name: 'Sneakers', category: 'Shoes', subCategory: 'Sneakers', price: '$50', image: 'sneakers.jpg', link: 'www.diem.com', information: 'Stylish sneakers', tags: '#stylish #comfortable' }
-    // Add more products as needed
-  ]);
+  const [products, setProducts] = useState([]);
+  const [uniqueCategories, setUniqueCategories] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState(products);
+
+  useEffect(() => {
+    fetchProducts(); // Fetch products when the component mounts
+  }, []);
 
   const blogshopOptions = [
     { value: 'Example BS', label: 'Example BS' },
@@ -30,6 +29,36 @@ const AdminAllProducts = () => {
     { value: 'Accessories', label: 'Accessories' }
     // Add more category options as needed
   ];
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch("/get_allproducts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      if (data.products && Array.isArray(data.products)) {
+        setProducts(data.products);
+        const categories = [
+          ...new Set(data.products.map((product) => product.category)),
+        ];
+        setUniqueCategories(categories);
+      } else {
+        throw new Error("Products data is not in the expected format");
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error.message);
+    }
+  };
 
   const handleRemove = (indexToRemove) => {
     const updatedProducts = [...filteredProducts];
@@ -92,7 +121,6 @@ const AdminAllProducts = () => {
               <th>Blogshop Name</th>
               <th>Product Name</th>
               <th>Category</th>
-              <th>Sub Category</th>
               <th>Price</th>
               <th>Image</th>
               <th>Product Link</th>
