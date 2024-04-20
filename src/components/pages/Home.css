@@ -124,8 +124,9 @@ video {
 }
 
 .tracking-box {
+  position: relative; /* Add relative positioning */
   text-align: center;
-  width: 450px; /* Set a fixed width for the boxes */
+  width: 20%; /* Set a fixed width for the boxes */
   height: auto;
   background-color: #ff3131; /* Red */
   padding: 40px;
@@ -142,12 +143,24 @@ video {
 }
 
 .tracking-box h2 {
-  font-size: 40px;
+  font-size: 200%;
   color: black;
+  margin: 0; /* Remove default margin */
 }
 
 .tracking-box p {
-  font-size: 50px;
+  font-size: 200%;
   color: black;
+  margin: 0; /* Remove default margin */
 }
+
+.large-emojis {
+  font-size: 2em; /* Adjust the font size as needed */
+}
+
+.emoji {
+  display: inline-block;
+  line-height: 3; /* Ensure emojis are vertically aligned properly */
+}
+
 

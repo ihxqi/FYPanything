@@ -8,6 +8,7 @@ function AddProduct() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [uploadType, setUploadType] = useState(null);
   const imageFileRef = useRef(null);
+  const [image, setImage] = useState("");
   const [catOptions, setCatOptions] = useState([]);
   const [subcatOptions, setSubcatOptions] = useState([]);
   const [formData, setFormData] = useState({
@@ -19,14 +20,17 @@ function AddProduct() {
     subCategory: "",
     tags: [],
     imageFile: null,
-    email:""
+    email: "",
+    user_id: "",
   });
+  const [userSession, setUserSession] = useState(null);
 
   useEffect(() => {
     fetchCategories();
     // Extract data from localStorage
-    const userSession = JSON.parse(localStorage.getItem('user_session'));
-    console.log(userSession.email)
+    const userSession = JSON.parse(localStorage.getItem("user_session"));
+    console.log(userSession);
+    setUserSession(userSession);
     if (userSession) {
       // Update formData state with user session data
       setFormData({
@@ -106,6 +110,7 @@ function AddProduct() {
 
       reader.onload = () => {
         resolve(reader.result.split(",")[1]); // Extract base64 data
+        setImage(reader.result);
       };
 
       reader.onerror = (error) => {
@@ -116,13 +121,29 @@ function AddProduct() {
     });
   };
 
+  // const convertImageToBase64 = (e) => {
+  //   console.log(e);
+  //   var reader = new FileReader();
+  //   reader.readAsDataURL(e.target.files[0]);
+  //   reader.onload = () => {
+  //     console.log(reader.result); // Extract base64 data
+  //     setImage(reader.result);
+  //   };
+
+  //   reader.onerror = (error) => {
+  //     console.error("Error reading the file:", error);
+  //   }; // Read the image file as Data URL
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const imageFile = imageFileRef.current.files[0];
       const base64Image = await convertImageToBase64(imageFile);
+      const user_id = userSession.user_id;
       console.log("FormData:", formData);
-      console.log(selectedTags)
+      console.log(selectedTags);
+      console.log("Base64 image:", base64Image);
       // Send the POST request with FormData
       const response = await fetch("/add_product", {
         method: "POST",
@@ -137,8 +158,9 @@ function AddProduct() {
           category: formData.category,
           subCategory: formData.subCategory,
           imageFile: base64Image,
-          tags: selectedTags.map((x)=>(x.value)),
-          email: formData.email
+          tags: selectedTags.map((x) => x.value),
+          email: formData.email,
+          user_id: user_id,
         }),
       });
 
@@ -261,14 +283,21 @@ function AddProduct() {
                 </label>
                 <br />
 
-                <label htmlFor="imageFile">Image File:</label>
-                <input
-                  type="file"
-                  ref={imageFileRef}
-                  name="imageFileSingle"
-                  accept="image/*"
-                />
-
+                <label htmlFor="imageFile">
+                  Image File:<br/>
+                  <input
+                    type="file"
+                    ref={imageFileRef}
+                    name="imageFileSingle"
+                    accept="image/*"
+                    onChange={convertImageToBase64}
+                  /><br/>
+                  {image == "" || image == null ? (
+                    ""
+                  ) : (
+                    <img width={200} height={250} src={image} />
+                  )}
+                </label>
                 <label>
                   Product Link: <br />
                   <input

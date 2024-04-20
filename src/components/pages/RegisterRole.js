@@ -11,7 +11,7 @@ export const RegisterRole = () => {
     <div>
       <UnregSidebarNavbar/>
     <div className="RolecontainerStyle">
-      <img src={logo} alt="CollaFilter Logo" className='iconStyle' />
+      <img src={logo} alt="CollaFilter Logo" className='RoleiconStyle' />
       <Link to="/RegisterUser">
         <button className='RolebuttonStyle'>Register as User</button>
       </Link>

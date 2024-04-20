@@ -11,7 +11,6 @@ function Footer() {
         <div className="userfooter-links">
           <div className="userfooter-column">
           <Link to="/UserProfile" className="userfooter-link">User Profile</Link>
-        <Link to="/InterestSurvey" className="userfooter-link">Interest Survey</Link>
         <Link to="/UserHomepage" className="userfooter-link">User Homepage</Link>
           </div>
           <div className="userfooter-column">
