@@ -33,23 +33,19 @@ const Home = () => {
         </div>
 
         <div className="large-emojis">
-          👑
+          <span role="img" aria-label="crown" className="emoji">👑</span>
           <br />
-          🎀
+          <span role="img" aria-label="bow" className="emoji">🎀</span>
           <br />
-          🧦
+          <span role="img" aria-label="socks" className="emoji">🧦</span>
           <br />
-          👖
+          <span role="img" aria-label="jeans" className="emoji">👖</span>
           <br />
-          🥾
+          <span role="img" aria-label="boots" className="emoji">🥾</span>
           <br />
-          👗
+          <span role="img" aria-label="dress" className="emoji">👗</span>
           <br />
-          🧥
-          <br />
-          👜
-          <br />
-          👒
+          <span role="img" aria-label="jacket" className="emoji">🧥</span>
         </div>
 
         <div className="HPbookmark-section">
@@ -60,15 +56,15 @@ const Home = () => {
       </div>
       <div className="tracking-section">
         <div className="tracking-box">
-          <h2>Total Users:</h2>
+          <h2>Total Users:</h2><br/><br/>
           <p>100</p>
         </div>
         <div className="tracking-box">
-          <h2>Total Blogshops:</h2>
+          <h2>Total Blogshops:</h2><br/><br/>
           <p>50</p>
         </div>
         <div className="tracking-box">
-          <h2>Total Products:</h2>
+          <h2>Total Products:</h2><br/><br/>
           <p>200</p>
         </div>
       </div>
