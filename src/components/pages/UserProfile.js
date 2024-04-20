@@ -5,13 +5,12 @@ import UserFooter from "../UserFooter";
 import Navbar from "../Navbar";
 
 function UserProfile() {
-  const [email, setEmail] = useState('');
   const [user, setUser] = useState({
     name: '',
     dob: '',
     email: '',
     phone: '',
-    country: ''
+    country: '',
   });
 
   useEffect(() => {
@@ -47,7 +46,7 @@ function UserProfile() {
         dob: userAccount.dob || '', 
         email: userAccount.email || '', 
         phone: userAccount.phone || '', 
-        country: userAccount.country || '', 
+        country: userAccount.country || ''
         // Set other fields similarly
       });
     } catch (error) {
@@ -76,10 +75,12 @@ function UserProfile() {
         },
         body: JSON.stringify(user),
       });
-      
+
+      const responseData = await response.json();
+
       if (response.ok) {
-        console.log('User data updated successfully');
-        window.alert('Updated successfully!');
+        console.log(responseData.message);
+        window.alert(responseData.message);
         
         // Optionally, fetch updated user data after the update operation
         // This ensures that the user interface reflects the latest changes
