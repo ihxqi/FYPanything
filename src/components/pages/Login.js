@@ -4,21 +4,21 @@ import UnregSidebarNavbar from "../UnregSidebarNavbar";
 import './Login.css'; // Ensure you have this CSS file with the correct styles
 import { Navigate, useNavigate } from 'react-router-dom'; // Import Navigate for redirection
 import GeneralFooter from "../GeneralFooter";
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [redirectToAdmin, setRedirectToAdmin] = useState(false);
-  const [redirectToUser, setRedirectToUser] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-  
+    const apiUrl = 'http://ec2-13-239-36-228.ap-southeast-2.compute.amazonaws.com'; // Backend URL
+
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/login`, {
+      const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,40 +28,29 @@ const Login = () => {
 
       if (response.ok) {
         // If login is successful, redirect to appropriate page
-      const userSession = await response.json(); // Parse JSON response
-      localStorage.setItem('user_session', JSON.stringify(userSession)); // saves the user current session for further use
-      console.log(userSession)
-      const userRole = userSession.role; // Access the role field
-      if (userRole === 'Admin') {
-        navigate('/adminmanagepartner')
-      } else if (userRole === 'User') {
-        navigate('/UserHomepage')
+        const userSession = await response.json(); // Parse JSON response
+        localStorage.setItem('user_session', JSON.stringify(userSession)); // saves the user current session for further use
+        console.log(userSession)
+        const userRole = userSession.role; // Access the role field
+        if (userRole === 'Admin') {
+          navigate('/adminmanagepartner')
+        } else if (userRole === 'User') {
+          navigate('/UserHomepage')
+        } else if (userRole === 'Partner') {
+          navigate('/partnerallproducts')
+        } else {
+          window.alert('Invalid username or password!');
+        }
+      } else {
+        // If login fails, set error state
+        const errorMessage = await response.text();
+        window.alert(errorMessage);
       }
-      else if (userRole === 'Partner') {
-        navigate('/partnerallproducts')
-      }
-      else{
-        window.alert('Invalid username or password!');
-      }
-    } else {
-      // If login fails, set error state
-      const errorMessage = await response.text();
-      window.alert(errorMessage);
+    } catch (error) {
+      console.error('Error logging in:', error);
+      setError('An error occurred while logging in. Please try again later.');
     }
-  } catch (error) {
-    console.error('Error logging in:', error);
-    setError('An error occurred while logging in. Please try again later.');
-  }
-};
-  
-
-  // If redirectToRegisterRole is true, redirect to /registerrole
-  if (redirectToAdmin) {
-    return <Navigate to="/registerrole" />;
-  }
-  if (redirectToUser) {
-    return <Navigate to="/AboutUs" />;
-  }
+  };
 
   return (
     <div>
@@ -100,7 +89,7 @@ const Login = () => {
           </Col>
         </Row>
       </Container>
-      <GeneralFooter/>
+      <GeneralFooter />
     </div>
   );
 };
