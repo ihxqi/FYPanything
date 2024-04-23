@@ -44,6 +44,7 @@ const UserSidebarNavbar = () => {
     { to: "/UserCategories", text: "User Categories" },
     { to: "/UserBookmarks", text: "My Bookmarks" },
     { to: "/UserProfile", text: "Profile" },
+    { to: "/UserRecentlyViewed", text:"Recently Viewed"},
     { to: "/login", text: "Logout", onClick: handleLogout },
   ];
 
