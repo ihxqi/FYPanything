@@ -8,52 +8,60 @@ import GeneralFooter from "../GeneralFooter";
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [redirectToAdmin, setRedirectToAdmin] = useState(false);
+  const [redirectToUser, setRedirectToUser] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    const apiUrl = 'http://ec2-13-239-36-228.ap-southeast-2.compute.amazonaws.com';
+
   
     try {
-      const response = await fetch(`${apiUrl}/login`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.includes('application/json')) {
-        throw new Error('Response is not JSON');
-      }
-  
+
+      if (response.ok) {
+        // If login is successful, redirect to appropriate page
       const userSession = await response.json(); // Parse JSON response
-      localStorage.setItem('user_session', JSON.stringify(userSession)); // Save the user session
-      console.log(userSession);
-  
-      const userRole = userSession.role;
+      localStorage.setItem('user_session', JSON.stringify(userSession)); // saves the user current session for further use
+      console.log(userSession)
+      const userRole = userSession.role; // Access the role field
       if (userRole === 'Admin') {
-        navigate('/adminmanagepartner');
+        navigate('/adminmanagepartner')
       } else if (userRole === 'User') {
-        navigate('/UserHomepage');
-      } else if (userRole === 'Partner') {
-        navigate('/partnerallproducts');
-      } else {
+        navigate('/UserHomepage')
+      }
+      else if (userRole === 'Partner') {
+        navigate('/partnerallproducts')
+      }
+      else{
         window.alert('Invalid username or password!');
       }
-    } catch (error) {
-      console.error('Error logging in:', error);
-      setError('An error occurred while logging in. Please try again later.');
+    } else {
+      // If login fails, set error state
+      const errorMessage = await response.text();
+      window.alert(errorMessage);
     }
-  };
+  } catch (error) {
+    console.error('Error logging in:', error);
+    setError('An error occurred while logging in. Please try again later.');
+  }
+};
   
+
+  // If redirectToRegisterRole is true, redirect to /registerrole
+  if (redirectToAdmin) {
+    return <Navigate to="/registerrole" />;
+  }
+  if (redirectToUser) {
+    return <Navigate to="/AboutUs" />;
+  }
 
   return (
     <div>
@@ -92,7 +100,7 @@ const Login = () => {
           </Col>
         </Row>
       </Container>
-      <GeneralFooter />
+      <GeneralFooter/>
     </div>
   );
 };
