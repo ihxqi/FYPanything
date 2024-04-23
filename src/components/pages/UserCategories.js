@@ -1,44 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './UserCategories.css';
 import logo from '../image/CollaFilter Logo.jpg'; // Make sure the path is correct
 import UserSidebarNavbar from "../UserSidebarNavbar";
 import UserFooter from "../UserFooter";
 
-/*
-const categories = ['Men Clothes', 'Women Clothes', 'Kids Clothes', 'Accessories', 'Shoes' ]; // Simplified categories array
-*/
-
-/*const categories = {
-  'Men Clothes': [
-    { name: 'Men Hoodie', image: 'path_to_image', url: 'product_link' },
-    { name: 'Men Jeans', image: 'path_to_image', url: 'product_link' }
-    // ...more products for men clothes
-  ],
-  'Women Clothes': [
-    { name: 'Women Dress', image: 'path_to_image', url: 'product_link' },
-    { name: 'Women Skirt', image: 'path_to_image', url: 'product_link' }
-    // ...more products for women clothes
-  ],
-  'Kids Clothes': [
-    { name: 'Kids T-Shirts', image: 'path_to_image', url: 'product_link' },
-    { name: 'Kids Shorts', image: 'path_to_image', url: 'product_link' }
-    // ...more products for kids clothes
-  ],
-  'Accessories': [
-    { name: 'Accessories Jewellery', image: 'path_to_image', url: 'product_link' },
-    { name: 'Accessories Hats', image: 'path_to_image', url: 'product_link' }
-    // ...more products for accessories
-  ],
-}; */
 
 function UserCategories() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-  // Function to update selected category and displayed products
-  const handleCategoryClick = (category) => {
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("/get_categories");
+      if (!response.ok) {
+        throw new Error("Failed to fetch categories");
+      }
+      const data = await response.json();
+      const categories = Object.keys(data.categories).map((category) => category);
+      setCategories(categories);
+      // Assuming the first category is selected by default
+      if (categories.length > 0) {
+        setSelectedCategory(categories[0]);
+      }
+    } catch (error) {
+      console.error("Error fetching categories:", error.message);
+    }
+  };
+
+  // Function to update selected category and fetch/display products
+  const handleCategoryClick = async (category) => {
     setSelectedCategory(category);
-    // setDisplayedProducts(categories[category]); // Update displayed products based on the selected category
+    console.log(category)
+    try {
+      console.log("Fetching")
+      const response = await fetch(`/get_products_by_category/${category}`);
+      console.log(response)
+      console.log("fetched")
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
+      }
+      const data = await response.json();
+      setDisplayedProducts(data.products);
+    } catch (error) {
+      console.error("Error fetching products:", error.message);
+    }
   };
 
   // Function to handle click on product
@@ -53,7 +63,7 @@ function UserCategories() {
         <div className="UserCatproducts-page">
             <div className="UserCatsidebar">
                 <div className="UserCatcategories">
-                    {/* {Object.keys(categories).map((category, index) => (
+                    {categories.map((category, index) => (
                         <button 
                           key={index} 
                           className="UserCatcategory-button" 
@@ -61,32 +71,7 @@ function UserCategories() {
                         >
                           {category}
                         </button>
-                    ))} */}
-                    {/* Temporarily hardcoding categories for demonstration */}
-                    <button 
-                      className="UserCatcategory-button" 
-                      onClick={() => handleCategoryClick('Men Clothes')}
-                    >
-                      Men Clothes
-                    </button>
-                    <button 
-                      className="UserCatcategory-button" 
-                      onClick={() => handleCategoryClick('Women Clothes')}
-                    >
-                      Women Clothes
-                    </button>
-                    <button 
-                      className="UserCatcategory-button" 
-                      onClick={() => handleCategoryClick('Kids Clothes')}
-                    >
-                      Kids Clothes
-                    </button>
-                    <button 
-                      className="UserCatcategory-button" 
-                      onClick={() => handleCategoryClick('Accessories')}
-                    >
-                      Accessories
-                    </button>
+                    ))}
                 </div>
             </div>
             <div className="UserCatproduct-display">

@@ -16,6 +16,7 @@ function Footer() {
           <div className="userfooter-column">
           <Link to="/UserCategories" className="userfooter-link">User Categories</Link>
           <Link to="/UserBookmarks" className="userfooter-link">User Bookmarks</Link>
+          <Link to="/UserRecentlyViewed" className="userfooter-link">Recently Viewed</Link>
           </div>
         </div>
       </div>

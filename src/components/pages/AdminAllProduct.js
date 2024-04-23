@@ -33,23 +33,29 @@ const AdminAllProducts = () => {
   const fetchProducts = async () => {
     try {
       const response = await fetch("/get_allproducts", {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       });
-
+  
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
-
+  
       const data = await response.json();
       console.log(data);
-
+  
       if (data.products && Array.isArray(data.products)) {
-        setProducts(data.products);
+        const productsWithNames = await Promise.all(data.products.map(async (product) => {
+          const partnerName = await getPartnerName(product.user_id);
+          return { ...product, partnerName };
+        }));
+        
+        setProducts(productsWithNames);
+  
         const categories = [
-          ...new Set(data.products.map((product) => product.category)),
+          ...new Set(productsWithNames.map((product) => product.category)),
         ];
         setUniqueCategories(categories);
       } else {
@@ -57,6 +63,22 @@ const AdminAllProducts = () => {
       }
     } catch (error) {
       console.error("Error fetching products:", error.message);
+    }
+  };
+  
+
+  const getPartnerName = async (userId) => {
+    try {
+      const response = await fetch(`/get_partner_name/${userId}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch partner name");
+      }
+      const data = await response.json();
+      console.log(data.name)
+      return data.name;
+    } catch (error) {
+      console.error("Error fetching partner name:", error.message);
+      return "N/A";
     }
   };
 
@@ -86,35 +108,36 @@ const AdminAllProducts = () => {
     }
   };
 
+  const handleDelete = async (indexToRemove) => {
+    try {
+      const productIdToDelete = indexToRemove
+      const response = await fetch(`/delete_product/${productIdToDelete}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to delete product");
+      }
+  
+      const updatedProducts = [...products];
+      updatedProducts.splice(indexToRemove, 1);
+      setProducts(updatedProducts);
+      setFilteredProducts(updatedProducts);
+      window.alert("Product deleted")
+    } catch (error) {
+      console.error("Error deleting product:", error.message);
+    }
+  };
+  
+
   return (
     <div>
       <AdminSidebarNavbar />
       <div className="admin-products-container">
         <h1><div className="admin-products-header">All Products</div></h1>
-        <div className="admin-products-search-container">
-          <label htmlFor="blogshop-options">Search Blogshop:</label>
-          <Select
-            id="blogshop-options"
-            options={blogshopOptions}
-            value={selectedOption}
-            onChange={setSelectedOption}
-            placeholder="Select a blogshop..."
-            isSearchable={true}
-            isClearable={true}
-          />
-          <label htmlFor="category-filter">Filter by Category:</label>
-          <Select
-            id="category-filter"
-            options={categoryOptions}
-            value={categoryFilter}
-            onChange={setCategoryFilter}
-            placeholder="Select a category..."
-            isSearchable={false}
-            isClearable={true}
-          />
-          <button className="admin-products-search-bar-button" onClick={handleSearch}>Search</button>
-          <button className="admin-products-filter-bar-button" onClick={handleFilter}>Filter</button>
-        </div>
         <table className="admin-products-table">
           <thead>
             <tr>
@@ -125,25 +148,20 @@ const AdminAllProducts = () => {
               <th>Image</th>
               <th>Product Link</th>
               <th>Product Information</th>
-              <th>Tags</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {filteredProducts.map((product, index) => (
+            {products.map((product, index) => (
               <tr key={index}>
-                <td>{product.blogshop}</td>
+                <td>{product.partnerName}</td>
                 <td>{product.name}</td>
                 <td>{product.category}</td>
-                <td>{product.subCategory}</td>
                 <td>{product.price}</td>
-                <td>{product.image}</td>
-                <td>{product.link}</td>
-                <td>{product.information}</td>
-                <td>{product.tags}</td>
-                <td>
-                <button className="admin-products-remove-button" onClick={() => handleRemove(index)}>REMOVE</button>
-                </td>
+                <img src={`data:image/png;base64, ${product.imageFile}`} alt="Product Image" />
+                <td><a href={product.link} target="_blank" rel="noopener noreferrer">{product.link}</a></td>
+                <td>{product.description}</td>
+                <td><button onClick={() => handleDelete(product.product_id)}>Delete</button></td>
               </tr>
             ))}
           </tbody>

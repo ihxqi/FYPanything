@@ -11,22 +11,42 @@ const PartnerAllProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [uniqueCategories, setUniqueCategories] = useState([]);
   const [editMode, setEditMode] = useState(null); // State to track edit mode
+  const [categories, setCatOptions] = useState([]);
 
   useEffect(() => {
     fetchProducts(); // Fetch products when the component mounts
+    fetchCategories();
   }, []);
 
   const [editProduct, setEditProduct] = useState({
     id: null,
     productName: "",
     category: "",
-    //subCategory: "",
     price: "",
     image: "",
     productLink: "",
     productInformation: "",
-    tags: "",
   });
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch("/get_categories");
+      if (!response.ok) {
+        throw new Error("Failed to fetch categories");
+      }
+      const data = await response.json();
+      console.log(data);
+      const categories = Object.keys(data.categories).map((category) => ({
+        value: category,
+        label: category,
+      }));
+      setCatOptions(categories);
+      // Assuming the first category is selected by default
+      setSelectedCategory(categories[0]);
+    } catch (error) {
+      console.error("Error fetching categories:", error.message);
+    }
+  };
 
   const fetchProducts = async () => {
     try {
@@ -69,8 +89,9 @@ const PartnerAllProducts = () => {
   const handleEdit = (id) => {
     const productToEdit = products.find((product) => product.id === id);
     console.log("Editing product:", productToEdit);
-    setEditProduct(productToEdit);
+    setEditProduct({ ...productToEdit });
     setEditMode(id); // Enter edit mode for this row
+    setShowEditPopup(true); // Show the edit popup when the edit button is clicked
   };
 
   const handleChange = (e) => {
@@ -194,16 +215,59 @@ const PartnerAllProducts = () => {
               {/* Render a single row for each product */}
               {products.map((product, index) => (
                 <tr key={index}>
-                  <td>{editMode === product.id ? <input type="text" name="productName" value={editProduct.productName} onChange={handleChange} /> : product.name}</td>
-                  <td>{editMode === product.id ? <input type="text" name="category" value={editProduct.category} onChange={handleChange} /> : product.category}</td>
-                  <td>{editMode === product.id ? <input type="text" name="price" value={editProduct.price} onChange={handleChange} /> : product.price}</td>
                   <td>
                     {editMode === product.id ? (
-                      <input type="text" name="image" value={editProduct.image} onChange={handleChange} />
+                      <input
+                        type="text"
+                        name="productName"
+                        value={editProduct.productName}
+                        onChange={handleChange}
+                      />
                     ) : (
-                      <img src={`data:image/png;base64, ${product.imageFile}`} alt="Product Image" />
+                      product.name
                     )}
                   </td>
+                  <td>
+                    {editMode === product.id ? (
+                      <input
+                        type="text"
+                        name="category"
+                        value={editProduct.category}
+                        onChange={handleChange}
+                      />
+                    ) : (
+                      product.category
+                    )}
+                  </td>
+                  <td>
+                    {editMode === product.id ? (
+                      <input
+                        type="text"
+                        name="price"
+                        value={editProduct.price}
+                        onChange={handleChange}
+                      />
+                    ) : (
+                      product.price
+                    )}
+                  </td>
+                  <td>
+                    {editMode === product.id ? (
+                      <input
+                        type="text"
+                        name="image"
+                        value={editProduct.image}
+                        onChange={handleChange}
+                      />
+                    ) : (
+                      <img
+                        src={`data:image/png;base64, ${product.imageFile}`}
+                        alt="Product Image"
+                        style={{ maxWidth: "100px", maxHeight: "100px" }}
+                      />
+                    )}
+                  </td>
+
                   <td>
                     <a
                       href={product.link}
@@ -216,11 +280,17 @@ const PartnerAllProducts = () => {
                   <td>{product.description}</td>
                   <td>
                     {editMode === product.id ? (
-                      <button className="partner-products-edit-button" onClick={handleSubmit}>
+                      <button
+                        className="partner-products-edit-button"
+                        onClick={handleSubmit}
+                      >
                         CONFIRM
                       </button>
                     ) : (
-                      <button className="partner-products-edit-button" onClick={() => handleEdit(product.id)}>
+                      <button
+                        className="partner-products-edit-button"
+                        onClick={() => handleEdit(product.id)}
+                      >
                         EDIT
                       </button>
                     )}
@@ -235,7 +305,49 @@ const PartnerAllProducts = () => {
             <div className="partner-products-edit-popup">
               <h2>Edit Product</h2>
               <div className="partner-products-edit-form">
-                {/* Edit form fields */}
+                <label htmlFor="productName">Product Name:</label>
+                <input
+                  type="text"
+                  id="productName"
+                  name="productName"
+                  value={editProduct.name}
+                  onChange={handleChange}
+                />
+                <label htmlFor="category">Category:</label>
+                <Select
+                  id="category"
+                  options={categories}
+                  onChange={handleCategoryChange}
+                  value={selectedCategory}
+                  placeholder="Select a category..."
+                  isClearable
+                  isSearchable
+                />
+                <label htmlFor="price">Price:</label>
+                <input
+                  type="text"
+                  id="price"
+                  name="price"
+                  value={editProduct.price}
+                  onChange={handleChange}
+                />
+                <label htmlFor="image">Image URL:</label>
+                <input
+                  type="text"
+                  id="image"
+                  name="image"
+                  value={editProduct.image}
+                  onChange={handleChange}
+                />
+                <label htmlFor="image">Product Information:</label>
+                <input
+                  type="text"
+                  id="image"
+                  name="image"
+                  value={editProduct.description}
+                  onChange={handleChange}
+                />
+                {/* Add other input fields as needed */}
               </div>
               <div className="partner-products-edit-buttons">
                 <button

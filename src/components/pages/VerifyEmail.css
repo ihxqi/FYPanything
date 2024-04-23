@@ -1,0 +1,11 @@
+.verify-email-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the height of the container to 100% of the viewport height */
+  }
+  
+  .verify-email-container p {
+    text-align: center; /* Center align the text */
+  }
+  

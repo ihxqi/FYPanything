@@ -24,3 +24,5 @@ export { default as AdminGenerateReport} from "./AdminGenerateReport"
 export { default as PartnerGenerateReport} from "./PartnerGenerateReport"
 export { default as UserRecentlyViewed} from "./UserRecentlyViewed"
 export { default as ResetPassword} from "./ResetPassword"
+export { default as VerifyEmail} from "./VerifyEmail"
+
