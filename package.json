@@ -1,7 +1,7 @@
 {
   "name": "react-portfolio-master",
   "version": "0.1.0",
-  "proxy": "http://localhost:8000/",
+  "proxy": "http://13.239.36.228:8000/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

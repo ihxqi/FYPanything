@@ -59,13 +59,6 @@
   overflow: hidden; /* Ensures content doesn't spill outside the border-radius */
 }
 
-.UserCatproduct-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Adjust the size of the gap as needed */
-  justify-content: flex-start;
-}
-
 
 .UserCatcategories {
   display: flex;
@@ -109,14 +102,28 @@
   transform: var(--item-hover-transform);
 }
 
-/* Center the text within the .product-image-placeholder */
-.UserCatproduct-image-placeholder {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Center the element */
-  text-align: center; /* Center the text */
-  color: white; /* Text color, can be changed as needed */
+
+.UserCatproduct-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust the grid layout as needed */
+  grid-gap: 20px; /* Adjust the gap between grid items */
+}
+
+
+.UserCatproduct-image {
+  width: 100%;
+  max-height: 200px; /* Adjust the maximum height of the product image */
+  object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+.UserCatproduct-name {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.UserCatproduct-price {
+  color: #888; /* Price text color */
+  margin-top: 5px;
 }
 
 @media (max-width: 768px) {
