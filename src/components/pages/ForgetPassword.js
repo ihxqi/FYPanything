@@ -19,15 +19,28 @@ const ForgetPassword = () => {
         body: JSON.stringify({ email }),
       });
 
-      if (!response.ok) {
+      // if (!response.ok) {
+      //   throw new Error('Failed to send reset password request');
+      // }
+
+      // // Reset the form
+      // setEmail('');
+
+      // console.log('Reset password request sent successfully');
+      // window.alert("Reset password email sent!")
+      console.log("Enter: forgetpassword fetch function")
+      if (response.ok) {
+        // Reset the form
+        setEmail('');
+        console.log('Reset password request sent successfully');
+        window.alert("Reset password email sent!")
+      } else {
+        console.log("ERROR: forgetpassword fetch function")
         throw new Error('Failed to send reset password request');
       }
+      console.log("Exit: forgetpassword fetch function")
 
-      // Reset the form
-      setEmail('');
 
-      console.log('Reset password request sent successfully');
-      window.alert("Reset password email sent!")
     } catch (error) {
       console.error('Error sending reset password request:', error);
       // Handle error (e.g., display error message to the user)
