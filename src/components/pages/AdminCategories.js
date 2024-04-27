@@ -182,6 +182,12 @@ const AdminCategories = () => {
           value={searchQuery}
           onChange={handleSearchInputChange}
         />
+        <button
+                className="partner-management-search-bar-button"
+                onClick={handleSearch}
+              >
+                Search
+              </button>
       </div>
       <table className="admin-categories-table">
         <thead>
@@ -273,7 +279,7 @@ const AdminCategories = () => {
               className="newPopup-save-category-button"
               onClick={handleAddCategory}
             >
-              Add Category
+              Save Category
             </button>
             <button
               className="newPopup-cancel-category-button"

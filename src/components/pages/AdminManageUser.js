@@ -28,6 +28,10 @@ function AdminManageUsers() {
     }
   };
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   const filteredUsers = user.filter(user =>
     user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     user.email.toLowerCase().includes(searchQuery.toLowerCase())
@@ -109,9 +113,15 @@ function AdminManageUsers() {
             type="text"
             placeholder="Search users..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearch}
           />
            </div>
+           <button
+                className="user-management-search-bar-button"
+                onClick={handleSearch}
+              >
+                Search
+              </button>
           </div>
           <table className="user-management-table">
             <thead>

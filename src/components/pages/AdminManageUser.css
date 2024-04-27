@@ -17,25 +17,15 @@
 
 .user-management-search-container {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px; /* Space between search input and button */
-  margin-bottom: 40px; /* Space below the search area */
-  margin-top: 40px;
- 
-}
-
-.user-management-search-container label {
-  height: 40px; /* Ensuring all children have the same height */
-  padding: 0 10px; /* Providing padding within the children */
-  margin: 0; /* Removing any default margins */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  margin-top:15px;
+  align-items: baseline;
+  padding: 10px;
+  max-width: 300px;
+  margin: 0 auto; /* Center the search bar horizontally */
+  margin-right: 40px; /* Remove the left margin to move the search bar to the left */
 }
 
 
-.user-management-search-bar-button,
-.user-management-filter-bar-button {
+.user-management-search-bar-button {
   padding: 10px 20px;
   border-radius: 5px;
   border: none;

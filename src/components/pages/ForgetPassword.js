@@ -18,6 +18,8 @@ const ForgetPassword = () => {
         },
         body: JSON.stringify({ email }),
       });
+
+      console.log(email)
       console.log(response)
 
       // if (!response.ok) {
