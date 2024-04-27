@@ -6,6 +6,8 @@ import AdminFooter from "../AdminFooter";
 function AdminManageUsers() {
   const [user, setUser] = useState([]);
   const [actionStatus, setActionStatus, userName] = useState({});
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredUserData, setFilteredUserData] = useState([]);
 
   useEffect(() => {
     // Fetch user accounts from backend API when the component mounts
@@ -20,11 +22,18 @@ function AdminManageUsers() {
       }
       const data = await response.json();
       setUser(data.accounts);
+      setFilteredUserData(data.accounts);
     } catch (error) {
       console.error('Error fetching user accounts:', error);
     }
   };
-  
+
+  const filteredUsers = user.filter(user =>
+    user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    user.email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
   const handleActivate = async (user) => {
     console.log("Activate clicked for:", user.email);
     try {
@@ -95,6 +104,14 @@ function AdminManageUsers() {
         <div className="user-management-container">
           <div className="user-management-header">
             <h1>User Accounts</h1>
+            <div className="user-management-search-container">
+            <input
+            type="text"
+            placeholder="Search users..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+           </div>
           </div>
           <table className="user-management-table">
             <thead>

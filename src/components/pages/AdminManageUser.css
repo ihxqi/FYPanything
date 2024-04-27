@@ -15,6 +15,35 @@
   margin-top: -10%;
 }
 
+.user-management-search-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px; /* Space between search input and button */
+  margin-bottom: 40px; /* Space below the search area */
+  margin-top: 40px;
+ 
+}
+
+.user-management-search-container label {
+  height: 40px; /* Ensuring all children have the same height */
+  padding: 0 10px; /* Providing padding within the children */
+  margin: 0; /* Removing any default margins */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin-top:15px;
+}
+
+
+.user-management-search-bar-button,
+.user-management-filter-bar-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: black; /* Button background */
+  color: white; /* Button text */
+  cursor: pointer;
+}
+
 .user-suspend-partner-button,
 .user-activate-partner-button {
   width: 100px; /* Set a fixed width for the buttons */
