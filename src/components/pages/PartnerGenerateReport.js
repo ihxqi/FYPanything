@@ -63,8 +63,7 @@ const handleYearChange = (event) => {
         <thead>
           <tr>
             <th>Product</th>
-            <th>Number of Likes</th>
-            <th>Number of Dislikes</th>
+            <th>Average Rating</th>
             <th>Product Link Clicked</th>
           </tr>
         </thead>
@@ -73,7 +72,6 @@ const handleYearChange = (event) => {
             <tr key={index}>
               <td>{item.product}</td>
               <td>{item.noOfLikes}</td>
-              <td>{item.noOfDislikes}</td>
               <td>{item.linkclick}</td>
             </tr>
           ))}

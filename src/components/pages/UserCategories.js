@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import './UserCategories.css';
-import logo from '../image/CollaFilter Logo.jpg'; // Make sure the path is correct
+import React, { useState, useEffect } from "react";
+import "./UserCategories.css";
 import UserSidebarNavbar from "../UserSidebarNavbar";
 import UserFooter from "../UserFooter";
-
 
 function UserCategories() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [categoryImage, setCategoryImage] = useState(null);
 
   useEffect(() => {
     fetchCategories();
@@ -21,7 +20,7 @@ function UserCategories() {
         throw new Error("Failed to fetch categories");
       }
       const data = await response.json();
-      const categories = Object.keys(data.categories).map((category) => category);
+      const categories = Object.keys(data.categories);
       setCategories(categories);
       // Assuming the first category is selected by default
       if (categories.length > 0) {
@@ -32,63 +31,94 @@ function UserCategories() {
     }
   };
 
-  // Function to update selected category and fetch/display products
-  const handleCategoryClick = async (category) => {
-    setSelectedCategory(category);
-    console.log(category)
+  const fetchProductsByCategory = async (category) => {
     try {
-      console.log("Fetching")
       const response = await fetch(`/get_products_by_category/${category}`);
-      console.log(response)
-      console.log("fetched")
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
       const data = await response.json();
-      setDisplayedProducts(data.products);
+      setDisplayedProducts(data.products || []);
     } catch (error) {
       console.error("Error fetching products:", error.message);
     }
   };
 
-  // Function to handle click on product
+  useEffect(() => {
+    if (selectedCategory) {
+      fetchProductsByCategory(selectedCategory);
+      // Assuming you have an endpoint to fetch the image URL of the category
+      fetchCategoryImage(selectedCategory);
+    }
+  }, [selectedCategory]);
+
+  const fetchCategoryImage = async (category) => {
+    try {
+      // Fetch the base64-encoded image string for the selected category
+      const response = await fetch(`/get_category_image/${category}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch category image");
+      }
+      const data = await response.json();
+      setCategoryImage(data.image); // Assuming the response contains the base64-encoded image string
+    } catch (error) {
+      console.error("Error fetching category image:", error.message);
+    }
+  };
+  
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
   const handleProductClick = (product) => {
     console.log(`Clicked on product:`, product);
-    // Implement the logic to handle product click, such as navigating to product details
+    // Implement the logic to handle product click, such as navigating to the product details
   };
 
   return (
     <div>
-        <UserSidebarNavbar />
-        <div className="UserCatproducts-page">
-            <div className="UserCatsidebar">
-                <div className="UserCatcategories">
-                    {categories.map((category, index) => (
-                        <button 
-                          key={index} 
-                          className="UserCatcategory-button" 
-                          onClick={() => handleCategoryClick(category)}
-                        >
-                          {category}
-                        </button>
-                    ))}
-                </div>
-            </div>
-            <div className="UserCatproduct-display">
-              {/* Display the title of the selected category */}
-              {selectedCategory && <h2 className="UserCatselected-category-header">{selectedCategory}</h2>}
-              {displayedProducts.map((product, index) => (
-                <div key={index} className="UserCatproduct-item" onClick={() => handleProductClick(product)}>
-                  <div className="UserCatproduct-image-placeholder">
-                    {/* Display the actual image, or a placeholder if not available */}
-                    <img src={product.image} alt={product.name} />
-                    <span>{product.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <UserSidebarNavbar />
+      <div className="UserCatproducts-page">
+        <div className="UserCatsidebar">
+          <div className="UserCatcategories">
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                className={`UserCatcategory-button ${selectedCategory === category ? 'active' : ''}`}
+                onClick={() => handleCategoryClick(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          {categoryImage && (
+            <img src={categoryImage} alt={selectedCategory} />
+          )}
         </div>
-        <UserFooter/>
+        <div className="UserCatproduct-display">
+          {/* Display the title of the selected category */}
+          {selectedCategory && (
+            <h2 className="UserCatselected-category-header">
+              {selectedCategory}
+            </h2>
+          )}
+          <div className="UserCatproduct-grid">
+            {displayedProducts.map((product, index) => (
+              <div
+                key={index}
+                className="UserCatproduct-item"
+                onClick={() => handleProductClick(product)}
+              >
+                <img src={product.imageFile} alt={product.name} className="UserCatproduct-image" />
+                <p className="UserCatproduct-name">{product.name}</p>
+                <p className="UserCatproduct-price">{product.price}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <UserFooter />
     </div>
   );
 }

@@ -2,22 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./PartnerAllProducts.css";
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import PartnerFooter from "../PartnerFooter";
-import Select from "react-select"; // Import React-Select
+import Select from "react-select";
 
 const PartnerAllProducts = () => {
   const [products, setProducts] = useState([]);
   const [showEditPopup, setShowEditPopup] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [uniqueCategories, setUniqueCategories] = useState([]);
-  const [editMode, setEditMode] = useState(null); // State to track edit mode
-  const [categories, setCatOptions] = useState([]);
-
-  useEffect(() => {
-    fetchProducts(); // Fetch products when the component mounts
-    fetchCategories();
-  }, []);
-
   const [editProduct, setEditProduct] = useState({
     id: null,
     productName: "",
@@ -27,71 +16,74 @@ const PartnerAllProducts = () => {
     productLink: "",
     productInformation: "",
   });
+  const [editImagePreview, setEditImagePreview] = useState("");
+  const [categories, setCatOptions] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [uniqueCategories, setUniqueCategories] = useState([]);
+  const [editMode, setEditMode] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  useEffect(() => {
+    fetchProducts();
+    fetchCategories();
+  }, []);
 
   const fetchCategories = async () => {
-    try {
-      const response = await fetch("/get_categories");
-      if (!response.ok) {
-        throw new Error("Failed to fetch categories");
-      }
-      const data = await response.json();
-      console.log(data);
-      const categories = Object.keys(data.categories).map((category) => ({
-        value: category,
-        label: category,
-      }));
-      setCatOptions(categories);
-      // Assuming the first category is selected by default
-      setSelectedCategory(categories[0]);
+ try {
+    const response = await fetch("/get_categories");
+    if (!response.ok) throw new Error("Failed to fetch categories");
+const data = await response.json();
+console.log(data);
+    const categories = Object.keys(data.categories).map(category => ({
+      value: category,
+      label: category,
+    }));
+    setCatOptions(categories);
+  setSelectedCategory(categories[0]);
     } catch (error) {
       console.error("Error fetching categories:", error.message);
     }
   };
 
+
   const fetchProducts = async () => {
-    try {
-      const session = localStorage.getItem("user_session");
-      const userSession = JSON.parse(session);
-      const userID = userSession.user_id;
-      if (!userID) {
-        throw new Error("User ID not found in localStorage");
-      }
+    const session = localStorage.getItem("user_session");
+    const userSession = JSON.parse(session);
+    const userID = userSession.user_id;
+    if (!userID) throw new Error("User ID not found in localStorage");
 
-      const response = await fetch("/get_products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ user_id: userID }),
-      });
+    const response = await fetch("/get_products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: userID }),
+    });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch products");
-      }
+    if (!response.ok) throw new Error("Failed to fetch products");
 
-      const data = await response.json();
-      console.log(data);
+const data = await response.json();
+ console.log(data);
 
-      if (data.products && Array.isArray(data.products)) {
-        setProducts(data.products);
-        const categories = [
-          ...new Set(data.products.map((product) => product.category)),
-        ];
-        setUniqueCategories(categories);
-      } else {
-        throw new Error("Products data is not in the expected format");
-      }
-    } catch (error) {
-      console.error("Error fetching products:", error.message);
-    }
+try{
+ if (data.products && Array.isArray(data.products)) {
+  setProducts(data.products);
+  const categories = [
+    ...new Set(data.products.map((product) => product.category)),
+  ];
+  setUniqueCategories(categories);
+} else {
+  throw new Error("Products data is not in the expected format");
+}
+} catch (error) {
+console.error("Error fetching products:", error.message);
+}
   };
 
   const handleEdit = (id) => {
-    const productToEdit = products.find((product) => product.id === id);
-    console.log("Editing product:", productToEdit);
+const productToEdit = products.find(product => product.id === id);
+console.log("Editing product:", productToEdit);
     setEditProduct({ ...productToEdit });
-    setEditMode(id); // Enter edit mode for this row
-    setShowEditPopup(true); // Show the edit popup when the edit button is clicked
+    setEditImagePreview(`data:image/png;base64, ${productToEdit.image}`);
+    setShowEditPopup(true);
   };
 
   const handleChange = (e) => {
@@ -102,21 +94,32 @@ const PartnerAllProducts = () => {
     setEditProduct({ ...editProduct, [name]: value });
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setEditImagePreview(e.target.result);
+        setEditProduct({ ...editProduct, image: e.target.result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = () => {
-    const updatedProducts = products.map((product) => {
-      if (product.id === editProduct.id) {
-        console.log("Updating product:", editProduct);
-        return editProduct;
+    const updatedProducts = products.map(product => {
+      if (product.id === editProduct.id) {	
+console.log("Updating product:", editProduct);
+        return { ...product, ...editProduct };
       }
       return product;
     });
-    console.log("Updated products:", updatedProducts);
+  console.log("Updated products:", updatedProducts);
     setProducts(updatedProducts);
     setEditMode(null); // Exit edit mode
     setShowEditPopup(false);
   };
-
-  const handleSearch = () => {
+ const handleSearch = () => {
     if (selectedProduct) {
       const filteredProducts = products.filter(
         (product) => product.id === selectedProduct.value
@@ -128,8 +131,7 @@ const PartnerAllProducts = () => {
     }
   };
 
-  // Function to handle when a product is selected from the dropdown.
-  const handleProductChange = (selectedOption) => {
+const handleProductChange = (selectedOption) => {
     setSelectedProduct(selectedOption);
   };
 
@@ -152,6 +154,7 @@ const PartnerAllProducts = () => {
     }
   };
 
+
   return (
     <div>
       <PartnerSidebarNavbar />
@@ -159,7 +162,7 @@ const PartnerAllProducts = () => {
       <div className="partner-products-container">
         <div className="partner-products-header">
           <h1>All Products</h1>
-          <div className="partner-products-search-container">
+       <div className="partner-products-search-container">
             <label htmlFor="partner-product-search">Search Products:</label>
             <Select
               id="partner-product-search"
@@ -199,23 +202,22 @@ const PartnerAllProducts = () => {
               Filter
             </button>
           </div>
-          <table className="partner-products-table">
-            <thead>
-              <tr>
-                <th>Name</th>
+        <table className="partner-products-table">
+          <thead>
+            <tr>
+ <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
                 <th>Image</th>
                 <th>Product Link</th>
                 <th>Product Information</th>
                 <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Render a single row for each product */}
-              {products.map((product, index) => (
-                <tr key={index}>
-                  <td>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product, index) => (
+              <tr key={index}>
+  <td>
                     {editMode === product.id ? (
                       <input
                         type="text"
@@ -299,13 +301,11 @@ const PartnerAllProducts = () => {
               ))}
             </tbody>
           </table>
-
-          {/* Popup for editing */}
-          {showEditPopup && (
-            <div className="partner-products-edit-popup">
-              <h2>Edit Product</h2>
-              <div className="partner-products-edit-form">
-                <label htmlFor="productName">Product Name:</label>
+        {showEditPopup && (
+          <div className="partner-products-edit-popup">
+            <h2>Edit Product</h2>
+            <div className="partner-products-edit-form">
+                 <label htmlFor="productName">Product Name:</label>
                 <input
                   type="text"
                   id="productName"
@@ -331,15 +331,14 @@ const PartnerAllProducts = () => {
                   value={editProduct.price}
                   onChange={handleChange}
                 />
-                <label htmlFor="image">Image URL:</label>
-                <input
-                  type="text"
-                  id="image"
-                  name="image"
-                  value={editProduct.image}
-                  onChange={handleChange}
-                />
-                <label htmlFor="image">Product Information:</label>
+              <label htmlFor="image">Image File:</label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                onChange={handleImageChange}
+              />
+ <label htmlFor="image">Product Information:</label>
                 <input
                   type="text"
                   id="image"
@@ -347,10 +346,15 @@ const PartnerAllProducts = () => {
                   value={editProduct.description}
                   onChange={handleChange}
                 />
-                {/* Add other input fields as needed */}
-              </div>
-              <div className="partner-products-edit-buttons">
-                <button
+
+
+              {editImagePreview && (
+                <img src={editImagePreview} alt="Product" style={{ width: "100px", height: "100px" }} />
+              )}
+              {/* Add other input fields as needed */}
+            </div>
+            <div className="partner-products-edit-buttons">
+              <button
                   className="editProductsPopup-save-category-button"
                   onClick={handleSubmit}
                 >
@@ -373,3 +377,6 @@ const PartnerAllProducts = () => {
 };
 
 export default PartnerAllProducts;
+
+
+

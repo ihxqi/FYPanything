@@ -15,10 +15,11 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const apiUrl = 'http://ec2-13-239-36-228.ap-southeast-2.compute.amazonaws.com'; // Backend URL
+    // const apiUrl = 'http://ec2-13-239-36-228.ap-southeast-2.compute.amazonaws.com'; // Backend URL
 
     try {
-      const response = await fetch(`${apiUrl}/login`, {
+      const response = await fetch('/login', {
+      // const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
