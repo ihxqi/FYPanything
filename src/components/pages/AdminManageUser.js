@@ -22,20 +22,36 @@ function AdminManageUsers() {
       }
       const data = await response.json();
       setUser(data.accounts);
-      setFilteredUserData(data.accounts);
+      //setFilteredUserData(data.accounts);
     } catch (error) {
       console.error('Error fetching user accounts:', error);
     }
   };
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+  /*const handleSearchInputChange = (e) => {
+    const { value } = e.target;
+    setSearchQuery(value); // Update the search query state as the user types
+    
+    // If the search query is empty, reset filtered users to all users
+    if (value === "") {
+      fetchUserAccounts();
+    } else {
+      // Otherwise, perform a search with the current search query
+      handleSearch();
+    }
   };
 
-  const filteredUsers = user.filter(user =>
-    user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchQuery.toLowerCase())
+  const handleSearch = () => {
+    const query = searchQuery.toLowerCase().trim();
+    
+    const filteredUserData = user.filter((item) =>
+    item.name.toLowerCase().includes(query)
   );
+
+  setFilteredUserData(filteredUserData);
+};
+  
+*/
 
 
   const handleActivate = async (user) => {
@@ -108,20 +124,8 @@ function AdminManageUsers() {
         <div className="user-management-container">
           <div className="user-management-header">
             <h1>User Accounts</h1>
-            <div className="user-management-search-container">
-            <input
-            type="text"
-            placeholder="Search users..."
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-           </div>
-           <button
-                className="user-management-search-bar-button"
-                onClick={handleSearch}
-              >
-                Search
-              </button>
+            
+           
           </div>
           <table className="user-management-table">
             <thead>
@@ -173,3 +177,18 @@ function AdminManageUsers() {
 }
 
 export default AdminManageUsers;
+
+/*<div className="user-management-search-container">
+            <input
+            type="text"
+            placeholder="Search: "
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+          <button
+                className="user-management-search-bar-button"
+                onClick={handleSearch}
+              >
+                Search
+              </button>
+           </div>*/

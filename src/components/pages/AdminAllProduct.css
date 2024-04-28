@@ -15,6 +15,7 @@
   gap: 1rem;
   padding: 1% 2%;
   margin-top: -10%;
+  font-family: Marcellus;
 }
 
 .admin-products-search-container {
@@ -74,6 +75,10 @@
   color: black;
 }
 
+.product-image {
+  width: 200px; /* Set the width of the image */
+  height: 250px; /* Set the height of the image */
+}
 
 .admin-products-remove-button {
   padding: 10px 20px;

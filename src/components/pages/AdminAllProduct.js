@@ -158,10 +158,10 @@ const AdminAllProducts = () => {
                 <td>{product.name}</td>
                 <td>{product.category}</td>
                 <td>{product.price}</td>
-                <img src={`data:image/png;base64, ${product.imageFile}`} alt="Product Image" />
+                <img className="product-image"src={`data:image/png;base64, ${product.imageFile}`} alt="Product Image" />
                 <td><a href={product.link} target="_blank" rel="noopener noreferrer">{product.link}</a></td>
                 <td>{product.description}</td>
-                <td><button onClick={() => handleDelete(product.product_id)}>Delete</button></td>
+                <td><button className="admin-products-remove-button" onClick={() => handleDelete(product.product_id)}>Delete</button></td>
               </tr>
             ))}
           </tbody>

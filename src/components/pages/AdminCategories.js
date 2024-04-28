@@ -183,7 +183,7 @@ const AdminCategories = () => {
           onChange={handleSearchInputChange}
         />
         <button
-                className="partner-management-search-bar-button"
+                className="admin-categories-search-bar-button"
                 onClick={handleSearch}
               >
                 Search

@@ -30,7 +30,7 @@
 
 .admin-categories-search-bar label,
 .admin-categories-search-bar input[type="text"],
-.admin-categories-search-bar button {
+.admin-categories-search-bar-button {
 height: 40px; /* Ensuring all children have the same height */
 padding: 0 10px; /* Providing padding within the children */
 margin: 0; /* Removing any default margins */
@@ -44,7 +44,7 @@ box-sizing: border-box; /* Include padding and border in the element's total wid
   border: 1px solid #ccc;
 }
 
-.admin-categories-search-bar button {
+.admin-categories-search-bar-button {
   padding: 0.5rem;
   background-color: #333;
   color: white;

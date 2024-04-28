@@ -15,16 +15,23 @@
   margin-top: -10%;
 }
 
+.user-management-search-container input[type="text"],
 .user-management-search-container {
   display: flex;
   align-items: baseline;
   padding: 10px;
   max-width: 300px;
+  max-height: 40px;
   margin: 0 auto; /* Center the search bar horizontally */
-  margin-right: 40px; /* Remove the left margin to move the search bar to the left */
+  margin-right: 20px; /* Remove the left margin to move the search bar to the left */
+  border-radius: 4px;
 }
 
-
+.user-management-search-container input[type="text"]
+{
+  border: 1px solid #ccc;
+}
+ 
 .user-management-search-bar-button {
   padding: 10px 20px;
   border-radius: 5px;
@@ -33,6 +40,7 @@
   color: white; /* Button text */
   cursor: pointer;
 }
+
 
 .user-suspend-partner-button,
 .user-activate-partner-button {
