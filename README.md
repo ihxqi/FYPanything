@@ -15,3 +15,6 @@ Partner
 admin
 <!-- email: admin -->
 <!-- password: admin --> -->
+
+<!--  "proxy": "localhost:8000/", -->
+  <!-- "proxy": "http://54.252.236.237:8000/", -->

@@ -13,10 +13,12 @@ const UserSidebarNavbar = () => {
     setMenuOpen(!menuOpen); // Ensure consistency between collapsed and menuOpen states
   };
 
+  const apiUrl = 'http://54.252.236.237:8000'; // Hosted Backend URL
+
   const handleLogout = async () => {
     console.log('Logout button clicked');
     try {
-      const response = await fetch('/logout', {
+      const response = await fetch(`${apiUrl}/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,7 +29,6 @@ const UserSidebarNavbar = () => {
       if (response.ok) {
         // Successfully logged out, redirect to login page
         localStorage.removeItem('user_session');
-        console.log('Session storage cleared, navigating to login...');
         navigate('/login');
       } else {
         // Handle logout failure

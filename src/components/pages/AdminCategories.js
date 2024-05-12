@@ -3,6 +3,9 @@ import "./AdminCategories.css";
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
+
 const AdminCategories = () => {
   const [categories, setCategories] = useState([]);
   const [editCategory, setEditCategory] = useState({ id: null, category: "" });
@@ -21,7 +24,7 @@ const AdminCategories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("/get_categories");
+      const response = await fetch(`${apiUrl}/get_categories`);
       if (!response.ok) {
         throw new Error("Failed to fetch categories");
       }
@@ -47,7 +50,7 @@ const AdminCategories = () => {
   const handleRemove = async (category) => {
     try {
       console.log(JSON.stringify(category));
-      const response = await fetch("/delete_category", {
+      const response = await fetch(`${apiUrl}/delete_category`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +118,7 @@ const AdminCategories = () => {
     console.log(editCategory.category)
     console.log(initialCategoryValue)
     try {
-      const response = await fetch("/edit_category", {
+      const response = await fetch(`${apiUrl}/edit_category`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -132,6 +135,7 @@ const AdminCategories = () => {
 
       console.log("Category successfully edited");
       window.alert("Category changed")
+      setShowEditPopup(false);
       fetchCategories();
     } catch (error) {
       console.error("Error editing category:", error.message);
@@ -142,7 +146,7 @@ const AdminCategories = () => {
     try {
       console.log("");
       console.log(newCategory.category);
-      const response = await fetch("/add_categories", {
+      const response = await fetch(`${apiUrl}/add_categories`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

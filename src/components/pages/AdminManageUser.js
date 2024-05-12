@@ -3,6 +3,8 @@ import './AdminManageUser.css';
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
 function AdminManageUsers() {
   const [user, setUser] = useState([]);
   const [actionStatus, setActionStatus, userName] = useState({});
@@ -16,7 +18,7 @@ function AdminManageUsers() {
 
   const fetchUserAccounts = async () => {
     try {
-      const response = await fetch('/get_useraccounts');
+      const response = await fetch(`${apiUrl}/get_useraccounts`);
       if (!response.ok) {
         throw new Error('Failed to fetch user accounts');
       }
@@ -60,7 +62,7 @@ function AdminManageUsers() {
       const emailString = String(user.email);
       console.log(emailString)
       // Make a PUT request to update the partner's status
-      const response = await fetch(`/activate_user`, {
+      const response = await fetch(`${apiUrl}/activate_user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +80,6 @@ function AdminManageUsers() {
         [user.email]: "Suspended",
       }));
 
-      console.log("Partner suspended successfully");
     } catch (error) {
       console.error("Error suspending user:", error.message);
     }
@@ -94,7 +95,7 @@ function AdminManageUsers() {
       const emailString = String(user.email);
       console.log(emailString)
       // Make a PUT request to update the partner's status
-      const response = await fetch(`/suspend_user`, {
+      const response = await fetch(`${apiUrl}/suspend_user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,9 +113,8 @@ function AdminManageUsers() {
         [user.email]: "Suspended",
       }));
 
-      console.log("User suspended successfully");
     } catch (error) {
-      console.error("Error suspending partner:", error.message);
+
     }
   };
 
@@ -178,17 +178,3 @@ function AdminManageUsers() {
 
 export default AdminManageUsers;
 
-/*<div className="user-management-search-container">
-            <input
-            type="text"
-            placeholder="Search: "
-            value={searchQuery}
-            onChange={handleSearchInputChange}
-          />
-          <button
-                className="user-management-search-bar-button"
-                onClick={handleSearch}
-              >
-                Search
-              </button>
-           </div>*/

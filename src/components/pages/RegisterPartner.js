@@ -4,6 +4,8 @@ import './RegisterPartner.css';
 import Navbar from '../Navbar';
 import GeneralFooter from "../GeneralFooter";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
 const RegisterPartner = () => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
@@ -29,7 +31,7 @@ const RegisterPartner = () => {
     console.log(link)
     console.log(country)
     try {
-      const response = await fetch('/registerpartner', {
+      const response = await fetch(`${apiUrl}/registerpartner`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

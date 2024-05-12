@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import './ForgetPassword.css'; // Ensure you have this CSS file with the correct styles
 import Navbar from '../Navbar';
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
@@ -11,7 +12,7 @@ const ForgetPassword = () => {
     event.preventDefault();
     
     try {
-      const response = await fetch('/forgetpassword', {
+      const response = await fetch(`${apiUrl}/forgetpassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

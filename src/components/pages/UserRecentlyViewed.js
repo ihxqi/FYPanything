@@ -2,7 +2,6 @@ import React from 'react';
 import './UserRecentlyViewed.css';
 import UserSidebarNavbar from "../UserSidebarNavbar";
 import UserFooter from "../UserFooter";
-
 import dress1 from '../image/1.jpg';
 import dress2 from '../image/2.jpg';
 import dress3 from '../image/3.jpg';
@@ -11,6 +10,10 @@ import dress5 from '../image/5.jpg';
 import dress6 from '../image/6.jpg';
 import dress7 from '../image/7.jpg';
 import dress8 from '../image/8.jpg';
+
+
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
 
 const recentlyVieweditems = [
   { id: 1, name: "Product 1", image: dress1, url: "https://shorturl.at/bnprL" },

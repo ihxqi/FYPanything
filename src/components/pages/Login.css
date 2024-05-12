@@ -54,7 +54,7 @@ body, html {
   }
   
   .login-form input[type="submit"]:hover {
-    background-color: violet; /* Darker shade for hover effect */
+    background-color: #555; /* Slightly darker shade on hover */
   }
   
   /* If you have additional text or elements, you can add more styles here */

@@ -4,6 +4,9 @@ import Select from "react-select"; // Import React-Select
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
+
 function AdminManagePartners() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [categoryOptions, setCategoryOptions] = useState([]);
@@ -20,7 +23,7 @@ function AdminManagePartners() {
 
   const fetchPartnerAccounts = async () => {
     try {
-      const response = await fetch("/get_partneraccounts");
+      const response = await fetch(`${apiUrl}/get_partneraccounts`);
       if (!response.ok) {
         throw new Error("Failed to fetch partner accounts");
       }
@@ -73,7 +76,6 @@ function AdminManagePartners() {
       console.log("Filtered partners by category:", filteredPartners);
     } else {
       setFilteredPartnerData([...partnerData]); // Create a copy of partnerData
-      console.log("No category selected");
     }
   };
 
@@ -84,7 +86,7 @@ function AdminManagePartners() {
       const emailString = String(partner.email);
       console.log(emailString);
       // Make a PUT request to update the partner's status
-      const response = await fetch(`/activate_user`, {
+      const response = await fetch(`${apiUrl}/activate_user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -102,7 +104,6 @@ function AdminManagePartners() {
         [partner.email]: "Suspended",
       }));
 
-      console.log("Partner suspended successfully");
     } catch (error) {
       console.error("Error suspending partner:", error.message);
     }
@@ -113,12 +114,11 @@ function AdminManagePartners() {
   };
 
   const handleSuspend = async (partner) => {
-    console.log("Suspend clicked for:", partner.email);
     try {
       const emailString = String(partner.email);
       console.log(emailString);
       // Make a PUT request to update the partner's status
-      const response = await fetch(`/suspend_user`, {
+      const response = await fetch(`${apiUrl}/suspend_user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -136,7 +136,6 @@ function AdminManagePartners() {
         [partner.email]: "Suspended",
       }));
 
-      console.log("Partner suspended successfully");
     } catch (error) {
       console.error("Error suspending partner:", error.message);
     }

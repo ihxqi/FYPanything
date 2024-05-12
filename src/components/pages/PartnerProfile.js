@@ -3,6 +3,8 @@ import "./PartnerProfile.css";
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import PartnerFooter from "../PartnerFooter";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
 const PartnerProfile = () => {
   const [partner, setPartner] = useState({
     name: "",
@@ -44,7 +46,7 @@ const PartnerProfile = () => {
         throw new Error("User email not found in localStorage");
       }
 
-      const response = await fetch("/get_userdetails", {
+      const response = await fetch(`${apiUrl}/get_userdetails`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +81,7 @@ const PartnerProfile = () => {
 
     try {
       console.log(partner);
-      const response = await fetch("/update_partner_data", {
+      const response = await fetch(`${apiUrl}/update_partner_data`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
