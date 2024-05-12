@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import UnregSidebarNavbar from "../UnregSidebarNavbar";
 import t from "../image/t.gif"; // Import the thumbs up GIF
 import bookmark from "../image/Bookmark.gif";
@@ -6,7 +6,29 @@ import hbanner from "../image/hbanner.jpg";
 import "./Home.css";
 import GeneralFooter from "../GeneralFooter";
 
+// const apiUrl = "http://54.252.236.237:8000"; // Backend URL
+const apiUrl = "http://localhost:8000"; // Backend URL
+
+
 const Home = () => {
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [totalBlogshops, setTotalBlogshops] = useState(0);
+  const [totalProducts, setTotalProducts] = useState(0);
+
+  useEffect(() => {
+    fetch(`${apiUrl}/get_totalusers`)
+      .then((response) => response.json())
+      .then((data) => setTotalUsers(data));
+
+    fetch(`${apiUrl}/get_totalblogshops`)
+      .then((response) => response.json())
+      .then((data) => setTotalBlogshops(data));
+
+    fetch(`${apiUrl}/get_totalproducts`)
+      .then((response) => response.json())
+      .then((data) => setTotalProducts(data));
+  }, []);
+
   return (
     <div>
       <div className="homebanner">
@@ -57,15 +79,15 @@ const Home = () => {
       <div className="tracking-section">
         <div className="tracking-box">
           <h2>Total Users:</h2><br/><br/>
-          <p>100</p>
+          <p>{totalUsers}</p>
         </div>
         <div className="tracking-box">
           <h2>Total Blogshops:</h2><br/><br/>
-          <p>50</p>
+          <p>{totalBlogshops}</p>
         </div>
         <div className="tracking-box">
           <h2>Total Products:</h2><br/><br/>
-          <p>200</p>
+          <p>{totalProducts}</p>
         </div>
       </div>
       <GeneralFooter />

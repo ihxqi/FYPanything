@@ -4,6 +4,9 @@ import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import Select from "react-select"; // Import React-Select
 import PartnerFooter from "../PartnerFooter";
 
+// const apiUrl = 'http://54.252.236.237:8000'; // Hosted Backend URL
+const apiUrl = 'http://localhost:8000'; // Local Backend URL
+
 function AddProduct() {
   const [uploadType, setUploadType] = useState(null);
   const imageFileRef = useRef(null);
@@ -61,21 +64,22 @@ function AddProduct() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("/get_categories");
-      if (!response.ok) {
-        throw new Error("Failed to fetch categories");
-      }
-      const data = await response.json();
-      const categories = Object.keys(data.categories).map((category) => ({
-        value: category,
-        label: category,
-      }));
-      setCatOptions(categories);
-      // Assuming the first category is selected by default
+        const response = await fetch(`${apiUrl}/get_categories`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch categories");
+        }
+        const data = await response.json();
+        const categories = Object.keys(data.categories).map(category => ({
+            value: category,
+            label: category
+        }));
+        setCatOptions(categories);
+        // Assuming the first category is selected by default
     } catch (error) {
-      console.error("Error fetching categories:", error.message);
+        console.error("Error fetching categories:", error.message);
     }
-  };
+};
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -94,7 +98,7 @@ function AddProduct() {
       const base64Image = await convertImageToBase64(imageFile);
       const user_id = userSession.user_id;
       // Send the POST request with FormData
-      const response = await fetch("/add_product", {
+      const response = await fetch(`${apiUrl}/add_product`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +110,6 @@ function AddProduct() {
           description: formData.description,
           category: formData.category,
           imageFile: base64Image,
-          email: formData.email,
           user_id: user_id,
         }),
       });

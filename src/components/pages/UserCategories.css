@@ -140,6 +140,48 @@
   }
 }
 
+.UserCatproduct-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-top: 20px;
+}
+
+.UserCatproduct-table th,
+.UserCatproduct-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.UserCatproduct-table th {
+  background-color: #f2f2f2;
+}
+
+.UserCatproduct-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.UserCatproduct-table tbody tr:hover {
+  background-color: #ddd;
+}
+
+.UserCatsearch-input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 5px 0; /* Adjust the margin as needed */
+  border: none;
+  background-color: #f8d7e6; /* Adjust the background color to match your theme */
+  color: #333;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.UserCatsearch-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
 
 
 

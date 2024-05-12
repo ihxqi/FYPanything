@@ -12,6 +12,8 @@ import dress6 from '../image/6.jpg';
 import dress7 from '../image/7.jpg';
 import dress8 from '../image/8.jpg';
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
 const bookmarks = [
   { id: 1, name: "Product 1", image: dress1, url: "https://shorturl.at/bnprL" },
   { id: 2, name: "Product 2", image: dress2 },

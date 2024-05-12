@@ -18,7 +18,6 @@ const UnregSidebarNavbar = () => {
     { to: "/RegisterRole", text: "Register" },
     { to: "/JoinUs", text: "Why Join Us" }, 
     { to: "/AboutUs", text: "About Us" },
-    { to: "/ForgetEmail", text: "Forget Email?" },
     { to: "/ForgetPassword", text: "Forget Password?" }
   ];
 

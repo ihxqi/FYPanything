@@ -3,11 +3,14 @@ import "./UserCategories.css";
 import UserSidebarNavbar from "../UserSidebarNavbar";
 import UserFooter from "../UserFooter";
 
+// const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+const apiUrl = "http://localhost:8000"; // Backend URL
+
 function UserCategories() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [categoryImage, setCategoryImage] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetchCategories();
@@ -15,7 +18,7 @@ function UserCategories() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch("/get_categories");
+      const response = await fetch(`${apiUrl}/get_categories/`);
       if (!response.ok) {
         throw new Error("Failed to fetch categories");
       }
@@ -33,12 +36,16 @@ function UserCategories() {
 
   const fetchProductsByCategory = async (category) => {
     try {
-      const response = await fetch(`/get_products_by_category/${category}`);
+      const response = await fetch(
+        `${apiUrl}/get_products_by_category/${category}`
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
       const data = await response.json();
-      setDisplayedProducts(data.products || []);
+      console.log(data);
+      console.log(data.products);
+      setDisplayedProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error.message);
     }
@@ -47,28 +54,13 @@ function UserCategories() {
   useEffect(() => {
     if (selectedCategory) {
       fetchProductsByCategory(selectedCategory);
-      // Assuming you have an endpoint to fetch the image URL of the category
-      fetchCategoryImage(selectedCategory);
     }
   }, [selectedCategory]);
 
-  const fetchCategoryImage = async (category) => {
-    try {
-      // Fetch the base64-encoded image string for the selected category
-      const response = await fetch(`/get_category_image/${category}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch category image");
-      }
-      const data = await response.json();
-      setCategoryImage(data.image); // Assuming the response contains the base64-encoded image string
-    } catch (error) {
-      console.error("Error fetching category image:", error.message);
-    }
-  };
-  
-
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+    fetchProductsByCategory(category);
+    console.log("clicked on category:", category);
   };
 
   const handleProductClick = (product) => {
@@ -76,25 +68,35 @@ function UserCategories() {
     // Implement the logic to handle product click, such as navigating to the product details
   };
 
+  const filteredCategories = categories.filter((category) =>
+    category.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
       <UserSidebarNavbar />
       <div className="UserCatproducts-page">
         <div className="UserCatsidebar">
           <div className="UserCatcategories">
-            {categories.map((category, index) => (
+            <input
+              className="UserCatsearch-input"
+              type="text"
+              placeholder="Search categories..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {filteredCategories.sort().map((category, index) => (
               <button
                 key={index}
-                className={`UserCatcategory-button ${selectedCategory === category ? 'active' : ''}`}
+                className={`UserCatcategory-button ${
+                  selectedCategory === category ? "active" : ""
+                }`}
                 onClick={() => handleCategoryClick(category)}
               >
                 {category}
               </button>
             ))}
           </div>
-          {categoryImage && (
-            <img src={categoryImage} alt={selectedCategory} />
-          )}
         </div>
         <div className="UserCatproduct-display">
           {/* Display the title of the selected category */}
@@ -103,19 +105,42 @@ function UserCategories() {
               {selectedCategory}
             </h2>
           )}
-          <div className="UserCatproduct-grid">
-            {displayedProducts.map((product, index) => (
-              <div
-                key={index}
-                className="UserCatproduct-item"
-                onClick={() => handleProductClick(product)}
-              >
-                <img src={product.imageFile} alt={product.name} className="UserCatproduct-image" />
-                <p className="UserCatproduct-name">{product.name}</p>
-                <p className="UserCatproduct-price">{product.price}</p>
-              </div>
-            ))}
-          </div>
+          <table className="UserCatproduct-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Link</th>
+                <th>Description</th>
+                <th>Image</th>
+              </tr>
+            </thead>
+            <tbody>
+              {displayedProducts.map((product, index) => (
+                <tr key={index} onClick={() => handleProductClick(product)}>
+                  <td>{product.name}</td>
+                  <td style={{ width: "80px" }}>{product.price}</td>
+                  <td>
+                    <a
+                      href={product.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Link to shop
+                    </a>
+                  </td>
+                  <td>{product.description}</td>
+                  <td>
+                    <img
+                      src={`data:image/png;base64, ${product.imageFile}`}
+                      alt="Product Image"
+                      style={{ maxWidth: "200px", maxHeight: "200px" }}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
       <UserFooter />

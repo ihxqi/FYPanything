@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import UnregSidebarNavbar from "../UnregSidebarNavbar";
-import './Login.css'; // Ensure you have this CSS file with the correct styles
-import { Navigate, useNavigate } from 'react-router-dom'; // Import Navigate for redirection
+import "./Login.css"; // Ensure you have this CSS file with the correct styles
+import { Navigate, useNavigate } from "react-router-dom"; // Import Navigate for redirection
 import GeneralFooter from "../GeneralFooter";
-import axios from 'axios';
+import axios from "axios";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // const apiUrl = 'http://ec2-13-239-36-228.ap-southeast-2.compute.amazonaws.com'; // Backend URL
+    const apiUrl = "http://54.252.236.237:8000"; // Backend URL
+    // const apiUrl = 'http://localhost:8000'; // local Backend URL
 
     try {
-      const response = await fetch('/login', {
-      // const response = await fetch(`${apiUrl}/login`, {
-        method: 'POST',
+      const response = await fetch(`${apiUrl}/login`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
@@ -30,17 +30,15 @@ const Login = () => {
       if (response.ok) {
         // If login is successful, redirect to appropriate page
         const userSession = await response.json(); // Parse JSON response
-        localStorage.setItem('user_session', JSON.stringify(userSession)); // saves the user current session for further use
-        console.log(userSession)
+        localStorage.setItem("user_session", JSON.stringify(userSession)); // saves the user current session for further use
+        console.log(userSession);
         const userRole = userSession.role; // Access the role field
-        if (userRole === 'Admin') {
-          navigate('/adminmanagepartner')
-        } else if (userRole === 'User') {
-          navigate('/UserHomepage')
-        } else if (userRole === 'Partner') {
-          navigate('/partnerallproducts')
-        } else {
-          window.alert('Invalid username or password!');
+        if (userRole === "Admin") {
+          navigate("/adminmanagepartner");
+        } else if (userRole === "User") {
+          navigate("/UserHomepage");
+        } else if (userRole === "Partner") {
+          navigate("/partnerallproducts");
         }
       } else {
         // If login fails, set error state
@@ -48,8 +46,8 @@ const Login = () => {
         window.alert(errorMessage);
       }
     } catch (error) {
-      console.error('Error logging in:', error);
-      setError('An error occurred while logging in. Please try again later.');
+      console.error("Error logging in:", error);
+      setError("An error occurred while logging in. Please try again later.");
     }
   };
 
@@ -71,7 +69,6 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-
                 <label htmlFor="password">Password:</label>
                 <input
                   type="password"
@@ -82,10 +79,12 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <a href="/ForgetPassword">Forgot Password? Click here</a>
-
-                <input type="submit" value="LOG IN" /> <br /><br />
+                <input type="submit" value="LOG IN" /> <br />
+                <br />
               </form>
-              <p>Don't Have An Account? <a href="/RegisterRole">Click Here!</a></p>
+              <p>
+                Don't Have An Account? <a href="/RegisterRole">Click Here!</a>
+              </p>
             </div>
           </Col>
         </Row>

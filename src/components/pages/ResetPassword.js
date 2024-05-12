@@ -4,6 +4,8 @@ import './ResetPassword.css';
 import GeneralFooter from "../GeneralFooter";
 import UnregSidebarNavbar from "../UnregSidebarNavbar";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
 const ResetPassword = () => {
   const { token } = useParams(); // Extract the token from the URL parameters
   const [newpassword, setPassword] = useState('');
@@ -15,7 +17,7 @@ const ResetPassword = () => {
   useEffect(() => {
     const verifyToken = async () => {
       try {
-        const response = await fetch(`/verifytoken/${token}`);
+        const response = await fetch(`${apiUrl}/verifytoken/${token}`);
         const data = await response.json();
         if (!data.valid) {
           navigate('/login'); // Redirect to login page if token is invalid
@@ -41,7 +43,7 @@ const ResetPassword = () => {
     console.log(token)
     console.log(newpassword)
     try {
-      const response = await fetch('/resetpassword', {
+      const response = await fetch(`${apiUrl}/resetpassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

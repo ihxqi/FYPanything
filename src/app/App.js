@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { VerifyEmail, ResetPassword,  PartnerGenerateReport, AdminGenerateReport, AdminAllProduct, AdminManageUser, UserProfile, UserCategories, UserHomepage, UserRecentlyViewed, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, InterestSurvey, UserBookmarks, AdminManagePartner } from "../components/pages";
+import { VerifyEmail, ResetPassword,  PartnerGenerateReport, AdminGenerateReport, AdminAllProduct, AdminManageUser, UserProfile, UserCategories, UserHomepage, UserRecentlyViewed, AddProduct, AboutUs, Home, JoinUs, Login, PartnerProfile, AdminCategories, RegisterRole, RegisterUser, RegisterPartner, ForgetEmail, PartnerAllProducts, ForgetPassword, UserBookmarks, AdminManagePartner } from "../components/pages";
 import { UnregisteredBlogshopOwner } from "../components/pages";
 
 export default function App() {
@@ -21,7 +21,6 @@ export default function App() {
           <Route path="/UnregisteredBlogshopOwner" element={<UnregisteredBlogshopOwner/>} />
           <Route path="/PartnerAllProducts" element={<PartnerAllProducts/>} />
           <Route path="/ForgetPassword" element={<ForgetPassword/>} />
-          <Route path="/InterestSurvey" element={<InterestSurvey/>} />
           <Route path="/PartnerProfile" element={<PartnerProfile/>} />
           <Route path="/AdminCategories" element={<AdminCategories/>} />
           <Route path="/AddProduct" element={<AddProduct/>} />

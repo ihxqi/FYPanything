@@ -1,5 +1,5 @@
 .partner-profile-container {
-  background-color: #9ae9adf9;
+  background: #f8d7e6; /* Background color for the form */
   padding: 1vw 1vw; /* Smaller padding */
   max-width: 30%; /* Narrower maximum width */
   margin-top: 8vw;
@@ -41,13 +41,13 @@
   
   .partner-profile-form button {
     padding: 1vw 2vw; /* Responsive padding */
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 0.5vw; /* Responsive border radius */
-  cursor: pointer;
-  margin-top: 1vw; /* Responsive margin top */
-  align-self: center;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 0.5vw; /* Responsive border radius */
+    cursor: pointer;
+    margin-top: 1vw; /* Responsive margin top */
+    align-self: center;
   }
 
   .partner-profile-form button:hover {

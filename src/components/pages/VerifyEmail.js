@@ -4,6 +4,8 @@ import Navbar from "../Navbar";
 import GeneralFooter from "../GeneralFooter"
 import "./VerifyEmail.css";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
 const VerifyEmail = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true); // Add loading state
@@ -12,7 +14,7 @@ const VerifyEmail = () => {
   useEffect(() => {
     // Call your backend API to check if the account is authenticated
     // Replace the placeholder URL with your actual backend API endpoint
-    fetch(`/verifyemail/${token}`)
+    fetch(`${apiUrl}/verifyemail/${token}`)
       .then((response) => response.json())
       .then((data) => {
         // Assuming the backend API response contains a boolean value indicating whether the account is authenticated

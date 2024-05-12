@@ -4,6 +4,8 @@ import Select from "react-select"; // Import React-Select
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
 function UnregisteredBlogshopOwner() {
   const [actionStatus, setActionStatus, partnerName] = useState({});
   const [partnerData, setPartnerData] = useState([]);
@@ -16,7 +18,7 @@ function UnregisteredBlogshopOwner() {
 
   const fetchPartnerAccounts = async () => {
     try {
-      const response = await fetch("/get_unregpartneraccounts");
+      const response = await fetch(`${apiUrl}/get_unregpartneraccounts`);
       if (!response.ok) {
         throw new Error("Failed to fetch unregistered partners");
       }
@@ -34,7 +36,7 @@ function UnregisteredBlogshopOwner() {
       const emailString = String(partner.email);
       console.log(emailString);
       // Make a PUT request to update the partner's status
-      const response = await fetch(`/authenticate_partner`, {
+      const response = await fetch(`${apiUrl}/authenticate_partner`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +54,6 @@ function UnregisteredBlogshopOwner() {
         [partner.email]: "authenticate",
       }));
 
-      console.log("Partner authenticate successfully");
     } catch (error) {
       console.error("Error authenticating partner:", error.message);
     }
@@ -68,7 +69,7 @@ function UnregisteredBlogshopOwner() {
       const emailString = String(partner.email);
       console.log(emailString);
       // Make a PUT request to update the partner's status
-      const response = await fetch(`/reject_partner`, {
+      const response = await fetch(`${apiUrl}/reject_partner`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +87,7 @@ function UnregisteredBlogshopOwner() {
         [partner.email]: "Rejected",
       }));
 
-      console.log("Partner rejected successfully");
+
     } catch (error) {
       console.error("Error rejecting partner:", error.message);
     }

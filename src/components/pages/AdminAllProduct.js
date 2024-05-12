@@ -4,6 +4,9 @@ import Select from 'react-select'; // Import React-Select
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
+const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+
+
 const AdminAllProducts = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState(null);
@@ -15,24 +18,9 @@ const AdminAllProducts = () => {
     fetchProducts(); // Fetch products when the component mounts
   }, []);
 
-  const blogshopOptions = [
-    { value: 'Example BS', label: 'Example BS' },
-    { value: 'bf blogshop', label: 'bf blogshop' },
-    { value: 'dear lyla', label: 'dear lyla' },
-    { value: 'carpe diem', label: 'carpe diem' }
-    // Add more blogshop options as needed
-  ];
-
-  const categoryOptions = [
-    { value: 'Clothes', label: 'Clothes' },
-    { value: 'Shoes', label: 'Shoes' },
-    { value: 'Accessories', label: 'Accessories' }
-    // Add more category options as needed
-  ];
-
   const fetchProducts = async () => {
     try {
-      const response = await fetch("/get_allproducts", {
+      const response = await fetch(`${apiUrl}/get_allproducts`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +57,7 @@ const AdminAllProducts = () => {
 
   const getPartnerName = async (userId) => {
     try {
-      const response = await fetch(`/get_partner_name/${userId}`);
+      const response = await fetch(`${apiUrl}/get_partner_name/${userId}`);
       if (!response.ok) {
         throw new Error("Failed to fetch partner name");
       }
@@ -111,7 +99,7 @@ const AdminAllProducts = () => {
   const handleDelete = async (indexToRemove) => {
     try {
       const productIdToDelete = indexToRemove
-      const response = await fetch(`/delete_product/${productIdToDelete}`, {
+      const response = await fetch(`${apiUrl}/delete_product/${productIdToDelete}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
