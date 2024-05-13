@@ -4,8 +4,8 @@ import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import Select from "react-select"; // Import React-Select
 import PartnerFooter from "../PartnerFooter";
 
-// const apiUrl = 'http://54.252.236.237:8000'; // Hosted Backend URL
-const apiUrl = 'http://localhost:8000'; // Local Backend URL
+const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
+// const apiUrl = "http://localhost:8000"; // Local Backend URL
 
 function AddProduct() {
   const [uploadType, setUploadType] = useState(null);

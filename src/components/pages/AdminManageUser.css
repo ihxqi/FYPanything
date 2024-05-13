@@ -15,30 +15,37 @@
   margin-top: -10%;
 }
 
-.user-management-search-container input[type="text"],
-.user-management-search-container {
+.user-management-search-bar {
   display: flex;
   align-items: baseline;
   padding: 10px;
   max-width: 300px;
-  max-height: 40px;
   margin: 0 auto; /* Center the search bar horizontally */
-  margin-right: 20px; /* Remove the left margin to move the search bar to the left */
-  border-radius: 4px;
+  margin-right: 40px; /* Remove the left margin to move the search bar to the left */
 }
 
-.user-management-search-container input[type="text"]
+
+.user-management-search-bar input
 {
+  margin-right: 1rem; /* Increase the gap between the search input and the button */
+  padding: 0.5rem;
+  border-radius: 4px;
   border: 1px solid #ccc;
 }
+
  
 .user-management-search-bar-button {
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: #333;
+  color: white;
   border: none;
-  background-color: black; /* Button background */
-  color: white; /* Button text */
+  border-radius: 4px;
   cursor: pointer;
+  margin-left: 0.25rem; /* Increase the gap between the button and the search input */
+}
+
+.user-management-search-bar-button:hover {
+  background-color: #555; /* Darker background color on hover */
 }
 
 
