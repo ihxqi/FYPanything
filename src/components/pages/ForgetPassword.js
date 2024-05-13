@@ -3,7 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import './ForgetPassword.css'; // Ensure you have this CSS file with the correct styles
 import Navbar from '../Navbar';
 
-const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
+// const apiUrl = "http://localhost:8000"; // Local Backend URL
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');

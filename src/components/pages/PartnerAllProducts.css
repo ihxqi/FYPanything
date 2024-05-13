@@ -19,15 +19,15 @@
 
 .partner-products-search-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px; /* Space between search input and button */
-  margin-bottom: 5px; /* Space below the search area */
-  margin-left: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 40px; /* Space below the search area */
+  margin-top: 40px;
 }
 
-.partner-products-search-container label {
+.partner-products-search-container label
+ {
   height: 40px; /* Ensuring all children have the same height */
   padding: 0 10px; /* Providing padding within the children */
   margin: 0; /* Removing any default margins */
@@ -35,6 +35,14 @@
   margin-top:15px;
 }
 
+.search-input {
+  height: 40px; /* Ensuring all children have the same height */
+  padding: 0 10px; /* Providing padding within the children */
+  margin: 0; /* Removing any default margins */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
 
 .partner-products-search-button,
 .partner-products-filter-button {
@@ -46,8 +54,8 @@
   cursor: pointer;
 }
 
-.partner-products-search-bar-button:hover,
-.partner-products-filter-bar-button:hover {
+.partner-products-search-button:hover,
+.partner-products-filter-button:hover {
   background-color: #555; /* Button hover effect */
 }
 

@@ -4,7 +4,8 @@ import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import PartnerFooter from "../PartnerFooter";
 import Select from "react-select";
 
-const apiUrl = "http://54.252.236.237:8000"; // Backend URL
+const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
+// const apiUrl = "http://localhost:8000"; // Local Backend URL
 
 const PartnerAllProducts = () => {
   const [products, setProducts] = useState([]);
@@ -292,6 +293,7 @@ const PartnerAllProducts = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by product name..."
+              className="search-input" // Add a class to the search input
             />
             <label htmlFor="category-filter">Filter by Category:</label>
             <Select
@@ -305,7 +307,20 @@ const PartnerAllProducts = () => {
               placeholder="Select a category..."
               isClearable
               isSearchable
+              className="category-filter" // Add a class to the Select component
             />
+             <button
+                className="partner-products-search-button"
+                onClick={handleProductChange}
+              >
+                Search
+              </button>
+              <button
+                className="partner-products-filter-button"
+                onClick={handleCategoryChange}
+              >
+                Filter
+              </button>
           </div>
           <table className="partner-products-table">
             <thead>

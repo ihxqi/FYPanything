@@ -3,7 +3,8 @@ import './AdminManageUser.css';
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
-const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
+// const apiUrl = "http://localhost:8000"; // Local Backend URL
 
 function AdminManageUsers() {
   const [user, setUser] = useState([]);
@@ -30,30 +31,12 @@ function AdminManageUsers() {
     }
   };
 
-  /*const handleSearchInputChange = (e) => {
-    const { value } = e.target;
-    setSearchQuery(value); // Update the search query state as the user types
-    
-    // If the search query is empty, reset filtered users to all users
-    if (value === "") {
-      fetchUserAccounts();
-    } else {
-      // Otherwise, perform a search with the current search query
-      handleSearch();
-    }
-  };
 
   const handleSearch = () => {
-    const query = searchQuery.toLowerCase().trim();
     
-    const filteredUserData = user.filter((item) =>
-    item.name.toLowerCase().includes(query)
-  );
-
-  setFilteredUserData(filteredUserData);
 };
   
-*/
+
 
 
   const handleActivate = async (user) => {
@@ -124,7 +107,20 @@ function AdminManageUsers() {
         <div className="user-management-container">
           <div className="user-management-header">
             <h1>User Accounts</h1>
-            
+            <div className="user-management-search-bar">
+        <input
+          type="text"
+          placeholder="Search:"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button
+                className="user-management-search-bar-button"
+                onClick={handleSearch}
+              >
+                Search
+              </button>
+      </div>
            
           </div>
           <table className="user-management-table">

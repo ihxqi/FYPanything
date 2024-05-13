@@ -4,7 +4,8 @@ import './ResetPassword.css';
 import GeneralFooter from "../GeneralFooter";
 import UnregSidebarNavbar from "../UnregSidebarNavbar";
 
-const apiUrl = 'http://54.252.236.237:8000'; // Backend URL
+const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
+// const apiUrl = "http://localhost:8000"; // Local Backend URL
 
 const ResetPassword = () => {
   const { token } = useParams(); // Extract the token from the URL parameters

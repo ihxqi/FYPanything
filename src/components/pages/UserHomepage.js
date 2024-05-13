@@ -5,8 +5,8 @@ import dress2 from "../image/DayDress.jpg";
 import dress1 from "../image/NightDress.jpg";
 import UserFooter from "../UserFooter";
 
-// const apiUrl = 'http://54.252.236.237:8000'; // Hosted Backend URL
-const apiUrl = "http://localhost:8000"; // Local Backend URL
+const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
+// const apiUrl = "http://localhost:8000"; // Local Backend URL
 
 const UserHomepage = () => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
@@ -67,8 +67,8 @@ const UserHomepage = () => {
     try {
       // Update the rating
       console.log("New Rating:", newRating);
-      console.log(userID)
-      console.log(recommendations[currentProductIndex].product_id)
+      console.log(userID);
+      console.log(recommendations[currentProductIndex].product_id);
       // Call the add_rating endpoint
       const response = await fetch(`${apiUrl}/add_rating`, {
         method: "POST",
@@ -84,7 +84,7 @@ const UserHomepage = () => {
       if (!response.ok) {
         throw new Error("Failed to add rating");
       }
-      console.log("added rating")
+      console.log("added rating");
       setCurrentProductIndex(currentProductIndex + 1);
       // Reset rating for the next product
       setRating(0);
@@ -99,12 +99,12 @@ const UserHomepage = () => {
     const product_id = recommendations[currentProductIndex].product_id;
     // Toggle between liked and not liked state
     console.log("Clicked on heart icon. Liked:", isLiked);
-    if(!isLiked){
-      console.log("I click bookmark")
-      console.log(userID)
+    if (!isLiked) {
+      console.log("I click bookmark");
+      console.log(userID);
       // const productIdString = JSON.stringify(product_id)
-      console.log(product_id)
-      
+      console.log(product_id);
+
       try {
         const response = await fetch(`${apiUrl}/add_bookmark`, {
           method: "POST",
@@ -119,14 +119,13 @@ const UserHomepage = () => {
         if (!response.ok) {
           throw new Error("Failed to add bookmark");
         }
-        console.log("added bookmark")
+        console.log("added bookmark");
         setIsLiked(!isLiked);
       } catch (error) {
         console.error("Error adding bookmark:", error.message);
       }
-    }
-    else{
-      console.log("I click unbookmark")
+    } else {
+      console.log("I click unbookmark");
       try {
         const response = await fetch(`${apiUrl}/remove_bookmark`, {
           method: "POST",
@@ -141,7 +140,7 @@ const UserHomepage = () => {
         if (!response.ok) {
           throw new Error("Failed to remove bookmark");
         }
-        console.log("removed bookmark")
+        console.log("removed bookmark");
         setIsLiked(!isLiked);
       } catch (error) {
         console.error("Error removing bookmark:", error.message);
@@ -184,14 +183,13 @@ const UserHomepage = () => {
                     style={{ maxWidth: "250px", maxHeight: "300px" }}
                   />
                   <div className="UserHomeproduct-details">
+                    <div>Name: {recommendations[currentProductIndex].name}</div>
                     <div>
-                      Name: {recommendations[currentProductIndex].name}
+                      Description:{" "}
+                      {recommendations[currentProductIndex].description}
                     </div>
                     <div>
-                      Description: {recommendations[currentProductIndex].description}
-                    </div>
-                    <div>
-                      Price: {"$"+recommendations[currentProductIndex].price}
+                      Price: {"$" + recommendations[currentProductIndex].price}
                     </div>
                     <div>
                       Category: {recommendations[currentProductIndex].category}
@@ -222,7 +220,9 @@ const UserHomepage = () => {
             )}
             {/* Toggle between heart and tick icon based on isLiked state */}
             <div className="UserHomethumbs-container">
-              <button onClick={handleHeartClick}>{isLiked ? "✔️" : "❤️"}</button>
+              <button onClick={handleHeartClick}>
+                {isLiked ? "✔️" : "❤️"}
+              </button>
             </div>
           </React.Fragment>
         )}
