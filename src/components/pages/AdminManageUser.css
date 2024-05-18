@@ -17,11 +17,10 @@
 
 .user-management-search-bar {
   display: flex;
-  align-items: baseline;
   padding: 10px;
-  max-width: 300px;
+  max-width: 250px;
   margin: 0 auto; /* Center the search bar horizontally */
-  margin-right: 40px; /* Remove the left margin to move the search bar to the left */
+ align-items: center;
 }
 
 

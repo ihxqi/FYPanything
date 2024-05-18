@@ -15,9 +15,15 @@
   .navbar {
     margin-bottom: 20px; /* Adjust the value as needed */
   }
+
+  .header h1 {
+    text-align: center;
+    align-items: center;
+  }
   
   .recentlyViewed-page {
     background-color: var(--background-color);
+    padding-left: 10px; /* Adjust padding as needed */
     min-height: 100vh;
     font-family: var(--font-family);
     padding-top: 50px; /* Adjusted padding-top value to move the container closer to the header */
@@ -30,18 +36,18 @@
   
   .recentlyViewed-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 50px;
+    grid-template-columns: repeat(5, 1fr); /* Update to display 5 items per row */
+    gap: 100px;
     padding: var(--gap-size);
     margin-right: 14px;
   }
   
   .recentlyViewed-item {
-    background-color: var(--header-bg-color);
+    /* background-color: var(--header-bg-color); */
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: var(--box-shadow);
+    /* box-shadow: var(--box-shadow); */
     transition: transform var(--transition-duration);
   }
   
@@ -53,6 +59,14 @@
     width: 100%; /* Set the width to fill the container */
     height: 100%; /* Set the height to fill the container */
     object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+  }
+
+  .recentlyViewed-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Add this line to make the image a block element */
+    margin: auto; /* Add this line to center the image horizontally */
   }
   
   @media screen and (max-width: 768px) {

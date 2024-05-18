@@ -1,85 +1,95 @@
+/* AdminAllProduct.css */
+
+/* Styles for the admin products container */
 .admin-products-container {
   background-color: #ffe2e6; /* Pink background as seen in the wireframe */
   padding: 2rem; /* Responsive padding */
   max-width: 90%; /* Percentage width for responsiveness */
-  margin: 20px auto; /* Auto centers the container, top and bottom margin for space */
-  margin-top: 5rem; /* Responsive top margin */
-  margin-bottom: 40rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
+  margin: 5rem auto 0; /* Auto centers the container horizontally, top margin for spacing */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
 }
 
+/* Styles for the admin products header */
 .admin-products-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  text-align: center; /* Center the text */
   padding: 1% 2%;
-  margin-top: -10%;
   font-family: Marcellus;
+  margin-top: -10rem; /* Adjust margin for vertical alignment */
+  white-space: nowrap; /* Prevent line breaks */
 }
 
+/* Styles for the admin products search container */
 .admin-products-search-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Space between search input and button */
-  margin-bottom: 40px; /* Space below the search area */
-  margin-top: 40px;
-  
+  align-items: baseline;
+  padding: 10px;
+  max-width: 300px;
+  margin-top: -5rem; /* Add top margin for spacing */
 }
 
-.admin-products-search-container label {
-  height: 40px; /* Ensuring all children have the same height */
-  padding: 0 10px; /* Providing padding within the children */
-  margin: 0; /* Removing any default margins */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  margin-top:15px;
+/* Styles for the admin products search input */
+.admin-products-search-container input {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
-.admin-products-search-bar-button,
-.admin-products-filter-bar-button {
-  padding: 10px 20px;
-  border-radius: 5px;
+/* Styles for the admin products search button */
+.admin-products-search-bar-button {
+  padding: 0.5rem;
+  background-color: #333;
+  color: white;
   border: none;
-  background-color: black; /* Button background */
-  color: white; /* Button text */
+  border-radius: 4px;
   cursor: pointer;
+  margin-left: 0.25rem;
 }
 
-.admin-products-search-bar-button:hover,
-.admin-products-filter-bar-button:hover {
-  background-color: #555; /* Button hover effect */
+/* Hover styles for the admin products search button */
+.admin-products-search-bar-button:hover {
+  background-color: #555;
 }
 
-
+/* Styles for the admin products table */
 .admin-products-table {
-  width: 90%; /* Adjusted to match user management style */
+  width: 100%; /* Adjusted to match user management style */
   margin-top: 1rem;
   margin-left: auto; /* Center the table horizontally */
   margin-right: auto;
   border-collapse: collapse;
   background-color: #fff;
-  font-size: 0.9rem; 
+  font-size: 0.9rem;
 }
 
+/* Styles for the admin products table header and data cells */
 .admin-products-table th,
 .admin-products-table td {
   text-align: left;
-  padding: 8px; /* Padding within table cells */
+  padding: 10px; /* Padding within table cells */
   border-bottom: 1px solid #ddd; /* Border between rows */
 }
 
-/* Header cells */
+/* Styles for the admin products table header cells */
 .admin-products-table th {
   background-color: #f3f3f3; /* Light grey background for header cells */
   color: black;
 }
 
+.partner-products-table th:first-child,
+.partner-products-table td:first-child {
+  width: 200px; /* Adjust this value to make the first column wider */
+}
+
+/* Styles for the product image */
 .product-image {
   width: 200px; /* Set the width of the image */
   height: 250px; /* Set the height of the image */
 }
 
+/* Styles for the admin products remove button */
 .admin-products-remove-button {
   padding: 10px 20px;
   border-radius: 5px;
@@ -93,31 +103,51 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-.admin-products-container {
-max-width: 90%;
-margin: 0 auto;
+  .admin-products-container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .admin-products-search-container {
+    flex-direction: column; /* Stack the search label, input, and button vertically */
+    gap: 5px;
+  }
+
+  .admin-products-search-container label,
+  .admin-products-search-container input[type="text"],
+  .admin-products-search-container button {
+    width: 100%; /* Full width for small screens */
+  }
+
+  .admin-products-remove-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0; /* Remove any default margins */
+    border: none;
+    height: 40px; /* Ensures button height is same as input */
+    background-color: red;
+    color: white;
+    cursor: pointer;
+  }
 }
 
-.admin-products-search-container {
-flex-direction: column; /* Stack the search label, input, and button vertically */
-gap: 5px;
+/* Pagination styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-.admin-products-search-container label,
-.admin-products-search-container input[type="text"],
-.admin-products-search-container button {
-width: 100%; /* Full width for small screens */
-}
-
-.admin-products-remove-button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin: 0; /* Remove any default margins */
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
   border: none;
-  height: 40px; /* Ensures button height is same as input */
-  background-color: red;
+  background-color: #333;
   color: white;
+  border-radius: 5px;
   cursor: pointer;
 }
-}
 
+.pagination button:hover {
+  background-color: #555;
+}

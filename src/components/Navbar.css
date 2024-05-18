@@ -168,4 +168,10 @@
     left: 50px; /* Adjust the left position for smaller screens */
   }
   
+  .welcome-message {
+    position: absolute;
+    top: 50%;
+    right: 25%; /* Adjust this value as needed */
+    transform: translateY(-50%);
+  } 
 }

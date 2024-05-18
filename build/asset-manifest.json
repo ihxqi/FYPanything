@@ -1,25 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.13d14a0a.css",
-    "main.js": "/static/js/main.c7e75bad.js",
+    "main.css": "/static/css/main.5ffafd65.css",
+    "main.js": "/static/js/main.b04c7b1a.js",
     "static/media/t.gif": "/static/media/t.f5a5ad932d7fba2fe4f9.gif",
     "static/media/hbanner.jpg": "/static/media/hbanner.a9a91ddd46f6063073d6.jpg",
     "static/media/Bookmark.gif": "/static/media/Bookmark.5f4f86cbccb62dcab2f3.gif",
     "static/media/CollaFilter Logo.jpg": "/static/media/CollaFilter Logo.70b2c1506192d4f96b2d.jpg",
-    "static/media/1.jpg": "/static/media/1.a4c12a6e286e9d63a143.jpg",
-    "static/media/8.jpg": "/static/media/8.e27ef08a43ba486dacec.jpg",
-    "static/media/7.jpg": "/static/media/7.7555613e9d09410e4dd4.jpg",
-    "static/media/6.jpg": "/static/media/6.47efe513b09d1cdf105c.jpg",
-    "static/media/5.jpg": "/static/media/5.18599a17036dcb32bc92.jpg",
-    "static/media/NightDress.jpg": "/static/media/NightDress.761e8cc1c08bbb307dca.jpg",
-    "static/media/3.jpg": "/static/media/3.6755d5fdc4f333528297.jpg",
-    "static/media/2.jpg": "/static/media/2.8c1270cf54b783f0204b.jpg",
     "index.html": "/index.html",
-    "main.13d14a0a.css.map": "/static/css/main.13d14a0a.css.map",
-    "main.c7e75bad.js.map": "/static/js/main.c7e75bad.js.map"
+    "main.5ffafd65.css.map": "/static/css/main.5ffafd65.css.map",
+    "main.b04c7b1a.js.map": "/static/js/main.b04c7b1a.js.map"
   },
   "entrypoints": [
-    "static/css/main.13d14a0a.css",
-    "static/js/main.c7e75bad.js"
+    "static/css/main.5ffafd65.css",
+    "static/js/main.b04c7b1a.js"
   ]
 }

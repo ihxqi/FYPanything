@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import "./PartnerGenerateReport.css";
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import PartnerFooter from "../PartnerFooter";
@@ -11,12 +12,22 @@ const PartnerReport = () => {
   const [products, setProducts] = useState([]);
   const [averageRatings, setAverageRatings] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
+  const [blank, setRedirectToBlank] = useState(false);
   const itemsPerPage = 10;
 
   // Fetch products from the backend API
   useEffect(() => {
+    const userSession = JSON.parse(localStorage.getItem("user_session"));
+    if (!userSession || userSession.role !== "Partner") {
+      // Set redirectToLogin to true if user role is not admin or if user session is null
+      setRedirectToBlank(true);
+    }
     fetchProducts();
   }, []);
+
+  if (blank) {
+    return <Navigate to="/login" />;
+  }
 
   const fetchProducts = async () => {
     try {
@@ -82,25 +93,25 @@ const PartnerReport = () => {
         fetchAverageRating(product.product_id)
       );
       await Promise.all(fetchAverageRatingPromises);
-  
+
       // Once all average ratings are fetched, convert current items data to CSV format
       const csvData = convertToCSV(currentItems, averageRatings);
-  
+
       // Create a Blob object containing the CSV data
       const blob = new Blob([csvData], { type: "text/csv" });
-  
+
       // Create a URL for the Blob object
       const url = window.URL.createObjectURL(blob);
-  
+
       // Create a link element for downloading the CSV file
       const link = document.createElement("a");
       link.href = url;
       link.setAttribute("download", "report.csv");
-  
+
       // Simulate a click on the link to trigger the download
       document.body.appendChild(link);
       link.click();
-  
+
       // Clean up
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);

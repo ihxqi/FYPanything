@@ -85,19 +85,15 @@
 }
 
 .UserCatproduct-item {
-  width: 160px; /* Width of product cards */
-  height: 160px; /* Height of product cards, making it a square */
-  border: 1px solid #ccc; /* Optional border for the box */
-  margin-bottom: 20px; /* This adds space below each item, effectively creating row spacing */
-  flex-shrink: 0; /* Prevent flex items from shrinking smaller than their width */
+  margin-bottom: 20px;
+  flex-shrink: 0;
   display: flex;
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
-  background-color: #ccc; /* Grey background color */
-  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
-  position: relative; /* Establish containing block for absolute positioning */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  max-width: 100%; /* Ensure each product item takes the full width of its container */
 }
-
 .UserCatproduct-item:hover {
   transform: var(--item-hover-transform);
 }
@@ -105,15 +101,16 @@
 
 .UserCatproduct-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust the grid layout as needed */
+  grid-template-columns: repeat(5, 1fr); /* Each row contains 5 products */
   grid-gap: 20px; /* Adjust the gap between grid items */
 }
 
 
+
 .UserCatproduct-image {
-  width: 100%;
-  max-height: 200px; /* Adjust the maximum height of the product image */
-  object-fit: cover; /* Ensure the image covers the entire container */
+  max-width: 100%; /* Ensure the image fills the container */
+  max-height: 100%; /* Ensure the image maintains its aspect ratio */
+  object-fit: contain; /* Ensure the image fits inside the container */
 }
 
 .UserCatproduct-name {
@@ -182,8 +179,54 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+ .UserCatHomeproduct-container {
+  position: fixed;
+  top: 60%; /* Lower the popup so it's fully visible */
+  left: 50%;
+  transform: translate(-50%, -60%); /* Adjust translate to match the top value */
+  background-color: white;
+  padding: 20px; /* Add some padding */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  max-height: 80%; /* Limit the height of the popup */
+  overflow-y: auto; /* Make the popup scrollable */
+  background-color: white;
+}
+
+.close {
+  position: absolute;
+  top: -50px; /* Align to the top of the modal-content */
+  left: 50px; /* Align to the right of the modal-content */
+  margin: 10px; /* Optional: add some margin */
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001; /* Ensure it is above other content */
+ 
+}
+
+.modal-content{
+  width: 300px;
+  top: 100px; /* Lower the popup so it's fully visible */
+}
+
+.UserCatHomeproduct-details{
+  text-align: left;
+}
 
 
+@media (max-width: 480px) {
+  .modal-content {
+    width: 90vw;
+    height: 80vh; /* Adjust the height for mobile screens */
+  }
 
-
-
+  .close {
+    top: 5px; /* Adjust for smaller screens */
+    right: 5px; /* Adjust for smaller screens */
+    font-size: 20px;
+  }
+}

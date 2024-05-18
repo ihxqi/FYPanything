@@ -31,10 +31,10 @@ const Login = () => {
         // If login is successful, redirect to appropriate page
         const userSession = await response.json(); // Parse JSON response
         localStorage.setItem("user_session", JSON.stringify(userSession)); // saves the user current session for further use
-        console.log(userSession);
+        // console.log(userSession);
         const userRole = userSession.role; // Access the role field
         if (userRole === "Admin") {
-          navigate("/adminmanagepartner");
+          navigate("/UnregisteredBlogshopOwner");
         } else if (userRole === "User") {
           navigate("/UserHomepage");
         } else if (userRole === "Partner") {

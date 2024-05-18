@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import "./UserCategories.css";
 import UserSidebarNavbar from "../UserSidebarNavbar";
 import UserFooter from "../UserFooter";
@@ -11,10 +12,28 @@ function UserCategories() {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [blank, setRedirectToBlank] = useState(false);
 
   useEffect(() => {
+    const userSession = JSON.parse(localStorage.getItem("user_session"));
+    if (!userSession || userSession.role !== "User") {
+      // Set redirectToLogin to true if user role is not admin or if user session is null
+      setRedirectToBlank(true);
+    }
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    if (selectedCategory) {
+      fetchProductsByCategory(selectedCategory);
+    }
+  }, [selectedCategory]);
+
+  if (blank) {
+    return <Navigate to="/login" />;
+  }
 
   const fetchCategories = async () => {
     try {
@@ -43,34 +62,47 @@ function UserCategories() {
         throw new Error("Failed to fetch products");
       }
       const data = await response.json();
-      console.log(data);
-      console.log(data.products);
       setDisplayedProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error.message);
     }
   };
 
-  useEffect(() => {
-    if (selectedCategory) {
-      fetchProductsByCategory(selectedCategory);
-    }
-  }, [selectedCategory]);
-
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     fetchProductsByCategory(category);
-    console.log("clicked on category:", category);
   };
 
   const handleProductClick = (product) => {
-    console.log(`Clicked on product:`, product);
-    // Implement the logic to handle product click, such as navigating to the product details
+    setSelectedProduct(product);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   const filteredCategories = categories.filter((category) =>
     category.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleIncrement = async (product_id) => {
+    try {
+      const response = await fetch(`${apiUrl}/add_count/${product_id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ product_id: product_id }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to increment count");
+      }
+    } catch (error) {
+      console.error("Error incrementing count:", error.message);
+    }
+  };
 
   return (
     <div>
@@ -105,44 +137,51 @@ function UserCategories() {
               {selectedCategory}
             </h2>
           )}
-          <table className="UserCatproduct-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Link</th>
-                <th>Description</th>
-                <th>Image</th>
-              </tr>
-            </thead>
-            <tbody>
-              {displayedProducts.map((product, index) => (
-                <tr key={index} onClick={() => handleProductClick(product)}>
-                  <td>{product.name}</td>
-                  <td style={{ width: "80px" }}>{product.price}</td>
-                  <td>
-                    <a
-                      href={product.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Link to shop
-                    </a>
-                  </td>
-                  <td>{product.description}</td>
-                  <td>
-                    <img
-                      src={`data:image/png;base64, ${product.imageFile}`}
-                      alt="Product Image"
-                      style={{ maxWidth: "200px", maxHeight: "200px" }}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="UserCatproduct-grid">
+            {displayedProducts.map((product, index) => (
+              <div key={index} className="UserCatproduct-item">
+                <img
+                  src={`data:image/png;base64, ${product.imageFile}`}
+                  alt="Product Image"
+                  style={{ maxWidth: "200px", maxHeight: "250px" }}
+                  onClick={() => handleProductClick(product)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+
+            <img
+              src={`data:image/png;base64, ${selectedProduct.imageFile}`}
+              alt="Product Image"
+              style={{ maxWidth: "200px", maxHeight: "250px" }}
+            />
+            <div className="UserCatHomeproduct-details">
+              <div>Name: {selectedProduct.name}</div>
+              <div>Price: {"$" + selectedProduct.price}</div>
+              <div>Category: {selectedProduct.category}</div>
+              <div>Description: {selectedProduct.description}</div>
+              <div>
+                <a
+                  href={selectedProduct.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleIncrement(selectedProduct.product_id)}
+                >
+                  Link to shop
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <UserFooter />
     </div>
   );
