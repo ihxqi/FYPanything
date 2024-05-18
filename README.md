@@ -1,20 +1,16 @@
 # FYPanything
-FYP Part 1
 
 
 demo accounts
 
 User:
-<!-- email: user@gmail.com -->
-<!-- password: User -->
+<!-- email: hkzx17@gmail.com -->
+<!-- password: password -->
 
 Partner
 <!-- email: partner@email.com -->
-<!-- password: Partner -->
+<!-- password: partner -->
 
 admin
 <!-- email: admin -->
-<!-- password: admin --> -->
-
-<!--  "proxy": "localhost:8000/", -->
-  <!-- "proxy": "http://54.252.236.237:8000/", -->
+<!-- password: c --> -->

@@ -17,7 +17,6 @@ export default function App() {
           <Route path="/registerrole" element={<RegisterRole />} />
           <Route path="/RegisterUser" element={<RegisterUser />} />
           <Route path="/RegisterPartner" element={<RegisterPartner />} />
-          <Route path="/ForgetEmail" element={<ForgetEmail/>} />
           <Route path="/UnregisteredBlogshopOwner" element={<UnregisteredBlogshopOwner/>} />
           <Route path="/PartnerAllProducts" element={<PartnerAllProducts/>} />
           <Route path="/ForgetPassword" element={<ForgetPassword/>} />

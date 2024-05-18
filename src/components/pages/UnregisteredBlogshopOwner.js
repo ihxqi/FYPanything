@@ -3,6 +3,7 @@ import "./UnregisteredBlogshopOwner.css"; // Ensure you have this CSS file with 
 import Select from "react-select"; // Import React-Select
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
+import { Navigate } from "react-router-dom";
 
 const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
 // const apiUrl = "http://localhost:8000"; // Local Backend URL
@@ -10,12 +11,29 @@ const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
 function UnregisteredBlogshopOwner() {
   const [actionStatus, setActionStatus, partnerName] = useState({});
   const [partnerData, setPartnerData] = useState([]);
-  
+  const [searchQuery, setSearchQuery] = useState("");
+  const [blank, setRedirectToBlank] = useState(false);
+  const [userSession, setUserSession] = useState(null);
 
   useEffect(() => {
-    // Fetch partner accounts from backend API when the component mounts
-    fetchPartnerAccounts();
+    // Check user role when the component mounts
+    const userSession = JSON.parse(localStorage.getItem("user_session"));
+    if (!userSession || userSession.role !== "Admin") {
+      // Set redirectToLogin to true if user role is not admin or if user session is null
+      setRedirectToBlank(true);
+    } else {
+      // Fetch user accounts from backend API if user role is admin
+      fetchPartnerAccounts();
+    }
   }, [actionStatus]);
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchQuery]);
+
+  if (blank) {
+    return <Navigate to="/login" />;
+  }
 
   const fetchPartnerAccounts = async () => {
     try {
@@ -31,11 +49,10 @@ function UnregisteredBlogshopOwner() {
   };
 
   const handleAuthenticate = async (partner) => {
-    console.log("Authenticate clicked for:", partner.email);
     // Add activate logic here
     try {
       const emailString = String(partner.email);
-      console.log(emailString);
+      // console.log(emailString);
       // Make a PUT request to update the partner's status
       const response = await fetch(`${apiUrl}/authenticate_partner`, {
         method: "POST",
@@ -54,7 +71,8 @@ function UnregisteredBlogshopOwner() {
         ...prevStatus,
         [partner.email]: "authenticate",
       }));
-
+      window.alert("Approved");
+      fetchPartnerAccounts();
     } catch (error) {
       console.error("Error authenticating partner:", error.message);
     }
@@ -65,10 +83,9 @@ function UnregisteredBlogshopOwner() {
   };
 
   const handleReject = async (partner) => {
-    console.log("Reject clicked for:", partner.email);
     try {
       const emailString = String(partner.email);
-      console.log(emailString);
+      // console.log(emailString);
       // Make a PUT request to update the partner's status
       const response = await fetch(`${apiUrl}/reject_partner`, {
         method: "POST",
@@ -87,11 +104,32 @@ function UnregisteredBlogshopOwner() {
         ...prevStatus,
         [partner.email]: "Rejected",
       }));
-
-
+      window.alert("Rejected");
+      fetchPartnerAccounts();
     } catch (error) {
       console.error("Error rejecting partner:", error.message);
     }
+  };
+
+  const handleSearchInputChange = (e) => {
+    const { value } = e.target;
+    setSearchQuery(value); // Update the search query state as the user types
+
+    // If the search query is empty, fetch all categories
+    if (value === "") {
+      fetchPartnerAccounts();
+    } else {
+      // Otherwise, perform a search with the current search query
+      handleSearch();
+    }
+  };
+
+  const handleSearch = () => {
+    const query = searchQuery.toLowerCase().trim();
+    const filteredData = partnerData.filter((partner) =>
+      partner.name.toLowerCase().includes(query)
+    );
+    setPartnerData(filteredData);
   };
 
   return (
@@ -103,11 +141,19 @@ function UnregisteredBlogshopOwner() {
           <div className="CMheader">
             <h2>Unregistered Blogshop Owners</h2>
           </div>
+          <div className="CM-search-bar">
+            <input
+              type="text"
+              placeholder="Search by name:"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+            />
+          </div>
           <table className="CMtable" style={{ width: "100%" }}>
             <thead>
               <tr>
                 <th>E-mail</th>
-                <th>Blogshop Owner</th>
+                <th>Blogshop Name</th>
                 <th>UEN Number</th>
                 <th>Category</th>
                 <th>Link</th>
@@ -122,14 +168,14 @@ function UnregisteredBlogshopOwner() {
                   <td>{partner.UEN}</td>
                   <td>{partner.category}</td>
                   <td>
-                        <a
-                          href={partner.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {partner.link}
-                        </a>
-                      </td>
+                    <a
+                      href={partner.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {partner.link}
+                    </a>
+                  </td>
                   <td className="CMtable-action-column">
                     <button
                       className="admin-approve-partner-button"

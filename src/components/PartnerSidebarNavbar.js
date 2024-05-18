@@ -8,6 +8,10 @@ const PartnerSidebarNavbar = () => {
   const [collapsed, setCollapsed] = useState(true);
   const navigate = useNavigate(); // Import and use useNavigate for navigation
 
+  const session = localStorage.getItem("user_session");
+  const userSession = JSON.parse(session);
+  const name = userSession?.name;
+
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
     setMenuOpen(!menuOpen); // Ensure consistency between collapsed and menuOpen states
@@ -53,7 +57,7 @@ const PartnerSidebarNavbar = () => {
   return (
     <nav className="navbar">
       {/* Logo */}
-      <Link to="/" className="title">
+      <Link to="/partnerallproducts" className="title">
         <img src={logo} alt="CollaFilter Logo" className='logo' />
       </Link>
 
@@ -84,6 +88,7 @@ const PartnerSidebarNavbar = () => {
           </div>
         )}
       </div>
+      <div className="welcome-message" style={{ marginRight: '20px', fontWeight: 'bold' }}>Welcome {name}</div>
     </nav>
   );
 };

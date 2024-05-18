@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../Navbar";
-import GeneralFooter from "../GeneralFooter"
+import GeneralFooter from "../GeneralFooter";
 import "./VerifyEmail.css";
 
 const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
@@ -23,7 +23,7 @@ const VerifyEmail = () => {
         setLoading(false); // Update loading state after fetch completes
       })
       .catch((error) => {
-        console.error("Error:", error);
+        // console.error("Error:", error);
         setLoading(false); // Update loading state after fetch completes
       });
   }, []);

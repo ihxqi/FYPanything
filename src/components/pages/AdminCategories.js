@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import "./AdminCategories.css";
 import AdminSidebarNavbar from "../AdminSidebarNavbar";
 import AdminFooter from "../AdminFooter";
 
 const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
 // const apiUrl = "http://localhost:8000"; // Local Backend URL
-
 
 const AdminCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -15,13 +15,20 @@ const AdminCategories = () => {
   const [showAddForm, setShowAddForm] = useState(false); // State to manage the visibility of the add category form
   const [searchQuery, setSearchQuery] = useState("");
   const [initialCategoryValue, setInitialCategoryValue] = useState("");
-
-  const userSession = JSON.parse(localStorage.getItem("user_session")); //Can delete
-  // console.log(userSession);
+  const [blank, setRedirectToBlank] = useState(false);
 
   useEffect(() => {
+    const userSession = JSON.parse(localStorage.getItem("user_session"));
+    if (!userSession || userSession.role !== "Admin") {
+      // Set redirectToLogin to true if user role is not admin or if user session is null
+      setRedirectToBlank(true);
+    }
     fetchCategories();
   }, []);
+
+  if (blank) {
+    return <Navigate to="/login" />;
+  }
 
   const fetchCategories = async () => {
     try {
@@ -50,7 +57,7 @@ const AdminCategories = () => {
 
   const handleRemove = async (category) => {
     try {
-      console.log(JSON.stringify(category));
+      // console.log(JSON.stringify(category));
       const response = await fetch(`${apiUrl}/delete_category`, {
         method: "POST",
         headers: {
@@ -63,7 +70,7 @@ const AdminCategories = () => {
         throw new Error("Failed to delete category");
       }
 
-      console.log("Category with ID:", category, "successfully deleted");
+      // console.log("Category with ID:", category, "successfully deleted");
 
       const updatedCategories = categories.filter(
         (cat) => cat.id !== category.id
@@ -78,46 +85,46 @@ const AdminCategories = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(
-      `Editing category ${editCategory.id}: Setting ${name} to ${value}`
-    );
+    // console.log(
+    //   `Editing category ${editCategory.id}: Setting ${name} to ${value}`
+    // );
     setEditCategory({ ...editCategory, [name]: value });
   };
 
   const handleSearchInputChange = (e) => {
-  const { value } = e.target;
-  setSearchQuery(value); // Update the search query state as the user types
-  
-  // If the search query is empty, fetch all categories
-  if (value === "") {
-    fetchCategories();
-  } else {
-    // Otherwise, perform a search with the current search query
-    handleSearch();
-  }
-};
+    const { value } = e.target;
+    setSearchQuery(value); // Update the search query state as the user types
+
+    // If the search query is empty, fetch all categories
+    if (value === "") {
+      fetchCategories();
+    } else {
+      // Otherwise, perform a search with the current search query
+      handleSearch();
+    }
+  };
 
   const handleSearch = () => {
     // Convert searchQuery to lowercase for case-insensitive search
     const query = searchQuery.toLowerCase().trim();
-    
+
     // Filter categories based on search query
     const filteredCategories = categories.filter((item) =>
       item.category.toLowerCase().includes(query)
     );
-  
+
     setCategories(filteredCategories);
   };
 
   const handleNewCategoryChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Setting new category ${name} to ${value}`);
+    // console.log(`Setting new category ${name} to ${value}`);
     setNewCategory({ ...newCategory, [name]: value });
   };
 
   const handleSubmit = async () => {
-    console.log(editCategory.category)
-    console.log(initialCategoryValue)
+    // console.log(editCategory.category);
+    // console.log(initialCategoryValue);
     try {
       const response = await fetch(`${apiUrl}/edit_category`, {
         method: "POST",
@@ -135,7 +142,7 @@ const AdminCategories = () => {
       }
 
       console.log("Category successfully edited");
-      window.alert("Category changed")
+      window.alert("Category changed");
       setShowEditPopup(false);
       fetchCategories();
     } catch (error) {
@@ -145,8 +152,7 @@ const AdminCategories = () => {
 
   const handleAddCategory = async () => {
     try {
-      console.log("");
-      console.log(newCategory.category);
+      // console.log(newCategory.category);
       const response = await fetch(`${apiUrl}/add_categories`, {
         method: "POST",
         headers: {
@@ -187,12 +193,6 @@ const AdminCategories = () => {
           value={searchQuery}
           onChange={handleSearchInputChange}
         />
-        <button
-                className="admin-categories-search-bar-button"
-                onClick={handleSearch}
-              >
-                Search
-              </button>
       </div>
       <table className="admin-categories-table">
         <thead>

@@ -112,7 +112,7 @@
 .UserHomeproduct-details .rating-container {
   display: flex;
   align-items: center; /* Align items vertically */
-  margin-top: 10px; /* Adjust as needed to move the rating higher */
+  margin-top: 0px; /* Adjust as needed to move the rating higher */
 }
 
 .UserHomeproduct-details .rating-label {
@@ -140,6 +140,154 @@
   transform: scale(1.2); /* Increase size on hover */
 }
 
+
+.message-container {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #b4b4b4;
+  border-radius: 8px;
+  background-color: #facaef;
+}
+
+/* Styling for individual message */
+.message-container .message {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Add a bit of shadow for better visual separation */
+.message-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure consistent spacing */
+.message-container .message {
+  margin-bottom: 10px;
+}
+
+/* Add animation to make messages fade in smoothly */
+.message-container .message {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.side-recommendations-title {
+  font-weight: bold;
+  font-family: 'Helvetica', Sans-serif; /* Change to desired font */
+  font-size: 18px; /* Adjust font size if needed */
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.side-recommendations-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Adjust the gap as needed */
+  margin-top: 20px;
+}
+
+.side-recommendation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Arial', sans-serif;
+  
+}
+.side-recommendation:hover {
+  transform: var(--item-hover-transform);
+}
+
+.modal-content {
+  width: 300px;
+  top: 100px; /* Lower the popup so it's fully visible */
+}
+
+.close {
+  position: absolute;
+  top: -50px; /* Align to the top of the modal-content */
+  left: 50px; /* Align to the right of the modal-content */
+  margin: 10px; /* Optional: add some margin */
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001; /* Ensure it is above other content */
+}
+
+.small-heart-button {
+  font-size: 46px; /* Adjust the font size */
+  padding: 5px 10px; /* Adjust the padding */
+  width: 30px; /* Adjust the width */
+  height: 30px; /* Adjust the height */
+  background-color: transparent; /* Optional: make background transparent */
+  border: none; /* Remove border */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.UserHomethumbs-container-details {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  height: 100%; /* Ensure the container has a height */
+  width: 100%;
+  
+}
+.UserHomethumbs-container-details > * {
+  margin: 0 auto; /* Center child element horizontally */
+}
+
+.small-heart-button-details {
+  font-size: 50px; /* Adjust font size as needed */
+  padding: px;    /* Adjust padding as needed */
+  border: none;    /* Remove default border */
+  background: none; /* Remove default background */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Optional: Add hover effect */
+.small-heart-button:hover {
+  opacity: 0.8;
+}
+
+.small-heart-button-details:hover {
+  opacity: 0.7;
+}
+
+.rating-container-details {
+  font-size: 14px; /* Adjust the font size for the container */
+  padding: 5px; /* Adjust padding if necessary */
+}
+
+.rating-label-details {
+  font-size: 14px; /* Adjust the font size for the label */
+}
+
+.star {
+  font-size: 46px; /* Adjust the font size for the stars */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.star.filled {
+  color: gold; /* Optional: Change color for filled stars */
+}
+
+/* Optional: Add hover effect */
+.star:hover {
+  opacity: 0.8;
+}
+
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 
 

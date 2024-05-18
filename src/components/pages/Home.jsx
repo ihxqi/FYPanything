@@ -15,6 +15,10 @@ const Home = () => {
   const [totalBlogshops, setTotalBlogshops] = useState(0);
   const [totalProducts, setTotalProducts] = useState(0);
 
+  const session = localStorage.getItem("user_session");
+const userSession = JSON.parse(session);
+  console.log(userSession)
+
   useEffect(() => {
     fetch(`${apiUrl}/get_totalusers`)
       .then((response) => response.json())
@@ -78,7 +82,7 @@ const Home = () => {
       </div>
       <div className="tracking-section">
         <div className="tracking-box">
-          <h2>Total Users:</h2><br/><br/>
+          <h2>Total <br/> Users:</h2><br/><br/>
           <p>{totalUsers}</p>
         </div>
         <div className="tracking-box">

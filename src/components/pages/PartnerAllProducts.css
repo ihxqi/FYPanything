@@ -5,7 +5,7 @@
   margin: 20px auto; /* Auto centers the container, top and bottom margin for space */
   margin-top: 4rem; /* Responsive top margin */
   margin-bottom: 40rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: adds shadow for depth */
+  
 }
 
 .partner-products-header{
@@ -79,7 +79,7 @@
 }
 
 .partner-products-table {
-  width: 90%; /* Adjusted to match user management style */
+  width: 100%; /* Adjusted to match user management style */
     margin-top: 1rem;
     margin-left: auto; /* Center the table horizontally */
     margin-right: auto;
@@ -90,7 +90,7 @@
 .partner-products-table th,
 .partner-products-table td {
   text-align: left;
-  padding: 8px; /* Padding within table cells */
+  padding: 10px; /* Padding within table cells */
   border-bottom: 1px solid #ddd; /* Border between rows */
 }
 
@@ -99,6 +99,13 @@
   background-color: #f3f3f3; /* Light grey background for header cells */
   color: black;
 }
+
+/* Adjust the last column width */
+.partner-products-table th:last-child,
+.partner-products-table td:last-child {
+  width: 200px; /* Adjust this value to make the last column wider */
+}
+
 
 .partner-products-edit-button {
   margin: 0 0.25rem;
@@ -149,7 +156,7 @@
   width: 500px;
   max-height: 80%; /* Limit the height of the popup */
   overflow-y: auto; /* Make the popup scrollable */
-  background-color: #babaf8;
+  background-color: white;
 }
 
 .partner-products-edit-popup h2 {
@@ -160,13 +167,13 @@ margin-top: 30px;
 
 .partner-products-edit-popup input {
   width: 80%; /* Adjust the width to make the input fields longer */
-  margin-top: 20px; /* Add margin to separate the input fields */
+  margin-top: 10px; /* Add margin to separate the input fields */
   padding: 10px;
   height: 80%;
   margin-bottom: 10px;
   align-items: center;
- 
 }
+
 
 .editProductsPopup-save-category-button {
   padding: 10px 20px;
@@ -197,11 +204,14 @@ margin-top: 30px;
 }
 
 .partner-products-edit-form label {
+  margin-right: 20px;
   margin-top: 10px;
-  min-width: 200px; /* Adjust the width of the label */
-  text-align: center;
+  min-width: 100px; /* Adjust the width of the label */
 }
 
+.category-input{
+  margin-top: 10px;
+}
 
 /* Responsive adjustments for categories page */
 @media (max-width: 768px) {

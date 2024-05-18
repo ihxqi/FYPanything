@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import "./PartnerAllProducts.css";
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import PartnerFooter from "../PartnerFooter";
@@ -27,8 +28,14 @@ const PartnerAllProducts = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [blank, setRedirectToBlank] = useState(false);
 
   useEffect(() => {
+    const userSession = JSON.parse(localStorage.getItem("user_session"));
+    if (!userSession || userSession.role !== "Partner") {
+      // Set redirectToLogin to true if user role is not admin or if user session is null
+      setRedirectToBlank(true);
+    }
     fetchProducts();
     fetchCategories();
   }, []);
@@ -59,12 +66,15 @@ const PartnerAllProducts = () => {
     }
   }, [selectedCategory, products]);
 
+  if (blank) {
+    return <Navigate to="/login" />;
+  }
+
   const fetchCategories = async () => {
     try {
       const response = await fetch(`${apiUrl}/get_categories`);
       if (!response.ok) throw new Error("Failed to fetch categories");
       const data = await response.json();
-      console.log(data);
       const categories = Object.keys(data.categories).map((category) => ({
         value: category,
         label: category,
@@ -80,7 +90,6 @@ const PartnerAllProducts = () => {
     const session = localStorage.getItem("user_session");
     const userSession = JSON.parse(session);
     const userID = userSession.user_id;
-    console.log(userID);
     if (!userID) throw new Error("User ID not found in localStorage");
 
     const response = await fetch(`${apiUrl}/get_products`, {
@@ -92,7 +101,6 @@ const PartnerAllProducts = () => {
     if (!response.ok) throw new Error("Failed to fetch products");
 
     const data = await response.json();
-    console.log(data);
 
     try {
       if (data.products && Array.isArray(data.products)) {
@@ -114,7 +122,7 @@ const PartnerAllProducts = () => {
       (product) => product.product_id === product_id
     );
     if (productToEdit) {
-      console.log("Editing product:", productToEdit);
+      // console.log("Editing product:", productToEdit);
       setEditProduct({ ...productToEdit, productName: productToEdit.name });
       // Set editImagePreview if needed
       setShowEditPopup(true);
@@ -142,7 +150,6 @@ const PartnerAllProducts = () => {
       );
       setProducts(updatedProducts);
       window.alert("Product Deleted");
-      console.log("Product deleted successfully");
       fetchProducts();
     } catch (error) {
       console.error("Error deleting product:", error.message);
@@ -151,10 +158,20 @@ const PartnerAllProducts = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(
-      `Editing product ${editProduct.id}: Setting ${name} to ${value}`
-    );
-    setEditProduct({ ...editProduct, [name]: value });
+    // console.log(
+    //   `Editing product ${editProduct.id}: Setting ${name} to ${value}`
+    // );
+    if (name === "productName") {
+      setEditProduct((prevEditProduct) => ({
+        ...prevEditProduct,
+        productName: value,
+      }));
+    } else {
+      setEditProduct((prevEditProduct) => ({
+        ...prevEditProduct,
+        [name]: value,
+      }));
+    }
   };
 
   const handleImageChange = (event) => {
@@ -186,29 +203,29 @@ const PartnerAllProducts = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(editProduct.image);
     let base64Image = ""; // Initialize empty Base64 string
     if (editProduct.image instanceof File) {
       // Check if image is a File object
       base64Image = await convertImageToBase64(editProduct.image); // Convert image to Base64
-     } 
+    }
     //  else {
     //   base64Image = editProduct.image; // Use existing Base64 string if available
     // }
 
     const requestBody = {
       product_id: editProduct.product_id,
-      name: editProduct.name,
+      name: editProduct.productName,
       category: editProduct.category,
       description: editProduct.description,
       link: editProduct.link,
       price: editProduct.price,
     };
+    // console.log(requestBody);
 
     if (base64Image == "") {
       // requestBody.imageFile = base64Image; // Add image only if it's not null
-      console.log(requestBody);
-      console.log("no image submit")
+      // console.log(requestBody);
+      console.log("no image submit");
       try {
         const response = await fetch(`${apiUrl}/update_product_noimage`, {
           method: "POST",
@@ -226,10 +243,9 @@ const PartnerAllProducts = () => {
         const updatedProducts = products.map((product) =>
           product.id === updatedProduct.id ? updatedProduct : product
         );
-        // setProducts(updatedProducts);
+        setProducts(updatedProducts);
 
-
-        console.log("Product updated successfully");
+        window.alert("Product updated successfully");
         setShowEditPopup(false);
         fetchProducts();
         fetchCategories();
@@ -237,8 +253,7 @@ const PartnerAllProducts = () => {
         console.error("Error updating product:", error.message);
       }
     } else {
-      console.log(requestBody);
-      console.log("image submit")
+      // console.log(requestBody);
       requestBody.imageFile = base64Image;
       try {
         const response = await fetch(`${apiUrl}/update_product`, {
@@ -259,7 +274,7 @@ const PartnerAllProducts = () => {
         );
         setProducts(updatedProducts);
 
-        console.log("Product updated successfully");
+        // console.log("Product updated successfully");
         setShowEditPopup(false);
         fetchProducts();
         fetchCategories();
@@ -309,18 +324,6 @@ const PartnerAllProducts = () => {
               isSearchable
               className="category-filter" // Add a class to the Select component
             />
-             <button
-                className="partner-products-search-button"
-                onClick={handleProductChange}
-              >
-                Search
-              </button>
-              <button
-                className="partner-products-filter-button"
-                onClick={handleCategoryChange}
-              >
-                Filter
-              </button>
           </div>
           <table className="partner-products-table">
             <thead>
@@ -341,6 +344,7 @@ const PartnerAllProducts = () => {
                     {editMode === product.id ? (
                       <input
                         type="text"
+                        id="productName"
                         name="productName"
                         value={editProduct.productName}
                         onChange={handleChange}
@@ -391,7 +395,7 @@ const PartnerAllProducts = () => {
                   </td>
                   <td>
                     <a
-                      href={product.link}
+                      href={editProduct.link}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -444,8 +448,8 @@ const PartnerAllProducts = () => {
                     })
                   }
                   placeholder="Select a category..."
-                  isClearable
                   isSearchable
+                  className="category-input"
                 />
 
                 <label htmlFor="price">Price:</label>

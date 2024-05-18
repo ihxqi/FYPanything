@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import "./PartnerProfile.css";
 import PartnerSidebarNavbar from "../PartnerSidebarNavbar";
 import PartnerFooter from "../PartnerFooter";
@@ -17,6 +18,7 @@ const PartnerProfile = () => {
     country: "",
     category: "",
   });
+  const [blank, setRedirectToBlank] = useState(false);
 
   const countryMapping = {
     sg: "Singapore",
@@ -33,6 +35,11 @@ const PartnerProfile = () => {
   };
 
   useEffect(() => {
+    const userSession = JSON.parse(localStorage.getItem("user_session"));
+    if (!userSession || userSession.role !== "Partner") {
+      // Set redirectToLogin to true if user role is not admin or if user session is null
+      setRedirectToBlank(true);
+    }
     fetchUserAccount();
   }, []);
 
@@ -76,12 +83,15 @@ const PartnerProfile = () => {
     }
   };
 
+  if (blank) {
+    return <Navigate to="/login" />;
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Send INFO " + JSON.stringify(partner));
+    // console.log("Send INFO " + JSON.stringify(partner));
 
     try {
-      console.log(partner);
       const response = await fetch(`${apiUrl}/update_partner_data`, {
         method: "POST",
         headers: {
@@ -93,7 +103,6 @@ const PartnerProfile = () => {
       const responseData = await response.json();
 
       if (response.ok) {
-        console.log(responseData.message);
         window.alert(responseData.message);
 
         // Optionally, fetch updated user data after the update operation

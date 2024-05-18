@@ -1,53 +1,39 @@
-import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import './ForgetPassword.css'; // Ensure you have this CSS file with the correct styles
-import Navbar from '../Navbar';
+import React, { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "./ForgetPassword.css"; // Ensure you have this CSS file with the correct styles
+import Navbar from "../Navbar";
 
 const apiUrl = "http://3.106.171.7:8000"; // Hosted Backend URL
 // const apiUrl = "http://localhost:8000"; // Local Backend URL
 
 const ForgetPassword = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     try {
       const response = await fetch(`${apiUrl}/forgetpassword`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
       });
-
-      console.log(email)
-      console.log(response)
-
-      // if (!response.ok) {
-      //   throw new Error('Failed to send reset password request');
-      // }
-
-      // // Reset the form
-      // setEmail('');
-
-      // console.log('Reset password request sent successfully');
-      // window.alert("Reset password email sent!")
-      console.log("Enter: forgetpassword fetch function")
+      // console.log("Enter: forgetpassword fetch function");
       if (response.ok) {
         // Reset the form
-        setEmail('');
-        console.log('Reset password request sent successfully');
-        window.alert("Reset password email sent!")
+        setEmail("");
+        window.alert("Reset password email sent!");
+      } else if (response.status === 400) {
+        window.alert("Forget password email already sent");
+      } else if (response.status === 404) {
+        window.alert("Email does not exist");
       } else {
-        console.log("ERROR: forgetpassword fetch function")
-        throw new Error('Failed to send reset password request');
+        throw new Error("Failed to send reset password request");
       }
-      console.log("Exit: forgetpassword fetch function")
-
-
     } catch (error) {
-      console.error('Error sending reset password request:', error);
+      console.error("Error sending reset password request:", error);
       // Handle error (e.g., display error message to the user)
     }
   };
@@ -70,7 +56,7 @@ const ForgetPassword = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                
+
                 <input type="submit" value="Submit" />
               </form>
             </div>
